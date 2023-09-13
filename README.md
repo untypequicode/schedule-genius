@@ -1,3 +1,1 @@
-# Time-Table
-
-power power
+# Schedule Genius
