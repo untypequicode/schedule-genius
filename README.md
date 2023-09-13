@@ -1,3 +1,3 @@
 # Schedule Genius
 
-First comment to test the commit
+Second comment to test the commit
