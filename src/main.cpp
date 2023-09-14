@@ -61,5 +61,10 @@ int main()
 	std::cin.ignore();
 	std::cout << "Vous avez donc un établissement de " << number_of_student << " étudiants, qui ont une moyenne générale de " << average << "/20" << std::endl;
 
+	float uk = 2.5f;
+	int test = 2;
+	std::cout << "Print sinon conséquences : " << uk;
+	std::cin >> test;
+	std::cout << uk + test ;
 	return 0;
 }
