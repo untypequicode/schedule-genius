@@ -68,7 +68,7 @@ int main()
 	std::cout << uk + test ;
 	*/
 
-	float data1 = 0.0f;
+	/*float data1 = 0.0f;
 	float data2 = 0.0f;
 	std::cout << "Entrez le premier nombre a additionner : ";
 	std::cin >> data1;
@@ -90,6 +90,6 @@ int main()
 	std::cout << "Entrez le diviseur : ";
 	std::cin >> data2;
 	std::cout << data1 << " / " << data2 << " = " << data1 / data2 << std::endl;
-	return 0;
+	return 0;*/
 }
 
