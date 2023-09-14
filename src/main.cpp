@@ -49,7 +49,7 @@ int main()
 	std::cout << "d + e = " << d + e << std::endl;*/
 
 
-
+	/*
 	int number_of_student = 0;
 	std::cout << "Bienvenue sur Schedule Genius, veniez renseigner le nombre d'étudiant qu'il y a dans votre établissement : ";
 	std::cin >> number_of_student;
@@ -66,5 +66,7 @@ int main()
 	std::cout << "Print sinon conséquences : " << uk;
 	std::cin >> test;
 	std::cout << uk + test ;
+	*/
 	return 0;
 }
+
