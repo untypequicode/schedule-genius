@@ -67,6 +67,29 @@ int main()
 	std::cin >> test;
 	std::cout << uk + test ;
 	*/
+
+	float data1 = 0.0f;
+	float data2 = 0.0f;
+	std::cout << "Entrez le premier nombre a additionner : ";
+	std::cin >> data1;
+	std::cout << "Entrez le nombre a additioner a " << data1 << " : ";
+	std::cin >> data2;
+	std::cout << data1 << " + " << data2 << " = " << data1 + data2 << std::endl;
+	std::cout << "Entrez le nombre a soustraire : ";
+	std::cin >> data2;
+	std::cout << "Entrez le nombre auquel sera soustrait " << data2 << " : ";
+	std::cin >> data1;
+	std::cout << data1 << " - " << data2 << " = " << data1 - data2 << std::endl;
+	std::cout << "Entrez le premier nombre a multiplier : ";
+	std::cin >> data1;
+	std::cout << "Entrez le nombre a multiplier par " << data1 << " : ";
+	std::cin >> data2;
+	std::cout << data1 << " X " << data2 << " = " << data1 * data2 << std::endl;
+	std::cout << "Entrez le nombre a diviser : ";
+	std::cin >> data1;
+	std::cout << "Entrez le diviseur : ";
+	std::cin >> data2;
+	std::cout << data1 << " / " << data2 << " = " << data1 / data2 << std::endl;
 	return 0;
 }
 
