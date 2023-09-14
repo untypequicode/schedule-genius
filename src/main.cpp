@@ -3,7 +3,7 @@
 
 int main()
 {
-	// type name;
+	/*// type name;
 	// char		- character			- 'r'
 	// int		- integer			- 50, 42, 500, -400
 	// float	- floating points	- 5.5f
@@ -46,7 +46,20 @@ int main()
 	std::cout<<"Enter d then e: ";
 	std::cin >> d >> e;
 	std::cin.ignore();
-	std::cout << "d + e = " << d + e << std::endl;
+	std::cout << "d + e = " << d + e << std::endl;*/
+
+
+
+	int number_of_student = 0;
+	std::cout << "Bienvenue sur Schedule Genius, veniez renseigner le nombre d'étudiant qu'il y a dans votre établissement : ";
+	std::cin >> number_of_student;
+	std::cin.ignore();
+	std::cout << "Votre établissement a donc " << number_of_student << "étudiants." << std::endl;
+	std::cout << "Veuillez renseigner la moyenne générale de tout votre établissement : ";
+	float average = 10.0f;
+	std::cin >> average;
+	std::cin.ignore();
+	std::cout << "Vous avez donc un établissement de " << number_of_student << " étudiants, qui ont une moyenne générale de " << average << "/20" << std::endl;
 
 	return 0;
 }
