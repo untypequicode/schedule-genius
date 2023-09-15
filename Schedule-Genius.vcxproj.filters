@@ -13,19 +13,25 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Fichiers sources\untypequicode">
+    <Filter Include="Fichiers sources\tutos">
+      <UniqueIdentifier>{697c6388-c2ab-45fc-ac79-fab972504f7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\tutos\pgii33">
+      <UniqueIdentifier>{19f6713b-67c2-4870-8897-018bae984fa1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\tutos\untypequicode">
       <UniqueIdentifier>{526c7661-2c45-4daa-bd8c-e27cd0294d7d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers sources\vincentcestmoi">
+    <Filter Include="Fichiers sources\tutos\vincentcestmoi">
       <UniqueIdentifier>{1e3ab0d1-73ee-4686-b02f-a1ee5fe413c2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers sources\pgii33">
-      <UniqueIdentifier>{19f6713b-67c2-4870-8897-018bae984fa1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md">
       <Filter>Fichiers sources</Filter>
+    </None>
+    <None Include="src\tutos\README.md">
+      <Filter>Fichiers sources\tutos</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -33,24 +39,24 @@
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="src\tutos\untypequicode\untypequicode.cpp">
-      <Filter>Fichiers sources\untypequicode</Filter>
+      <Filter>Fichiers sources\tutos\untypequicode</Filter>
     </ClCompile>
     <ClCompile Include="src\tutos\vincentcestmoi\vincentcestmoi.cpp">
-      <Filter>Fichiers sources\vincentcestmoi</Filter>
+      <Filter>Fichiers sources\tutos\vincentcestmoi</Filter>
     </ClCompile>
     <ClCompile Include="src\tutos\pgii33\pgii33.cpp">
-      <Filter>Fichiers sources\pgii33</Filter>
+      <Filter>Fichiers sources\tutos\pgii33</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\tutos\untypequicode\untypequicode.h">
-      <Filter>Fichiers sources\untypequicode</Filter>
+      <Filter>Fichiers sources\tutos\untypequicode</Filter>
     </ClInclude>
     <ClInclude Include="src\tutos\vincentcestmoi\vincentcestmoi.h">
-      <Filter>Fichiers sources\vincentcestmoi</Filter>
+      <Filter>Fichiers sources\tutos\vincentcestmoi</Filter>
     </ClInclude>
     <ClInclude Include="src\tutos\pgii33\pgii33.h">
-      <Filter>Fichiers sources\pgii33</Filter>
+      <Filter>Fichiers sources\tutos\pgii33</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

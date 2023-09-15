@@ -4,5 +4,6 @@
 #include <iostream>
 
 void untypequicode();
+void calculator();
 
 #endif
