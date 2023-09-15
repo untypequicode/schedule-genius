@@ -19,7 +19,7 @@
     <Filter Include="Fichiers sources\vincentcestmoi">
       <UniqueIdentifier>{1e3ab0d1-73ee-4686-b02f-a1ee5fe413c2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers sources\gii33">
+    <Filter Include="Fichiers sources\pgii33">
       <UniqueIdentifier>{19f6713b-67c2-4870-8897-018bae984fa1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -38,8 +38,8 @@
     <ClCompile Include="src\tutos\vincentcestmoi\vincentcestmoi.cpp">
       <Filter>Fichiers sources\vincentcestmoi</Filter>
     </ClCompile>
-    <ClCompile Include="src\tutos\gii33\gii33.cpp">
-      <Filter>Fichiers sources\gii33</Filter>
+    <ClCompile Include="src\tutos\pgii33\pgii33.cpp">
+      <Filter>Fichiers sources\pgii33</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -49,8 +49,8 @@
     <ClInclude Include="src\tutos\vincentcestmoi\vincentcestmoi.h">
       <Filter>Fichiers sources\vincentcestmoi</Filter>
     </ClInclude>
-    <ClInclude Include="src\tutos\gii33\gii33.h">
-      <Filter>Fichiers sources\gii33</Filter>
+    <ClInclude Include="src\tutos\pgii33\pgii33.h">
+      <Filter>Fichiers sources\pgii33</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

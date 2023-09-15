@@ -1,6 +1,6 @@
 #include "tutos/untypequicode/untypequicode.h"
 #include "tutos/vincentcestmoi/vincentcestmoi.h"
-#include "tutos/gii33/gii33.h"
+#include "tutos/pgii33/pgii33.h"
 
 
 
@@ -97,7 +97,7 @@ int main()
 		std::cout << "Quel programme voulez vous lancer ?" << std::endl;
 		std::cout << "1 : untypequicode" << std::endl;
 		std::cout << "2 : vincentcestmoi" << std::endl;
-		std::cout << "3 : gii33" << std::endl;
+		std::cout << "3 : pgii33" << std::endl;
 		int input = 0;
 		std::cin >> input;
 		std::cin.ignore();
@@ -108,7 +108,7 @@ int main()
 			vincentcestmoi();
 		}
 		else if (input == 3) {
-			gii33();
+			pgii33();
 		}
 		else {
 			std::cout << "Erreur" << std::endl;
