@@ -94,25 +94,25 @@ int main()
 	std::cin >> data2;
 	std::cout << data1 << " / " << data2 << " = " << data1 / data2 << std::endl;*/
 
-		std::cout << "Quel programme voulez vous lancer ?" << std::endl;
-		std::cout << "1 : untypequicode" << std::endl;
-		std::cout << "2 : vincentcestmoi" << std::endl;
-		std::cout << "3 : pgii33" << std::endl;
-		int input = 0;
-		std::cin >> input;
-		std::cin.ignore();
-		if (input == 1) {
-			untypequicode();
-		}
-		else if (input == 2) {
-			vincentcestmoi();
-		}
-		else if (input == 3) {
-			pgii33();
-		}
-		else {
-			std::cout << "Erreur" << std::endl;
-		}
+	std::cout << "Quel programme voulez vous lancer ?" << std::endl;
+	std::cout << "1 : untypequicode" << std::endl;
+	std::cout << "2 : vincentcestmoi" << std::endl;
+	std::cout << "3 : pgii33" << std::endl;
+	int input = 0;
+	std::cin >> input;
+	std::cin.ignore();
+	if (input == 1) {
+		untypequicode();
+	}
+	else if (input == 2) {
+		vincentcestmoi();
+	}
+	else if (input == 3) {
+		pgii33();
+	}
+	else {
+		std::cout << "Erreur" << std::endl;
+	}
 
 	return 0;
 }
