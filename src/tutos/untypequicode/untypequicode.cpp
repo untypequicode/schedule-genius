@@ -13,7 +13,7 @@ void untypequicode() {
 	int input = 0;
 	std::cin >> input;
 	std::cin.ignore();
-	if (input == 0 or input > 4)
+	if (input <= 0 or input > 4)
 	{
 		std::cout << "Fin du programme" << std::endl;
 		return;
