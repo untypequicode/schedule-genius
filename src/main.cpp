@@ -1,7 +1,8 @@
-#include <untypequicode.h>
-#include <iostream>
 
-using namespace std;
+#include <iostream>
+#include "tutos/untypequicode/untypequicode.h"
+
+
 
 int main()
 {
@@ -93,7 +94,7 @@ int main()
 	std::cin >> data2;
 	std::cout << data1 << " / " << data2 << " = " << data1 / data2 << std::endl;*/
 
-	void untypequicode();
+	untypequicode();
 
 	return 0;
 }

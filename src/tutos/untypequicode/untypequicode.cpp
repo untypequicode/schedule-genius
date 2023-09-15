@@ -1,10 +1,10 @@
-#include <untypequicode.h>
-
+#include "untypequicode.h"
 
 
 void untypequicode() {
 	float data1 = 0.0f;
 	float data2 = 0.0f;
+
 	std::cout << "0 : finir le programme" << std::endl;
 	std::cout << "1 : addition" << std::endl;
 	std::cout << "2 : soustraction" << std::endl;
@@ -16,7 +16,7 @@ void untypequicode() {
 	if (input == 0)
 	{
 		std::cout << "Fin du programme" << std::endl;
-		return 0;
+		return;
 	}
 	std::cout << "Entrez le premier nombre : ";
 	std::cin >> data1;
