@@ -162,6 +162,33 @@ int fonction(int a, int b) // Fonction avec plusieurs paramètres qui retourne u
 }
 ```
 
+### Surcharge
+
+La surcharge permet de créer plusieurs fonctions avec le même nom mais avec des paramètres différents.
+
+```c++
+void fonction() // Fonction sans paramètres
+{
+	// Code
+}
+
+void fonction(int a) // Fonction avec un paramètre
+{
+	// Code
+}
+
+void fonction(int a, int b) // Fonction avec plusieurs paramètres
+{
+	// Code
+}
+
+int fonction() // Fonction qui retourne un entier
+{
+	// Code
+	return 0;
+}
+```
+
 ### Tableaux
 
 Les tableaux sont des variables qui peuvent contenir plusieurs valeurs.
@@ -613,7 +640,7 @@ La gestion de plusieurs fichiers permet de séparer le code en plusieurs fichier
 ```c++
 // main.cpp
 
-#include "fonctions.h" // Importe le fichier fonctions.h
+#include "fonctions.hpp" // Importe le fichier fonctions.h
 
 int main()
 {
@@ -623,17 +650,20 @@ int main()
 ```
 
 ```c++
-// fonctions.h
+// fonctions.hpp
 
-#pragma once // Empêche les inclusions multiples
+#ifndef FONCTIONS_H // Si la constante FONCTIONS_H n'est pas définie
+#define FONCTIONS_H // Définit la constante FONCTIONS_H
 
 void fonction(); // Déclaration de la fonction fonction
+
+#endif // Fin de la condition
 ```
 
 ```c++
 // fonctions.cpp
 
-#include "fonctions.h" // Importe le fichier fonctions.h
+#include "fonctions.hpp" // Importe le fichier fonctions.h
 
 void fonction() // Définition de la fonction fonction
 {
@@ -1142,3 +1172,38 @@ if (fichier)
 	fichier.close(); // Ferme le fichier
 }
 ```
+
+### Aléatoire
+
+La bibliothèque ```random``` permet de manipuler des nombres aléatoires.
+
+```c++
+
+#include <random> // Importe la bibliothèque random
+
+std::random_device rd; // Génère un nombre aléatoire
+
+std::mt19937 gen(rd()); // Génère un nombre aléatoire
+
+std::uniform_int_distribution<> dis(1, 6); // Génère un nombre aléatoire entre 1 et 6
+
+std::cout << dis(gen) << std::endl; // Affiche un nombre aléatoire entre 1 et 6
+```
+
+### Temps
+
+La bibliothèque ```chrono``` permet de manipuler le temps.
+
+```c++
+
+#include <chrono> // Importe la bibliothèque chrono
+
+auto start = std::chrono::high_resolution_clock::now(); // Récupère le temps actuel
+
+auto end = std::chrono::high_resolution_clock::now(); // Récupère le temps actuel
+
+auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count(); // Calcule la durée entre deux temps
+
+std::cout << duration << std::endl; // Affiche la durée entre deux temps
+```
+
