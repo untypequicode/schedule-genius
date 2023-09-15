@@ -31,7 +31,7 @@ void pgii33()
 }
 
 float additionner(float value, float temp) {
-	std::cout << "Combien voulez vous ajouter à " << value ;
+	std::cout << "Combien voulez vous ajouter à " << value << std::endl;
 	std::cin >> temp ;
 	value = value + temp;
 	std::cout << value <<std::endl;
@@ -39,7 +39,7 @@ float additionner(float value, float temp) {
 }
 
 float soustraire(float value, float temp) {
-	std::cout << "Combien voulez vous soustraire à " << value;
+	std::cout << "Combien voulez vous soustraire à " << value << std::endl;
 	std::cin >> temp ;
 	value = value - temp;
 	std::cout << value << std::endl;
@@ -47,7 +47,7 @@ float soustraire(float value, float temp) {
 }
 
 float multiplier(float value, float temp) {
-	std::cout << "Dombien voulez vous multiplier " << value;
+	std::cout << "Dombien voulez vous multiplier " << value << std::endl;
 	std::cin >> temp;
 	value = value * temp;
 	std::cout << value << std::endl;
@@ -55,7 +55,7 @@ float multiplier(float value, float temp) {
 }
 
 float diviser(float value, float temp) {
-	std::cout << "De combien voulez vous diviser" << value;
+	std::cout << "De combien voulez vous diviser" << value << std::endl;
 	std::cin >> temp;
 	value = value / temp;
 	std::cout << value << std::endl;
