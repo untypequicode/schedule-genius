@@ -27,6 +27,7 @@ int calculatrice()
 			std::cin >> data2;
 			std::cout << data1 << " + " << data2 << " = " << data1 + data2 << std::endl;
 		}
+		std::cout << std::endl;
 
 		std::cout << "Voulez vous faire une soustraction ? (0/1) ";
 		std::cin >> test;
@@ -39,6 +40,7 @@ int calculatrice()
 			std::cin >> data2;
 			std::cout << data1 << " - " << data2 << " = " << data1 - data2 << std::endl;
 		}
+		std::cout << std::endl;
 
 		std::cout << "Voulez vous faire une multiplication ? (0/1) ";
 		std::cin >> test;
@@ -49,6 +51,7 @@ int calculatrice()
 			std::cin >> data2;
 			std::cout << data1 << " x " << data2 << " = " << data1 * data2 << std::endl;
 		}
+		std::cout << std::endl;
 
 		std::cout << "Voulez vous faire une division ? (0/1) ";
 		std::cin >> test;
@@ -61,6 +64,7 @@ int calculatrice()
 			std::cin >> data2;
 			std::cout << data1 << " / " << data2 << " = " << data1 / data2 << std::endl;
 		}
+		std::cout << std::endl;
 	}
 	return 0;
 }
