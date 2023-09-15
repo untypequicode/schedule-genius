@@ -8,43 +8,56 @@ void pgii33()
 	int choose = 6;
 	bool running = true;
 	while (running) {
-		std::cout << "Choisissez 0 pour fermer le programme, 1 pour additionner, 2 pour soustraire, 3 pour multiplier et 4 pour diviser. ";
+		std::cout << "Choisissez 0 pour fermer le programme, 1 pour additionner, 2 pour soustraire, 3 pour multiplier et 4 pour diviser. " << std::endl;
 		std::cin >> choose;
 		if (choose == 0) {
 			running = false;
 		}
-		if (choose == 1) {
-			additionner(value, temp);
+		else if (choose == 1) {
+			value = additionner(value, temp);
+		}
+		else if (choose == 2) {
+			value = soustraire(value, temp);
+		}
+		else if (choose == 3) {
+			value = multiplier(value, temp);
+		}
+		else if (choose == 4) {
+			value = diviser(value, temp);
 		}
 	}
 
 
 }
 
-void additionner(float value, float temp) {
+float additionner(float value, float temp) {
 	std::cout << "Combien voulez vous ajouter à " << value ;
 	std::cin >> temp ;
 	value = value + temp;
-	std::cout << value ;
+	std::cout << value <<std::endl;
+	return value;
 }
 
-void soustraire(float value, float temp) {
+float soustraire(float value, float temp) {
 	std::cout << "Combien voulez vous soustraire à " << value;
 	std::cin >> temp ;
 	value = value - temp;
-	std::cout << value ;
+	std::cout << value << std::endl;
+	return value;
 }
 
-void multiplier(float value, float temp) {
+float multiplier(float value, float temp) {
 	std::cout << "Dombien voulez vous multiplier " << value;
 	std::cin >> temp;
 	value = value * temp;
-	std::cout << value;
+	std::cout << value << std::endl;
+	return value;
 }
 
-void diviser(float value, float temp) {
+float diviser(float value, float temp) {
 	std::cout << "De combien voulez vous diviser" << value;
 	std::cin >> temp;
 	value = value / temp;
-	std::cout << value;
+	std::cout << value << std::endl;
+	return value;
 }
