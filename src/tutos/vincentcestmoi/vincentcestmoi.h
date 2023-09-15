@@ -4,5 +4,6 @@
 #include <iostream>
 
 void vincentcestmoi();
+int calculatrice();
 
 #endif
