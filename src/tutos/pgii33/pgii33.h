@@ -4,8 +4,8 @@
 #include <iostream>
 
 void pgii33();
-void additionner();
-void soustraire();
-void multiplier();
-void diviser();
+void additionner(float value, float temp);
+void soustraire(float value, float temp);
+void multiplier(float value, float temp);
+void diviser(float value, float temp);
 #endif
