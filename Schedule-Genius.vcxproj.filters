@@ -16,6 +16,12 @@
     <Filter Include="Fichiers sources\untypequicode">
       <UniqueIdentifier>{526c7661-2c45-4daa-bd8c-e27cd0294d7d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers sources\vincentcestmoi">
+      <UniqueIdentifier>{1e3ab0d1-73ee-4686-b02f-a1ee5fe413c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\gii33">
+      <UniqueIdentifier>{19f6713b-67c2-4870-8897-018bae984fa1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md">
@@ -29,10 +35,22 @@
     <ClCompile Include="src\tutos\untypequicode\untypequicode.cpp">
       <Filter>Fichiers sources\untypequicode</Filter>
     </ClCompile>
+    <ClCompile Include="src\tutos\vincentcestmoi\vincentcestmoi.cpp">
+      <Filter>Fichiers sources\vincentcestmoi</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tutos\gii33\gii33.cpp">
+      <Filter>Fichiers sources\gii33</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\tutos\untypequicode\untypequicode.h">
       <Filter>Fichiers sources\untypequicode</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tutos\vincentcestmoi\vincentcestmoi.h">
+      <Filter>Fichiers sources\vincentcestmoi</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tutos\gii33\gii33.h">
+      <Filter>Fichiers sources\gii33</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

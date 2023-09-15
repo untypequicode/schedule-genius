@@ -131,10 +131,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\tutos\gii33\gii33.cpp" />
     <ClCompile Include="src\tutos\untypequicode\untypequicode.cpp" />
+    <ClCompile Include="src\tutos\vincentcestmoi\vincentcestmoi.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\tutos\gii33\gii33.h" />
     <ClInclude Include="src\tutos\untypequicode\untypequicode.h" />
+    <ClInclude Include="src\tutos\vincentcestmoi\vincentcestmoi.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
