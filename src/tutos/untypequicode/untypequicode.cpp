@@ -1,5 +1,25 @@
 #include "untypequicode.hpp"
 
+// public
+// protected
+// private
+
+struct Player {
+	std::string name;
+	int hitPoints;
+	int damages;
+
+	bool IsDead() {
+		return hitPoints <= 0;
+	}
+
+	void Attack(Player& other);
+};
+
+void Player::Attack(Player& other) {
+	other.hitPoints -= damages;
+}
+
 
 void untypequicode() {
 	/*
@@ -47,7 +67,15 @@ void untypequicode() {
 	}
 	*/
 
-	calculator();
+	//calculator();
+
+	//history1();
+	
+	//history2();
+
+	//display();
+
+	jeu();
 }
 
 void calculator() {
@@ -94,6 +122,107 @@ void calculator() {
 		}
 
 	}
+}
+
+void history1() {
+	char history[20] = {};
+	for (int i = 0; i < 20; ++i) {
+		std::cin >> history[i];
+	}
+	for (int i = 0; i < 20; ++i) {
+		std::cout << history[i];
+	}
+	std::cout << std::endl;
+}
+
+void history2() {
+	// new int : -> delete int;
+	// new int[10] : -> delete[] int;
+	int size = 0;
+	std::cout << "Taille de l'historique : ";
+	std::cin >> size;
+	std::cin.ignore();
+	char* history = new char[size];
+	for (int i = 0; i < size; ++i) {
+		std::cin >> history[i];
+	}
+	for (int i = 0; i < size; ++i) {
+		std::cout << history[i];
+	}
+	delete[] history;
+}
+
+void display() {
+	int x = 0;
+	int y = 0;
+	std::cout << "Entrez la taille de la matrice : ";
+	std::cin >> x >> y;
+	std::cin.ignore();
+	int** matrix = new int* [y];
+
+	for (int i = 0; i < y; ++i) {
+		matrix[i] = new int[x];
+	}
+
+	for (int i = 0; i < y; ++i) {
+		for (int j = 0; j < x; j++) {
+			std::cin >> matrix[i][j];
+		}
+	}
+
+	for (int i = 0; i < y; ++i) {
+		for (int j = 0; j < x; j++) {
+			std::cout << matrix[i][j] << " ";
+		}
+		std::cout << std::endl;
+	}
+
+	for (int i = 0; i < y; ++i) {
+		delete[] matrix[i];
+	}
+
+	delete[] matrix;
+
+}
+
+void jeu() {
+	Player player1;
+	Player player2;
+	Player player3;
+
+	player1.name = "untypequicode";
+	player1.hitPoints = 100;
+	player2.name = "vincentcestmoi";
+	player2.hitPoints = 20;
+	player2.damages = 50;
+	player2.Attack(player1);
+	player2.Attack(player1);
+	player3.name = "pgii33";
+	player3.hitPoints = 10;
+
+	std::cout << player1.name << std::endl;
+	std::cout << player2.name << std::endl;
+	std::cout << player3.name << std::endl;
+
+	if (player1.IsDead()) {
+		std::cout << player1.name << " est mort" << std::endl;
+	}
+	else {
+		std::cout << player1.name << " est vivant" << std::endl;
+	}
+	if (player2.IsDead()) {
+		std::cout << player2.name << " est mort" << std::endl;
+	}
+	else {
+		std::cout << player2.name << " est vivant" << std::endl;
+	}
+	if (player3.IsDead()) {
+		std::cout << player3.name << " est mort" << std::endl;
+	}
+	else {
+		std::cout << player3.name << " est vivant" << std::endl;
+	}
+
 }
 
 /*
