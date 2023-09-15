@@ -131,6 +131,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\tutos\untypequicode\untypequicode.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\tutos\untypequicode\untypequicode.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

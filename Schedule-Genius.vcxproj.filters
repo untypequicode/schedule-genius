@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Fichiers sources\untypequicode">
+      <UniqueIdentifier>{526c7661-2c45-4daa-bd8c-e27cd0294d7d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md">
@@ -23,5 +26,13 @@
     <ClCompile Include="src\main.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="src\tutos\untypequicode\untypequicode.cpp">
+      <Filter>Fichiers sources\untypequicode</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\tutos\untypequicode\untypequicode.h">
+      <Filter>Fichiers sources\untypequicode</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
