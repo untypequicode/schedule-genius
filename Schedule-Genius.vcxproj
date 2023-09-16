@@ -133,13 +133,15 @@
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\tutos\pgii33\pgii33.cpp" />
+    <ClCompile Include="src\tutos\untypequicode\player.cpp" />
     <ClCompile Include="src\tutos\untypequicode\untypequicode.cpp" />
     <ClCompile Include="src\tutos\vincentcestmoi\vincentcestmoi.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\tutos\pgii33\pgii33.hpp" />
-    <ClInclude Include="src\tutos\untypequicode\untypequicode.hpp" />
-    <ClInclude Include="src\tutos\vincentcestmoi\vincentcestmoi.hpp" />
+    <ClInclude Include="src\tutos\pgii33\pgii33.h" />
+    <ClInclude Include="src\tutos\untypequicode\player.h" />
+    <ClInclude Include="src\tutos\untypequicode\untypequicode.h" />
+    <ClInclude Include="src\tutos\vincentcestmoi\vincentcestmoi.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

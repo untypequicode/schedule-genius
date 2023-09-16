@@ -1,25 +1,9 @@
-#include "untypequicode.hpp"
+#include "untypequicode.h"
+
 
 // public
 // protected
 // private
-
-struct Player {
-	std::string name;
-	int hitPoints;
-	int damages;
-
-	bool IsDead() {
-		return hitPoints <= 0;
-	}
-
-	void Attack(Player& other);
-};
-
-void Player::Attack(Player& other) {
-	other.hitPoints -= damages;
-}
-
 
 void untypequicode() {
 	/*
@@ -76,6 +60,8 @@ void untypequicode() {
 	//display();
 
 	jeu();
+
+	//sapin();
 }
 
 void calculator() {
@@ -190,39 +176,67 @@ void jeu() {
 	Player player2;
 	Player player3;
 
-	player1.name = "untypequicode";
-	player1.hitPoints = 100;
-	player2.name = "vincentcestmoi";
-	player2.hitPoints = 20;
-	player2.damages = 50;
+	player1.m_name = "untypequicode";
+	player1.m_hitPoints = 100;
+	player2.m_name = "vincentcestmoi";
+	player2.m_hitPoints = 20;
+	player2.m_damages = 50;
 	player2.Attack(player1);
 	player2.Attack(player1);
-	player3.name = "pgii33";
-	player3.hitPoints = 10;
+	player3.m_name = "pgii33";
+	player3.m_hitPoints = 10;
 
-	std::cout << player1.name << std::endl;
-	std::cout << player2.name << std::endl;
-	std::cout << player3.name << std::endl;
+	std::cout << player1.m_name << std::endl;
+	std::cout << player2.m_name << std::endl;
+	std::cout << player3.m_name << std::endl;
 
 	if (player1.IsDead()) {
-		std::cout << player1.name << " est mort" << std::endl;
+		std::cout << player1.m_name << " est mort" << std::endl;
 	}
 	else {
-		std::cout << player1.name << " est vivant" << std::endl;
+		std::cout << player1.m_name << " est vivant" << std::endl;
 	}
 	if (player2.IsDead()) {
-		std::cout << player2.name << " est mort" << std::endl;
+		std::cout << player2.m_name << " est mort" << std::endl;
 	}
 	else {
-		std::cout << player2.name << " est vivant" << std::endl;
+		std::cout << player2.m_name << " est vivant" << std::endl;
 	}
 	if (player3.IsDead()) {
-		std::cout << player3.name << " est mort" << std::endl;
+		std::cout << player3.m_name << " est mort" << std::endl;
 	}
 	else {
-		std::cout << player3.name << " est vivant" << std::endl;
+		std::cout << player3.m_name << " est vivant" << std::endl;
 	}
 
+}
+
+void sapin() {
+	unsigned size = 0;
+	const char customization = '*';
+	const unsigned minSize = 5;
+	const unsigned maxSize = 50;
+
+	std::cout << "Entrez la taille du sapin [" << minSize << ", " << maxSize << "] : ";
+	std::cin >> size;
+	std::cin.ignore();
+
+	if (size < minSize or size > maxSize) {
+		std::cout << "Erreur" << std::endl;
+		return;
+	}
+
+	std::cout << std::endl;
+
+	for (int i = 1; i <= size; ++i) {
+		for (int j = 0; j < size - i; ++j) {
+			std::cout << " ";
+		}
+		for (int j = 0; j < i * 2; ++j) {
+			std::cout << customization;
+		}
+		std::cout << std::endl;
+	}
 }
 
 /*
