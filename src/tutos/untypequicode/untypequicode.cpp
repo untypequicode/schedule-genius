@@ -172,19 +172,13 @@ void display() {
 }
 
 void jeu() {
-	Player player1;
-	Player player2;
-	Player player3;
 
-	player1.m_name = "untypequicode";
-	player1.m_hitPoints = 100;
-	player2.m_name = "vincentcestmoi";
-	player2.m_hitPoints = 20;
-	player2.m_damages = 50;
+	Player player1("untypequicode", 100, 20, 0);
+	Player player2("vincentcestmoi", 20, 50, 0);
+	Player player3("pgii33", 10, 30, 50);
+
 	player2.Attack(player1);
 	player2.Attack(player1);
-	player3.m_name = "pgii33";
-	player3.m_hitPoints = 10;
 
 	std::cout << player1.m_name << std::endl;
 	std::cout << player2.m_name << std::endl;
