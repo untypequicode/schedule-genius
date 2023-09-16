@@ -100,6 +100,26 @@ else // Sinon
 }
 ```
 
+### Switch
+
+Le switch permet d'effectuer des actions en fonction de la valeur d'une variable.
+
+```c++
+
+switch (a) // Si a est égal à 5
+{
+	case 5:
+		// Code
+		break;
+	case 6: // Si a est égal à 6
+		// Code
+		break;
+	default: // Sinon
+		// Code
+		break;
+}
+```
+
 ### Boucles
 
 Les boucles permettent d'effectuer des actions plusieurs fois.

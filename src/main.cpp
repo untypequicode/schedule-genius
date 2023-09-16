@@ -101,17 +101,19 @@ int main()
 	int input = 0;
 	std::cin >> input;
 	std::cin.ignore();
-	if (input == 1) {
-		untypequicode();
-	}
-	else if (input == 2) {
-		vincentcestmoi();
-	}
-	else if (input == 3) {
-		pgii33();
-	}
-	else {
-		std::cout << "Erreur" << std::endl;
+	switch (input) {
+		case 1:
+			untypequicode();
+			break;
+		case 2:
+			vincentcestmoi();
+			break;
+		case 3:
+			pgii33();
+			break;
+		default:
+			std::cout << "Erreur" << std::endl;
+			break;
 	}
 
 	return 0;
