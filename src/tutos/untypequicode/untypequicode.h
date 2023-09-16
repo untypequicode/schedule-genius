@@ -1,4 +1,5 @@
-#pragma once
+#ifndef DEF_UNTYPEQUICODE
+#define DEF_UNTYPEQUICODE
 
 #include <iostream>
 #include <string>
@@ -11,3 +12,5 @@ void history2();
 void display();
 void jeu();
 void sapin();
+
+#endif

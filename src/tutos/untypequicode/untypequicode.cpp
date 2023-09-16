@@ -173,9 +173,9 @@ void display() {
 
 void jeu() {
 
-	Player player1("untypequicode", 100, 20, 0);
-	Player player2("vincentcestmoi", 20, 50, 0);
-	Player player3("pgii33", 10, 30, 50);
+	Player player1("untypequicode", 100, 20, 0, aucun, Armement2::aucun);
+	Player player2("vincentcestmoi", 20, 50, 0, hache, Armement2::masse);
+	Player player3("pgii33", 10, 30, 50, masse, Armement2::aucun);
 
 	player2.Attack(player1);
 	player2.Attack(player1);
