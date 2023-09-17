@@ -9,12 +9,12 @@ void vincentcestmoi()
 
 int calculatrice()
 {
-	float data1 = 0;
-	float data2 = 0;
+	float data1 = 0.0f;
+	float data2 = 0.0f;
 	int test;
 	int i;
 
-	for (i = 0; i < 1; i = i - 1)
+	for (i = 0; i < 1; i--)
 	{
 
 
@@ -66,5 +66,11 @@ int calculatrice()
 		}
 		std::cout << std::endl;
 	}
+	return 0;
+}
+
+int test()
+{
+
 	return 0;
 }
