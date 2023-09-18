@@ -7,8 +7,8 @@ void pgii33()
 	float temp = 0.0f;
 	int choose = 6;
 	bool running = true;
+	std::cout << "Choisissez 0 pour fermer le programme, 1 pour additionner, 2 pour soustraire, 3 pour multiplier et 4 pour diviser. " << std::endl;
 	while (running) {
-		std::cout << "Choisissez 0 pour fermer le programme, 1 pour additionner, 2 pour soustraire, 3 pour multiplier et 4 pour diviser. " << std::endl;
 		std::cin >> choose;
 		if (choose == 0) {
 			running = false;
