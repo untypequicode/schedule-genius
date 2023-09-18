@@ -142,7 +142,7 @@ void forMicky()
 	return;
 };
 
-class Combattant 
+/*class Combattant
 {
 private:
 public:
@@ -179,4 +179,4 @@ void combat(Combattant combattant, Combattant combattant2)
 			std::cout << combattant2.nom << "est mort";
 		}
 	}
-}
+}*/
