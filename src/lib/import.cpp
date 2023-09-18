@@ -1,4 +1,4 @@
-#include "lib/import.hpp"
+#include "import.hpp"
 
 void ouvrirFichier() 
 {

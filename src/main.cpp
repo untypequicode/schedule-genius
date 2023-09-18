@@ -6,7 +6,8 @@
 int main()
 {
 	Eleve eleve(5);
-	std::cout << eleve.m_matieres;
+	eleve.m_matieres[1] = "Maths";
+	std::cout << eleve.m_matieres[1];
 
 	return 0;
 }

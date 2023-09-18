@@ -15,5 +15,5 @@ Eleve::Eleve(int taille_tableau)
 
 Eleve::~Eleve()
 {
-	delete[] m_matiere;
+	delete[] m_matieres;
 }
