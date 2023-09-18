@@ -1,8 +1,4 @@
-#include "tutos/untypequicode/untypequicode.hpp"
-#include "tutos/vincentcestmoi/vincentcestmoi.hpp"
-#include "tutos/pgii33/pgii33.hpp"
-
-
+#include "lib/import.hpp"
 
 int main()
 {
@@ -94,28 +90,8 @@ int main()
 	std::cin >> data2;
 	std::cout << data1 << " / " << data2 << " = " << data1 / data2 << std::endl;*/
 
-	std::cout << "Quel programme voulez vous lancer ?" << std::endl;
-	std::cout << "1 : untypequicode" << std::endl;
-	std::cout << "2 : vincentcestmoi" << std::endl;
-	std::cout << "3 : pgii33" << std::endl;
-	int input = 0;
-	std::cin >> input;
-	std::cin.ignore();
-	switch (input) {
-		case 1:
-			untypequicode();
-			break;
-		case 2:
-			vincentcestmoi();
-			break;
-		case 3:
-			pgii33();
-			break;
-		default:
-			std::cout << "Erreur" << std::endl;
-			break;
-	}
-
+	
+	
 
 	return 0;
 }
