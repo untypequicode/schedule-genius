@@ -2,6 +2,7 @@
 #define DEF_ELEVE
 
 #include <string>
+#include <iostream>
 
 class Eleve
 {
@@ -11,14 +12,16 @@ class Eleve
 		std::string m_niveau;
 		int m_quantite_matiere;
 
+		Eleve();
 		Eleve(std::string prenom, std::string nom, std::string niveau,int quantite_matiere);
 		void SetMatiere(std::string matiere, int index);
 		std::string GetMatiere(int index);
 
 		~Eleve();
 
-	private:
 		std::string* m_matieres;
+	private:
+		
 		//* m_groupes;
 		//* m_horaires;
 };

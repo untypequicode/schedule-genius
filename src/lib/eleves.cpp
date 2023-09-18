@@ -1,7 +1,14 @@
 #include "eleves.hpp"
-#include <iostream>
 
 
+Eleve::Eleve() 
+	: m_prenom(""),
+	m_nom(""),
+	m_niveau(""),
+	m_quantite_matiere(0)
+{
+
+}
 
 Eleve::Eleve(std::string prenom, std::string nom, std::string niveau,int quantite_matiere)
 	: m_prenom(prenom),
