@@ -6,15 +6,19 @@
 class Eleve
 {
 	public:
-		int m_taille_tableau;
 		std::string m_prenom;
 		std::string m_nom;
 		std::string m_niveau;
-		std::string* m_matieres;
+		int m_quantite_matiere;
 
-		Eleve(std::string prenom, std::string nom, std::string niveau,int taille_tableau);
+		Eleve(std::string prenom, std::string nom, std::string niveau,int quantite_matiere);
+		void SetMatiere(std::string matiere, int index);
+		std::string GetMatiere(int index);
 
 		~Eleve();
+
+	private:
+		std::string* m_matieres;
 };
 
 #endif

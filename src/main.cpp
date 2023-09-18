@@ -5,9 +5,9 @@
 
 int main()
 {
-	Eleve eleve(5);
-	eleve.m_matieres[1] = "Maths";
-	std::cout << eleve.m_matieres[1];
+	Eleve eleve("Ethan", "Facca", "L1", 10);
+	eleve.SetMatiere("Maths", 1);
+	std::cout << eleve.GetMatiere(1) << std::endl;
 
 	return 0;
 }
