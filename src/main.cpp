@@ -1,5 +1,6 @@
 //#include "lib/import.hpp"
 #include "lib/eleves.hpp"
+#include "lib/generation_groupes.hpp"
 
 #include <iostream>
 

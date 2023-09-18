@@ -62,19 +62,43 @@
     <ClCompile Include="src\tutos\untypequicode\player.cpp">
       <Filter>Fichiers sources\tutos\untypequicode</Filter>
     </ClCompile>
+    <ClCompile Include="src\lib\eleves.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\import.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\generation_groupes.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\groupes.hpp">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\groupes.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\tutos\pgii33\pgii33.h">
-      <Filter>Fichiers d%27en-tête\tutos\pgii33</Filter>
+    <ClInclude Include="src\lib\eleves.hpp">
+      <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="src\tutos\untypequicode\untypequicode.h">
-      <Filter>Fichiers d%27en-tête\tutos\untypequicode</Filter>
+    <ClInclude Include="src\lib\import.hpp">
+      <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="src\tutos\vincentcestmoi\vincentcestmoi.h">
-      <Filter>Fichiers d%27en-tête\tutos\vincentcestmoi</Filter>
+    <ClInclude Include="src\tutos\pgii33\pgii33.hpp">
+      <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="src\tutos\untypequicode\player.h">
-      <Filter>Fichiers d%27en-tête\tutos\untypequicode</Filter>
+    <ClInclude Include="src\tutos\untypequicode\player.hpp">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tutos\untypequicode\untypequicode.hpp">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tutos\vincentcestmoi\vincentcestmoi.hpp">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\generation_groupes.hpp">
+      <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

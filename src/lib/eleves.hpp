@@ -19,6 +19,8 @@ class Eleve
 
 	private:
 		std::string* m_matieres;
+		//* m_groupes;
+		//* m_horaires;
 };
 
 #endif
