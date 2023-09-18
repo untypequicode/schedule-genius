@@ -1,10 +1,12 @@
-#include "lib/import.hpp"
+//#include "lib/import.hpp"
 #include "lib/eleves.hpp"
+
+#include <iostream>
+
 int main()
 {
-	test();
-	
-	
+	Eleve eleve(5);
+	std::cout << eleve.m_matieres;
 
 	return 0;
 }
