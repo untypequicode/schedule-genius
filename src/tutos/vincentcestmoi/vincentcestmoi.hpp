@@ -11,5 +11,8 @@ void forMicky();
 int calculatrice();
 
 int test2();
+/*un test pour l'instant des plus inutiles*/
+
+void combat();
 
 #endif
