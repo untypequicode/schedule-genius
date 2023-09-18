@@ -26,8 +26,6 @@ void pgii33()
 			value = diviser(value, temp);
 		}
 	}
-
-
 }
 
 float additionner(float value, float temp) {
