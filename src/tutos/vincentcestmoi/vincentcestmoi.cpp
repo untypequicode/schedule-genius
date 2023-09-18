@@ -5,6 +5,13 @@ void vincentcestmoi()
 	forMicky();
 	calculatrice();
 	test2();
+	/*Combattant micky;
+	Combattant vincent;
+	definit(vincent, "Vincent", 50, 2, 15);
+	definit(micky, "Micky", 12, 2, 0);
+	combat(micky, vincent);*/
+
+
 }
 
 #include <iostream>
@@ -85,7 +92,8 @@ int calculatrice()
 	return 0;
 }
 
-class Test {
+class Test 
+{
 private:
 	int test_prive = 1;
 public :
@@ -133,3 +141,42 @@ void forMicky()
 	std::cout << std::endl;
 	return;
 };
+
+/*class Combattant
+{
+private:
+public:
+	char nom;
+	int point_de_vie;
+	int attaque;
+	int arme;
+
+	void definit(Combattant combattant, char nom, int point_de_vie, int attaque, int arme)
+	{
+		combattant.nom = nom;
+		combattant.point_de_vie = point_de_vie;
+		combattant.attaque = attaque + arme
+		combattant.arme = arme
+	}
+
+};
+
+void combat(Combattant combattant, Combattant combattant2)
+{
+	std::cout << combattant.nom << " attaque " << 
+	combattant2.point_de_vie -= combattant.attaque;
+	if (combattant2.point_de_vie <= 0)
+	{
+		combattant2.point_de_vie = 0;
+		std::cout << combattant2.nom << "est mort";
+	}
+	else
+	{
+		combattant.point_de_vie -= combattant2.attaque;
+		if (combattant.point_de_vie <= 0)
+		{
+			combattant.point_de_vie = 0;
+			std::cout << combattant2.nom << "est mort";
+		}
+	}
+}*/
