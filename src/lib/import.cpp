@@ -1,4 +1,7 @@
-void ouvrirFichier() {
+#include "lib/import.hpp"
+
+void ouvrirFichier() 
+{
 	std::ifstream fichier("fichier.txt", std::ios::in); // Ouvre le fichier en lecture
 
 	if (fichier)
@@ -13,5 +16,3 @@ void ouvrirFichier() {
 		fichier.close(); // Ferme le fichier
 	}
 }
-
-
