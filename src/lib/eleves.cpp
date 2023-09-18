@@ -3,11 +3,11 @@
 
 
 
-Eleve::Eleve(int taille_tableau)
-	: m_taille_tableau(taille_tableau),
-	m_nom(""),
-	m_prenom(""),
-	m_niveau(""),
+Eleve::Eleve(std::string prenom, std::string nom, std::string niveau,int taille_tableau)
+	: m_prenom(prenom),
+	m_nom(nom),
+	m_niveau(niveau),
+	m_taille_tableau(taille_tableau),
 	m_matieres(new std::string[taille_tableau])
  {
 
