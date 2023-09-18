@@ -6,9 +6,9 @@
 void vincentcestmoi();
 
 void forMicky();
+/*juste une fonction contre micky*/
 
 int calculatrice();
-/*juste une fonction contre micky*/
 
 int test2();
 
