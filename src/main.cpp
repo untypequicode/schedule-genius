@@ -8,7 +8,7 @@
 
 int main()
 {
-	int tryplsidontwantthistobemylastword();
+	creerCsv();
 	//Eleve eleve("Ethan", "Facca", "L1", 10);
 	//eleve.SetMatiere("Maths", 1);
 	//std::cout << eleve.GetMatiere(1) << std::endl;
