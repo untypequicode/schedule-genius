@@ -31,11 +31,11 @@
     <Filter Include="Fichiers d%27en-tête\tutos\pgii33">
       <UniqueIdentifier>{43d6c998-c95f-4f59-a1fd-ce214b8eb869}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers d%27en-tête\tutos\untypequicode">
-      <UniqueIdentifier>{d0572764-1c79-41c3-87b2-dfa592243339}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Fichiers d%27en-tête\tutos\vincentcestmoi">
       <UniqueIdentifier>{613b6563-819c-4010-b33b-4c9931b5732a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\tutos\untypequicode">
+      <UniqueIdentifier>{d0572764-1c79-41c3-87b2-dfa592243339}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -45,6 +45,7 @@
     <None Include="src\tutos\README.md">
       <Filter>Fichiers sources\tutos</Filter>
     </None>
+    <None Include="src\lib\generateur_csv.py" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -77,6 +78,9 @@
     <ClCompile Include="src\lib\groupes.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="src\lib\generateur_csv.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\lib\eleves.hpp">
@@ -98,6 +102,9 @@
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="src\lib\generation_groupes.hpp">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\generateur_csv.hpp">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>

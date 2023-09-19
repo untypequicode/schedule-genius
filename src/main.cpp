@@ -2,14 +2,16 @@
 #include "lib/eleves.hpp"
 #include "lib/groupes.hpp"
 #include "lib/generation_groupes.hpp"
+#include "lib/generateur_csv.hpp"
 
 #include <iostream>
 
 int main()
 {
-	Eleve eleve("Ethan", "Facca", "L1", 10);
-	eleve.SetMatiere("Maths", 1);
-	std::cout << eleve.GetMatiere(1) << std::endl;
+	int tryplsidontwantthistobemylastword();
+	//Eleve eleve("Ethan", "Facca", "L1", 10);
+	//eleve.SetMatiere("Maths", 1);
+	//std::cout << eleve.GetMatiere(1) << std::endl;
 	/*Groupe groupe("L1", "info");
 	groupe.AddEleve(eleve);
 	std::string matiere_eleve = groupe.GetEleve(0).GetMatiere(1);

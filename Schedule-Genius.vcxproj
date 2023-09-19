@@ -133,6 +133,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\lib\eleves.cpp" />
+    <ClCompile Include="src\lib\generateur_csv.cpp" />
     <ClCompile Include="src\lib\generation_groupes.cpp" />
     <ClCompile Include="src\lib\groupes.cpp" />
     <ClCompile Include="src\lib\groupes.hpp" />
@@ -145,6 +146,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\lib\eleves.hpp" />
+    <ClInclude Include="src\lib\generateur_csv.hpp" />
     <ClInclude Include="src\lib\generation_groupes.hpp" />
     <ClInclude Include="src\lib\import.hpp" />
     <ClInclude Include="src\tutos\pgii33\pgii33.hpp" />

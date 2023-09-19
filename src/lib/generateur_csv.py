@@ -1,6 +1,8 @@
 """ CSV generator """
 from random import randint
 
+NOMBRE_ELEVE = 200
+
 prenoms = ["Alice", "Bob", "Charlie", "David", "Eve", "Frank", "Grace", "Hannah", "Ivy", "Jack",
 "Katherine", "Liam", "Mia", "Noah", "Olivia", "Peter", "Quinn", "Rachel", "Samuel", "Taylor",
 "Ursula", "Victor", "Wendy", "Xavier", "Yasmine", "Zane"]
@@ -14,7 +16,7 @@ with open('eleve.csv', 'w') as eleve:
     for i in range(1,11):
         eleve.write(f"matiere{i};")
     eleve.write("\n")
-    for i in range(50):
+    for i in range(NOMBRE_ELEVE):
         eleve.write(f"{prenoms[randint(0,len(prenoms)-1)]};{noms_de_famille[randint(0,len(noms_de_famille)-1)]};")
         annee = randint(1,3)
         eleve.write(f"{annee};")
