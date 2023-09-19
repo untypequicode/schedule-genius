@@ -4,6 +4,6 @@
 #include <iostream>
 #include <fstream>
 
-int tryplsidontwantthistobemylastword();
+void creerCsv();
 
 #endif
