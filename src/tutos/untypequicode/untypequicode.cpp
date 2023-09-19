@@ -51,7 +51,7 @@ void untypequicode() {
 	}
 	*/
 
-	//calculator();
+	calculator();
 
 	//history1();
 	
@@ -76,6 +76,7 @@ void calculator() {
 	std::cin.ignore();
 	while (true) {
 		std::cin >> operation;
+		std::cin.ignore();
 		if (operation == 'e') {
 			std::cout << "Fin du programme" << std::endl;
 			break;

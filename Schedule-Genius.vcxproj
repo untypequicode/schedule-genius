@@ -132,6 +132,10 @@
     <None Include="src\tutos\README.md" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\lib\eleves.cpp" />
+    <ClCompile Include="src\lib\generation_groupes.cpp" />
+    <ClCompile Include="src\lib\groupes.cpp" />
+    <ClCompile Include="src\lib\groupes.hpp" />
     <ClCompile Include="src\lib\import.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\tutos\pgii33\pgii33.cpp" />
@@ -140,6 +144,8 @@
     <ClCompile Include="src\tutos\vincentcestmoi\vincentcestmoi.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\lib\eleves.hpp" />
+    <ClInclude Include="src\lib\generation_groupes.hpp" />
     <ClInclude Include="src\lib\import.hpp" />
     <ClInclude Include="src\tutos\pgii33\pgii33.hpp" />
     <ClInclude Include="src\tutos\untypequicode\player.hpp" />

@@ -37,12 +37,6 @@
     <Filter Include="Fichiers d%27en-tête\tutos\vincentcestmoi">
       <UniqueIdentifier>{613b6563-819c-4010-b33b-4c9931b5732a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers d%27en-tête\lib">
-      <UniqueIdentifier>{4c562dfd-0ddb-4f3a-b682-34f8cf5a99fb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers sources\lib">
-      <UniqueIdentifier>{fa31ee37-89d2-41b9-94c5-8f0cd32e3327}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md">
@@ -50,9 +44,6 @@
     </None>
     <None Include="src\tutos\README.md">
       <Filter>Fichiers sources\tutos</Filter>
-    </None>
-    <None Include="src\lib\generateur_csv.py">
-      <Filter>Fichiers sources\lib</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -71,25 +62,43 @@
     <ClCompile Include="src\tutos\untypequicode\player.cpp">
       <Filter>Fichiers sources\tutos\untypequicode</Filter>
     </ClCompile>
+    <ClCompile Include="src\lib\eleves.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
     <ClCompile Include="src\lib\import.cpp">
-      <Filter>Fichiers sources\lib</Filter>
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\generation_groupes.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\groupes.hpp">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\groupes.cpp">
+      <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\tutos\pgii33\pgii33.hpp">
-      <Filter>Fichiers d%27en-tête\tutos\pgii33</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tutos\untypequicode\player.hpp">
-      <Filter>Fichiers d%27en-tête\tutos\untypequicode</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tutos\untypequicode\untypequicode.hpp">
-      <Filter>Fichiers d%27en-tête\tutos\untypequicode</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tutos\vincentcestmoi\vincentcestmoi.hpp">
-      <Filter>Fichiers d%27en-tête\tutos\vincentcestmoi</Filter>
+    <ClInclude Include="src\lib\eleves.hpp">
+      <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="src\lib\import.hpp">
-      <Filter>Fichiers d%27en-tête\lib</Filter>
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tutos\pgii33\pgii33.hpp">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tutos\untypequicode\player.hpp">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tutos\untypequicode\untypequicode.hpp">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tutos\vincentcestmoi\vincentcestmoi.hpp">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\generation_groupes.hpp">
+      <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
