@@ -1,6 +1,6 @@
 #include "import.hpp"
 
-void ouvrirFichier() 
+/*void ouvrirFichier()
 {
 	std::ifstream fichier("fichier.txt", std::ios::in); // Ouvre le fichier en lecture
 
@@ -15,4 +15,23 @@ void ouvrirFichier()
 
 		fichier.close(); // Ferme le fichier
 	}
+}*/
+
+std::string ouvrirFichier(std::string const nom_fichier)
+{
+	std::ifstream myfile;
+
+	if (myfile)
+	{
+		std::cout << "Le fichier est ouvert !!";
+		myfile.open(nom_fichier);
+
+
+	}
+	else
+	{
+		std::cout << "Erreur d'ouverture du dossier";
+	}
+	return "a";
 }
+

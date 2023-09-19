@@ -5,10 +5,13 @@
 #include <string>
 #include <fstream>
 #include <sstream>
-#include <ifstream>
 
+std::string ouvrirFichier(std::string const nom_fichier);
 
-/*void ouvrirFichier(); */
-
+void test()
+{
+	std::string nom_fichier = "texte.txt";
+	ouvrirFichier(nom_fichier);
+}
 
 #endif
