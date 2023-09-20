@@ -8,9 +8,10 @@
 
 int main()
 {
-	std::string nom_fichier = "texte.txt";
-	ouvrirFichier(nom_fichier);
+
 	creerCsv();
+	std::string nom_fichier = "example.txt";
+	ouvrirFichier(nom_fichier);
 	//Eleve eleve("Ethan", "Facca", "L1", 10);
 	//eleve.SetMatiere("Maths", 1);
 	//std::cout << eleve.GetMatiere(1) << std::endl;
