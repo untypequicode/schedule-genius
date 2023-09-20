@@ -6,7 +6,7 @@
 #include <fstream>
 #include <sstream>
 
-int ouvrirFichier(std::string const nom_fichier);
+std::string ouvrirFichier(std::string const nom_fichier);
 /*
 en paramètre le nom du fichier a ouvrir
 pour l'instant le programme écrit simplement en console la première ligne du fichier ouvert
