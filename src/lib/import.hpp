@@ -6,12 +6,6 @@
 #include <fstream>
 #include <sstream>
 
-std::string ouvrirFichier(std::string const nom_fichier);
-
-void test()
-{
-	std::string nom_fichier = "texte.txt";
-	ouvrirFichier(nom_fichier);
-}
+int ouvrirFichier(std::string const nom_fichier);
 
 #endif
