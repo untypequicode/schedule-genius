@@ -1,3 +1,5 @@
 Writing this to a file nice.
 petit test pour tester.
+ 
+Cette ligne vide etait volontaire pour tester le lecteur csv 
 petit test pour tester(2).

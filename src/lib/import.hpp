@@ -9,7 +9,7 @@
 std::string ouvrirFichier(std::string const nom_fichier);
 /*
 en paramètre le nom du fichier a ouvrir
-pour l'instant le programme écrit simplement en console la première ligne du fichier ouvert
+le programme écrit en console les lignes du fichier ouvert et les renvoie
 */
 
 #endif
