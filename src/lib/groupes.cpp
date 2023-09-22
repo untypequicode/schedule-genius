@@ -5,7 +5,7 @@ Groupe::Groupe(std::string niveau, std::string matiere)
 	m_matiere(matiere),
 	m_nombre_eleves(0)
 {
-	m_eleves = new Eleve[500];
+	//m_eleves = new Eleve[500];
 }
 
 void Groupe::AddEleve(Eleve& eleve) {

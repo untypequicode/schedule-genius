@@ -16,8 +16,8 @@ public:
 	Eleve GetEleve(int index);
 	~Groupe();
 
-	Eleve* m_eleves;
 private:
+	Eleve* m_eleves;
 	
 };
 
