@@ -1,6 +1,6 @@
 #include "import.hpp"
 
-std::string ouvrirFichier(std::string const nom_fichier)
+std::string ouvrirFichierParLigne(std::string const nom_fichier)
 {
 	std::ifstream myfile; //on enregistre le "lecteur/enregisteur" de dossier au nom myfile
 
@@ -14,7 +14,7 @@ std::string ouvrirFichier(std::string const nom_fichier)
 		std::getline(myfile, ligne);	    	 //on prélève la première ligne dans la variable ligne, elle servira d'identificteur de fin de programme
 		std::string lignef = "\n";
 		int fusible = 0;						 //une précaution de sauvegarde pour ne pas rester bloquer dans la fichier
-		int max = 5000;
+		int max = 1;
 		while ((ligne != "") and (fusible < max))
 		{
 //			std::cout << lignef << std::endl;			//on renvoie la partie lu du fichier pour les test
