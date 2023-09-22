@@ -45,7 +45,9 @@
     <None Include="src\tutos\README.md">
       <Filter>Fichiers sources\tutos</Filter>
     </None>
-    <None Include="src\lib\generateur_csv.py" />
+    <None Include="src\lib\generateur_csv.py">
+      <Filter>Fichiers sources</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">

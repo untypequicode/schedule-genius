@@ -12,16 +12,23 @@ void creerCsv()
 	myfile.open("example.txt");
 	for (int i = 0; i < 10; i++)
 	{
-		myfile << MATIERE_SPE[i];
+		myfile << MATIERE_SPE[i] << " ; ";
 	};
 	for (int i = 0; i < NOMBRE_ELEVE; i++)
 	{
-		myfile << PRENOM[rand() % NOMBRE_PRENOM] << ";";
-		myfile << NOM[rand() % NOMBRE_NOM] << ";" << "\n";
+		myfile << PRENOM[rand() % NOMBRE_PRENOM] << " ; ";
+		myfile << NOM[rand() % NOMBRE_NOM] << " ; " << "\n";
+
+		std::string matiere_restante[15] = {};
+		for (std::string element : matiere_restante)
+		{
+			int index = 0;
+			matiere_restante[index] = MATIERE_SPE[index];
+		}
 		for (int e = 0; e < NOMBRE_MATIERE; e++)
 
 		{
-
+			
 		};
 	}
 	myfile.close();
