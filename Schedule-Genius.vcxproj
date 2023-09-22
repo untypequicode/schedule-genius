@@ -128,7 +128,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="README.md" />
-    <None Include="src\lib\generateur_csv.py" />
     <None Include="src\tutos\README.md" />
   </ItemGroup>
   <ItemGroup>
