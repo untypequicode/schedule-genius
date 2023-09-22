@@ -19,8 +19,8 @@ class Eleve
 
 		~Eleve();
 
-		std::string* m_matieres;
 	private:
+		std::string* m_matieres;
 		
 		//* m_groupes;
 		//* m_horaires;
