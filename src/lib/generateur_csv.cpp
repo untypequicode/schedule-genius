@@ -17,7 +17,7 @@ void creerCsv()
 	for (int i = 0; i < NOMBRE_ELEVE; i++)
 	{
 		myfile << PRENOM[rand() % NOMBRE_PRENOM] << ";";
-		myfile << NOM[rand() % NOMBRE_NOM] << ";";
+		myfile << NOM[rand() % NOMBRE_NOM] << ";" << "\n";
 		for (int e = 0; e < NOMBRE_MATIERE; e++)
 
 		{
