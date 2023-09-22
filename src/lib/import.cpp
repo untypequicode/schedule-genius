@@ -12,10 +12,10 @@ std::string ouvrirFichier(std::string const nom_fichier)
 		myfile.open(nom_fichier);	 			 //on ouvre le fichier en paramètre
 		std::string ligne;						 //on génère la variable lignetest pour ensuite la remplir
 		std::getline(myfile, ligne);	    	 //on prélève la première ligne dans la variable ligne, elle servira d'identificteur de fin de programme
-		std::string lignef = "";
-		lignef += ligne + "\n";
-		int fusible = 0;
-		while ((ligne != "") and (fusible < 0))
+		std::string lignef = "\n";
+		int fusible = 0;						 //une précaution de sauvegarde pour ne pas rester bloquer dans la fichier
+		int max = 5000;
+		while ((ligne != "") and (fusible < max))
 		{
 //			std::cout << lignef << std::endl;			//on renvoie la partie lu du fichier pour les test
 			std::getline(myfile, ligne);				//on donne a la ligne la valeur de la ligne suivante
@@ -23,7 +23,6 @@ std::string ouvrirFichier(std::string const nom_fichier)
 			fusible += 1;
 		}
 		std::cout << lignef << std::endl;		//on renvoie le fichier lu pour les test
-		std::cout << fusible << std::endl;
 		return lignef;							// on renvoie la première ligne
 	}
 	else //en cas de problème d'ouverture du fichier
