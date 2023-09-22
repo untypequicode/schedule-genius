@@ -14,13 +14,16 @@ std::string ouvrirFichier(std::string const nom_fichier)
 		std::getline(myfile, ligne);	    	 //on prélève la première ligne dans la variable ligne, elle servira d'identificteur de fin de programme
 		std::string lignef = "";
 		lignef += ligne + "\n";
-		while (ligne != "")
+		int fusible = 0;
+		while ((ligne != "") and (fusible < 0))
 		{
 //			std::cout << lignef << std::endl;			//on renvoie la partie lu du fichier pour les test
 			std::getline(myfile, ligne);				//on donne a la ligne la valeur de la ligne suivante
 			lignef += ligne + " \n";					//on ajoute la dernière ligne dans la même variable pour un renvoie propre
+			fusible += 1;
 		}
 		std::cout << lignef << std::endl;		//on renvoie le fichier lu pour les test
+		std::cout << fusible << std::endl;
 		return lignef;							// on renvoie la première ligne
 	}
 	else //en cas de problème d'ouverture du fichier
