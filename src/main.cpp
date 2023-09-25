@@ -14,6 +14,7 @@ int main()
 	ouvrirFichierParLigne(nom_fichier);*/
 	//ouvrirFichierParMot(nom_fichier);
 	Eleve eleve(1, "Ethan", "Facca", "L1");
+	eleve.addMatiere("Maths");
 	/*eleve.SetMatiere("Maths", 1);
 	std::cout << eleve.GetMatiere(1) << std::endl;*/
 	//Groupe groupe("L1", "info");

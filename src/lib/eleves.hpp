@@ -19,7 +19,9 @@ class Eleve
 		std::string getNiveauScolaire() const;
 		unsigned int getNbMatiere() const;
 		unsigned int getNbMatiereMax() const;
-		std::string getMatiere(unsigned int i) const;
+		std::string* getMatieres() const;
+		void addMatiere(std::string matiere);
+		//std::string getMatiere(unsigned int i) const;
 
 		
 
