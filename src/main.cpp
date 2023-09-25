@@ -13,8 +13,8 @@ int main()
 	std::string nom_fichier = "example.txt";
 	ouvrirFichierParLigne(nom_fichier);*/
 	//ouvrirFichierParMot(nom_fichier);
-	/*Eleve eleve("Ethan", "Facca", "L1", 10);
-	eleve.SetMatiere("Maths", 1);
+	Eleve eleve(1, "Ethan", "Facca", "L1");
+	/*eleve.SetMatiere("Maths", 1);
 	std::cout << eleve.GetMatiere(1) << std::endl;*/
 	//Groupe groupe("L1", "info");
 	//groupe.AddEleve(eleve);
