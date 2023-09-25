@@ -14,11 +14,12 @@ class Eleve
 
 		Eleve();
 		Eleve(std::string prenom, std::string nom, std::string niveau,int quantite_matiere);
+		Eleve(Eleve& const eleve);
 		void SetMatiere(std::string matiere, int index);
 		std::string GetMatiere(int index);
 
 		~Eleve();
-
+		 
 	private:
 		std::string* m_matieres;
 		
