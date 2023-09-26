@@ -88,8 +88,14 @@ void ouvrirFichierParCaractere(std::string const nom_fichier)
 		}*/
 		if (character == ';')
 		{
-			texte += '\n';
+			texte += ' ';
 		}
+
+		else if (character == '\n')
+		{
+			texte += "\n \n";
+		}
+
 		else
 		{
 			texte += character;
@@ -98,3 +104,4 @@ void ouvrirFichierParCaractere(std::string const nom_fichier)
 	std::cout << texte;
 	return;
 }
+
