@@ -2,7 +2,7 @@
 #include "lib/groupes.hpp"
 #include "lib/generation_groupes.hpp"
 //#include "lib/generateur_csv.hpp"
-//#include "lib/import.hpp"
+#include "lib/import.hpp"
 #include "lib/tableau_dynamique.hpp"
 #include <iostream>
 
@@ -11,9 +11,6 @@ int main()
 
 	//creerCsv();
 	//std::string nom_fichier = "example.txt";
-	//ouvrirFichierParLigne(nom_fichier);
-	//ouvrirFichierParMot(nom_fichier);
-	//ouvrirFichierParCaractere(nom_fichier);
 	/*Eleve eleve(0, "Ethan", "Facca", "L1");
 	eleve.addMatiere("Maths");
 	eleve.addMatiere("Physique");
