@@ -3,6 +3,7 @@
 #include "lib/generation_groupes.hpp"
 //#include "lib/generateur_csv.hpp"
 //#include "lib/import.hpp"
+#include "lib/tableau_dynamique.hpp"
 #include <iostream>
 
 int main()
@@ -13,7 +14,7 @@ int main()
 	//ouvrirFichierParLigne(nom_fichier);
 	//ouvrirFichierParMot(nom_fichier);
 	//ouvrirFichierParCaractere(nom_fichier);
-	Eleve eleve(0, "Ethan", "Facca", "L1");
+	/*Eleve eleve(1, "Ethan", "Facca", "L1");
 	eleve.addMatiere("Maths");
 	eleve.addMatiere("Physique");
 	eleve.addMatiere("Anglais");
@@ -43,7 +44,25 @@ int main()
 	eleve.addMatiere("Logistique");
 	std::cout << eleve.getMatiere(0) << std::endl;
 	std::cout << eleve.getMatiere(10) << std::endl;
-	std::cout << eleve.getMatiere(30) << std::endl;
+	std::cout << eleve.getMatiere(30) << std::endl;*/
+
+	TabDyn a_a();
+	TabDyn a_b(10);
+	a_b.AddElem(1);
+	a_b.AddElem(2);
+	a_b.AddElem(3);
+	std::cout << "a_b 0 : " << a_b.GetElemInt(0) << std::endl;
+	std::cout << "a_b 1 : " << a_b.GetElemInt(1) << std::endl;
+	std::cout << "a_b 2 : " << a_b.GetElemInt(2) << std::endl;
+	std::cout << "a_b 0 : " << a_b.GetTabInt()[0] << std::endl;
+	a_b.SetElemInt(0, 4);
+	std::cout << "a_b 0 : " << a_b.GetElemInt(0) << std::endl;
+	std::cout << "a_b len : " << a_b.GetNbElem() << std::endl;
+	std::cout << "a_b lenmax : " << a_b.GetNbElemMax() << std::endl;
+
+
+
+
 	//Groupe groupe("L1", "info");
 	//groupe.AddEleve(eleve);
 	//std::string matiere_eleve = groupe.GetEleve(0).GetMatiere(1);
