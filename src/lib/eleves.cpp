@@ -98,12 +98,14 @@ void Eleve::addMatiere(std::string matiere)
 		m_nb_matiere_max *= 2;
 		delete[] m_matieres;
 		m_matieres = matieres;
-		std::cout << "Nombre maximum de matiere atteint" << std::endl;
 	}
 	std::cout << "Nombre de matiere : " << m_nb_matiere << " - Nombre de matiere max : " << m_nb_matiere_max << std::endl;
 }
 
-//std::string Eleve::getMatiere(unsigned int id) const
-//{
-//	return m_matieres[id];
-//}
+std::string Eleve::getMatiere(unsigned int id) const
+{
+	if (id >= m_nb_matiere) {
+		return "Erreur : matiere inexistante";
+	}
+	return m_matieres[id];
+}

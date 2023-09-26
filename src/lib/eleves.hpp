@@ -21,7 +21,7 @@ class Eleve
 		unsigned int getNbMatiereMax() const;
 		std::string* getMatieres() const;
 		void addMatiere(std::string matiere);
-		//std::string getMatiere(unsigned int i) const;
+		std::string getMatiere(unsigned int i) const;
 
 		
 

@@ -41,6 +41,9 @@ int main()
 	eleve.addMatiere("Management");
 	eleve.addMatiere("Ressources humaines");
 	eleve.addMatiere("Logistique");
+	std::cout << eleve.getMatiere(0) << std::endl;
+	std::cout << eleve.getMatiere(10) << std::endl;
+	std::cout << eleve.getMatiere(30) << std::endl;
 	//Groupe groupe("L1", "info");
 	//groupe.AddEleve(eleve);
 	//std::string matiere_eleve = groupe.GetEleve(0).GetMatiere(1);
