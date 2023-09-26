@@ -9,9 +9,8 @@ int main()
 {
 
 	creerCsv();
-	std::string nom_fichier = "example.csv";
-	ouvrirFichierParLigne(nom_fichier);
-	//genererEleveViaCsv(nom_fichier);
+	std::string nom_fichier = "eleve.csv";
+	genererEleveViaCsv(nom_fichier);
 	/*Eleve eleve(0, "Ethan", "Facca", "L1");
 	eleve.addMatiere("Maths");
 	eleve.addMatiere("Physique");

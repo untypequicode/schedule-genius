@@ -12,7 +12,6 @@ std::string ouvrirFichierParLigne(std::string const nom_fichier)
 
 		myfile.open(nom_fichier);	 			 //on ouvre le fichier en paramètre
 		std::string ligne;						 //on génère la variable ligne pour ensuite la remplir
-		std::getline(myfile, ligne);	    	 //on prélève la première ligne dans la variable ligne, elle servira d'identificteur de fin de programme
 		std::string lignef = "\n";
 		int fusible = 0;						 //une précaution de sauvegarde pour ne pas rester bloquer dans la fichier
 		int max = 100;
@@ -23,7 +22,7 @@ std::string ouvrirFichierParLigne(std::string const nom_fichier)
 			lignef += ligne + " \n";					//on ajoute la dernière ligne dans la même variable pour un renvoie propre
 			fusible += 1;
 		}
-		//std::cout << lignef << std::endl;		//on renvoie le fichier lu pour les test
+		std::cout << lignef << std::endl;		//on renvoie le fichier lu pour les test
 		return lignef;							// on renvoie toutes les lignes
 	}
 	else //en cas de problème d'ouverture du fichier
@@ -48,7 +47,7 @@ std::string ouvrirFichierParMot(std::string const nom_fichier)
 		myfile >> mot;	    			 //on prélève le premier caractere dans la variable caractere, elle servira d'identificteur de fin de programme
 		std::string motf = "";
 		int fusible = 0;						 //une précaution de sauvegarde pour ne pas rester bloquer dans la fichier
-		int max = 2;
+		int max = 2000;
 		while (fusible < max)
 		{
 			//std::cout << caractere << std::endl;			//on renvoie la partie lu du fichier pour les test
@@ -78,6 +77,7 @@ std::string ouvrirFichierParMot(std::string const nom_fichier)
 
 void ouvrirFichierParCaractere(std::string const nom_fichier)
 {
+
 	std::string source = ouvrirFichierParLigne(nom_fichier);
 	std::string texte = "lecture csv : \n";
 	for (char character : source)
@@ -115,20 +115,28 @@ void genererEleveViaCsv(std::string const nom_fichier)
 	std::string matiere = "";
 	std::string niveau = "";
 	int id = 0;
+	std::string id_fake = "";
 
 	std::ifstream myfile;
 	myfile.open(nom_fichier);
-	while (true)
+	std::string ligne;
+	std::getline(myfile, ligne);
+	for(int i = 0; i < 5; ++i)
 	{
 		myfile >> mot;
 		if (mot != ";")
 		{
-			if (prenom != "")
+			if (id_fake == "")
+			{
+				id_fake = mot;
+			}
+
+			else if (prenom == "")
 			{
 				prenom = mot;
 			}
 
-			else if (nom != "")
+			else if (nom == "")
 			{
 				nom = mot;
 			}
@@ -145,15 +153,18 @@ void genererEleveViaCsv(std::string const nom_fichier)
 
 			//Eleve test = Eleve(id, prenom, nom, niveau);
 			//test.addMatiere(matiere);
-			std::cout << id << ' ' << prenom << ' ' << nom << ' ' << matiere;
+			std::cout << id << std::endl;
+			std::cout << prenom << std::endl;
+			std::cout << nom << std::endl;
+			std::cout << niveau << std::endl;
+			std::cout << matiere;
 			nom = "";
 			prenom = "";
 			matiere = "";
 			niveau = "";
 			id += 1;
-			
+			return;
 		}
 
 	}
-	return;
 }
