@@ -1,16 +1,19 @@
 #include "lib/eleves.hpp"
 #include "lib/groupes.hpp"
 #include "lib/generation_groupes.hpp"
-#include "lib/generateur_csv.hpp"
-#include "lib/import.hpp"
+//#include "lib/generateur_csv.hpp"
+//#include "lib/import.hpp"
+#include "lib/tableau_dynamique.hpp"
 #include <iostream>
 
 int main()
 {
 
-	creerCsv();
-	std::string nom_fichier = "eleve.csv";
-	genererEleveViaCsv(nom_fichier);
+	//creerCsv();
+	//std::string nom_fichier = "example.txt";
+	//ouvrirFichierParLigne(nom_fichier);
+	//ouvrirFichierParMot(nom_fichier);
+	//ouvrirFichierParCaractere(nom_fichier);
 	/*Eleve eleve(0, "Ethan", "Facca", "L1");
 	eleve.addMatiere("Maths");
 	eleve.addMatiere("Physique");
@@ -42,6 +45,26 @@ int main()
 	std::cout << eleve.getMatiere(0) << std::endl;
 	std::cout << eleve.getMatiere(10) << std::endl;
 	std::cout << eleve.getMatiere(30) << std::endl;*/
+
+	TabDyn tab(2);
+	tab.AddElem(1);
+	tab.AddElem(2);
+	tab.AddElem(3);
+	std::cout << "tab 0 : " << tab.GetElemInt(0) << std::endl;
+	std::cout << "tab 1 : " << tab.GetElemInt(1) << std::endl;
+	std::cout << "tab 2 : " << tab.GetElemInt(2) << std::endl;
+	std::cout << "nombre elem : " << tab.GetNbElem() << std::endl;
+	std::cout << "taille tab : " << tab.GetNbElemMax() << std::endl;
+	tab.AddElem(4);
+	tab.SetElemInt(0, 5);
+	std::cout << "tab 0 : " << tab.GetElemInt(0) << std::endl;
+	std::cout << "tab 1 : " << tab.GetElemInt(1) << std::endl;
+	std::cout << "tab 2 : " << tab.GetElemInt(2) << std::endl;
+	std::cout << "tab 3 : " << tab.GetElemInt(3) << std::endl;
+	std::cout << "nombre elem : " << tab.GetNbElem() << std::endl;
+	std::cout << "taille tab : " << tab.GetNbElemMax() << std::endl;
+
+
 	//Groupe groupe("L1", "info");
 	//groupe.AddEleve(eleve);
 	//std::string matiere_eleve = groupe.GetEleve(0).GetMatiere(1);
