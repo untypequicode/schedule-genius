@@ -1,4 +1,4 @@
-#include "tableau_dynamique.hpp"
+#include "tab_dyn.hpp"
 
 
 TabDyn::TabDyn()

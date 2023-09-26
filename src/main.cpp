@@ -3,7 +3,7 @@
 #include "lib/generation_groupes.hpp"
 //#include "lib/generateur_csv.hpp"
 //#include "lib/import.hpp"
-#include "lib/tableau_dynamique.hpp"
+#include "lib/tab_dyn.hpp"
 #include <iostream>
 
 int main()
