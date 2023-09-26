@@ -4,10 +4,8 @@
 #include <fstream>
 #include <vector>
 #include <iostream>
+#include <array>
 
 void creerCsv();
-
-
-
 
 #endif
