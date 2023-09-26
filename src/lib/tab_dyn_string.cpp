@@ -126,9 +126,3 @@ void TabDynString::Set(unsigned int index, std::string str)
 		m_tab[index] = str;
 	}
 }
-
-void TabDynString::Clear()
-{
-	m_nbElem = 0;
-	m_nbElemMax = 0;
-}

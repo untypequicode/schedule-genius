@@ -17,6 +17,10 @@
 * Destructeur :
 * ~TabDyn()
 * 
+* Méthodes :
+* void SetParam(bool add_with_multiple, unsigned int addition)
+* void Clear()
+* 
 * Accesseurs :
 * unsigned int getNbElem() const
 * unsigned int getNbElemMax() const
@@ -54,6 +58,7 @@ public :
 	unsigned int GetNbElem() const;
 	unsigned int GetNbElemMax() const;
 	void SetParam(bool add_with_multiple, unsigned int addition);
+	void Clear();
 
 protected :
 	unsigned int m_nbElem;
@@ -77,9 +82,10 @@ protected :
 * 
 * Méthodes :
 * void Append(std::string str)
+* void Add(std::string str)
 * std::string Get(unsigned int index) const
 * std::string* GetTab() const
-* void Clear()
+* void Set(unsigned int index, std::string str)
 * 
 * Attributs :
 * std::string* m_tab;
@@ -114,7 +120,6 @@ public :
 	std::string Get(unsigned int index) const;
 	std::string* GetTab() const;
 	void Set(unsigned int index, std::string str);
-	void Clear();
 
 private :
 	void AddAppend(std::string str, bool addition);

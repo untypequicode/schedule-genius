@@ -65,3 +65,9 @@ void TabDyn::SetParam(bool add_with_multiple, unsigned int addition)
 		m_addition = addition;
 	}
 }
+
+void TabDyn::Clear()
+{
+	m_nbElem = 0;
+	m_nbElemMax = 0;
+}
