@@ -1,4 +1,5 @@
 #include "import.hpp"
+#include "eleves.hpp"
 ;
 std::string ouvrirFichierParLigne(std::string const nom_fichier)
 {
@@ -15,7 +16,7 @@ std::string ouvrirFichierParLigne(std::string const nom_fichier)
 		std::string lignef = "\n";
 		int fusible = 0;						 //une précaution de sauvegarde pour ne pas rester bloquer dans la fichier
 		int max = 100;
-		while ((ligne != "\n") and (fusible < max))
+		while (fusible < max)
 		{
 			//std::cout << lignef << std::endl;			//on renvoie la partie lu du fichier pour les test
 			std::getline(myfile, ligne);				//on donne a la ligne la valeur de la ligne suivante
@@ -64,7 +65,7 @@ std::string ouvrirFichierParMot(std::string const nom_fichier)
 
 			fusible += 1;
 		}
-		//std::cout << motf << std::endl;		//on renvoie le fichier lu pour les test
+		std::cout << motf << std::endl;		//on renvoie le fichier lu pour les test
 		return motf;							// on renvoie la première ligne
 	}
 	else //en cas de problème d'ouverture du fichier
@@ -105,3 +106,54 @@ void ouvrirFichierParCaractere(std::string const nom_fichier)
 	return;
 }
 
+
+void genererEleveViaCsv(std::string const nom_fichier)
+{
+	std::string mot = "";
+	std::string nom = "";
+	std::string prenom = "";
+	std::string matiere = "";
+	std::string niveau = "";
+	int id = 0;
+
+	std::ifstream myfile;
+	myfile.open(nom_fichier);
+	while (true)
+	{
+		myfile >> mot;
+		if (mot != ";")
+		{
+			if (prenom != "")
+			{
+				prenom = mot;
+			}
+
+			else if (nom != "")
+			{
+				nom = mot;
+			}
+
+			else if (niveau == "")
+			{
+				niveau = mot;
+			}
+
+			else while (mot != "\n")
+			{
+				matiere += mot;
+			}
+
+			//Eleve test = Eleve(id, prenom, nom, niveau);
+			//test.addMatiere(matiere);
+			std::cout << id << ' ' << prenom << ' ' << nom << ' ' << matiere;
+			nom = "";
+			prenom = "";
+			matiere = "";
+			niveau = "";
+			id += 1;
+			
+		}
+
+	}
+	return;
+}
