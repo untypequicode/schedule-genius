@@ -76,7 +76,31 @@ std::string* Eleve::getMatieres() const
 
 void Eleve::addMatiere(std::string matiere)
 {
-	
+	if (m_nb_matiere_max == 0)
+	{
+		m_matieres = new std::string[2];
+		m_nb_matiere_max = 2;
+		m_matieres[0] = matiere;
+		m_nb_matiere++;
+	}
+	else if (m_nb_matiere < m_nb_matiere_max) {
+		m_matieres[m_nb_matiere] = matiere;
+		m_nb_matiere++;
+	}
+	else if (m_nb_matiere == m_nb_matiere_max) {
+		
+		std::string* matieres = new std::string[m_nb_matiere_max * 2];
+		for (unsigned int i = 0; i < m_nb_matiere; i++) {
+			matieres[i] = m_matieres[i];
+		}
+		matieres[m_nb_matiere] = matiere;
+		m_nb_matiere++;
+		m_nb_matiere_max *= 2;
+		delete[] m_matieres;
+		m_matieres = matieres;
+		std::cout << "Nombre maximum de matiere atteint" << std::endl;
+	}
+	std::cout << "Nombre de matiere : " << m_nb_matiere << " - Nombre de matiere max : " << m_nb_matiere_max << std::endl;
 }
 
 //std::string Eleve::getMatiere(unsigned int id) const
