@@ -1,15 +1,24 @@
 #include "generateur_csv.hpp"
 
 
-std::string none_ = "None";
+std::vector <std::string> PRENOM = { "Alice", "Bob", "Charlie", "David", "Eve", "Frank", "Grace", "Hannah", "Ivy", "Jack",
+"Katherine", "Liam", "Mia", "Noah", "Olivia", "Peter", "Quinn", "Rachel", "Samuel", "Taylor",
+"Ursula", "Victor", "Wendy", "Xavier", "Yasmine", "Zane" };
+
+std::vector <std::string> NOM = { "Dupont", "Martin", "Dubois", "Bernard", "Thomas", "Robert", "Richard", "Petit", "Durand", "Leroy",
+"Moreau", "Simon", "Laurent", "Lefebvre", "Michel", "Garcia", "David", "Roux", "Bonnet", "Fournier",
+"Lopez", "Legrand", "Martinez", "Ferreira", "Fernandez", "Blanc", "André", "Leroux", "Rousseau" };
+
+std::vector <std::string> MATIERE_SPE = { "Francais", "Histoire" "Geo", "EMC", "EPS", "SPC", "SVT", "Maths", "NSI", "Philo",
+"Anglais", "Espagnole", "Allemand", "Italien", "Russe" };
+
+int NOMBRE_ELEVE = 200;
+int NOMBRE_PRENOM = PRENOM.size();
+int NOMBRE_NOM = NOM.size();
+int NOMBRE_MATIERE = MATIERE_SPE.size();
 
 void creerCsv()
 {
-	int NOMBRE_ELEVE = 200;
-	int NOMBRE_PRENOM = PRENOM.size();
-	int NOMBRE_NOM = NOM.size();
-	int NOMBRE_MATIERE = MATIERE_SPE.size();
-
 	std::ofstream myfile;
 	myfile.open("example.csv");
 
@@ -41,5 +50,4 @@ void creerCsv()
 		myfile << "\n";
 	}
 	myfile.close();
-	std::cout << "Fini" << std::endl;
 }
