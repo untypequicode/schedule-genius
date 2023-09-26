@@ -46,6 +46,27 @@
     <Filter Include="Fichiers sources\lib\tab_dyn">
       <UniqueIdentifier>{b449ec4d-0a1f-407f-9f11-d91206f83e1e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers d%27en-tête\lib\tab_dyn">
+      <UniqueIdentifier>{e9a52141-3868-4580-97fc-9b29ae86c1d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\lib\csv">
+      <UniqueIdentifier>{72d33d5a-37ea-4786-9768-8d2895dba68e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\lib\csv">
+      <UniqueIdentifier>{b98988b9-34a5-46d3-b8c0-0bd328171c80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\lib\eleves">
+      <UniqueIdentifier>{cadee3e6-c1f8-47ea-ac67-fbfed6026ae7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\lib\groupes">
+      <UniqueIdentifier>{77c0ad7a-8315-4637-87c4-662c30ef9ff3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\lib\eleves">
+      <UniqueIdentifier>{cd926167-0b1d-49c4-86b0-beed78f9f830}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\lib\groupes">
+      <UniqueIdentifier>{0df3a4ce-1af8-41fa-b6e1-57eba164c366}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md">
@@ -55,7 +76,7 @@
       <Filter>Fichiers sources\tutos</Filter>
     </None>
     <None Include="src\lib\generateur_csv.py">
-      <Filter>Fichiers sources\lib</Filter>
+      <Filter>Fichiers sources\lib\csv</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -74,29 +95,29 @@
     <ClCompile Include="src\tutos\untypequicode\player.cpp">
       <Filter>Fichiers sources\tutos\untypequicode</Filter>
     </ClCompile>
-    <ClCompile Include="src\lib\eleves.cpp">
-      <Filter>Fichiers sources\lib</Filter>
-    </ClCompile>
-    <ClCompile Include="src\lib\generateur_csv.cpp">
-      <Filter>Fichiers sources\lib</Filter>
-    </ClCompile>
-    <ClCompile Include="src\lib\generation_groupes.cpp">
-      <Filter>Fichiers sources\lib</Filter>
-    </ClCompile>
-    <ClCompile Include="src\lib\groupes.cpp">
-      <Filter>Fichiers sources\lib</Filter>
-    </ClCompile>
-    <ClCompile Include="src\lib\import.cpp">
-      <Filter>Fichiers sources\lib</Filter>
-    </ClCompile>
-    <ClCompile Include="src\lib\groupes.hpp">
-      <Filter>Fichiers d%27en-tête\lib</Filter>
-    </ClCompile>
     <ClCompile Include="src\lib\tab_dyn.cpp">
       <Filter>Fichiers sources\lib\tab_dyn</Filter>
     </ClCompile>
     <ClCompile Include="src\lib\tab_dyn_string.cpp">
       <Filter>Fichiers sources\lib\tab_dyn</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\generateur_csv.cpp">
+      <Filter>Fichiers sources\lib\csv</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\import.cpp">
+      <Filter>Fichiers sources\lib\csv</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\groupes.hpp">
+      <Filter>Fichiers d%27en-tête\lib\groupes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\eleves.cpp">
+      <Filter>Fichiers sources\lib\eleves</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\generation_groupes.cpp">
+      <Filter>Fichiers sources\lib\groupes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\groupes.cpp">
+      <Filter>Fichiers sources\lib\groupes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -112,20 +133,20 @@
     <ClInclude Include="src\tutos\untypequicode\untypequicode.hpp">
       <Filter>Fichiers d%27en-tête\tutos\untypequicode</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib\eleves.hpp">
-      <Filter>Fichiers d%27en-tête\lib</Filter>
+    <ClInclude Include="src\lib\tab_dyn.hpp">
+      <Filter>Fichiers d%27en-tête\lib\tab_dyn</Filter>
     </ClInclude>
     <ClInclude Include="src\lib\generateur_csv.hpp">
-      <Filter>Fichiers d%27en-tête\lib</Filter>
-    </ClInclude>
-    <ClInclude Include="src\lib\generation_groupes.hpp">
-      <Filter>Fichiers d%27en-tête\lib</Filter>
+      <Filter>Fichiers d%27en-tête\lib\csv</Filter>
     </ClInclude>
     <ClInclude Include="src\lib\import.hpp">
-      <Filter>Fichiers d%27en-tête\lib</Filter>
+      <Filter>Fichiers d%27en-tête\lib\csv</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib\tab_dyn.hpp">
-      <Filter>Fichiers d%27en-tête\lib</Filter>
+    <ClInclude Include="src\lib\eleves.hpp">
+      <Filter>Fichiers d%27en-tête\lib\eleves</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\generation_groupes.hpp">
+      <Filter>Fichiers d%27en-tête\lib\groupes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
