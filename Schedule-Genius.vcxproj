@@ -139,6 +139,7 @@
     <ClCompile Include="src\lib\groupes.hpp" />
     <ClCompile Include="src\lib\import.cpp" />
     <ClCompile Include="src\lib\tab_dyn.cpp" />
+    <ClCompile Include="src\lib\tab_dyn_string.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\tutos\pgii33\pgii33.cpp" />
     <ClCompile Include="src\tutos\untypequicode\player.cpp" />

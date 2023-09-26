@@ -43,6 +43,9 @@
     <Filter Include="Fichiers d%27en-tête\lib">
       <UniqueIdentifier>{4c2890ba-cbb9-44de-906a-73bd3a6c5b65}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers sources\lib\tab_dyn">
+      <UniqueIdentifier>{b449ec4d-0a1f-407f-9f11-d91206f83e1e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md">
@@ -86,11 +89,14 @@
     <ClCompile Include="src\lib\import.cpp">
       <Filter>Fichiers sources\lib</Filter>
     </ClCompile>
-    <ClCompile Include="src\lib\tab_dyn.cpp">
-      <Filter>Fichiers sources\lib</Filter>
-    </ClCompile>
     <ClCompile Include="src\lib\groupes.hpp">
       <Filter>Fichiers d%27en-tête\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\tab_dyn.cpp">
+      <Filter>Fichiers sources\lib\tab_dyn</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\tab_dyn_string.cpp">
+      <Filter>Fichiers sources\lib\tab_dyn</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
