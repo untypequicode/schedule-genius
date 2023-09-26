@@ -12,6 +12,7 @@ int main()
 	// 
 	//creerCsv();
 	
+
 	//// Vincent
 	// 
 	/*std::string nom_fichier = "example.txt";
@@ -19,7 +20,9 @@ int main()
 	ouvrirFichierParMot(nom_fichier);
 	ouvrirFichierParCaractere(nom_fichier);*/
 
+
 	//// Ethan
+	//
 	/*Eleve eleve(0, "Ethan", "Facca", "L1");
 	eleve.addMatiere("Maths");
 	eleve.addMatiere("Physique");
@@ -30,6 +33,13 @@ int main()
 	groupe.AddEleve(eleve);
 	std::string matiere_eleve = groupe.GetEleve(0).GetMatiere(1);
 	std::cout << groupe.GetEleve(0).m_prenom << std::endl;*/
+	TabDyn tab(10);
+	std::cout << tab.getNbElem() << std::endl;
+	std::cout << tab.getNbElemMax() << std::endl;
+	TabDyn tab2;
+	std::cout << tab2.getNbElem() << std::endl;
+	std::cout << tab2.getNbElemMax() << std::endl;
+
 
 	return 0;
 }

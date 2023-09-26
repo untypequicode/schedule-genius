@@ -6,7 +6,12 @@
 class TabDyn
 {
 public :
+	TabDyn();
 	TabDyn(unsigned int nbElemMax);
+	~TabDyn();
+
+	unsigned int getNbElem() const;
+	unsigned int getNbElemMax() const;
 
 private :
 	unsigned int m_nbElem;
