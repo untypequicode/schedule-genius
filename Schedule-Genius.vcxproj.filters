@@ -67,16 +67,19 @@
     <Filter Include="Fichiers sources\lib\groupes">
       <UniqueIdentifier>{0df3a4ce-1af8-41fa-b6e1-57eba164c366}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers de ressources\tutos">
+      <UniqueIdentifier>{c86cbd4d-71be-4a5a-b3ae-e7c45b04bcf5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="README.md">
-      <Filter>Fichiers sources</Filter>
-    </None>
-    <None Include="src\tutos\README.md">
-      <Filter>Fichiers sources\tutos</Filter>
-    </None>
     <None Include="src\lib\generateur_csv.py">
       <Filter>Fichiers sources\lib\csv</Filter>
+    </None>
+    <None Include="README.md">
+      <Filter>Fichiers de ressources</Filter>
+    </None>
+    <None Include="src\tutos\README.md">
+      <Filter>Fichiers de ressources\tutos</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
