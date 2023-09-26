@@ -2,7 +2,7 @@
 #define DEF_VINCENTCESTMOI
 
 #include <iostream>
-
+;
 void vincentcestmoi();
 
 void forMicky();
