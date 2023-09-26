@@ -10,8 +10,6 @@ int main()
 
 	creerCsv();
 	std::string nom_fichier = "example.csv";
-	//ouvrirFichierParLigne(nom_fichier);
-	//ouvrirFichierParMot(nom_fichier);
 	ouvrirFichierParCaractere(nom_fichier);
 	/*Eleve eleve(0, "Ethan", "Facca", "L1");
 	eleve.addMatiere("Maths");
