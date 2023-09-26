@@ -18,7 +18,7 @@ en paramètre le nom du fichier a ouvrir
 le programme parcours chaque mot du fichier
 */
 
-void ouvrirFichierParCaractere(std::string const nom_fichier)
+void ouvrirFichierParCaractere(std::string const nom_fichier);
 /*
 en paramètre le nom du fichier a ouvrir
 le programme parcours chaque caractère du fichier
