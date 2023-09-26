@@ -14,10 +14,10 @@ std::string ouvrirFichierParLigne(std::string const nom_fichier)
 		std::getline(myfile, ligne);	    	 //on prélève la première ligne dans la variable ligne, elle servira d'identificteur de fin de programme
 		std::string lignef = "\n";
 		int fusible = 0;						 //une précaution de sauvegarde pour ne pas rester bloquer dans la fichier
-		int max = 1;
-		while ((ligne != "") and (fusible < max))
+		int max = 100;
+		while ((ligne != "\n") and (fusible < max))
 		{
-//			std::cout << lignef << std::endl;			//on renvoie la partie lu du fichier pour les test
+			//std::cout << lignef << std::endl;			//on renvoie la partie lu du fichier pour les test
 			std::getline(myfile, ligne);				//on donne a la ligne la valeur de la ligne suivante
 			lignef += ligne + " \n";					//on ajoute la dernière ligne dans la même variable pour un renvoie propre
 			fusible += 1;
@@ -81,7 +81,11 @@ void ouvrirFichierParCaractere(std::string const nom_fichier)
 	std::string texte = "lecture csv : \n";
 	for (char character : source)
 	{
-		std::cout << character;
+		//std::cout << character;
+		/*if (character == ' ')
+		{
+			break;
+		}*/
 		if (character == ';')
 		{
 			texte += '\n';
