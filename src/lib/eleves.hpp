@@ -7,23 +7,34 @@
 class Eleve
 {
 	public:
-		std::string m_prenom;
-		std::string m_nom;
-		std::string m_niveau;
-		int m_quantite_matiere;
-
 		Eleve();
-		Eleve(std::string prenom, std::string nom, std::string niveau,int quantite_matiere);
-		void SetMatiere(std::string matiere, int index);
-		std::string GetMatiere(int index);
-
+		Eleve(unsigned int id, std::string prenom, std::string nom, std::string niveau_scolaire);
+		//Eleve(std::string prenom, std::string nom, std::string niveau_scolaire);
+		Eleve(const Eleve& eleve);
 		~Eleve();
 
-	private:
-		std::string* m_matieres;
+		unsigned int getId() const;
+		std::string getPrenom() const;
+		std::string getNom() const;
+		std::string getNiveauScolaire() const;
+		unsigned int getNbMatiere() const;
+		unsigned int getNbMatiereMax() const;
+		std::string* getMatieres() const;
+		void addMatiere(std::string matiere);
+		std::string getMatiere(unsigned int i) const;
+
 		
-		//* m_groupes;
-		//* m_horaires;
+
+		 
+	private:
+		unsigned int m_id;
+		std::string m_prenom;
+		std::string m_nom;
+		std::string m_niveau_scolaire;
+		unsigned int m_nb_matiere;
+		unsigned int m_nb_matiere_max;
+		std::string* m_matieres;
+
 };
 
 #endif
