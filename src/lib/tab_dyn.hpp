@@ -127,4 +127,25 @@ private :
 	std::string* m_tab;
 };
 
+class TabDynInt : public TabDyn
+{
+	public :
+		TabDynInt();
+		TabDynInt(unsigned int nbElemMax);
+		TabDynInt(unsigned int nbElemMax, bool add_with_multiple, unsigned int addition);
+		TabDynInt(const TabDynInt& tabDynInt);
+		~TabDynInt();
+
+		void Append(int i);
+		void Add(int i);
+		int Get(unsigned int index) const;
+		int* GetTab() const;
+		void Set(unsigned int index, int i);
+
+private :
+	void AddAppend(int i, bool addition);
+
+	int* m_tab;
+};
+
 #endif
