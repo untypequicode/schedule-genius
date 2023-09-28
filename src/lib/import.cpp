@@ -1,5 +1,6 @@
 #include "import.hpp"
 #include "eleves.hpp"
+#include "tab_dyn.hpp"
 ;
 std::string ouvrirFichierParLigne(std::string const nom_fichier)
 {
@@ -109,6 +110,12 @@ void ouvrirFichierParCaractere(std::string const nom_fichier)
 
 void genererEleveViaCsv(std::string const nom_fichier)
 {
+	TabDynString matierefull(10);
+	for (int i = 0; i < 11; i++)
+	{
+		matierefull.Add("");
+	}
+	int indice = 0;
 	std::string mot = "";
 	std::string nom = "";
 	std::string prenom = "";
@@ -117,12 +124,14 @@ void genererEleveViaCsv(std::string const nom_fichier)
 	int test = 0;
 	std::string id = "";
 	int fake_id = 0;
+	bool test2 = true;
+	Eleve alleleve = Eleve();
 
 	std::ifstream myfile;
 	myfile.open(nom_fichier);
 	std::string ligne;
 	std::getline(myfile, ligne);		//on se débarrasse de la première ligne qui ne contient que les en-tête
-	for(int i = 0; i < 5000 ; ++i)
+	for(int i = 0; i < 1000 ; ++i)
 	{
 		myfile >> mot;
 		for (char character : mot)
@@ -155,11 +164,23 @@ void genererEleveViaCsv(std::string const nom_fichier)
 
 			else if (test == 4)
 			{
+				if (test2)
+				{
+					Eleve elevetest(fake_id, prenom, nom, niveau);
+					std::cout << "eleve numero " << id << " : ";
+					std::cout << prenom << " " << nom << std::endl;
+					std::cout << "en annee " << niveau << std::endl;
+					test2 = false;
+				}
+
 				if (not (character == '1' or character == '2' or character == '3' or character == '4' or character == '5' or character == '6' or character == '7' or character == '8' or character == '9' or character == '0'))
 				{
 					if (character == ';')
 					{
-						matiere += " ";
+						matierefull.Pop(0);
+						matierefull.Add(matiere);
+						alleleve.addMatiere(matiere);
+						matiere = "";
 					}
 
 					else
@@ -174,14 +195,11 @@ void genererEleveViaCsv(std::string const nom_fichier)
 
 			if (test == 5)
 			{
-				Eleve Elevetest = Eleve(fake_id, prenom, nom, niveau);
-				//test.addMatiere(matiere);
-
-				std::cout << "eleve numero " << id << " : ";
-				std::cout << prenom << " " << nom << std::endl;
-				std::cout << "en annee " << niveau << std::endl;
+				for (i; i < 11; ++i)
+				{
+					matiere += matierefull.Pop() + " ";
+				}
 				std::cout << "matieres optionnelles : " << matiere << std::endl << std::endl;
-
 				nom = "";
 				prenom = "";
 				niveau = "";
@@ -189,6 +207,7 @@ void genererEleveViaCsv(std::string const nom_fichier)
 				id = character;
 				test = 0;
 				fake_id++;
+				test2 = true;
 			}
 		}
 

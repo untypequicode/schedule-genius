@@ -2,7 +2,7 @@
 #include "lib/groupes.hpp"
 #include "lib/generation_groupes.hpp"
 #include "lib/generateur_csv.hpp"
-#include "lib/import.hpp"
+//#include "lib/import.hpp"
 #include "lib/tab_dyn.hpp"
 #include <iostream>
 
@@ -10,13 +10,13 @@ int main()
 {
 	//// Micky
 	// 
-	creerCsv();
+	//creerCsv();
 	
 
 	//// Vincent
 	// 
-	std::string nom_fichier = "eleve.csv";
-	genererEleveViaCsv(nom_fichier);
+	//std::string nom_fichier = "eleve.csv";
+	//genererEleveViaCsv(nom_fichier);
 
 	//// Ethan
 	//
