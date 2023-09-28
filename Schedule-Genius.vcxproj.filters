@@ -122,6 +122,9 @@
     <ClCompile Include="src\lib\groupes.cpp">
       <Filter>Fichiers sources\lib\groupes</Filter>
     </ClCompile>
+    <ClCompile Include="src\lib\tab_dyn_int.cpp">
+      <Filter>Fichiers sources\lib\tab_dyn</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\tutos\pgii33\pgii33.hpp">

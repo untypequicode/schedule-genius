@@ -70,6 +70,109 @@ void TabDynString::Set(unsigned int index, std::string str)
 	}
 }
 
+std::string TabDynString::Pop()
+{
+	if (m_nbElem > 0)
+	{
+		std::string str = m_tab[m_nbElem - 1];
+		m_nbElem--;
+		return str;
+	}
+	else
+	{
+		return "";
+	}
+}
+
+std::string TabDynString::Pop(int index)
+{
+	if (index < m_nbElem)
+	{
+		std::string str = m_tab[index];
+		for (unsigned int i = index; i < m_nbElem - 1; i++)
+		{
+			m_tab[i] = m_tab[i + 1];
+		}
+		m_nbElem--;
+		return str;
+	}
+	else
+	{
+		return "";
+	}
+}
+
+void TabDynString::Remove(std::string elem, int num)
+{
+	int count = 0;
+	for (unsigned int i = 0; i < m_nbElem; i++)
+	{
+		if (m_tab[i] == elem)
+		{
+			count++;
+			if (count == num)
+			{
+				for (unsigned int j = i; j < m_nbElem - 1; j++)
+				{
+					m_tab[j] = m_tab[j + 1];
+				}
+				m_nbElem--;
+				break;
+			}
+		}
+	}
+}
+
+void TabDynString::Remove(std::string elem)
+{
+	for (unsigned int i = 0; i < m_nbElem; i++)
+	{
+		if (m_tab[i] == elem)
+		{
+			for (unsigned int j = i; j < m_nbElem - 1; j++)
+			{
+				m_tab[j] = m_tab[j + 1];
+			}
+			m_nbElem--;
+			i--;
+		}
+	}
+}
+
+void TabDynString::Remove(std::string elem, bool first)
+{
+	if (first)
+	{
+		for (unsigned int i = 0; i < m_nbElem; i++)
+		{
+			if (m_tab[i] == elem)
+			{
+				for (unsigned int j = i; j < m_nbElem - 1; j++)
+				{
+					m_tab[j] = m_tab[j + 1];
+				}
+				m_nbElem--;
+				break;
+			}
+		}
+	}
+	else
+	{
+		for (unsigned int i = m_nbElem - 1; i >= 0; i--)
+		{
+			if (m_tab[i] == elem)
+			{
+				for (unsigned int j = i; j < m_nbElem - 1; j++)
+				{
+					m_tab[j] = m_tab[j + 1];
+				}
+				m_nbElem--;
+				break;
+			}
+		}
+	}
+}
+
 void TabDynString::AddAppend(std::string str, bool addition)
 {
 	if (m_nbElemMax == 0)

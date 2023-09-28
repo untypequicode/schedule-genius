@@ -147,6 +147,45 @@ int main()
 	tabInt.Append(22);
 	std::cout << "n = " << tabInt.GetNbElem() << ", len = " << tabInt.GetNbElemMax() << std::endl;
 
+	std::cout << "Création de tabString" << std::endl;
+	TabDynString tabString(10);
+	tabString.Append("1");
+	std::cout << "n = " << tabString.GetNbElem() << ", len = " << tabString.GetNbElemMax() << std::endl;
+	tabString.Append("2");
+	std::cout << "n = " << tabString.GetNbElem() << ", len = " << tabString.GetNbElemMax() << std::endl;
+	tabString.Append("3");
+	std::cout << "n = " << tabString.GetNbElem() << ", len = " << tabString.GetNbElemMax() << std::endl;
+	tabString.Append("1");
+	std::cout << "..." << std::endl;
+	tabString.Append("2");
+	tabString.Append("3");
+	tabString.Append("1");
+	tabString.Append("2");
+	tabString.Append("3");
+	std::cout << "n = " << tabString.GetNbElem() << ", len = " << tabString.GetNbElemMax() << std::endl;
+	tabString.Append("1");
+	std::cout << "n = " << tabString.GetNbElem() << ", len = " << tabString.GetNbElemMax() << std::endl;
+	tabString.Append("2");
+	std::cout << "n = " << tabString.GetNbElem() << ", len = " << tabString.GetNbElemMax() << std::endl;
+	std::cout << "..." << std::endl;
+	for (unsigned int i = 0; i < tabString.GetNbElem(); i++)
+	{
+		std::cout << "tabString[" << i << "] = " << tabString.Get(i) << std::endl;
+	}
+	std::cout << "n = " << tabString.GetNbElem() << ", len = " << tabString.GetNbElemMax() << std::endl;
+	std::cout << "..." << std::endl;
+	tabString.Pop();
+	//tabString.Pop(3);
+	//tabString.Remove("1");
+	//tabString.Remove("1", 3);
+	//tabString.Remove("1", true);
+	//tabString.Remove("1", false);
+	for (unsigned int i = 0; i < tabString.GetNbElem(); i++)
+	{
+		std::cout << "tabString[" << i << "] = " << tabString.Get(i) << std::endl;
+	}
+	std::cout << "n = " << tabString.GetNbElem() << ", len = " << tabString.GetNbElemMax() << std::endl;
+
 
 	return 0;
 }

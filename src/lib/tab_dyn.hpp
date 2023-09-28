@@ -120,6 +120,11 @@ public :
 	std::string Get(unsigned int index) const;
 	std::string* GetTab() const;
 	void Set(unsigned int index, std::string str);
+	std::string Pop();
+	std::string Pop(int index);
+	void Remove(std::string elem, int num);
+	void Remove(std::string elem);
+	void Remove(std::string elem, bool first);
 
 private :
 	void AddAppend(std::string str, bool addition);
