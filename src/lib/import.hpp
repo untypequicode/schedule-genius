@@ -23,10 +23,4 @@ void ouvrirFichierParCaractere(std::string const nom_fichier);
 en paramètre le nom du fichier a ouvrir
 le programme parcours chaque caractère du fichier
 */
-
-void genererEleveViaCsv(std::string const nom_fichier);
-/*
-en paramètre le nom du fichier a ouvrir
-le programme génère les élèves de la classe d'Ethan via leur ID (fictif), leur nom, leur prenom et leur matières
-*/
 #endif

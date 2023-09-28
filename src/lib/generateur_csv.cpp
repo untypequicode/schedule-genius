@@ -11,7 +11,7 @@ std::array <std::string,29> const NOM = {"Dupont", "Martin", "Dubois", "Bernard"
 std::vector <std::string> MATIERE_SPE = { "Francais", "Histoire" "Geo", "EMC", "EPS", "SPC", "SVT", "Maths", "NSI", "Philo",
 "Anglais", "Espagnole", "Allemand", "Italien", "Russe" };
 
-int NOMBRE_ELEVE = 5675;
+int NOMBRE_ELEVE = 696768;
 int NOMBRE_PRENOM = PRENOM.size();
 int NOMBRE_NOM = NOM.size();
 int NOMBRE_MATIERE = MATIERE_SPE.size();
@@ -22,7 +22,7 @@ void creerCsv()
 	myfile.open("eleve.csv");
 
 	// Première ligne du csv avec les différentes catégories
-	myfile << "ID" << " PRENOM;" << "NOM;" << "Annee;";
+	myfile << "ID;" << " PRENOM;" << "NOM;" << "Annee;";
 	for (int i = 1; i < 11; i++)
 	{
 		myfile << "MATIERE OPTIONNELLE" << i << ";";
