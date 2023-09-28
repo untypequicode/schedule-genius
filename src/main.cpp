@@ -10,16 +10,13 @@ int main()
 {
 	//// Micky
 	// 
-	//creerCsv();
+	creerCsv();
 	
 
 	//// Vincent
 	// 
-	/*std::string nom_fichier = "example.txt";
-	ouvrirFichierParLigne(nom_fichier);
-	ouvrirFichierParMot(nom_fichier);
-	ouvrirFichierParCaractere(nom_fichier);*/
-
+	std::string nom_fichier = "eleve.csv";
+	genererEleveViaCsv(nom_fichier);
 
 	//// Ethan
 	//
@@ -58,7 +55,7 @@ int main()
 	groupe.AddEleve(eleve);
 	std::string matiere_eleve = groupe.GetEleve(0).GetMatiere(1);
 	std::cout << groupe.GetEleve(0).m_prenom << std::endl;*/
-	TabDynString tab(10);
+	/*TabDynString tab(10);
 	//std::cout << tab.GetNbElem() << std::endl;
 	//std::cout << tab.GetNbElemMax() << std::endl;
 	TabDynString tab2;
@@ -212,5 +209,5 @@ int main()
 	std::cout << "n = " << tabString.GetNbElem() << ", len = " << tabString.GetNbElemMax() << std::endl;
 
 
-	return 0;
+	return 0;*/
 }

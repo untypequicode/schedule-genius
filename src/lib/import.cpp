@@ -113,56 +113,80 @@ void genererEleveViaCsv(std::string const nom_fichier)
 	std::string prenom = "";
 	std::string matiere = "";
 	std::string niveau = "";
-	int id = 0;
-	std::string id_fake = "";
+	int test = 0;
+	std::string id = "";
 
 	std::ifstream myfile;
 	myfile.open(nom_fichier);
 	std::string ligne;
-	std::getline(myfile, ligne);
-	for(int i = 0; i < 5; ++i)
+	std::getline(myfile, ligne);		//on se débarrasse de la première ligne qui ne contient que les en-tête
+	for(int i = 0; i < 5000 ; ++i)
 	{
 		myfile >> mot;
-		if (mot != ";")
+		for (char character : mot)
 		{
-			if (id_fake == "")
+
+			if (character == ';' and test != 4)
 			{
-				id_fake = mot;
+				test += 1;
 			}
 
-			else if (prenom == "")
+			else if (test == 0)
 			{
-				prenom = mot;
+				id += character;
 			}
 
-			else if (nom == "")
+			else if (test == 1)
 			{
-				nom = mot;
+				prenom += character;
 			}
 
-			else if (niveau == "")
+			else if (test == 2)
 			{
-				niveau = mot;
+				nom += character;
 			}
 
-			else while (mot != "\n")
+			else if (test == 3)
 			{
-				matiere += mot;
+				niveau += character;
 			}
 
-			//Eleve test = Eleve(id, prenom, nom, niveau);
-			//test.addMatiere(matiere);
-			std::cout << id << std::endl;
-			std::cout << prenom << std::endl;
-			std::cout << nom << std::endl;
-			std::cout << niveau << std::endl;
-			std::cout << matiere;
-			nom = "";
-			prenom = "";
-			matiere = "";
-			niveau = "";
-			id += 1;
-			return;
+			else if (test == 4)
+			{
+				if (not (character == '1' or character == '2' or character == '3' or character == '4' or character == '5' or character == '6' or character == '7' or character == '8' or character == '9' or character == '0'))
+				{
+					if (character == ';')
+					{
+						matiere += " ";
+					}
+
+					else
+						matiere += character;
+				}
+
+				else
+				{
+					test = 5;
+				}
+			}
+
+			if (test == 5)
+			{
+				//Eleve test = Eleve(id, prenom, nom, niveau);
+				//test.addMatiere(matiere);
+
+				std::cout << "eleve numero " << id << " : ";
+				std::cout << prenom << " " << nom << std::endl;
+				std::cout << "en annee " << niveau << std::endl;
+				std::cout << "matieres optionnelles : " << matiere << std::endl << std::endl;
+
+				nom = "";
+				prenom = "";
+				niveau = "";
+				matiere = "";
+				id = character;
+				test = 0;
+			}
 		}
 
 	}

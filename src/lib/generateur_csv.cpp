@@ -11,7 +11,7 @@ std::array <std::string,29> const NOM = {"Dupont", "Martin", "Dubois", "Bernard"
 std::vector <std::string> MATIERE_SPE = { "Francais", "Histoire" "Geo", "EMC", "EPS", "SPC", "SVT", "Maths", "NSI", "Philo",
 "Anglais", "Espagnole", "Allemand", "Italien", "Russe" };
 
-int NOMBRE_ELEVE = 696768;
+int NOMBRE_ELEVE = 1000;
 int NOMBRE_PRENOM = PRENOM.size();
 int NOMBRE_NOM = NOM.size();
 int NOMBRE_MATIERE = MATIERE_SPE.size();
