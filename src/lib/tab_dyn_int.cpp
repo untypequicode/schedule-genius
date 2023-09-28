@@ -37,12 +37,12 @@ TabDynInt::~TabDynInt()
 
 void TabDynInt::Append(int i)
 {
-	AddAppend(i, true);
+	AddAppend(i, false);
 }
 
 void TabDynInt::Add(int i)
 {
-	AddAppend(i, false);
+	AddAppend(i, true);
 }
 
 int TabDynInt::Get(unsigned int index) const
