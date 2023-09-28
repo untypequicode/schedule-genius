@@ -1,4 +1,5 @@
 #include "import.hpp"
+#include "eleves.hpp"
 ;
 std::string ouvrirFichierParLigne(std::string const nom_fichier)
 {
@@ -115,6 +116,7 @@ void genererEleveViaCsv(std::string const nom_fichier)
 	std::string niveau = "";
 	int test = 0;
 	std::string id = "";
+	int fake_id = 0;
 
 	std::ifstream myfile;
 	myfile.open(nom_fichier);
@@ -172,7 +174,7 @@ void genererEleveViaCsv(std::string const nom_fichier)
 
 			if (test == 5)
 			{
-				//Eleve test = Eleve(id, prenom, nom, niveau);
+				Eleve Elevetest = Eleve(fake_id, prenom, nom, niveau);
 				//test.addMatiere(matiere);
 
 				std::cout << "eleve numero " << id << " : ";
@@ -186,6 +188,7 @@ void genererEleveViaCsv(std::string const nom_fichier)
 				matiere = "";
 				id = character;
 				test = 0;
+				fake_id++;
 			}
 		}
 
