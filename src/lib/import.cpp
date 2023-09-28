@@ -14,7 +14,7 @@ std::string ouvrirFichierParLigne(std::string const nom_fichier)
 		std::string ligne;						 //on génère la variable ligne pour ensuite la remplir
 		std::string lignef = "\n";
 		int fusible = 0;						 //une précaution de sauvegarde pour ne pas rester bloquer dans la fichier
-		int max = 100;
+		int max = 2500;
 		while (fusible < max)
 		{
 			//std::cout << lignef << std::endl;			//on renvoie la partie lu du fichier pour les test
@@ -47,19 +47,19 @@ std::string ouvrirFichierParMot(std::string const nom_fichier)
 		myfile >> mot;	    			 //on prélève le premier caractere dans la variable caractere, elle servira d'identificteur de fin de programme
 		std::string motf = "";
 		int fusible = 0;						 //une précaution de sauvegarde pour ne pas rester bloquer dans la fichier
-		int max = 2000;
+		int max = 10000;
 		while (fusible < max)
 		{
 			//std::cout << caractere << std::endl;			//on renvoie la partie lu du fichier pour les test
 			myfile >> mot;							//on donne au caractere la valeur du caractere suivant
 			if (mot == ";")
 			{
-				motf += "  ";
+				motf += " ";
 			}
 
 			else
 			{
-				motf += mot;						//on ajoute le dernier caractère dans la même variable pour un renvoie propre
+				motf += mot + "\n";						//on ajoute le dernier caractère dans la même variable pour un renvoie propre
 			}
 
 			fusible += 1;
@@ -120,8 +120,8 @@ void genererEleveViaCsv(std::string const nom_fichier)
 	std::ifstream myfile;
 	myfile.open(nom_fichier);
 	std::string ligne;
-	std::getline(myfile, ligne);
-	for(int i = 0; i < 5; ++i)
+	std::getline(myfile, ligne);		//on se débarrasse de la première ligne qui ne contient que les en-tête
+	for(int i = 0; i < 2500; ++i)
 	{
 		myfile >> mot;
 		if (mot != ";")
@@ -153,17 +153,24 @@ void genererEleveViaCsv(std::string const nom_fichier)
 
 			//Eleve test = Eleve(id, prenom, nom, niveau);
 			//test.addMatiere(matiere);
-			std::cout << id << std::endl;
-			std::cout << prenom << std::endl;
-			std::cout << nom << std::endl;
-			std::cout << niveau << std::endl;
-			std::cout << matiere;
-			nom = "";
-			prenom = "";
-			matiere = "";
-			niveau = "";
-			id += 1;
-			return;
+			if (mot == "\n");
+			{
+				//std::cout << "eleve n" << id << " :";
+				//std::cout << std::endl;
+				std::cout << prenom;
+				//std::cout << nom;
+				std::cout << std::endl;
+				//std::cout << "en annee " ;
+				//std::cout << niveau;
+				//std::cout << std::endl;
+				//std::cout << matiere;
+
+				nom = "";
+				prenom = "";
+				matiere = "";
+				niveau = "";
+				id += 1;
+			}
 		}
 
 	}
