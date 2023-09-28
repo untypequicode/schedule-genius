@@ -138,7 +138,9 @@
     <ClCompile Include="src\lib\groupes.cpp" />
     <ClCompile Include="src\lib\groupes.hpp" />
     <ClCompile Include="src\lib\import.cpp" />
-    <ClCompile Include="src\lib\tableau_dynamique.cpp" />
+    <ClCompile Include="src\lib\tab_dyn.cpp" />
+    <ClCompile Include="src\lib\tab_dyn_int.cpp" />
+    <ClCompile Include="src\lib\tab_dyn_string.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\tutos\pgii33\pgii33.cpp" />
     <ClCompile Include="src\tutos\untypequicode\player.cpp" />
@@ -150,7 +152,7 @@
     <ClInclude Include="src\lib\generateur_csv.hpp" />
     <ClInclude Include="src\lib\generation_groupes.hpp" />
     <ClInclude Include="src\lib\import.hpp" />
-    <ClInclude Include="src\lib\tableau_dynamique.hpp" />
+    <ClInclude Include="src\lib\tab_dyn.hpp" />
     <ClInclude Include="src\tutos\pgii33\pgii33.hpp" />
     <ClInclude Include="src\tutos\untypequicode\player.hpp" />
     <ClInclude Include="src\tutos\untypequicode\untypequicode.hpp" />
