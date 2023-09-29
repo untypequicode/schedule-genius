@@ -1,4 +1,5 @@
 #include "import.hpp"
+#include "eleves.hpp"
 ;
 std::string ouvrirFichierParLigne(std::string const nom_fichier)
 {
@@ -14,8 +15,8 @@ std::string ouvrirFichierParLigne(std::string const nom_fichier)
 		std::getline(myfile, ligne);	    	 //on prélève la première ligne dans la variable ligne, elle servira d'identificteur de fin de programme
 		std::string lignef = "\n";
 		int fusible = 0;						 //une précaution de sauvegarde pour ne pas rester bloquer dans la fichier
-		int max = 100;
-		while ((ligne != "\n") and (fusible < max))
+		int max = 2500;
+		while (fusible < max)
 		{
 			//std::cout << lignef << std::endl;			//on renvoie la partie lu du fichier pour les test
 			std::getline(myfile, ligne);				//on donne a la ligne la valeur de la ligne suivante
@@ -47,19 +48,19 @@ std::string ouvrirFichierParMot(std::string const nom_fichier)
 		myfile >> mot;	    			 //on prélève le premier caractere dans la variable caractere, elle servira d'identificteur de fin de programme
 		std::string motf = "";
 		int fusible = 0;						 //une précaution de sauvegarde pour ne pas rester bloquer dans la fichier
-		int max = 2;
+		int max = 2000;
 		while (fusible < max)
 		{
 			//std::cout << caractere << std::endl;			//on renvoie la partie lu du fichier pour les test
 			myfile >> mot;							//on donne au caractere la valeur du caractere suivant
 			if (mot == ";")
 			{
-				motf += "  ";
+				motf += " ";
 			}
 
 			else
 			{
-				motf += mot;						//on ajoute le dernier caractère dans la même variable pour un renvoie propre
+				motf += mot + "\n";						//on ajoute le dernier caractère dans la même variable pour un renvoie propre
 			}
 
 			fusible += 1;
@@ -105,3 +106,99 @@ void ouvrirFichierParCaractere(std::string const nom_fichier)
 	return;
 }
 
+
+void genererEleveViaCsv(std::string const nom_fichier)
+{
+	std::string mot = "";
+	std::string nom = "";
+	std::string prenom = "";
+	std::string matiere = "";
+	std::string niveau = "";
+	int test = 0;
+	bool test2 = true;
+	std::string id = "";
+	int fake_id = 0;
+
+	std::ifstream myfile;
+	myfile.open(nom_fichier);
+	std::string ligne;
+	std::getline(myfile, ligne);		//on se débarrasse de la première ligne qui ne contient que les en-tête
+	for(int i = 0; i < 5000 ; ++i)
+	{
+		myfile >> mot;
+		for (char character : mot)
+		{
+
+			if (character == ';' and test != 4)
+			{
+				test += 1;
+			}
+
+			else if (test == 0)
+			{
+				id += character;
+			}
+
+			else if (test == 1)
+			{
+				prenom += character;
+			}
+
+			else if (test == 2)
+			{
+				nom += character;
+			}
+
+			else if (test == 3)
+			{
+				niveau += character;
+			}
+
+			else if (test == 4)
+			{
+				if (test2)
+				{
+					Eleve elevetest(fake_id, prenom, nom, niveau);
+					std::cout << "eleve numero " << id << " : ";
+					std::cout << prenom << " " << nom << std::endl;
+					std::cout << "en annee " << niveau << std::endl;
+					test2 = false;
+				}
+
+				if (not (character == '1' or character == '2' or character == '3' or character == '4' or character == '5' or character == '6' or character == '7' or character == '8' or character == '9' or character == '0'))
+				{
+					if (character == ';')
+					{
+						matiere = "";
+					}
+
+					else
+						matiere += character;
+				}
+
+				else
+				{
+					test = 5;
+				}
+			}
+
+			if (test == 5)
+			{
+				for (i; i < 11; ++i)
+				{
+					matiere = " ";
+				}
+				std::cout << "matieres optionnelles : " << matiere << std::endl << std::endl;
+
+				nom = "";
+				prenom = "";
+				niveau = "";
+				matiere = "";
+				id = character;
+				test = 0;
+				fake_id++;
+			}
+		}
+
+	}
+}

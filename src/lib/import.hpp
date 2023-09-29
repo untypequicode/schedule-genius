@@ -23,4 +23,12 @@ void ouvrirFichierParCaractere(std::string const nom_fichier);
 en paramètre le nom du fichier a ouvrir
 le programme parcours chaque caractère du fichier
 */
+
+
+void genererEleveViaCsv(std::string const nom_fichier);
+/*
+encore en travail
+en paramètre le nom du fichier à extraire
+en surtie une liste des données rangés dans la classe Eleve d'Ethan
+*/
 #endif
