@@ -2,15 +2,15 @@
 #include "lib/generation_groupes.hpp"
 #include "lib/generateur_csv.hpp"
 #include "lib/import.hpp"
-#include "lib/tab_dyn.hpp"
+#include "lib/tab_dyn/tab_dyn.hpp"
 #include <iostream>
 
 int main()
 {
 	//// Micky
 	// 
-	begin();
-	creerCsv();
+	/*begin();
+	creerCsv();*/
 	
 
 	//// Vincent
@@ -55,7 +55,9 @@ int main()
 	groupe.AddEleve(eleve);
 	std::string matiere_eleve = groupe.GetEleve(0).GetMatiere(1);
 	std::cout << groupe.GetEleve(0).m_prenom << std::endl;*/
-	/*TabDynString tab(10);
+	
+	
+	TabDynString tab(10);
 	//std::cout << tab.GetNbElem() << std::endl;
 	//std::cout << tab.GetNbElemMax() << std::endl;
 	TabDynString tab2;
@@ -209,5 +211,5 @@ int main()
 	std::cout << "n = " << tabString.GetNbElem() << ", len = " << tabString.GetNbElemMax() << std::endl;
 
 
-	return 0;*/
+	return 0;
 }
