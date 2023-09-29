@@ -21,7 +21,12 @@ Fichier::Fichier(std::string nom_fichier, int nb_ligne)
 
 }
 
-std::string Fichier::Split(char split)
+Fichier::~Fichier()
+{
+
+}
+
+TabDynString Fichier::Split(std::string nom_fichier, char split, char end)
 {
 	std::ifstream myfile;
 	TabDynString data;

@@ -5,6 +5,7 @@
 #include <string>
 #include <fstream>
 #include <sstream>
+#include "tab_dyn/tab_dyn.hpp"
 
 
 class Fichier
@@ -16,7 +17,7 @@ class Fichier
 		~Fichier();
 
 		std::string GetTexte() const;
-		std::string Split(char split);
+		TabDynString Split(std::string nom_fichier, char split, char end);
 
 	private:
 		std::string m_name;

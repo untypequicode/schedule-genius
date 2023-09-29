@@ -11,6 +11,8 @@ int main()
 	// 
 	/*begin();
 	creerCsv();*/
+	CsvGenerateur csv;
+	csv.creerCsv();
 	
 
 	//// Vincent
