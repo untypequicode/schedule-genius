@@ -218,7 +218,7 @@ void TabDynInt::AddAppend(int i, bool addition)
 		}
 		else
 		{
-			new_tab = new int[m_nbElemMax +1];
+			new_tab = new int[m_nbElemMax + 1];
 		}
 		for (unsigned int i = 0; i < m_nbElem; i++)
 		{
