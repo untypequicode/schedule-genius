@@ -70,6 +70,109 @@ void TabDynInt::Set(unsigned int index, int i)
 	}
 }
 
+int TabDynInt::Pop()
+{
+	if (m_nbElem > 0)
+	{
+		int elem = m_tab[m_nbElem - 1];
+		m_nbElem--;
+		return elem;
+	}
+	else
+	{
+		return 0;
+	}
+}
+
+int TabDynInt::Pop(int index)
+{
+	if (index < m_nbElem)
+	{
+		int elem = m_tab[index];
+		for (unsigned int i = index; i < m_nbElem - 1; i++)
+		{
+			m_tab[i] = m_tab[i + 1];
+		}
+		m_nbElem--;
+		return elem;
+	}
+	else
+	{
+		return 0;
+	}
+}
+
+void TabDynInt::Remove(int elem, int num)
+{
+	int count = 0;
+	for (unsigned int i = 0; i < m_nbElem; i++)
+	{
+		if (m_tab[i] == elem)
+		{
+			count++;
+			if (count == num)
+			{
+				for (unsigned int j = i; j < m_nbElem - 1; j++)
+				{
+					m_tab[j] = m_tab[j + 1];
+				}
+				m_nbElem--;
+				break;
+			}
+		}
+	}
+}
+
+void TabDynInt::Remove(int elem)
+{
+	for (unsigned int i = 0; i < m_nbElem; i++)
+	{
+		if (m_tab[i] == elem)
+		{
+			for (unsigned int j = i; j < m_nbElem - 1; j++)
+			{
+				m_tab[j] = m_tab[j + 1];
+			}
+			m_nbElem--;
+			i--;
+		}
+	}
+}
+
+void TabDynInt::Remove(int elem, bool first)
+{
+	if (first)
+	{
+		for (unsigned int i = 0; i < m_nbElem; i++)
+		{
+			if (m_tab[i] == elem)
+			{
+				for (unsigned int j = i; j < m_nbElem - 1; j++)
+				{
+					m_tab[j] = m_tab[j + 1];
+				}
+				m_nbElem--;
+				break;
+			}
+		}
+	}
+	else
+	{
+		for (unsigned int i = m_nbElem - 1; i >= 0; i--)
+		{
+			if (m_tab[i] == elem)
+			{
+				for (unsigned int j = i; j < m_nbElem - 1; j++)
+				{
+					m_tab[j] = m_tab[j + 1];
+				}
+				m_nbElem--;
+				break;
+			}
+		}
+	}
+}
+
 void TabDynInt::AddAppend(int i, bool addition)
 {
 	if (m_nbElemMax == 0)

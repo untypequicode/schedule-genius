@@ -147,6 +147,11 @@ class TabDynInt : public TabDyn
 		int Get(unsigned int index) const;
 		int* GetTab() const;
 		void Set(unsigned int index, int i);
+		int Pop();
+		int Pop(int index);
+		void Remove(int elem, int num);
+		void Remove(int elem);
+		void Remove(int elem, bool first);
 
 private :
 	void AddAppend(int i, bool addition);
