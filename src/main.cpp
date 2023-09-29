@@ -1,5 +1,4 @@
 #include "lib/eleves.hpp"
-#include "lib/groupes.hpp"
 #include "lib/generation_groupes.hpp"
 #include "lib/generateur_csv.hpp"
 #include "lib/import.hpp"
@@ -10,6 +9,7 @@ int main()
 {
 	//// Micky
 	// 
+	begin();
 	creerCsv();
 	
 

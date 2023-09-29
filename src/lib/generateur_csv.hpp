@@ -2,10 +2,10 @@
 #define DEF_GENERATEUR_CSV
 
 #include <fstream>
-#include <vector>
 #include <iostream>
-#include <array>
+#include "tab_dyn.hpp"
 
+void begin();
 void creerCsv();
 
 #endif
