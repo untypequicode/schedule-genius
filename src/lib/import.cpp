@@ -110,10 +110,10 @@ void ouvrirFichierParCaractere(std::string const nom_fichier)
 
 void genererEleveViaCsv(std::string const nom_fichier)
 {
-	TabDynString matierefull(10);
+	//TabDynString matierefull(10);
 	for (int i = 0; i < 11; i++)
 	{
-		matierefull.Add("");
+		//matierefull.Add("");
 	}
 	int indice = 0;
 	std::string mot = "";
@@ -166,7 +166,7 @@ void genererEleveViaCsv(std::string const nom_fichier)
 			{
 				if (test2)
 				{
-					Eleve elevetest(fake_id, prenom, nom, niveau);
+					//Eleve elevetest(fake_id, prenom, nom, niveau);
 					std::cout << "eleve numero " << id << " : ";
 					std::cout << prenom << " " << nom << std::endl;
 					std::cout << "en annee " << niveau << std::endl;
@@ -177,9 +177,9 @@ void genererEleveViaCsv(std::string const nom_fichier)
 				{
 					if (character == ';')
 					{
-						matierefull.Pop(0);
-						matierefull.Add(matiere);
-						alleleve.addMatiere(matiere);
+						//matierefull.Pop(0);
+						//matierefull.Add(matiere);
+						//alleleve.addMatiere(matiere);
 						matiere = "";
 					}
 
@@ -197,7 +197,7 @@ void genererEleveViaCsv(std::string const nom_fichier)
 			{
 				for (i; i < 11; ++i)
 				{
-					matiere += matierefull.Pop() + " ";
+					//matiere += matierefull.Pop() + " ";
 				}
 				std::cout << "matieres optionnelles : " << matiere << std::endl << std::endl;
 				nom = "";
