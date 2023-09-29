@@ -179,5 +179,5 @@ int main()
 	std::cout << "n = " << tabString.GetNbElem() << ", len = " << tabString.GetNbElemMax() << std::endl;
 
 
-	return 0;*/
+	return 0;
 }

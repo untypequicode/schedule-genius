@@ -177,7 +177,6 @@ void genererEleveViaCsv(std::string const nom_fichier)
 				{
 					if (character == ';')
 					{
-						//matierefull.Pop(0);
 						//matierefull.Add(matiere);
 						//alleleve.addMatiere(matiere);
 						matiere = "";
