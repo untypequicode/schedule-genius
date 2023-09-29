@@ -115,6 +115,7 @@ void genererEleveViaCsv(std::string const nom_fichier)
 	std::string matiere = "";
 	std::string niveau = "";
 	int test = 0;
+	bool test2 = true;
 	std::string id = "";
 	int fake_id = 0;
 
@@ -168,9 +169,6 @@ void genererEleveViaCsv(std::string const nom_fichier)
 				{
 					if (character == ';')
 					{
-						matierefull.Pop(0);
-						matierefull.Add(matiere);
-						alleleve.addMatiere(matiere);
 						matiere = "";
 					}
 
@@ -188,7 +186,7 @@ void genererEleveViaCsv(std::string const nom_fichier)
 			{
 				for (i; i < 11; ++i)
 				{
-					matiere += matierefull.Pop() + " ";
+					matiere = " ";
 				}
 				std::cout << "matieres optionnelles : " << matiere << std::endl << std::endl;
 
