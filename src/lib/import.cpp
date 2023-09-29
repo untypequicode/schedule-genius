@@ -212,7 +212,7 @@ TabDynString splitFichier(std::string nom_fichier, char split, char end)
 	myfile.open(nom_fichier);
 	std::string ligne;
 	std::string peche = "";
-	for (int i = 1; i > 0; i++)
+	while(true)
 	{
 		std::getline(myfile, ligne);
 		for (char character : ligne)

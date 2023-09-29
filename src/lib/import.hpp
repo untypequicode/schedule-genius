@@ -5,7 +5,7 @@
 #include <string>
 #include <fstream>
 #include <sstream>
-#include "tab_dyn.hpp"
+#include "tab_dyn/tab_dyn.hpp"
 
 std::string ouvrirFichierParLigne(std::string const nom_fichier);
 /*
