@@ -76,12 +76,10 @@ std::string TabDynString::Pop()
 	{
 		std::string str = m_tab[m_nbElem - 1];
 		m_nbElem--;
-		Optimize();
 		return str;
 	}
 	else
 	{
-		Optimize();
 		return "";
 	}
 }
@@ -96,12 +94,10 @@ std::string TabDynString::Pop(int index)
 			m_tab[i] = m_tab[i + 1];
 		}
 		m_nbElem--;
-		Optimize();
 		return str;
 	}
 	else
 	{
-		Optimize();
 		return "";
 	}
 }
@@ -125,7 +121,6 @@ void TabDynString::Remove(std::string elem, int num)
 			}
 		}
 	}
-	Optimize();
 }
 
 void TabDynString::Remove(std::string elem)
@@ -142,7 +137,6 @@ void TabDynString::Remove(std::string elem)
 			i--;
 		}
 	}
-	Optimize();
 }
 
 void TabDynString::Remove(std::string elem, bool first)
@@ -177,7 +171,6 @@ void TabDynString::Remove(std::string elem, bool first)
 			}
 		}
 	}
-	Optimize();
 }
 
 void TabDynString::AddAppend(std::string str, bool addition)
@@ -243,37 +236,5 @@ void TabDynString::AddAppend(std::string str, bool addition)
 		}
 		m_nbElem++;
 		m_tab = new_tab;
-	}
-}
-
-void TabDynString::Optimize()
-{
-	if (m_add_with_multiple)
-	{
-		if (m_nbElem * m_addition <= m_nbElemMax)
-		{
-			std::string* new_tab = new std::string[m_nbElemMax / m_addition];
-			for (unsigned int i = 0; i < m_nbElem; i++)
-			{
-				new_tab[i] = m_tab[i];
-			}
-			delete[] m_tab;
-			m_tab = new_tab;
-			m_nbElemMax /= m_addition;
-		}
-	}
-	else
-	{
-		if (m_nbElem + m_addition <= m_nbElemMax)
-		{
-			std::string* new_tab = new std::string[m_nbElemMax - m_addition];
-			for (unsigned int i = 0; i < m_nbElem; i++)
-			{
-				new_tab[i] = m_tab[i];
-			}
-			delete[] m_tab;
-			m_tab = new_tab;
-			m_nbElemMax -= m_addition;
-		}
 	}
 }
