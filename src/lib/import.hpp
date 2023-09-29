@@ -5,6 +5,7 @@
 #include <string>
 #include <fstream>
 #include <sstream>
+#include "tab_dyn.hpp"
 
 std::string ouvrirFichierParLigne(std::string const nom_fichier);
 /*
@@ -30,5 +31,11 @@ void genererEleveViaCsv(std::string const nom_fichier);
 encore en travail
 en paramètre le nom du fichier à extraire
 en surtie une liste des données rangés dans la classe Eleve d'Ethan
+*/
+
+TabDynString splitFichier(std::string nom_fichier, char split, char end);
+/*
+en parametre le fichier à lire, le caractere à sauter et la caracter (unique !) de fin
+renvoie un tableau de valeur séparé par le split jusqu'à atteindre end
 */
 #endif

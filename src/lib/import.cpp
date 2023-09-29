@@ -1,5 +1,6 @@
 #include "import.hpp"
 #include "eleves.hpp"
+
 ;
 std::string ouvrirFichierParLigne(std::string const nom_fichier)
 {
@@ -123,7 +124,7 @@ void genererEleveViaCsv(std::string const nom_fichier)
 	myfile.open(nom_fichier);
 	std::string ligne;
 	std::getline(myfile, ligne);		//on se débarrasse de la première ligne qui ne contient que les en-tête
-	for(int i = 0; i < 5000 ; ++i)
+	for(int i = 0; i < 1000 ; ++i)
 	{
 		myfile >> mot;
 		for (char character : mot)
@@ -169,7 +170,7 @@ void genererEleveViaCsv(std::string const nom_fichier)
 				{
 					if (character == ';')
 					{
-						matiere = "";
+						matiere += " ";
 					}
 
 					else
@@ -196,9 +197,45 @@ void genererEleveViaCsv(std::string const nom_fichier)
 				matiere = "";
 				id = character;
 				test = 0;
+				test2 = true;
 				fake_id++;
 			}
 		}
 
 	}
+}
+
+TabDynString splitFichier(std::string nom_fichier, char split, char end)
+{
+	std::ifstream myfile;
+	TabDynString data;
+	myfile.open(nom_fichier);
+	std::string ligne;
+	std::string peche = "";
+	for (int i = 1; i > 0; i++)
+	{
+		std::getline(myfile, ligne);
+		for (char character : ligne)
+		{
+			if (character == end)
+			{
+				data.Add(peche);
+				std::cout << peche << std::endl;
+				return data;
+			}
+
+			if (character == split)
+			{
+				data.Add(peche);
+				std::cout << peche << std::endl;
+				peche = "";
+			}
+
+			else
+			{
+				peche += character;
+			}
+		}
+	}
+	return data;
 }
