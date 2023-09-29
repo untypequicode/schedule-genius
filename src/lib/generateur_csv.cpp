@@ -1,15 +1,24 @@
 #include "generateur_csv.hpp"
 
-TabDynString Prenom;
-TabDynString Nom;
-TabDynString MatiereSpe;
-void begin()
+CsvGenerateur::CsvGenerateur()
 {
-	Prenom.Add("Alice");
-	Nom.Add("Dupont");
-	MatiereSpe.Add("Francais");
+	M_NOMBRE_ELEVE = 200;
+	m_matiere_spe.Add("Francais");
+	m_matiere_spe.Add("Anglais");
+	m_prenom.Add("Alice");
+	m_prenom.Add("Antoine");
+	m_nom.Add("Dupont");
+	m_nom.Add("Ducon");
+	m_id_eleve = 0;
+
+	M_NOMBRE_NOM = m_nom.GetNbElem();
+	M_NOMBRE_PRENOM = m_prenom.GetNbElem();
+	M_NOMBRE_MATIERE_SPE = m_matiere_spe.GetNbElem();
 }
 
+CsvGenerateur::~CsvGenerateur()
+{
+}
 
 //std::string* PRENOM_TEMP[26] = { "Alice", "Bob", "Charlie", "David", "Eve", "Frank", "Grace", "Hannah", "Ivy", "Jack",
 //"Katherine", "Liam", "Mia", "Noah", "Olivia", "Peter", "Quinn", "Rachel", "Samuel", "Taylor",
@@ -23,12 +32,8 @@ void begin()
 //std::vector <std::string> MATIERE_SPE = { "Francais", "Histoire" "Geo", "EMC", "EPS", "SPC", "SVT", "Maths", "NSI", "Philo",
 //"Anglais", "Espagnole", "Allemand", "Italien", "Russe" };
 
-int NOMBRE_ELEVE = 1000;
-int NOMBRE_PRENOM = Prenom.GetNbElem();
-int NOMBRE_NOM = Nom.GetNbElem();
-int NOMBRE_MATIERE = MatiereSpe.GetNbElem();
-int ID_ELEVE = 00000;
-void creerCsv()
+
+void CsvGenerateur::creerCsv()
 {
 	std::ofstream myfile;
 	myfile.open("eleve.csv");
@@ -42,21 +47,21 @@ void creerCsv()
 	myfile << "\n";
 
 	// Autres lignes du csv
-	for (int i = 0; i < NOMBRE_ELEVE; i++)
+	for (int i = 0; i < M_NOMBRE_ELEVE; i++)
 	{
-		myfile << ID_ELEVE << ";";
-		ID_ELEVE += 1;
-		myfile << Prenom.Get(rand() % NOMBRE_PRENOM) << ";";
-		myfile << Nom.Get(rand() % NOMBRE_NOM) << ";";
+		myfile << m_id_eleve << ";";
+		m_id_eleve++;
+		myfile << m_prenom.Get(rand() % M_NOMBRE_PRENOM) << ";";
+		myfile << m_nom.Get(rand() % M_NOMBRE_NOM) << ";";
 		myfile << rand() % 3 + 1 << ";";
 
-		int NOMBRE_MATIERE_SPE = rand() % MatiereSpe.GetNbElem();
-		TabDynString MatiereRestante(MatiereSpe);
+		NOMBRE_MATIERE_SPE = rand() % m_matiere_spe.GetNbElem();
+		m_matiere_restante = m_matiere_spe;
 		for (int e = 0; e < NOMBRE_MATIERE_SPE; e++)
 
 		{
 			int RANDOM_MATIERE = rand() % 5;
-			myfile << MatiereRestante.Pop(e) << ";";
+			myfile << m_matiere_restante.Pop(e) << ";";
 		};
 		myfile << "\n";
 	}

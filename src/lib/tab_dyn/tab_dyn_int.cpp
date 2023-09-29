@@ -32,7 +32,10 @@ TabDynInt::TabDynInt(const TabDynInt& tabDynInt)
 
 TabDynInt::~TabDynInt()
 {
-	delete[] m_tab;
+	if (m_tab != nullptr)
+	{
+		delete[] m_tab;
+	}
 }
 
 void TabDynInt::Append(int i)

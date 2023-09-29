@@ -32,7 +32,10 @@ TabDynEleve::TabDynEleve(const TabDynEleve& tabDynEleve)
 
 TabDynEleve::~TabDynEleve()
 {
-	delete[] m_tab;
+	if (m_tab != nullptr)
+	{
+		delete[] m_tab;
+	}
 }
 
 void TabDynEleve::Append(Eleve i)

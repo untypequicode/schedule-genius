@@ -32,7 +32,10 @@ TabDynString::TabDynString(const TabDynString& tabDynString)
 
 TabDynString::~TabDynString()
 {
-	delete[] m_tab;
+	if (m_tab != nullptr)
+	{
+		delete[] m_tab;
+	}
 }
 
 void TabDynString::Append(std::string str)
