@@ -239,3 +239,9 @@ TabDynString splitFichier(std::string nom_fichier, char split, char end)
 	}
 	return data;
 }
+
+int convertString(std::string nombre)
+{
+
+	return 0
+}
