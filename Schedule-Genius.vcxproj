@@ -137,6 +137,7 @@
     <ClCompile Include="src\lib\generation_groupes.cpp" />
     <ClCompile Include="src\lib\import.cpp" />
     <ClCompile Include="src\lib\tab_dyn\tab_dyn.cpp" />
+    <ClCompile Include="src\lib\tab_dyn\tab_dyn_eleve.cpp" />
     <ClCompile Include="src\lib\tab_dyn\tab_dyn_int.cpp" />
     <ClCompile Include="src\lib\tab_dyn\tab_dyn_string.cpp" />
     <ClCompile Include="src\main.cpp" />
