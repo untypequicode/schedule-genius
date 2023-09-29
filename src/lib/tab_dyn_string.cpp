@@ -14,7 +14,7 @@ TabDynString::TabDynString(unsigned int nbElemMax)
 }
 
 TabDynString::TabDynString(unsigned int nbElemMax, bool add_with_multiple, unsigned int addition)
-	: TabDyn(nbElemMax, add_with_multiple, addition),
+	: TabDyn(nbElemMax,add_with_multiple, addition),
 	m_tab(new std::string[nbElemMax])
 {
 
@@ -218,7 +218,7 @@ void TabDynString::AddAppend(std::string str, bool addition)
 		}
 		else
 		{
-			new_tab = new std::string[m_nbElemMax + 1];
+			new_tab = new std::string[m_nbElemMax +1];
 		}
 		for (unsigned int i = 0; i < m_nbElem; i++)
 		{
