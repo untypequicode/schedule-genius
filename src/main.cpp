@@ -14,10 +14,11 @@ int main()
 	
 
 	//// Vincent
-	// 
+	//
 	std::string nom_fichier = "test.txt";
 	//genererEleveViaCsv(nom_fichier);
-	splitFichier(nom_fichier, ',', '|');
+	//splitFichier(nom_fichier, ',', '|');
+	//std::cout << convertString("525") + convertString("58");
 
 	//// Ethan
 	//
@@ -58,7 +59,7 @@ int main()
 	std::cout << groupe.GetEleve(0).m_prenom << std::endl;*/
 	
 	
-	TabDynString tab(10);
+	/*TabDynString tab(10);
 	//std::cout << tab.GetNbElem() << std::endl;
 	//std::cout << tab.GetNbElemMax() << std::endl;
 	TabDynString tab2;
@@ -212,5 +213,5 @@ int main()
 	std::cout << "n = " << tabString.GetNbElem() << ", len = " << tabString.GetNbElemMax() << std::endl;
 
 
-	return 0;
+	return 0;*/
 }

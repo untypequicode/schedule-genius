@@ -242,6 +242,58 @@ TabDynString splitFichier(std::string nom_fichier, char split, char end)
 
 int convertString(std::string nombre)
 {
+	int convert = 0;
+	for (char nb : nombre)
+	{
+		if (nb == '0')
+		{
+			convert *= 10;
+		}
 
-	return 0
+		else if (nb == '1')
+		{
+			convert = convert * 10 + 1;
+		}
+
+		else if (nb == '2')
+		{
+			convert = convert * 10 + 2;
+		}
+
+		else if (nb == '3')
+		{
+			convert = convert * 10 + 3;
+		}
+
+		else if (nb == '4')
+		{
+			convert = convert * 10 + 4;
+		}
+
+		else if (nb == '5')
+		{
+			convert = convert * 10 + 5;
+		}
+
+		else if (nb == '6')
+		{
+			convert = convert * 10 + 6;
+		}
+
+		else if (nb == '7')
+		{
+			convert = convert * 10 + 7;
+		}
+
+		else if (nb == '8')
+		{
+			convert = convert * 10 + 8;
+		}
+
+		else if (nb == '9')
+		{
+			convert = convert * 10 + 9;
+		}
+	}
+	return convert;
 }
