@@ -9,7 +9,7 @@ Fichier::Fichier()
 
 Fichier::Fichier(std::string nom_fichier)
 	: m_name(nom_fichier),
-	m_nb_ligne(0)
+	m_nb_ligne(10000)
 {
 
 }
@@ -24,6 +24,11 @@ Fichier::Fichier(std::string nom_fichier, int nb_ligne)
 Fichier::~Fichier()
 {
 
+}
+
+std::string Fichier::GetNom() const
+{
+	return m_name;
 }
 
 TabDynString Fichier::Split(std::string nom_fichier, char split, char end)
@@ -59,4 +64,31 @@ TabDynString Fichier::Split(std::string nom_fichier, char split, char end)
 		}
 	}
 	return data;
+}
+
+std::string Fichier::GetTexte() const
+{
+	std::ifstream myfiletest;
+	std::ifstream myfile;
+	std::string data = "";
+	if (myfile)
+	{
+		myfiletest.open(m_name);
+		myfile.open(m_name);
+		std::string ligne;
+
+		//for (unsigned int i = 0; i < m_nb_ligne; i++)
+		while (std::getline(myfiletest, ligne));
+		{
+			std::getline(myfile, ligne);
+			for (char carac : ligne)
+			{
+				data += carac;
+			}
+			data += "\n";
+		}
+	}
+
+	std::cout << data;
+	return("a");
 }

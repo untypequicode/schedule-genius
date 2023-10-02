@@ -41,7 +41,7 @@ std::string ouvrirFichierParMot(std::string const nom_fichier)
 
 	if (myfile) //on verifie que le fichier s'ouvre bien
 	{
-		std::cerr << "Le fichier est ouvert !!" << std::endl; //on annonce que tout ce passe bien
+		std::cout << "Le fichier est ouvert !!" << std::endl; //on annonce que tout ce passe bien
 		std::cout << std::endl;
 
 		myfile.open(nom_fichier);	 			 //on ouvre le fichier en paramètre
