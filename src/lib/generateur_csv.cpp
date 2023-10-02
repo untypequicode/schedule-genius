@@ -3,10 +3,13 @@
 CsvGenerateur::CsvGenerateur()
 {
 	M_NOMBRE_ELEVE = 200;
+	m_matiere_spe.SetSecurity(false);
 	m_matiere_spe.Add("Francais");
 	m_matiere_spe.Add("Anglais");
+	m_prenom.SetSecurity(false);
 	m_prenom.Add("Alice");
 	m_prenom.Add("Antoine");
+	m_nom.SetSecurity(false);
 	m_nom.Add("Dupont");
 	m_nom.Add("Ducon");
 	m_id_eleve = 0;

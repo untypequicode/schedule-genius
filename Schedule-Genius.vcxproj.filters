@@ -83,13 +83,19 @@
     <ClCompile Include="src\lib\generateur_csv.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="src\lib\tab_dyn_string.cpp">
-      <Filter>Fichiers sources\lib</Filter>
+    <ClCompile Include="src\lib\tab_dyn\tab_dyn.cpp">
+      <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="src\lib\tab_dyn_int.cpp">
-      <Filter>Fichiers sources\lib</Filter>
+    <ClCompile Include="src\lib\tab_dyn\tab_dyn_eleve.cpp">
+      <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="src\lib\tab_dyn.cpp">
+    <ClCompile Include="src\lib\tab_dyn\tab_dyn_int.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\tab_dyn\tab_dyn_string.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\fichier.cpp">
       <Filter>Fichiers sources\lib</Filter>
     </ClCompile>
   </ItemGroup>
@@ -118,7 +124,10 @@
     <ClInclude Include="src\lib\generateur_csv.hpp">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib\tab_dyn.hpp">
+    <ClInclude Include="src\lib\tab_dyn\tab_dyn.hpp">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\fichier.hpp">
       <Filter>Fichiers d%27en-tête\lib</Filter>
     </ClInclude>
   </ItemGroup>

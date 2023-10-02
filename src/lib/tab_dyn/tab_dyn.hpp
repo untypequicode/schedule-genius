@@ -60,12 +60,14 @@ public :
 	unsigned int GetNbElemMax() const;
 	void SetParam(bool add_with_multiple, unsigned int addition);
 	void Clear();
+	void SetSecurity(bool security);	
 
 protected :
 	unsigned int m_nbElem;
 	unsigned int m_nbElemMax;
 	bool m_add_with_multiple;
 	unsigned int m_addition;
+	bool m_security;
 };
 
 /*

@@ -34,7 +34,10 @@ TabDynInt::~TabDynInt()
 {
 	if (m_tab != nullptr)
 	{
-		delete[] m_tab;
+		if (m_security)
+		{
+			delete[] m_tab;
+		}
 	}
 }
 

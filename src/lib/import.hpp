@@ -38,4 +38,9 @@ TabDynString splitFichier(std::string nom_fichier, char split, char end);
 en parametre le fichier à lire, le caractere à sauter et la caracter (unique !) de fin
 renvoie un tableau de valeur séparé par le split jusqu'à atteindre end
 */
+
+int convertString(std::string nombre);
+/*
+transforme la chaine de caractère entrée en int si correspondance
+*/
 #endif
