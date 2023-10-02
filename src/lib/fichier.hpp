@@ -19,9 +19,13 @@ class Fichier
 		~Fichier();
 
 		std::string GetNom() const;
+		//renvoie le nom du fichier
 		std::string GetTexte() const;
+		//renvoie le contenu textuel du fichier
 		int GetNbLigne() const;
-		TabDynString Split(std::string nom_fichier, char split, char end);
+		//renvoie le nombre de ligne du fichier, ou -1 s'il n'a pas été rentré
+		void Split(char split, char end); //NE MARCHE PAS !!!
+		//renvoie le texte du fichier, séparé par le Split, jusqu'à atteindre le end
 
 	private:
 		std::string m_name;

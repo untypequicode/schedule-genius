@@ -36,11 +36,11 @@ std::string Fichier::GetNom() const
 	return m_name;
 }
 
-TabDynString Fichier::Split(std::string nom_fichier, char split, char end)
+void Fichier::Split(char split, char end)
 {
 	std::ifstream myfile;
-	TabDynString data;
-	myfile.open(nom_fichier);
+	myfile.open(m_name);
+	std::string data = "";
 	std::string ligne;
 	std::string peche = "";
 	while (true)
@@ -50,14 +50,14 @@ TabDynString Fichier::Split(std::string nom_fichier, char split, char end)
 		{
 			if (character == end)
 			{
-				data.Add(peche);
+				data += peche;
 				std::cout << peche << std::endl;
-				return data;
+				//return data;
 			}
 
 			if (character == split)
 			{
-				data.Add(peche);
+				data += peche;
 				std::cout << peche << std::endl;
 				peche = "";
 			}
@@ -68,7 +68,7 @@ TabDynString Fichier::Split(std::string nom_fichier, char split, char end)
 			}
 		}
 	}
-	return data;
+	//return data;
 }
 
 std::string Fichier::GetTexte() const
