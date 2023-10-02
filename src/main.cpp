@@ -17,7 +17,7 @@ int main()
 
 	//// Vincent
 	//
-	std::string nom_fichier = "test.txt";
+	std::string nom_fichier = "eleve.csv";
 	//genererEleveViaCsv(nom_fichier);
 	//splitFichier(nom_fichier, ',', '|');
 	Fichier fichiertest(nom_fichier);

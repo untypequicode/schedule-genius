@@ -68,17 +68,19 @@ TabDynString Fichier::Split(std::string nom_fichier, char split, char end)
 
 std::string Fichier::GetTexte() const
 {
-	std::ifstream myfiletest;
 	std::ifstream myfile;
+	std::ifstream myfiletest;
 	std::string data = "";
 	if (myfile)
 	{
-		myfiletest.open(m_name);
 		myfile.open(m_name);
-		std::string ligne;
+		myfiletest.open(m_name);
+		std::string ligne = "";
+		std::string lignetest;
+		std::getline(myfile, lignetest);
 
 		//for (unsigned int i = 0; i < m_nb_ligne; i++)
-		while (std::getline(myfiletest, ligne));
+		while (ligne != lignetest);
 		{
 			std::getline(myfile, ligne);
 			for (char carac : ligne)
@@ -86,6 +88,7 @@ std::string Fichier::GetTexte() const
 				data += carac;
 			}
 			data += "\n";
+			std::getline(myfiletest, lignetest);
 		}
 	}
 
