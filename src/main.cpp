@@ -11,8 +11,8 @@ int main()
 	//// Micky
 	// 
 	//begin();
-	//CsvGenerateur csv;
-//	csv.creerCsv();
+	csvGenerateur csv;
+	csv.creerCsv();
 	
 
 	//// Vincent
