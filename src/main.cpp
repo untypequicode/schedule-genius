@@ -11,8 +11,8 @@ int main()
 	//// Micky
 	// 
 	//begin();
-	CsvGenerateur csv;
-	csv.creerCsv();
+	//CsvGenerateur csv;
+//	csv.creerCsv();
 	
 
 	//// Vincent
@@ -216,6 +216,6 @@ int main()
 	}
 	std::cout << "n = " << tabString.GetNbElem() << ", len = " << tabString.GetNbElemMax() << std::endl;
 
-
-	return 0;*/
+	*/
+	return 0;
 }

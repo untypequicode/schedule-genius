@@ -79,10 +79,13 @@ std::string Fichier::GetTexte() const
 		std::string lignetest;
 		std::getline(myfile, lignetest);
 
+		std::cout << (ligne != lignetest);
+
 		//for (unsigned int i = 0; i < m_nb_ligne; i++)
-		while (ligne != lignetest);
+		while(ligne != lignetest)
 		{
 			std::getline(myfile, ligne);
+			std::cout << ligne << lignetest;
 			for (char carac : ligne)
 			{
 				data += carac;

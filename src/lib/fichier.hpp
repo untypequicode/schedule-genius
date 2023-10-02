@@ -7,7 +7,6 @@
 #include <sstream>
 #include "tab_dyn/tab_dyn.hpp"
 
-
 class Fichier
 {
 	public:
