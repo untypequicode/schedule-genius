@@ -16,6 +16,7 @@ class Fichier
 		Fichier(std::string, int);
 		~Fichier();
 
+		std::string GetNom() const;
 		std::string GetTexte() const;
 		TabDynString Split(std::string nom_fichier, char split, char end);
 

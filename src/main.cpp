@@ -4,22 +4,24 @@
 #include "lib/import.hpp"
 #include "lib/tab_dyn/tab_dyn.hpp"
 #include <iostream>
+#include "lib/fichier.hpp""
 
 int main()
 {
 	//// Micky
 	// 
-	/*begin();
-	creerCsv();*/
+	//begin();
 	CsvGenerateur csv;
 	csv.creerCsv();
 	
 
 	//// Vincent
 	//
-	std::string nom_fichier = "test.txt";
+	std::string nom_fichier = "eleve.csv";
 	//genererEleveViaCsv(nom_fichier);
 	//splitFichier(nom_fichier, ',', '|');
+	Fichier fichiertest(nom_fichier);
+	fichiertest.GetTexte();
 	//std::cout << convertString("525") + convertString("58");
 
 	//// Ethan
