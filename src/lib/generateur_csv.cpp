@@ -6,7 +6,8 @@ CsvGenerateur::CsvGenerateur()
 	
 }
 CsvGenerateur::CsvGenerateur(unsigned int M_NOMBRE_ELEVE)
-	: M_NOMBRE_ELEVE(M_NOMBRE_ELEVE)
+	: M_NOMBRE_ELEVE(M_NOMBRE_ELEVE),
+	m_id_eleve = 0
 {
 	m_matiere_spe.SetSecurity(false);
 	m_matiere_spe.Add("Francais");
@@ -17,7 +18,6 @@ CsvGenerateur::CsvGenerateur(unsigned int M_NOMBRE_ELEVE)
 	m_nom.SetSecurity(false);
 	m_nom.Add("Dupont");
 	m_nom.Add("Ducon");
-	m_id_eleve = 0;
 
 	M_NOMBRE_NOM = m_nom.GetNbElem();
 	M_NOMBRE_PRENOM = m_prenom.GetNbElem();
