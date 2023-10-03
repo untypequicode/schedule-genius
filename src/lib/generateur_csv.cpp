@@ -1,8 +1,13 @@
 #include "generateur_csv.hpp"
 
 CsvGenerateur::CsvGenerateur()
+	: CsvGenerateur(200)
 {
-	M_NOMBRE_ELEVE = 200;
+	
+}
+CsvGenerateur::CsvGenerateur(unsigned int M_NOMBRE_ELEVE)
+	: M_NOMBRE_ELEVE(M_NOMBRE_ELEVE)
+{
 	m_matiere_spe.SetSecurity(false);
 	m_matiere_spe.Add("Francais");
 	m_matiere_spe.Add("Anglais");
@@ -18,7 +23,6 @@ CsvGenerateur::CsvGenerateur()
 	M_NOMBRE_PRENOM = m_prenom.GetNbElem();
 	M_NOMBRE_MATIERE_SPE = m_matiere_spe.GetNbElem();
 }
-
 CsvGenerateur::~CsvGenerateur()
 {
 }

@@ -10,6 +10,7 @@ class CsvGenerateur
 {
 	public:
 		CsvGenerateur();
+		CsvGenerateur(unsigned int M_NOMBRE_ELEVE);
 		~CsvGenerateur();
 
 		void creerCsv();
