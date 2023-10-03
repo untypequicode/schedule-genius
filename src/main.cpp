@@ -9,18 +9,17 @@
 int main()
 {
 	//// Micky
-	// 
-	//begin();
-	//csvGenerateur csv;
-	//csv.creerCsv();
+	//
+	CsvGenerateur exemple;
+	exemple.creerCsv();
 	
 
 	//// Vincent
 	//
-	//std::string nom_fichier = "eleve.csv";
+	std::string nom_fichier = "eleve.csv";
 	//genererEleveViaCsv(nom_fichier);
-	//Fichier fichiertest(nom_fichier);
-	//fichiertest.GetTexte();
+	Fichier fichiertest(nom_fichier);
+	fichiertest.GetTexte();
 	//std::cout << convertString("525") + convertString("58");
 
 	//// Ethan
