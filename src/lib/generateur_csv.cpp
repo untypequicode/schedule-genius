@@ -1,8 +1,15 @@
 #include "generateur_csv.hpp"
 
 CsvGenerateur::CsvGenerateur()
+	: CsvGenerateur(200)
 {
-	M_NOMBRE_ELEVE = 200;
+	
+}
+
+CsvGenerateur::CsvGenerateur(unsigned int M_NOMBRE_ELEVE)
+	: M_NOMBRE_ELEVE(M_NOMBRE_ELEVE),
+	m_id_eleve(0)
+{
 	m_matiere_spe.SetSecurity(false);
 	m_matiere_spe.Add("Francais");
 	m_matiere_spe.Add("Anglais");
@@ -12,13 +19,11 @@ CsvGenerateur::CsvGenerateur()
 	m_nom.SetSecurity(false);
 	m_nom.Add("Dupont");
 	m_nom.Add("Ducon");
-	m_id_eleve = 0;
 
 	M_NOMBRE_NOM = m_nom.GetNbElem();
 	M_NOMBRE_PRENOM = m_prenom.GetNbElem();
 	M_NOMBRE_MATIERE_SPE = m_matiere_spe.GetNbElem();
 }
-
 CsvGenerateur::~CsvGenerateur()
 {
 }
@@ -63,8 +68,10 @@ void CsvGenerateur::creerCsv()
 		for (unsigned int e = 0; e < NOMBRE_MATIERE_SPE; e++)
 
 		{
-			int RANDOM_MATIERE = rand() % 5;
-			myfile << m_matiere_restante.Pop(e) << ";";
+			unsigned int RANDOM_MATIERE = rand() % 5;
+			std::string value_temp = m_matiere_restante.Pop(e);
+			myfile << value_temp << ";";
+			m_matiere_restante.Add(value_temp);
 		};
 		myfile << "\n";
 	}
