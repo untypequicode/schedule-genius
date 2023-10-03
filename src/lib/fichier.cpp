@@ -36,43 +36,31 @@ std::string Fichier::GetNom() const
 	return m_name;
 }
 
-std::string Fichier::Split(char split)
+void Fichier::Split(char split, char end)
 {
 	std::ifstream myfile;
-	if (myfile)
+	myfile.open(m_name);
+	std::string data = "";
+	std::string ligne;
+	std::string peche = "";
+	while (true)
 	{
-		myfile.open(m_name);
-		std::string data = "";
-		std::string ligne = "";
-
-		if (m_nb_ligne <= 0)
+		std::getline(myfile, ligne);
+		for (char character : ligne)
 		{
-			std::ifstream myfiletest;
+			if (character == end)
 			{
-				myfiletest.open(m_name);
-				std::string lignetest;
-				std::getline(myfile, lignetest);
-
-				while (ligne != lignetest)
-				{
-					std::getline(myfile, ligne);
-					for (char carac : ligne)
-					{
-						if (carac == split)
-						{
-							data += " ";
-						}
-
-						else
-						{
-							data += carac;
-						}
-					}
-					data += "\n";
-					std::getline(myfiletest, lignetest);
-				}
+				data += peche;
+				std::cout << peche << std::endl;
+				//return data;
 			}
-		}
+
+			if (character == split)
+			{
+				data += peche;
+				std::cout << peche << std::endl;
+				peche = "";
+			}
 
 		else
 		{
@@ -95,17 +83,6 @@ std::string Fichier::Split(char split)
 				data += "\n";
 			}
 		}
-
-		std::cout << data;
-		return(data);
-	}
-
-	else
-	{
-		std::cerr << "OPENERROR : impossible d'ouvrir le fichier selectionné";
-		return "";
-	}
-}
 
 std::string Fichier::GetTexte() const
 {
