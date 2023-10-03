@@ -50,7 +50,7 @@ void CsvGenerateur::creerCsv()
 	myfile << "\n";
 
 	// Autres lignes du csv
-	for (int i = 0; i < M_NOMBRE_ELEVE; i++)
+	for (unsigned int i = 0; i < M_NOMBRE_ELEVE; i++)
 	{
 		myfile << m_id_eleve << ";";
 		m_id_eleve++;
@@ -60,7 +60,7 @@ void CsvGenerateur::creerCsv()
 
 		NOMBRE_MATIERE_SPE = rand() % m_matiere_spe.GetNbElem();
 		m_matiere_restante = m_matiere_spe;
-		for (int e = 0; e < NOMBRE_MATIERE_SPE; e++)
+		for (unsigned int e = 0; e < NOMBRE_MATIERE_SPE; e++)
 
 		{
 			int RANDOM_MATIERE = rand() % 5;

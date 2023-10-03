@@ -24,7 +24,7 @@ class Fichier
 		//renvoie le contenu textuel du fichier
 		int GetNbLigne() const;
 		//renvoie le nombre de ligne du fichier, ou -1 s'il n'a pas été rentré
-		void Split(char split, char end); //NE MARCHE PAS !!!
+		std::string Split(char split);
 		//renvoie le texte du fichier, séparé par le Split, jusqu'à atteindre le end
 
 	private:
