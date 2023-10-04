@@ -17,8 +17,8 @@ int main()
 	//// Vincent
 	//
 	std::string nom_fichier = "eleve.csv";
-	//genererEleveViaCsv(nom_fichier);
 	Fichier fichiertest(nom_fichier, 201);
+	fichiertest.GetTexte();
 	//fichiertest.Split(';');
 	//std::cout << convertString("525") + convertString("58");
 
