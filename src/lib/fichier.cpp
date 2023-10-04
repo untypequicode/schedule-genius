@@ -36,55 +36,7 @@ std::string Fichier::GetNom() const
 	return m_name;
 }
 
-void Fichier::Split(char split, char end)
-{
-	std::ifstream myfile;
-	myfile.open(m_name);
-	std::string data = "";
-	std::string ligne;
-	std::string peche = "";
-	while (true)
-	{
-		std::getline(myfile, ligne);
-		for (char character : ligne)
-		{
-			if (character == end)
-			{
-				data += peche;
-				std::cout << peche << std::endl;
-				//return data;
-			}
-
-			if (character == split)
-			{
-				data += peche;
-				std::cout << peche << std::endl;
-				peche = "";
-			}
-
-		else
-		{
-
-			for (unsigned int i = 0; i < m_nb_ligne; i++)
-			{
-				std::getline(myfile, ligne);
-				for (char carac : ligne)
-				{
-					if (carac == split)
-					{
-						data += " ";
-					}
-
-					else
-					{
-						data += carac;
-					}
-				}
-				data += "\n";
-			}
-		}
-
-std::string Fichier::GetTexte() const
+std::string Fichier::Split(char split)
 {
 	std::ifstream myfile;
 	if (myfile)
@@ -106,7 +58,15 @@ std::string Fichier::GetTexte() const
 					std::getline(myfile, ligne);
 					for (char carac : ligne)
 					{
-						data += carac;
+						if (carac == split)
+						{
+							data += " ";
+						}
+
+						else
+						{
+							data += carac;
+						}
 					}
 					data += "\n";
 					std::getline(myfiletest, lignetest);
@@ -122,7 +82,15 @@ std::string Fichier::GetTexte() const
 				std::getline(myfile, ligne);
 				for (char carac : ligne)
 				{
-					data += carac;
+					if (carac == split)
+					{
+						data += " ";
+					}
+
+					else
+					{
+						data += carac;
+					}
 				}
 				data += "\n";
 			}
