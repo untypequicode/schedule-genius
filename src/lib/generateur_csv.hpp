@@ -4,6 +4,7 @@
 #include <fstream>
 #include <iostream>
 #include <cstdlib>
+#include <ctime>
 #include "tab_dyn/tab_dyn.hpp"
 
 class CsvGenerateur

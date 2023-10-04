@@ -43,6 +43,7 @@ CsvGenerateur::~CsvGenerateur()
 
 void CsvGenerateur::creerCsv()
 {
+	std::srand(static_cast<unsigned int>(std::time(nullptr)));
 	std::ofstream myfile;
 	myfile.open("eleve.csv");
 
