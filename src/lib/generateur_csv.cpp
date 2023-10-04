@@ -64,14 +64,12 @@ void CsvGenerateur::creerCsv()
 		myfile << rand() % 3 + 1 << ";";
 
 		NOMBRE_MATIERE_SPE = rand() % m_matiere_spe.GetNbElem();
-		m_matiere_restante = m_matiere_spe;
+		TabDynString m_matiere_restante(m_matiere_spe);
 		for (unsigned int e = 0; e < NOMBRE_MATIERE_SPE +1; e++)
 
 		{
 			unsigned int RANDOM_MATIERE = rand() % m_matiere_restante.GetNbElem();
-			std::string value_temp = m_matiere_restante.Pop(RANDOM_MATIERE);
-			myfile << value_temp << ";";
-			m_matiere_restante.Add(value_temp);
+			myfile << m_matiere_restante.Pop(RANDOM_MATIERE) << ";";
 		};
 		myfile << "\n";
 	}
