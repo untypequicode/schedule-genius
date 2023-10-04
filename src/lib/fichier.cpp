@@ -36,7 +36,7 @@ std::string Fichier::GetNom() const
 	return m_name;
 }
 
-std::string Fichier::Split(char split, char split2)
+std::string Fichier::Split(char split)
 {
 	std::ifstream myfile;
 	if (myfile)
