@@ -14,7 +14,7 @@ class Fichier
 		//créer un fichier vide nommé empty.csv
 		Fichier(std::string);
 		//enregistre le fichier (privilégier un fichier existant)
-		Fichier(std::string, int);
+		Fichier(std::string, unsigned int);
 		//enregistre le fichier ainsi que le nombre de ligne le composant
 		~Fichier();
 
@@ -24,8 +24,16 @@ class Fichier
 		//renvoie le contenu textuel du fichier
 		int GetNbLigne() const;
 		//renvoie le nombre de ligne du fichier, ou -1 s'il n'a pas été rentré
-		void Split(char split, char end); //NE MARCHE PAS !!!
-		//renvoie le texte du fichier, séparé par le Split, jusqu'à atteindre le end
+		std::string Split(char split);
+		//renvoie le texte du fichier, séparé par le Split
+		std::string Split(char split, char split2);
+		//renvoie le texte du fichier, séparé par les Split
+		std::string Split(char split, char split2, char split3);
+		//renvoie le texte du fichier, séparé par les Split
+		std::string Split(char split, char split2, char split3, char split4);
+		//renvoie le texte du fichier, séparé par les Split
+		std::string Split(char split, char split2, char split3, char split4, char split5);
+		//renvoie le texte du fichier, séparé par les Split
 
 	private:
 		std::string m_name;
