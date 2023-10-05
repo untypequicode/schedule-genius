@@ -135,6 +135,32 @@ private :
 	std::string* m_tab;
 };
 
+class TabDynChar : public TabDyn
+{
+	public :
+		TabDynChar();
+		TabDynChar(unsigned int nbElemMax);
+		TabDynChar(unsigned int nbElemMax, bool add_with_multiple, unsigned int addition);
+		TabDynChar(const TabDynChar& tabDynChar);
+		~TabDynChar();
+
+		void Append(char c);
+		void Add(char c);
+		char Get(unsigned int index) const;
+		char* GetTab() const;
+		void Set(unsigned int index, char c);
+		char Pop();
+		char Pop(int index);
+		void Remove(char elem, int num);
+		void Remove(char elem);
+		void Remove(char elem, bool first);
+
+	private :
+		void AddAppend(char c, bool addition);
+
+		char* m_tab;
+};
+
 class TabDynInt : public TabDyn
 {
 	public :
