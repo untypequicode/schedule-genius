@@ -445,3 +445,9 @@ std::string Fichier::Split(char split, char split2, char split3, char split4, ch
 		return "";
 	}
 }
+
+TabDyn Fichier::GiveMot(TabDyn split)
+{
+	TabDyn a(2);
+	return a;
+}

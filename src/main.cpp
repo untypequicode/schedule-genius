@@ -6,6 +6,7 @@
 #include <iostream>
 #include "lib/fichier.hpp""
 
+
 int main()
 {
 	//// Micky
@@ -18,7 +19,7 @@ int main()
 	//
 	std::string nom_fichier = "eleve.csv";
 	Fichier fichiertest(nom_fichier, 201);
-	fichiertest.GetTexte();
+	//fichiertest.GetTexte();
 	//fichiertest.Split(';');
 	//std::cout << convertString("525") + convertString("58");
 
