@@ -1,8 +1,8 @@
 #ifndef DEF_ELEVE
 #define DEF_ELEVE
 
-#include <string>
 #include <iostream>
+#include "tab_dyn/tab_dyn.hpp"
 
 class Eleve
 {
@@ -31,9 +31,7 @@ class Eleve
 		std::string m_prenom;
 		std::string m_nom;
 		std::string m_niveau_scolaire;
-		unsigned int m_nb_matiere;
-		unsigned int m_nb_matiere_max;
-		std::string* m_matieres;
+		TabDynString m_matieres;
 
 };
 

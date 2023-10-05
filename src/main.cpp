@@ -1,10 +1,10 @@
-#include "lib/eleves.hpp"
 #include "lib/generation_groupes.hpp"
 #include "lib/generateur_csv.hpp"
 #include "lib/import.hpp"
 #include "lib/tab_dyn/tab_dyn.hpp"
 #include <iostream>
-#include "lib/fichier.hpp""
+#include "lib/fichier.hpp"
+
 
 int main()
 {
