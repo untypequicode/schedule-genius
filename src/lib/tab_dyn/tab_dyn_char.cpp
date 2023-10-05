@@ -1,36 +1,36 @@
 #include "tab_dyn.hpp"
 
-TabDynString::TabDynString()
+TabDynChar::TabDynChar()
 	: TabDyn()
 {
 
 }
 
-TabDynString::TabDynString(unsigned int nbElemMax)
+TabDynChar::TabDynChar(unsigned int nbElemMax)
 	: TabDyn(nbElemMax),
-	m_tab(new std::string[nbElemMax])
+	m_tab(new char[nbElemMax])
 {
 
 }
 
-TabDynString::TabDynString(unsigned int nbElemMax, bool add_with_multiple, unsigned int addition)
-	: TabDyn(nbElemMax,add_with_multiple, addition),
-	m_tab(new std::string[nbElemMax])
+TabDynChar::TabDynChar(unsigned int nbElemMax, bool add_with_multiple, unsigned int addition)
+	: TabDyn(nbElemMax, add_with_multiple, addition),
+	m_tab(new char[nbElemMax])
 {
 
 }
 
-TabDynString::TabDynString(const TabDynString& tabDynString)
-	: TabDyn(tabDynString),
-	m_tab(new std::string[tabDynString.m_nbElemMax])
+TabDynChar::TabDynChar(const TabDynChar& tabDynChar)
+	: TabDyn(tabDynChar),
+	m_tab(new char[tabDynChar.m_nbElemMax])
 {
-	for (unsigned int i = 0; i < tabDynString.m_nbElem; i++)
+	for (unsigned int i = 0; i < tabDynChar.m_nbElem; i++)
 	{
-		m_tab[i] = tabDynString.m_tab[i];
+		m_tab[i] = tabDynChar.m_tab[i];
 	}
 }
 
-TabDynString::~TabDynString()
+TabDynChar::~TabDynChar()
 {
 	if (m_tab != nullptr)
 	{
@@ -41,17 +41,17 @@ TabDynString::~TabDynString()
 	}
 }
 
-void TabDynString::Append(std::string str)
+void TabDynChar::Append(char c)
 {
-	AddAppend(str, false);
+	AddAppend(c, false);
 }
 
-void TabDynString::Add(std::string str)
+void TabDynChar::Add(char c)
 {
-	AddAppend(str, true);
+	AddAppend(c, true);
 }
 
-std::string TabDynString::Get(unsigned int index) const
+char TabDynChar::Get(unsigned int index) const
 {
 	if (index < m_nbElem)
 	{
@@ -59,56 +59,56 @@ std::string TabDynString::Get(unsigned int index) const
 	}
 	else
 	{
-		return "";
+		return '\0';
 	}
 }
 
-std::string* TabDynString::GetTab() const
+char* TabDynChar::GetTab() const
 {
 	return m_tab;
 }
 
-void TabDynString::Set(unsigned int index, std::string str)
+void TabDynChar::Set(unsigned int index, char c)
 {
 	if (index < m_nbElem)
 	{
-		m_tab[index] = str;
+		m_tab[index] = c;
 	}
 }
 
-std::string TabDynString::Pop()
+char TabDynChar::Pop()
 {
 	if (m_nbElem > 0)
 	{
-		std::string str = m_tab[m_nbElem - 1];
+		char c = m_tab[m_nbElem - 1];
 		m_nbElem--;
-		return str;
+		return c;
 	}
 	else
 	{
-		return "";
+		return '\0';
 	}
 }
 
-std::string TabDynString::Pop(int index)
+char TabDynChar::Pop(int index)
 {
 	if (index < m_nbElem)
 	{
-		std::string str = m_tab[index];
+		char c = m_tab[index];
 		for (unsigned int i = index; i < m_nbElem - 1; i++)
 		{
 			m_tab[i] = m_tab[i + 1];
 		}
 		m_nbElem--;
-		return str;
+		return c;
 	}
 	else
 	{
-		return "";
+		return '\0';
 	}
 }
 
-void TabDynString::Remove(std::string elem, int num)
+void TabDynChar::Remove(char elem, int num)
 {
 	int count = 0;
 	for (unsigned int i = 0; i < m_nbElem; i++)
@@ -129,7 +129,7 @@ void TabDynString::Remove(std::string elem, int num)
 	}
 }
 
-void TabDynString::Remove(std::string elem)
+void TabDynChar::Remove(char elem)
 {
 	for (unsigned int i = 0; i < m_nbElem; i++)
 	{
@@ -145,7 +145,7 @@ void TabDynString::Remove(std::string elem)
 	}
 }
 
-void TabDynString::Remove(std::string elem, bool first)
+void TabDynChar::Remove(char elem, bool first)
 {
 	if (first)
 	{
@@ -179,52 +179,52 @@ void TabDynString::Remove(std::string elem, bool first)
 	}
 }
 
-void TabDynString::AddAppend(std::string str, bool addition)
+void TabDynChar::AddAppend(char c, bool addition)
 {
 	if (m_nbElemMax == 0)
 	{
 		if (addition)
 		{
-			m_tab = new std::string[m_addition];
+			m_tab = new char[m_addition];
 			m_nbElemMax = m_addition;
 		}
 		else
 		{
-			m_tab = new std::string[1];
+			m_tab = new char[1];
 			m_nbElemMax = 1;
 		}
-		m_tab[0] = str;
+		m_tab[0] = c;
 		m_nbElem = 1;
 	}
 	else if (m_nbElem < m_nbElemMax)
 	{
-		m_tab[m_nbElem] = str;
+		m_tab[m_nbElem] = c;
 		m_nbElem++;
 	}
 	else if (m_nbElem == m_nbElemMax)
 	{
-		std::string* new_tab;
+		char* new_tab;
 		if (addition)
 		{
 			if (m_add_with_multiple)
 			{
-				new_tab = new std::string[m_nbElemMax * m_addition];
+				new_tab = new char[m_nbElemMax * m_addition];
 			}
 			else
 			{
-				new_tab = new std::string[m_nbElemMax + m_addition];
+				new_tab = new char[m_nbElemMax + m_addition];
 			}
 		}
 		else
 		{
-			new_tab = new std::string[m_nbElemMax +1];
+			new_tab = new char[m_nbElemMax + 1];
 		}
 		for (unsigned int i = 0; i < m_nbElem; i++)
 		{
 			new_tab[i] = m_tab[i];
 		}
 		delete[] m_tab;
-		new_tab[m_nbElem] = str;
+		new_tab[m_nbElem] = c;
 		if (addition)
 		{
 			if (m_add_with_multiple)
@@ -241,6 +241,5 @@ void TabDynString::AddAppend(std::string str, bool addition)
 			m_nbElemMax++;
 		}
 		m_nbElem++;
-		m_tab = new_tab;
 	}
 }
