@@ -36,9 +36,10 @@ std::string Fichier::GetNom() const
 	return m_name;
 }
 
-std::string Fichier::Split(char split)
+std::string Fichier::Split(TabDynChar split)
 {
 	std::ifstream myfile;
+	bool test = false;
 	if (myfile)
 	{
 		myfile.open(m_name);
@@ -58,9 +59,18 @@ std::string Fichier::Split(char split)
 					std::getline(myfile, ligne);
 					for (char carac : ligne)
 					{
-						if (carac == split)
+						for(int i = 0; i < split.GetNbElem(); i++)
+						{
+							if (carac == split.Get(i))
+							{
+								test = true;
+							}
+						}
+
+						if (test)
 						{
 							data += " ";
+							test = false;
 						}
 
 						else
@@ -82,9 +92,18 @@ std::string Fichier::Split(char split)
 				std::getline(myfile, ligne);
 				for (char carac : ligne)
 				{
-					if (carac == split)
+					for (int i = 0; i < split.GetNbElem(); i++)
+					{
+						if (carac == split.Get(i))
+						{
+							test = true;
+						}
+					}
+
+					if (test)
 					{
 						data += " ";
+						test = false;
 					}
 
 					else
@@ -146,290 +165,6 @@ std::string Fichier::GetTexte() const
 				for (char carac : ligne)
 				{
 					data += carac;
-				}
-				data += "\n";
-			}
-		}
-
-		std::cout << data;
-		return(data);
-	}
-
-	else
-	{
-		std::cerr << "OPENERROR : impossible d'ouvrir le fichier selectionné";
-		return "";
-	}
-}
-
-std::string Fichier::Split(char split, char split2)
-{
-	std::ifstream myfile;
-	if (myfile)
-	{
-		myfile.open(m_name);
-		std::string data = "";
-		std::string ligne = "";
-
-		if (m_nb_ligne <= 0)
-		{
-			std::ifstream myfiletest;
-			{
-				myfiletest.open(m_name);
-				std::string lignetest;
-				std::getline(myfile, lignetest);
-
-				while (ligne != lignetest)
-				{
-					std::getline(myfile, ligne);
-					for (char carac : ligne)
-					{
-						if (carac == split or carac == split2)
-						{
-							data += " ";
-						}
-
-						else
-						{
-							data += carac;
-						}
-					}
-					data += "\n";
-					std::getline(myfiletest, lignetest);
-				}
-			}
-		}
-
-		else
-		{
-
-			for (unsigned int i = 0; i < m_nb_ligne; i++)
-			{
-				std::getline(myfile, ligne);
-				for (char carac : ligne)
-				{
-					if (carac == split or carac == split2)
-					{
-						data += " ";
-					}
-
-					else
-					{
-						data += carac;
-					}
-				}
-				data += "\n";
-			}
-		}
-
-		std::cout << data;
-		return(data);
-	}
-
-	else
-	{
-		std::cerr << "OPENERROR : impossible d'ouvrir le fichier selectionné";
-		return "";
-	}
-}
-
-std::string Fichier::Split(char split, char split2, char split3)
-{
-	std::ifstream myfile;
-	if (myfile)
-	{
-		myfile.open(m_name);
-		std::string data = "";
-		std::string ligne = "";
-
-		if (m_nb_ligne <= 0)
-		{
-			std::ifstream myfiletest;
-			{
-				myfiletest.open(m_name);
-				std::string lignetest;
-				std::getline(myfile, lignetest);
-
-				while (ligne != lignetest)
-				{
-					std::getline(myfile, ligne);
-					for (char carac : ligne)
-					{
-						if (carac == split or carac == split2 or carac == split3)
-						{
-							data += " ";
-						}
-
-						else
-						{
-							data += carac;
-						}
-					}
-					data += "\n";
-					std::getline(myfiletest, lignetest);
-				}
-			}
-		}
-
-		else
-		{
-
-			for (unsigned int i = 0; i < m_nb_ligne; i++)
-			{
-				std::getline(myfile, ligne);
-				for (char carac : ligne)
-				{
-					if (carac == split or carac == split2 or carac == split3)
-					{
-						data += " ";
-					}
-
-					else
-					{
-						data += carac;
-					}
-				}
-				data += "\n";
-			}
-		}
-
-		std::cout << data;
-		return(data);
-	}
-
-	else
-	{
-		std::cerr << "OPENERROR : impossible d'ouvrir le fichier selectionné";
-		return "";
-	}
-}
-
-std::string Fichier::Split(char split, char split2, char split3, char split4)
-{
-	std::ifstream myfile;
-	if (myfile)
-	{
-		myfile.open(m_name);
-		std::string data = "";
-		std::string ligne = "";
-
-		if (m_nb_ligne <= 0)
-		{
-			std::ifstream myfiletest;
-			{
-				myfiletest.open(m_name);
-				std::string lignetest;
-				std::getline(myfile, lignetest);
-
-				while (ligne != lignetest)
-				{
-					std::getline(myfile, ligne);
-					for (char carac : ligne)
-					{
-						if (carac == split or carac == split2 or carac == split3 or carac == split4)
-						{
-							data += " ";
-						}
-
-						else
-						{
-							data += carac;
-						}
-					}
-					data += "\n";
-					std::getline(myfiletest, lignetest);
-				}
-			}
-		}
-
-		else
-		{
-
-			for (unsigned int i = 0; i < m_nb_ligne; i++)
-			{
-				std::getline(myfile, ligne);
-				for (char carac : ligne)
-				{
-					if (carac == split or carac == split2 or carac == split3 or carac ==split4)
-					{
-						data += " ";
-					}
-
-					else
-					{
-						data += carac;
-					}
-				}
-				data += "\n";
-			}
-		}
-
-		std::cout << data;
-		return(data);
-	}
-
-	else
-	{
-		std::cerr << "OPENERROR : impossible d'ouvrir le fichier selectionné";
-		return "";
-	}
-}
-
-std::string Fichier::Split(char split, char split2, char split3, char split4, char split5)
-{
-	std::ifstream myfile;
-	if (myfile)
-	{
-		myfile.open(m_name);
-		std::string data = "";
-		std::string ligne = "";
-
-		if (m_nb_ligne <= 0)
-		{
-			std::ifstream myfiletest;
-			{
-				myfiletest.open(m_name);
-				std::string lignetest;
-				std::getline(myfile, lignetest);
-
-				while (ligne != lignetest)
-				{
-					std::getline(myfile, ligne);
-					for (char carac : ligne)
-					{
-						if (carac == split or carac == split2 or carac == split3 or carac == split4 or carac == split5)
-						{
-							data += " ";
-						}
-
-						else
-						{
-							data += carac;
-						}
-					}
-					data += "\n";
-					std::getline(myfiletest, lignetest);
-				}
-			}
-		}
-
-		else
-		{
-
-			for (unsigned int i = 0; i < m_nb_ligne; i++)
-			{
-				std::getline(myfile, ligne);
-				for (char carac : ligne)
-				{
-					if (carac == split or carac == split2 or carac == split3 or carac == split4 or carac == split5)
-					{
-						data += " ";
-					}
-
-					else
-					{
-						data += carac;
-					}
 				}
 				data += "\n";
 			}

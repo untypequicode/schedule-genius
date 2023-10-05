@@ -22,11 +22,7 @@
 * 
 * Méthodes :
 * 
-* std::string Split(char split)
-* std::string Split(char split, char split2)
-* std::string Split(char split, char split2, char split3)
-* std::string Split(char split, char split2, char split3, char split4)
-* std::string Split(char split, char split2, char split3, char split4, char split5)
+* std::string Split(char TabDynChar)
 * TabDyn GiveMot(TabDyn split)
 * 
 * Accesseurs:
@@ -55,16 +51,9 @@ public:
 	//renvoie le contenu textuel du fichier
 	int GetNbLigne() const;
 	//renvoie le nombre de ligne du fichier, ou -1 s'il n'a pas été rentré
-	std::string Split(char split);
+	std::string Split(TabDynChar split);
 	//renvoie le texte du fichier, séparé par le Split
-	std::string Split(char split, char split2);
-	//renvoie le texte du fichier, séparé par les Split
-	std::string Split(char split, char split2, char split3);
-	//renvoie le texte du fichier, séparé par les Split
-	std::string Split(char split, char split2, char split3, char split4);
-	//renvoie le texte du fichier, séparé par les Split
-	std::string Split(char split, char split2, char split3, char split4, char split5);
-	//renvoie le texte du fichier, séparé par les Split
+	
 	TabDyn GiveMot(TabDyn split);
 	//renvoie le contenue du texte dans un tableau dynamique en séparant les élémens par les splits (qui ne seront pas inscrit dans le tableau)
 
