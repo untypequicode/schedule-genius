@@ -181,8 +181,93 @@ std::string Fichier::GetTexte() const
 	}
 }
 
-TabDyn Fichier::GiveMot(TabDyn split)
+TabDynString Fichier::GiveTab(TabDynChar split)
 {
-	TabDyn a(2);
-	return a;
+	TabDynString retour(0, 1, 100);
+	std::ifstream myfile;
+	bool test = false;
+	if (myfile)
+	{
+		myfile.open(m_name);
+		std::string data = ""; 
+		std::string ligne = "";
+
+		if (m_nb_ligne <= 0)
+		{
+			std::ifstream myfiletest;
+			{
+				myfiletest.open(m_name);
+				std::string lignetest;
+				std::getline(myfile, lignetest);
+
+				while (ligne != lignetest)
+				{
+					std::getline(myfile, ligne);
+					for (char carac : ligne)
+					{
+						for (int i = 0; i < split.GetNbElem(); i++)
+						{
+							if (carac == split.Get(i))
+							{
+								test = true;
+							}
+						}
+
+						if (test)
+						{
+							data += " ";
+							test = false;
+						}
+
+						else
+						{
+							data += carac;
+						}
+					}
+					retour.Add(data);
+					std::getline(myfiletest, lignetest);
+					data = "";
+				}
+			}
+		}
+
+		else
+		{
+
+			for (unsigned int i = 0; i < m_nb_ligne; i++)
+			{
+				std::getline(myfile, ligne);
+				for (char carac : ligne)
+				{
+					for (int i = 0; i < split.GetNbElem(); i++)
+					{
+						if (carac == split.Get(i))
+						{
+							test = true;
+						}
+					}
+
+					if (test)
+					{
+						data += " ";
+						test = false;
+					}
+
+					else
+					{
+						data += carac;
+					}
+				}
+				retour.Add(data);
+				data = "";
+			}
+		}
+		return(retour);
+	}
+
+	else
+	{
+		std::cerr << "OPENERROR : impossible d'ouvrir le fichier selectionné";
+		return TabDynString(0);
+	}
 }

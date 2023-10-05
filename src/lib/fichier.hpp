@@ -53,8 +53,7 @@ public:
 	//renvoie le nombre de ligne du fichier, ou -1 s'il n'a pas été rentré
 	std::string Split(TabDynChar split);
 	//renvoie le texte du fichier, séparé par le Split
-	
-	TabDyn GiveMot(TabDyn split);
+	TabDynString GiveTab(TabDynChar split);
 	//renvoie le contenue du texte dans un tableau dynamique en séparant les élémens par les splits (qui ne seront pas inscrit dans le tableau)
 
 private:

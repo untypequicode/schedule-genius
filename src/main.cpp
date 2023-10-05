@@ -23,8 +23,7 @@ int main()
 	TabDynChar tabdyncharsplit(3);
 	tabdyncharsplit.Add(';');
 	tabdyncharsplit.Add(' ');
-	tabdyncharsplit.Add('c');
-	fichiertest.Split(tabdyncharsplit);
+	fichiertest.GiveTab(tabdyncharsplit);
 	//std::cout << convertString("525") + convertString("58");
 
 	//// Ethan
