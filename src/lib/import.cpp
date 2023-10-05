@@ -1,5 +1,4 @@
 #include "import.hpp"
-#include "eleves.hpp"
 
 ;
 std::string ouvrirFichierParLigne(std::string const nom_fichier)
@@ -108,7 +107,7 @@ void ouvrirFichierParCaractere(std::string const nom_fichier)
 }
 
 
-void genererEleveViaCsv(std::string const nom_fichier)
+TabDynEleve genererEleveViaCsv(std::string const nom_fichier)
 {
 	std::string mot = "";
 	std::string nom = "";
@@ -124,12 +123,12 @@ void genererEleveViaCsv(std::string const nom_fichier)
 	myfile.open(nom_fichier);
 	std::string ligne;
 	std::getline(myfile, ligne);		//on se débarrasse de la première ligne qui ne contient que les en-tête
+	TabDynEleve eleves;
 	for(int i = 0; i < 1000 ; ++i)
 	{
 		myfile >> mot;
 		for (char character : mot)
 		{
-
 			if (character == ';' and test != 4)
 			{
 				test += 1;
@@ -164,6 +163,7 @@ void genererEleveViaCsv(std::string const nom_fichier)
 					std::cout << prenom << " " << nom << std::endl;
 					std::cout << "en annee " << niveau << std::endl;
 					test2 = false;
+					eleves.Add(elevetest);
 				}
 
 				if (not (character == '1' or character == '2' or character == '3' or character == '4' or character == '5' or character == '6' or character == '7' or character == '8' or character == '9' or character == '0'))
@@ -200,6 +200,7 @@ void genererEleveViaCsv(std::string const nom_fichier)
 				test2 = true;
 				fake_id++;
 			}
+			return eleves;
 		}
 
 	}

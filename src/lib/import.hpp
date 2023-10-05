@@ -6,6 +6,7 @@
 #include <fstream>
 #include <sstream>
 #include "tab_dyn/tab_dyn.hpp"
+#include "eleves.hpp"
 
 std::string ouvrirFichierParLigne(std::string const nom_fichier);
 /*
@@ -26,7 +27,7 @@ le programme parcours chaque caractère du fichier
 */
 
 
-void genererEleveViaCsv(std::string const nom_fichier);
+TabDynEleve genererEleveViaCsv(std::string const nom_fichier);
 /*
 encore en travail
 en paramètre le nom du fichier à extraire
