@@ -271,3 +271,9 @@ TabDynString Fichier::GiveTab(TabDynChar split)
 		return TabDynString(0);
 	}
 }
+
+TabDynEleve Fichier::GenererEleve()
+{
+	TabDynEleve retour(m_nb_ligne);
+	return retour;
+}
