@@ -13,30 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Fichiers sources\tutos">
-      <UniqueIdentifier>{697c6388-c2ab-45fc-ac79-fab972504f7c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers sources\tutos\pgii33">
-      <UniqueIdentifier>{19f6713b-67c2-4870-8897-018bae984fa1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers sources\tutos\untypequicode">
-      <UniqueIdentifier>{526c7661-2c45-4daa-bd8c-e27cd0294d7d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers sources\tutos\vincentcestmoi">
-      <UniqueIdentifier>{1e3ab0d1-73ee-4686-b02f-a1ee5fe413c2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers d%27en-tête\tutos">
-      <UniqueIdentifier>{5b1808ef-d01f-4049-b726-7e799802f310}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers d%27en-tête\tutos\pgii33">
-      <UniqueIdentifier>{43d6c998-c95f-4f59-a1fd-ce214b8eb869}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers d%27en-tête\tutos\vincentcestmoi">
-      <UniqueIdentifier>{613b6563-819c-4010-b33b-4c9931b5732a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers d%27en-tête\tutos\untypequicode">
-      <UniqueIdentifier>{d0572764-1c79-41c3-87b2-dfa592243339}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Fichiers sources\lib">
       <UniqueIdentifier>{29bce2d6-d41b-4868-a8e7-8a58a97e33cf}</UniqueIdentifier>
     </Filter>
@@ -48,9 +24,6 @@
     <None Include="README.md">
       <Filter>Fichiers sources</Filter>
     </None>
-    <None Include="src\tutos\README.md">
-      <Filter>Fichiers sources\tutos</Filter>
-    </None>
     <None Include="src\lib\generateur_csv.py">
       <Filter>Fichiers sources</Filter>
     </None>
@@ -58,18 +31,6 @@
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
       <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="src\tutos\untypequicode\untypequicode.cpp">
-      <Filter>Fichiers sources\tutos\untypequicode</Filter>
-    </ClCompile>
-    <ClCompile Include="src\tutos\vincentcestmoi\vincentcestmoi.cpp">
-      <Filter>Fichiers sources\tutos\vincentcestmoi</Filter>
-    </ClCompile>
-    <ClCompile Include="src\tutos\pgii33\pgii33.cpp">
-      <Filter>Fichiers sources\tutos\pgii33</Filter>
-    </ClCompile>
-    <ClCompile Include="src\tutos\untypequicode\player.cpp">
-      <Filter>Fichiers sources\tutos\untypequicode</Filter>
     </ClCompile>
     <ClCompile Include="src\lib\eleves.cpp">
       <Filter>Fichiers sources</Filter>
@@ -107,18 +68,6 @@
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="src\lib\import.hpp">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tutos\pgii33\pgii33.hpp">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tutos\untypequicode\player.hpp">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tutos\untypequicode\untypequicode.hpp">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tutos\vincentcestmoi\vincentcestmoi.hpp">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="src\lib\generation_groupes.hpp">
