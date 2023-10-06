@@ -150,10 +150,6 @@
     <ClInclude Include="src\lib\generation_groupes.hpp" />
     <ClInclude Include="src\lib\import.hpp" />
     <ClInclude Include="src\lib\tab_dyn\tab_dyn.hpp" />
-    <ClInclude Include="src\tutos\pgii33\pgii33.hpp" />
-    <ClInclude Include="src\tutos\untypequicode\player.hpp" />
-    <ClInclude Include="src\tutos\untypequicode\untypequicode.hpp" />
-    <ClInclude Include="src\tutos\vincentcestmoi\vincentcestmoi.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

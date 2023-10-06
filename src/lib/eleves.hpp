@@ -1,7 +1,6 @@
 #ifndef DEF_ELEVE
 #define DEF_ELEVE
 
-#include <iostream>
 #include "tab_dyn/tab_dyn.hpp"
 
 class Eleve

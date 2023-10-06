@@ -70,18 +70,6 @@
     <ClInclude Include="src\lib\import.hpp">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="src\tutos\pgii33\pgii33.hpp">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tutos\untypequicode\player.hpp">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tutos\untypequicode\untypequicode.hpp">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tutos\vincentcestmoi\vincentcestmoi.hpp">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="src\lib\generation_groupes.hpp">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>

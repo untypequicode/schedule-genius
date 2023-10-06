@@ -2,6 +2,7 @@
 #define DEF_TABDYN
 
 #include <string>
+#include <iostream>
 
 /*
 * Classe TabDyn
