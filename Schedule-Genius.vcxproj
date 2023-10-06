@@ -131,6 +131,7 @@
     <None Include="src\lib\generateur_csv.py" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\lib\dict_dyn\dict_dyn.cpp" />
     <ClCompile Include="src\lib\eleves.cpp" />
     <ClCompile Include="src\lib\fichier.cpp" />
     <ClCompile Include="src\lib\generateur_csv.cpp" />
@@ -144,6 +145,7 @@
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\lib\dict_dyn\dict_dyn.hpp" />
     <ClInclude Include="src\lib\eleves.hpp" />
     <ClInclude Include="src\lib\fichier.hpp" />
     <ClInclude Include="src\lib\generateur_csv.hpp" />

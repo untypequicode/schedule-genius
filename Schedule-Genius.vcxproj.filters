@@ -25,6 +25,12 @@
     <Filter Include="Fichiers d%27en-tête\lib\tab_dyn">
       <UniqueIdentifier>{ff788629-3b22-471e-a4a0-17861ff50fc9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers d%27en-tête\lib\dict_dyn">
+      <UniqueIdentifier>{4162d659-1128-4258-b5f7-5d22300952d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\lib\dict_dyn">
+      <UniqueIdentifier>{dca4ff7c-d447-498f-a397-b221b413aea4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md">
@@ -68,6 +74,9 @@
     <ClCompile Include="src\lib\import.cpp">
       <Filter>Fichiers sources\lib</Filter>
     </ClCompile>
+    <ClCompile Include="src\lib\dict_dyn\dict_dyn.cpp">
+      <Filter>Fichiers sources\lib\dict_dyn</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\lib\fichier.hpp">
@@ -87,6 +96,9 @@
     </ClInclude>
     <ClInclude Include="src\lib\tab_dyn\tab_dyn.hpp">
       <Filter>Fichiers d%27en-tête\lib\tab_dyn</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\dict_dyn\dict_dyn.hpp">
+      <Filter>Fichiers d%27en-tête\lib\dict_dyn</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
