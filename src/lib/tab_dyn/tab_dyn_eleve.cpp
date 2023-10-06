@@ -1,4 +1,4 @@
-#include "tab_dyn.hpp"
+#include "../eleves.hpp"
 
 TabDynEleve::TabDynEleve()
 	: TabDyn()
@@ -113,7 +113,7 @@ void TabDynEleve::Remove(Eleve elem, int num)
 	int count = 0;
 	for (unsigned int i = 0; i < m_nbElem; i++)
 	{
-		if (m_tab[i].getId() == elem.getId())
+		if (m_tab[i].GetId() == elem.GetId())
 		{
 			count++;
 			if (count == num)
@@ -133,7 +133,7 @@ void TabDynEleve::Remove(Eleve elem)
 {
 	for (unsigned int i = 0; i < m_nbElem; i++)
 	{
-		if (m_tab[i].getId() == elem.getId())
+		if (m_tab[i].GetId() == elem.GetId())
 		{
 			for (unsigned int j = i; j < m_nbElem - 1; j++)
 			{
@@ -151,7 +151,7 @@ void TabDynEleve::Remove(Eleve elem, bool first)
 	{
 		for (unsigned int i = 0; i < m_nbElem; i++)
 		{
-			if (m_tab[i].getId() == elem.getId())
+			if (m_tab[i].GetId() == elem.GetId())
 			{
 				for (unsigned int j = i; j < m_nbElem - 1; j++)
 				{
@@ -166,7 +166,7 @@ void TabDynEleve::Remove(Eleve elem, bool first)
 	{
 		for (unsigned int i = m_nbElem - 1; i >= 0; i--)
 		{
-			if (m_tab[i].getId() == elem.getId())
+			if (m_tab[i].GetId() == elem.GetId())
 			{
 				for (unsigned int j = i; j < m_nbElem - 1; j++)
 				{

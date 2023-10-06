@@ -2,11 +2,9 @@
 
 Eleve::Eleve()
 	: m_id(0),
-	m_prenom("inconnu"),
-	m_nom("inconnu"),
-	m_niveau_scolaire("inconnu"),
-	m_nb_matiere(0),
-	m_nb_matiere_max(0)
+	m_prenom("/0"),
+	m_nom("/0"),
+	m_niveau_scolaire("/0")
 {
 
 }
@@ -15,97 +13,124 @@ Eleve::Eleve(unsigned int id, std::string prenom, std::string nom, std::string n
 	: m_id(id),
 	m_prenom(prenom),
 	m_nom(nom),
-	m_niveau_scolaire(niveau_scolaire),
-	m_nb_matiere(0),
-	m_nb_matiere_max(0)
-
+	m_niveau_scolaire(niveau_scolaire)
 {
 
 }
 
 Eleve::Eleve(const Eleve& eleve)
-	: m_id(eleve.getId()),
-	m_prenom(eleve.getPrenom()),
-	m_nom(eleve.getNom()),
-	m_niveau_scolaire(eleve.getNiveauScolaire()),
-	m_nb_matiere(0),
-	m_nb_matiere_max(0)
+	: m_id(eleve.GetId()),
+	m_prenom(eleve.GetPrenom()),
+	m_nom(eleve.GetNom()),
+	m_niveau_scolaire(eleve.GetNiveauScolaire())
 {
 
 }
 
 Eleve::~Eleve()
 {
-	delete[] m_matieres;
+	
 }
 
-unsigned int Eleve::getId() const
+unsigned int Eleve::GetId() const
 {
 	return m_id;
 }
 
-std::string Eleve::getPrenom() const
+std::string Eleve::GetPrenom() const
 {
 	return m_prenom;
 }
 
-std::string Eleve::getNom() const
+std::string Eleve::GetNom() const
 {
 	return m_nom;
 }
 
-std::string Eleve::getNiveauScolaire() const
+std::string Eleve::GetNiveauScolaire() const
 {
 	return m_niveau_scolaire;
 }
 
-unsigned int Eleve::getNbMatiere() const
+unsigned int Eleve::GetNbMatiere() const
 {
-	return m_nb_matiere;
+	return m_matieres.GetNbElem();
 }
 
-unsigned int Eleve::getNbMatiereMax() const
+unsigned int Eleve::GetNbMatiereMax() const
 {
-	return m_nb_matiere_max;
+	return m_matieres.GetNbElemMax();
 }
 
-std::string* Eleve::getMatieres() const
+std::string* Eleve::GetMatieres() const
 {
-	return m_matieres;
+	return m_matieres.GetTab();
 }
 
-void Eleve::addMatiere(std::string matiere)
+std::string Eleve::GetMatiere(unsigned int id) const
 {
-	if (m_nb_matiere_max == 0)
-	{
-		m_matieres = new std::string[2];
-		m_nb_matiere_max = 2;
-		m_matieres[0] = matiere;
-		m_nb_matiere++;
-	}
-	else if (m_nb_matiere < m_nb_matiere_max) {
-		m_matieres[m_nb_matiere] = matiere;
-		m_nb_matiere++;
-	}
-	else if (m_nb_matiere == m_nb_matiere_max) {
-		
-		std::string* matieres = new std::string[m_nb_matiere_max * 2];
-		for (unsigned int i = 0; i < m_nb_matiere; i++) {
-			matieres[i] = m_matieres[i];
-		}
-		matieres[m_nb_matiere] = matiere;
-		m_nb_matiere++;
-		m_nb_matiere_max *= 2;
-		delete[] m_matieres;
-		m_matieres = matieres;
-	}
-	std::cout << "Nombre de matiere : " << m_nb_matiere << " - Nombre de matiere max : " << m_nb_matiere_max << std::endl;
+	return m_matieres.Get(id);
 }
 
-std::string Eleve::getMatiere(unsigned int id) const
+void Eleve::SetEleve(unsigned int id, std::string prenom, std::string nom, std::string niveau_scolaire)
 {
-	if (id >= m_nb_matiere) {
-		return "Erreur : matiere inexistante";
-	}
-	return m_matieres[id];
+	m_id = id;
+	m_prenom = prenom;
+	m_nom = nom;
+	m_niveau_scolaire = niveau_scolaire;
+}
+
+void Eleve::SetId(unsigned int id)
+{
+	m_id = id;
+}
+
+void Eleve::SetPrenom(std::string prenom)
+{
+	m_prenom = prenom;
+}
+
+void Eleve::SetNom(std::string nom)
+{
+	m_nom = nom;
+}
+
+void Eleve::SetNiveauScolaire(std::string niveau_scolaire)
+{
+	m_niveau_scolaire = niveau_scolaire;
+}
+
+void Eleve::SetMatiere(unsigned int id, std::string matiere)
+{
+	m_matieres.Set(id, matiere);
+}
+
+void Eleve::AddMatiere(std::string matiere)
+{
+	m_matieres.Append(matiere);
+}
+
+std::string Eleve::PopMatiere()
+{
+	return m_matieres.Pop();
+}
+
+std::string Eleve::PopMatiere(int index)
+{
+	return m_matieres.Pop(index);
+}
+
+void Eleve::RemoveMatiere(std::string matiere, int num)
+{
+	m_matieres.Remove(matiere, num);
+}
+
+void Eleve::RemoveMatiere(std::string matiere)
+{
+	m_matieres.Remove(matiere);
+}
+
+void Eleve::RemoveMatiere(std::string matiere, bool first)
+{
+	m_matieres.Remove(matiere, first);
 }
