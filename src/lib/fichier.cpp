@@ -9,7 +9,7 @@ Fichier::Fichier()
 
 Fichier::Fichier(std::string nom_fichier)
 	: m_name(nom_fichier),
-	m_nb_ligne(-1)
+	m_nb_ligne(0)
 {
 
 }
@@ -275,5 +275,87 @@ TabDynString Fichier::GiveTab(TabDynChar split)
 TabDynEleve Fichier::GenererEleve()
 {
 	TabDynEleve retour(m_nb_ligne);
-	return retour;
+	unsigned int indice = 0;
+	std::ifstream myfile;
+	if (myfile)
+	{
+		myfile.open(m_name);
+		TabDynString data(5);
+		TabDynString matiere(2);
+		std::string ligne = "";
+
+		if (m_nb_ligne <= 0)
+		{
+			std::ifstream myfiletest;
+			{
+				myfiletest.open(m_name);
+				std::string lignetest;
+				std::getline(myfile, lignetest);
+
+				while (ligne != lignetest)
+				{
+					std::getline(myfile, ligne);
+					for (char carac : ligne)
+					{
+						if (carac != ';' and indice < 6)
+						{
+							data.Add(data.Pop(indice) + carac);
+						}
+
+						else if (indice < 6)
+						{
+							indice += 1;
+						}
+
+						else if (carac == ';')
+						{
+
+						}
+					}
+
+					Eleve eleve(convertString(data.Pop(0)), data.Pop(0), data.Pop(0), data.Pop(0), data.Pop(0));
+					std::getline(myfiletest, lignetest);
+					data.Clear();
+				}
+			}
+		}
+
+		else
+		{
+
+			for (unsigned int i = 0; i < m_nb_ligne; i++)
+			{
+				std::getline(myfile, ligne);
+				for (char carac : ligne)
+				{
+					for (int i = 0; i < split.GetNbElem(); i++)
+					{
+						if (carac == split.Get(i))
+						{
+							test = true;
+						}
+					}
+
+					if (test)
+					{
+						data += " ";
+						test = false;
+					}
+
+					else
+					{
+						data += carac;
+					}
+				}
+				data = "";
+			}
+		}
+		return(eleves);
+	}
+
+	else
+	{
+		std::cerr << "OPENERROR : impossible d'ouvrir le fichier selectionné";
+		return TabDynEleve(0);
+	}
 }

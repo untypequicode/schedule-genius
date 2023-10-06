@@ -6,6 +6,8 @@
 #include <fstream>
 #include <sstream>
 #include "tab_dyn/tab_dyn.hpp"
+#include "eleves.hpp"
+#include "import.hpp"
 
 /*
 * Classe Fichier
@@ -50,7 +52,7 @@ public:
 	std::string GetTexte() const;
 	//renvoie le contenu textuel du fichier
 	int GetNbLigne() const;
-	//renvoie le nombre de ligne du fichier, ou -1 s'il n'a pas été rentré
+	//renvoie le nombre de ligne du fichier, ou 0 s'il n'a pas été rentré
 	std::string Split(TabDynChar split);
 	//renvoie le texte du fichier, séparé par le Split
 	TabDynString GiveTab(TabDynChar split);

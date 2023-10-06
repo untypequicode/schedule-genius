@@ -20,12 +20,13 @@ int main()
 	std::string nom_fichier = "eleve.csv";
 	Fichier fichiertest(nom_fichier, 201);
 	//fichiertest.GetTexte();
-	TabDynChar tabdyncharsplit(3);
+	TabDynChar tabdyncharsplit(3);/*
 	tabdyncharsplit.Add(';');
 	tabdyncharsplit.Add(' ');
-	fichiertest.GiveTab(tabdyncharsplit);
+	fichiertest.GiveTab(tabdyncharsplit);*/
 	//std::cout << convertString("525") + convertString("58");
-	genererEleveViaCsv(nom_fichier);
+	//genererEleveViaCsv(nom_fichier);
+	//fichiertest.GenererEleve();
 
 	//// Ethan
 	//
