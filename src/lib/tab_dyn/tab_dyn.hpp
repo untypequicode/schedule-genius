@@ -144,6 +144,7 @@ class TabDynChar : public TabDyn
 		TabDynChar(const TabDynChar& tabDynChar);
 		~TabDynChar();
 
+
 		void Append(char c);
 		void Add(char c);
 		char Get(unsigned int index) const;

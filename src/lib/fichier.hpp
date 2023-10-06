@@ -1,11 +1,11 @@
 #ifndef DEF_FILE
 #define DEF_FILE
 
-#include <iostream>
-#include <string>
 #include <fstream>
 #include <sstream>
 #include "tab_dyn/tab_dyn.hpp"
+#include "eleves.hpp"
+#include "import.hpp"
 
 /*
 * Classe Fichier
@@ -50,11 +50,13 @@ public:
 	std::string GetTexte() const;
 	//renvoie le contenu textuel du fichier
 	int GetNbLigne() const;
-	//renvoie le nombre de ligne du fichier, ou -1 s'il n'a pas été rentré
+	//renvoie le nombre de ligne du fichier, ou 0 s'il n'a pas été rentré
 	std::string Split(TabDynChar split);
 	//renvoie le texte du fichier, séparé par le Split
 	TabDynString GiveTab(TabDynChar split);
 	//renvoie le contenue du texte dans un tableau dynamique en séparant les élémens par les splits (qui ne seront pas inscrit dans le tableau)
+	TabDynEleve GenererEleve();
+	//renvoie un tableau d'élèves généré à partir des informations du fichier créer à cette fin
 
 private:
 	int m_nb_ligne;
