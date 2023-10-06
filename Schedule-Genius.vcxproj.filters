@@ -19,6 +19,12 @@
     <Filter Include="Fichiers d%27en-tête\lib">
       <UniqueIdentifier>{8a2bd690-48a5-4546-84c6-bdfb257c799f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers sources\lib\tab_dyn">
+      <UniqueIdentifier>{3d0fdd0e-4a93-44d8-b8c8-78acc4bb315b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\lib\tab_dyn">
+      <UniqueIdentifier>{ff788629-3b22-471e-a4a0-17861ff50fc9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md">
@@ -32,55 +38,55 @@
     <ClCompile Include="src\main.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="src\lib\eleves.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="src\lib\import.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="src\lib\generation_groupes.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="src\lib\generateur_csv.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="src\lib\tab_dyn\tab_dyn.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="src\lib\tab_dyn\tab_dyn_eleve.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="src\lib\tab_dyn\tab_dyn_int.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="src\lib\tab_dyn\tab_dyn_string.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="src\lib\fichier.cpp">
       <Filter>Fichiers sources\lib</Filter>
     </ClCompile>
+    <ClCompile Include="src\lib\tab_dyn\tab_dyn.cpp">
+      <Filter>Fichiers sources\lib\tab_dyn</Filter>
+    </ClCompile>
     <ClCompile Include="src\lib\tab_dyn\tab_dyn_char.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Fichiers sources\lib\tab_dyn</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\tab_dyn\tab_dyn_eleve.cpp">
+      <Filter>Fichiers sources\lib\tab_dyn</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\tab_dyn\tab_dyn_int.cpp">
+      <Filter>Fichiers sources\lib\tab_dyn</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\tab_dyn\tab_dyn_string.cpp">
+      <Filter>Fichiers sources\lib\tab_dyn</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\generateur_csv.cpp">
+      <Filter>Fichiers sources\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\eleves.cpp">
+      <Filter>Fichiers sources\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\generation_groupes.cpp">
+      <Filter>Fichiers sources\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\import.cpp">
+      <Filter>Fichiers sources\lib</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\lib\eleves.hpp">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="src\lib\import.hpp">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="src\lib\generation_groupes.hpp">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="src\lib\generateur_csv.hpp">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="src\lib\tab_dyn\tab_dyn.hpp">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="src\lib\fichier.hpp">
       <Filter>Fichiers d%27en-tête\lib</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\eleves.hpp">
+      <Filter>Fichiers d%27en-tête\lib</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\generateur_csv.hpp">
+      <Filter>Fichiers d%27en-tête\lib</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\generation_groupes.hpp">
+      <Filter>Fichiers d%27en-tête\lib</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\import.hpp">
+      <Filter>Fichiers d%27en-tête\lib</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\tab_dyn\tab_dyn.hpp">
+      <Filter>Fichiers d%27en-tête\lib\tab_dyn</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
