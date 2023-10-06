@@ -297,9 +297,12 @@ TabDynEleve Fichier::GenererEleve()
 					std::getline(myfile, ligne);
 					for (char carac : ligne)
 					{
-						if (carac != ';' and indice < 6)
+						if (indice < 6)
 						{
-							data.Add(data.Pop(indice) + carac);
+							if (carac != ';')
+							{
+								data.Add(data.Pop(indice) + carac);
+							}
 						}
 
 						else if (indice < 6)
