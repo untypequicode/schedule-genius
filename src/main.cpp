@@ -30,11 +30,11 @@ int main()
 	//// Ethan
 	//
 	Eleve eleve(0, "Ethan", "Facca", "L1");
-	eleve.addMatiere("Maths");
-	eleve.addMatiere("Physique");
-	std::cout << eleve.getMatiere(0) << std::endl;
-	std::cout << eleve.getMatiere(1) << std::endl;
-	std::cout << eleve.getMatiere(3) << std::endl;
+	eleve.AddMatiere("Maths");
+	eleve.AddMatiere("Physique");
+	std::cout << eleve.GetMatiere(0) << std::endl;
+	std::cout << eleve.GetMatiere(1) << std::endl;
+	std::cout << eleve.GetMatiere(3) << std::endl;
 	/*Groupe groupe("L1", "info");
 	groupe.AddEleve(eleve);
 	std::string matiere_eleve = groupe.GetEleve(0).GetMatiere(1);

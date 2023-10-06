@@ -13,26 +13,36 @@ class Eleve
 		Eleve(const Eleve& eleve);
 		~Eleve();
 
-		unsigned int getId() const;
-		std::string getPrenom() const;
-		std::string getNom() const;
-		std::string getNiveauScolaire() const;
-		unsigned int getNbMatiere() const;
-		unsigned int getNbMatiereMax() const;
-		std::string* getMatieres() const;
-		void addMatiere(std::string matiere);
-		std::string getMatiere(unsigned int i) const;
+		unsigned int GetId() const;
+		std::string GetPrenom() const;
+		std::string GetNom() const;
+		std::string GetNiveauScolaire() const;
+		unsigned int GetNbMatiere() const;
+		unsigned int GetNbMatiereMax() const;
+		std::string* GetMatieres() const;
+		std::string GetMatiere(unsigned int i) const;
 
+		void SetEleve(unsigned int id, std::string prenom, std::string nom, std::string niveau_scolaire);
+		void SetId(unsigned int id);
+		void SetPrenom(std::string prenom);
+		void SetNom(std::string nom);
+		void SetNiveauScolaire(std::string niveau_scolaire);
+		void SetMatiere(unsigned int i, std::string matiere);
+		void AddMatiere(std::string matiere);
+		std::string PopMatiere();
+		std::string PopMatiere(int index);
+		void RemoveMatiere(std::string matiere, int num);
+		void RemoveMatiere(std::string matiere);
+		void RemoveMatiere(std::string matiere, bool first);
 		
 
-		 
+
 	private:
 		unsigned int m_id;
 		std::string m_prenom;
 		std::string m_nom;
 		std::string m_niveau_scolaire;
 		TabDynString m_matieres;
-
 };
 
 class TabDynEleve : public TabDyn
