@@ -1,7 +1,6 @@
 #ifndef DEF_UMPORT
 #define DEF_UMPORT
 
-#include <iostream>
 #include <fstream>
 #include <sstream>
 #include "tab_dyn/tab_dyn.hpp"

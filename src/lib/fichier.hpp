@@ -1,7 +1,6 @@
 #ifndef DEF_FILE
 #define DEF_FILE
 
-#include <iostream>
 #include <fstream>
 #include <sstream>
 #include "tab_dyn/tab_dyn.hpp"
