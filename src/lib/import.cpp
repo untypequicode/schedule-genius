@@ -202,7 +202,6 @@ TabDynEleve genererEleveViaCsv(std::string const nom_fichier)
             }
             return eleves;
         }
-
     }
 }
 
