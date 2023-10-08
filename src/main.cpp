@@ -17,14 +17,14 @@ int main()
     //
     std::string nom_fichier = "eleve.csv";
     Fichier fichiertest(nom_fichier, 201);
-    //fichiertest.GetTexte();
-    TabDynChar tabdyncharsplit(3);/*
-	tabdyncharsplit.Add(';');
-	tabdyncharsplit.Add(' ');
-	fichiertest.GiveTab(tabdyncharsplit);*/
-    //std::cout << convertString("525") + convertString("58");
-    //genererEleveViaCsv(nom_fichier);
-    //fichiertest.GenererEleve();
+//    fichiertest.GetTexte();
+    TabDynChar tabdyncharsplit(3);
+//	tabdyncharsplit.Add(';');
+//	tabdyncharsplit.Add(' ');
+//	fichiertest.GiveTab(tabdyncharsplit);
+//  std::cout << convertString("525") + convertString("58");
+//  genererEleveViaCsv(nom_fichier);
+//  fichiertest.GenererEleve();
 
     //// Ethan
     //
@@ -34,10 +34,10 @@ int main()
     std::cout << eleve.GetMatiere(0) << std::endl;
     std::cout << eleve.GetMatiere(1) << std::endl;
     std::cout << eleve.GetMatiere(3) << std::endl;
-    /*Groupe groupe("L1", "info");
-    groupe.AddEleve(eleve);
-    std::string matiere_eleve = groupe.GetEleve(0).GetMatiere(1);
-    std::cout << groupe.GetEleve(0).m_prenom << std::endl;*/
+//    Groupe groupe("L1", "info");
+//    groupe.AddEleve(eleve);
+//    std::string matiere_eleve = groupe.GetEleve(0).GetMatiere(1);
+//    std::cout << groupe.GetEleve(0).m_prenom << std::endl;
 
     return 0;
 }
