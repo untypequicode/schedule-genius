@@ -1,43 +1,43 @@
-#include "lib/generation_groupes.hpp"
-#include "lib/generateur_csv.hpp"
-#include "lib/import.hpp"
-#include "lib/fichier.hpp"
+#include "lib/generation_groupes.h"
+#include "lib/generateur_csv.h"
+#include "lib/import.h"
+#include "lib/fichier.h"
 
 
 
 int main()
 {
-	//// Micky
-	//
-	CsvGenerateur exemple;
-	exemple.creerCsv();
-	
+    //// Micky
+    //
+    CsvGenerateur exemple;
+    exemple.creerCsv();
 
-	//// Vincent
-	//
-	std::string nom_fichier = "eleve.csv";
-	Fichier fichiertest(nom_fichier, 201);
-	//fichiertest.GetTexte();
-	TabDynChar tabdyncharsplit(3);/*
+
+    //// Vincent
+    //
+    std::string nom_fichier = "eleve.csv";
+    Fichier fichiertest(nom_fichier, 201);
+    //fichiertest.GetTexte();
+    TabDynChar tabdyncharsplit(3);/*
 	tabdyncharsplit.Add(';');
 	tabdyncharsplit.Add(' ');
 	fichiertest.GiveTab(tabdyncharsplit);*/
-	//std::cout << convertString("525") + convertString("58");
-	//genererEleveViaCsv(nom_fichier);
-	//fichiertest.GenererEleve();
+    //std::cout << convertString("525") + convertString("58");
+    //genererEleveViaCsv(nom_fichier);
+    //fichiertest.GenererEleve();
 
-	//// Ethan
-	//
-	Eleve eleve(0, "Ethan", "Facca", "L1");
-	eleve.AddMatiere("Maths");
-	eleve.AddMatiere("Physique");
-	std::cout << eleve.GetMatiere(0) << std::endl;
-	std::cout << eleve.GetMatiere(1) << std::endl;
-	std::cout << eleve.GetMatiere(3) << std::endl;
-	/*Groupe groupe("L1", "info");
-	groupe.AddEleve(eleve);
-	std::string matiere_eleve = groupe.GetEleve(0).GetMatiere(1);
-	std::cout << groupe.GetEleve(0).m_prenom << std::endl;*/
+    //// Ethan
+    //
+    Eleve eleve(0, "Ethan", "Facca", "L1");
+    eleve.AddMatiere("Maths");
+    eleve.AddMatiere("Physique");
+    std::cout << eleve.GetMatiere(0) << std::endl;
+    std::cout << eleve.GetMatiere(1) << std::endl;
+    std::cout << eleve.GetMatiere(3) << std::endl;
+    /*Groupe groupe("L1", "info");
+    groupe.AddEleve(eleve);
+    std::string matiere_eleve = groupe.GetEleve(0).GetMatiere(1);
+    std::cout << groupe.GetEleve(0).m_prenom << std::endl;*/
 
-	return 0;
+    return 0;
 }

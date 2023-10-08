@@ -1,2 +1,2 @@
-#include "generation_groupes.hpp"
+#include "generation_groupes.h"
 

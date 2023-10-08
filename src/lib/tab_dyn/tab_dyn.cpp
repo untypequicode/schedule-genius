@@ -1,43 +1,43 @@
-#include "tab_dyn.hpp"
+#include "tab_dyn.h"
 
 
 TabDyn::TabDyn()
-	: m_nbElem(0),
-	m_nbElemMax(0),
-	m_add_with_multiple(true),
-	m_addition(2),
-	m_security(true)
+        : m_nbElem(0),
+          m_nbElemMax(0),
+          m_add_with_multiple(true),
+          m_addition(2),
+          m_security(true)
 {
 
 }
 
 TabDyn::TabDyn(unsigned int nbElemMax)
-	: m_nbElem(0),
-	m_nbElemMax(nbElemMax),
-	m_add_with_multiple(true),
-	m_addition(2),
-	m_security(true)
+        : m_nbElem(0),
+          m_nbElemMax(nbElemMax),
+          m_add_with_multiple(true),
+          m_addition(2),
+          m_security(true)
 {
 
 }
 
 TabDyn::TabDyn(unsigned int nbElemMax, bool add_with_multiple, unsigned int addition)
-	: m_nbElem(0),
-	m_nbElemMax(nbElemMax),
-	m_add_with_multiple(add_with_multiple),
-	m_addition(addition),
-	m_security(true)
+        : m_nbElem(0),
+          m_nbElemMax(nbElemMax),
+          m_add_with_multiple(add_with_multiple),
+          m_addition(addition),
+          m_security(true)
 {
-	if (m_addition < 2)
-		m_addition = 2;
+    if (m_addition < 2)
+        m_addition = 2;
 }
 
 TabDyn::TabDyn(const TabDyn& tabDyn)
-	: m_nbElem(tabDyn.m_nbElem),
-	m_nbElemMax(tabDyn.m_nbElemMax),
-	m_add_with_multiple(tabDyn.m_add_with_multiple),
-	m_addition(tabDyn.m_addition),
-	m_security(true)
+        : m_nbElem(tabDyn.m_nbElem),
+          m_nbElemMax(tabDyn.m_nbElemMax),
+          m_add_with_multiple(tabDyn.m_add_with_multiple),
+          m_addition(tabDyn.m_addition),
+          m_security(true)
 {
 
 }
@@ -49,34 +49,34 @@ TabDyn::~TabDyn()
 
 unsigned int TabDyn::GetNbElem() const
 {
-	return m_nbElem;
+    return m_nbElem;
 }
 
 unsigned int TabDyn::GetNbElemMax() const
 {
-	return m_nbElemMax;
+    return m_nbElemMax;
 }
 
 void TabDyn::SetParam(bool add_with_multiple, unsigned int addition)
 {
-	m_add_with_multiple = add_with_multiple;
-	if (addition < 2)
-	{
-		m_addition = 2;
-	}
-	else
-	{
-		m_addition = addition;
-	}
+    m_add_with_multiple = add_with_multiple;
+    if (addition < 2)
+    {
+        m_addition = 2;
+    }
+    else
+    {
+        m_addition = addition;
+    }
 }
 
 void TabDyn::Clear()
 {
-	m_nbElem = 0;
-	m_nbElemMax = 0;
+    m_nbElem = 0;
+    m_nbElemMax = 0;
 }
 
 void TabDyn::SetSecurity(bool security)
 {
-	m_security = security;
+    m_security = security;
 }

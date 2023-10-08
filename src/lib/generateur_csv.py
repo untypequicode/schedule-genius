@@ -4,8 +4,8 @@ from random import randint
 NOMBRE_ELEVE = 200
 
 prenoms = ["Alice", "Bob", "Charlie", "David", "Eve", "Frank", "Grace", "Hannah", "Ivy", "Jack",
-"Katherine", "Liam", "Mia", "Noah", "Olivia", "Peter", "Quinn", "Rachel", "Samuel", "Taylor",
-"Ursula", "Victor", "Wendy", "Xavier", "Yasmine", "Zane"]
+           "Katherine", "Liam", "Mia", "Noah", "Olivia", "Peter", "Quinn", "Rachel", "Samuel", "Taylor",
+           "Ursula", "Victor", "Wendy", "Xavier", "Yasmine", "Zane"]
 noms_de_famille = ["Dupont", "Martin", "Dubois", "Bernard", "Thomas", "Robert", "Richard", "Petit", "Durand", "Leroy",
                    "Moreau", "Simon", "Laurent", "Lefebvre", "Michel", "Garcia", "David", "Roux", "Bonnet", "Fournier",
                    "Lopez", "Legrand", "Martinez", "Ferreira", "Fernandez", "Blanc", "André", "Leroux", "Rousseau"]
