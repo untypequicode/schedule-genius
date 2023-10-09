@@ -7,7 +7,7 @@ class DictDynIntString : public TabDyn
 {
 public:
     DictDynIntString();
-//    DictDynIntString(unsigned int nbElemMax);
+    DictDynIntString(unsigned int nbElemMax);
 //    DictDynIntString(unsigned int nbElemMax, bool add_with_multiple, unsigned int addition);
 //    DictDynIntString(const DictDynIntString& dictDynIntString);
 //    ~DictDynIntString();
