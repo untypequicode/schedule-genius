@@ -2,6 +2,7 @@
 #include "lib/generateur_csv.h"
 #include "lib/import.h"
 #include "lib/fichier.h"
+#include "lib/dict_dyn/dict_dyn.h"
 
 
 
