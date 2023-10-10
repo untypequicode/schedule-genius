@@ -2,6 +2,7 @@
 #define SCHEDULE_GENIUS_DATABASE_H
 
 #include "../tab_dyn/tab_dyn.h"
+#include "../import.h"
 
 class Database {
 public:
@@ -22,6 +23,7 @@ private:
     TabDynInt m_id;
     TabDynString m_groupe;
     TabDynString m_matiere;
+    TabDynEleve m_eleve;
 };
 
 
