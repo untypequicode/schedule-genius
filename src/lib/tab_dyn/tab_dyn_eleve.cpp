@@ -1,4 +1,4 @@
-#include "../eleves.h"
+#include "../character/eleves.h"
 
 TabDynEleve::TabDynEleve()
         : TabDyn()
