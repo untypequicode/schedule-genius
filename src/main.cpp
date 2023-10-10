@@ -4,6 +4,7 @@
 #include "lib/fichier.h"
 #include "lib/dict_dyn/dict_dyn.h"
 #include "lib/character/matieres.h"
+#include "lib/database/database.h"
 
 
 
@@ -18,16 +19,11 @@ int main()
 
     //// Vincent
     //
-    std::string nom_fichier = "eleve.csv";
-    Fichier fichiertest(nom_fichier, 201);
+//    std::string nom_fichier = "eleve.csv";
+//    Fichier fichiertest(nom_fichier, 201);
+    Database datatest();
 //    fichiertest.GetTexte();
-    TabDynChar tabdyncharsplit(3);
-//	tabdyncharsplit.Add(';');
-//	tabdyncharsplit.Add(' ');
-//	fichiertest.GiveTab(tabdyncharsplit);
-//  std::cout << convertString("525") + convertString("58");
 //  genererEleveViaCsv(nom_fichier);
-//  fichiertest.GenererEleve();
 
     //// Ethan
     //

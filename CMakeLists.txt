@@ -24,4 +24,6 @@ add_executable(Schedule_Genius src/main.cpp
         src/lib/tab_dyn/tab_dyn_string.cpp
         src/lib/character/matieres.cpp
         src/lib/character/matieres.h
+        src/lib/database/database.cpp
+        src/lib/database/database.h
 )
