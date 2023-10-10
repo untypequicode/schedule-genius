@@ -4,8 +4,8 @@ project(Schedule_Genius)
 set(CMAKE_CXX_STANDARD 23)
 
 add_executable(Schedule_Genius src/main.cpp
-        src/lib/eleves.cpp
-        src/lib/eleves.h
+        src/lib/character/eleves.cpp
+        src/lib/character/eleves.h
         src/lib/fichier.cpp
         src/lib/fichier.h
         src/lib/generateur_csv.cpp

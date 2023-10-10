@@ -1,7 +1,7 @@
 #ifndef DEF_ELEVE
 #define DEF_ELEVE
 
-#include "tab_dyn/tab_dyn.h"
+#include "../tab_dyn/tab_dyn.h"
 
 class Eleve
 {
