@@ -29,3 +29,146 @@ DictDynIntString::DictDynIntString(const DictDynIntString &dictDynIntString)
 {
 
 }
+
+DictDynIntString::~DictDynIntString()
+{
+    if (m_security)
+    {
+        if (m_keys != nullptr)
+        {
+            delete[] m_keys;
+        }
+        if (m_values != nullptr)
+        {
+            delete[] m_values;
+        }
+    }
+}
+
+void DictDynIntString::Append(int key, std::string value)
+{
+    AddAppend(key, value, false);
+}
+
+void DictDynIntString::Add(int key, std::string value)
+{
+    AddAppend(key, value, true);
+}
+
+std::string DictDynIntString::Get(int key) const
+{
+    for (unsigned int i = 0; i < m_nbElem; i++)
+    {
+        if (m_keys[i] == key)
+        {
+            return m_values[i];
+        }
+    }
+    return "";
+}
+
+std::string *DictDynIntString::GetTab() const
+{
+    return m_values;
+}
+
+void DictDynIntString::Set(int key, std::string value)
+{
+    for (unsigned int i = 0; i < m_nbElem; i++)
+    {
+        if (m_keys[i] == key)
+        {
+            m_values[i] = value;
+            return;
+        }
+    }
+}
+
+std::string DictDynIntString::Pop()
+{
+    return Pop(m_nbElem - 1);
+}
+
+std::string DictDynIntString::Pop(int key)
+{
+    std::string value = "";
+    for (int i = 0; i < m_nbElem; i++)
+    {
+        if (m_keys[i] == key)
+        {
+            value = m_values[i];
+            Remove(key, i);
+            return value;
+        }
+    }
+    return value;
+}
+
+void DictDynIntString::Remove(int key, int num)
+{
+    if (num < m_nbElem)
+    {
+        for (unsigned int i = num; i < m_nbElem - 1; i++)
+        {
+            m_keys[i] = m_keys[i + 1];
+            m_values[i] = m_values[i + 1];
+        }
+        m_nbElem--;
+    }
+}
+
+void DictDynIntString::Remove(int key)
+{
+    for (int i = 0; i < m_nbElem; i++)
+    {
+        if (m_keys[i] == key)
+        {
+            Remove(key, i);
+            return;
+        }
+    }
+}
+
+void DictDynIntString::Remove(int key, bool first)
+{
+    if (first)
+    {
+        Remove(key);
+    }
+    else
+    {
+        for (int i = m_nbElem - 1; i >= 0; i--)
+        {
+            if (m_keys[i] == key)
+            {
+                Remove(key, i);
+                return;
+            }
+        }
+    }
+}
+
+void DictDynIntString::AddAppend(int key, std::string value, bool addition)
+{
+    if (m_nbElem < m_nbElemMax)
+    {
+        if (addition)
+        {
+            for (unsigned int i = 0; i < m_nbElem; i++)
+            {
+                if (m_keys[i] == key)
+                {
+                    m_values[i] += value;
+                    return;
+                }
+            }
+        }
+        m_keys[m_nbElem] = key;
+        m_values[m_nbElem] = value;
+        m_nbElem++;
+    }
+    else
+    {
+        std::cout << "Erreur : le tableau est plein" << std::endl;
+    }
+}
