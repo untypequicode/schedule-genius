@@ -13,6 +13,10 @@ public:
     void GenererId();
     void AddGroupe(std::string groupe);
     void AddMatiere(std::string matiere);
+    int GetId(unsigned int i) const;
+    std::string GetGroupe(unsigned int i) const;
+    std::string GetMatiere(unsigned int i) const;
+
 
 private:
     TabDynInt m_id;

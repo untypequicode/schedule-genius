@@ -323,7 +323,7 @@ TabDynEleve Fichier::GenererEleve()
 
                     }
 
-                    Eleve eleve(convertString(data.Pop(0)), data.Pop(0), data.Pop(0), data.Pop(0));
+                    Eleve eleve(convertToInt(data.Pop(0)), data.Pop(0), data.Pop(0), data.Pop(0));
                     std::getline(myfiletest, lignetest);
                     data.Clear();
                     retour.Add(eleve);
@@ -364,7 +364,7 @@ TabDynEleve Fichier::GenererEleve()
                     }
                 }
 
-                Eleve eleve(convertString(data.Pop(0)), data.Pop(0), data.Pop(0), data.Pop(0));
+                Eleve eleve(convertToInt(data.Pop(0)), data.Pop(0), data.Pop(0), data.Pop(0));
                 data.Clear();
                 retour.Add(eleve);
                 indice = 0;
