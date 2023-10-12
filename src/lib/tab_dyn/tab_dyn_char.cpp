@@ -75,7 +75,7 @@ void TabDynChar::Set(unsigned int index, char c)
 
 char TabDynChar::Pop()
 {
-    Pop(m_nbElem - 1);
+    return Pop(m_nbElem - 1);
 }
 
 char TabDynChar::Pop(int index)

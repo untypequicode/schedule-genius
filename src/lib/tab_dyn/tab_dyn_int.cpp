@@ -32,9 +32,9 @@ TabDynInt::TabDynInt(const TabDynInt& tabDynInt)
 
 TabDynInt::~TabDynInt()
 {
-    if (m_tab != nullptr)
+    if (m_security)
     {
-        if (m_security)
+        if (m_tab != nullptr)
         {
             delete[] m_tab;
         }
@@ -57,10 +57,7 @@ int TabDynInt::Get(unsigned int index) const
     {
         return m_tab[index];
     }
-    else
-    {
-        return 0;
-    }
+    return m_tab[m_nbElem - 1];
 }
 
 int* TabDynInt::GetTab() const
@@ -78,16 +75,7 @@ void TabDynInt::Set(unsigned int index, int i)
 
 int TabDynInt::Pop()
 {
-    if (m_nbElem > 0)
-    {
-        int elem = m_tab[m_nbElem - 1];
-        m_nbElem--;
-        return elem;
-    }
-    else
-    {
-        return 0;
-    }
+    return Pop(m_nbElem - 1);
 }
 
 int TabDynInt::Pop(int index)
@@ -102,10 +90,7 @@ int TabDynInt::Pop(int index)
         m_nbElem--;
         return elem;
     }
-    else
-    {
-        return 0;
-    }
+    return -1;
 }
 
 void TabDynInt::Remove(int elem, int num)
@@ -118,12 +103,8 @@ void TabDynInt::Remove(int elem, int num)
             count++;
             if (count == num)
             {
-                for (unsigned int j = i; j < m_nbElem - 1; j++)
-                {
-                    m_tab[j] = m_tab[j + 1];
-                }
-                m_nbElem--;
-                break;
+                Pop(i);
+                return;
             }
         }
     }
@@ -135,11 +116,7 @@ void TabDynInt::Remove(int elem)
     {
         if (m_tab[i] == elem)
         {
-            for (unsigned int j = i; j < m_nbElem - 1; j++)
-            {
-                m_tab[j] = m_tab[j + 1];
-            }
-            m_nbElem--;
+            Pop(i);
             i--;
         }
     }
@@ -153,12 +130,8 @@ void TabDynInt::Remove(int elem, bool first)
         {
             if (m_tab[i] == elem)
             {
-                for (unsigned int j = i; j < m_nbElem - 1; j++)
-                {
-                    m_tab[j] = m_tab[j + 1];
-                }
-                m_nbElem--;
-                break;
+                Pop(i);
+                return;
             }
         }
     }
@@ -168,11 +141,7 @@ void TabDynInt::Remove(int elem, bool first)
         {
             if (m_tab[i] == elem)
             {
-                for (unsigned int j = i; j < m_nbElem - 1; j++)
-                {
-                    m_tab[j] = m_tab[j + 1];
-                }
-                m_nbElem--;
+                Pop(i);
                 break;
             }
         }

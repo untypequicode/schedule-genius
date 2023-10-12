@@ -75,7 +75,7 @@ void TabDynString::Set(unsigned int index, std::string str)
 
 std::string TabDynString::Pop()
 {
-    Pop(m_nbElem - 1);
+    return Pop(m_nbElem - 1);
 }
 
 std::string TabDynString::Pop(int index)
