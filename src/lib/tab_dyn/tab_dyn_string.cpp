@@ -32,9 +32,9 @@ TabDynString::TabDynString(const TabDynString& tabDynString)
 
 TabDynString::~TabDynString()
 {
-    if (m_tab != nullptr)
+    if (m_security)
     {
-        if (m_security)
+        if (m_tab != nullptr)
         {
             delete[] m_tab;
         }
@@ -57,10 +57,7 @@ std::string TabDynString::Get(unsigned int index) const
     {
         return m_tab[index];
     }
-    else
-    {
-        return "";
-    }
+    return "/0";
 }
 
 std::string* TabDynString::GetTab() const
@@ -78,16 +75,7 @@ void TabDynString::Set(unsigned int index, std::string str)
 
 std::string TabDynString::Pop()
 {
-    if (m_nbElem > 0)
-    {
-        std::string str = m_tab[m_nbElem - 1];
-        m_nbElem--;
-        return str;
-    }
-    else
-    {
-        return "";
-    }
+    Pop(m_nbElem - 1);
 }
 
 std::string TabDynString::Pop(int index)
@@ -102,10 +90,7 @@ std::string TabDynString::Pop(int index)
         m_nbElem--;
         return str;
     }
-    else
-    {
-        return "";
-    }
+    return "/0";
 }
 
 void TabDynString::Remove(std::string elem, int num)
@@ -118,12 +103,8 @@ void TabDynString::Remove(std::string elem, int num)
             count++;
             if (count == num)
             {
-                for (unsigned int j = i; j < m_nbElem - 1; j++)
-                {
-                    m_tab[j] = m_tab[j + 1];
-                }
-                m_nbElem--;
-                break;
+                Pop(i);
+                return;
             }
         }
     }
@@ -135,11 +116,7 @@ void TabDynString::Remove(std::string elem)
     {
         if (m_tab[i] == elem)
         {
-            for (unsigned int j = i; j < m_nbElem - 1; j++)
-            {
-                m_tab[j] = m_tab[j + 1];
-            }
-            m_nbElem--;
+            Pop(i);
             i--;
         }
     }
@@ -153,12 +130,8 @@ void TabDynString::Remove(std::string elem, bool first)
         {
             if (m_tab[i] == elem)
             {
-                for (unsigned int j = i; j < m_nbElem - 1; j++)
-                {
-                    m_tab[j] = m_tab[j + 1];
-                }
-                m_nbElem--;
-                break;
+                Pop(i);
+                return;
             }
         }
     }
@@ -168,11 +141,7 @@ void TabDynString::Remove(std::string elem, bool first)
         {
             if (m_tab[i] == elem)
             {
-                for (unsigned int j = i; j < m_nbElem - 1; j++)
-                {
-                    m_tab[j] = m_tab[j + 1];
-                }
-                m_nbElem--;
+                Pop(i);
                 break;
             }
         }
