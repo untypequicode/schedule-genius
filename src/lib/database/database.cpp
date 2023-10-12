@@ -70,7 +70,7 @@ std::string Database::GetMatiere(unsigned int i) const
     return m_matiere.Get(i);
 }
 
-TabDynString Database::GetElement(unsigned int i) const
+/*TabDynString Database::GetElement(unsigned int i) const
 {
     TabDynString retour(3);
     retour.Add(convertToString(m_id.Get(i)));
@@ -78,3 +78,4 @@ TabDynString Database::GetElement(unsigned int i) const
     retour.Add(m_matiere.Get(i));
     return retour;
 }
+*/
