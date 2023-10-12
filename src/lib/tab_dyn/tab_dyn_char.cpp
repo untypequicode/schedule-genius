@@ -32,9 +32,9 @@ TabDynChar::TabDynChar(const TabDynChar& tabDynChar)
 
 TabDynChar::~TabDynChar()
 {
-    if (m_tab != nullptr)
+    if (m_security)
     {
-        if (m_security)
+        if (m_tab != nullptr)
         {
             delete[] m_tab;
         }
@@ -57,10 +57,7 @@ char TabDynChar::Get(unsigned int index) const
     {
         return m_tab[index];
     }
-    else
-    {
-        return '\0';
-    }
+    return '\0';
 }
 
 char* TabDynChar::GetTab() const
@@ -78,16 +75,7 @@ void TabDynChar::Set(unsigned int index, char c)
 
 char TabDynChar::Pop()
 {
-    if (m_nbElem > 0)
-    {
-        char c = m_tab[m_nbElem - 1];
-        m_nbElem--;
-        return c;
-    }
-    else
-    {
-        return '\0';
-    }
+    Pop(m_nbElem - 1);
 }
 
 char TabDynChar::Pop(int index)
@@ -102,10 +90,7 @@ char TabDynChar::Pop(int index)
         m_nbElem--;
         return c;
     }
-    else
-    {
-        return '\0';
-    }
+    return '\0';
 }
 
 void TabDynChar::Remove(char elem, int num)
@@ -118,12 +103,8 @@ void TabDynChar::Remove(char elem, int num)
             count++;
             if (count == num)
             {
-                for (unsigned int j = i; j < m_nbElem - 1; j++)
-                {
-                    m_tab[j] = m_tab[j + 1];
-                }
-                m_nbElem--;
-                break;
+                Pop(i);
+                return;
             }
         }
     }
@@ -135,11 +116,7 @@ void TabDynChar::Remove(char elem)
     {
         if (m_tab[i] == elem)
         {
-            for (unsigned int j = i; j < m_nbElem - 1; j++)
-            {
-                m_tab[j] = m_tab[j + 1];
-            }
-            m_nbElem--;
+            Pop(i);
             i--;
         }
     }
@@ -153,12 +130,8 @@ void TabDynChar::Remove(char elem, bool first)
         {
             if (m_tab[i] == elem)
             {
-                for (unsigned int j = i; j < m_nbElem - 1; j++)
-                {
-                    m_tab[j] = m_tab[j + 1];
-                }
-                m_nbElem--;
-                break;
+                Pop(i);
+                return;
             }
         }
     }
@@ -168,11 +141,7 @@ void TabDynChar::Remove(char elem, bool first)
         {
             if (m_tab[i] == elem)
             {
-                for (unsigned int j = i; j < m_nbElem - 1; j++)
-                {
-                    m_tab[j] = m_tab[j + 1];
-                }
-                m_nbElem--;
+                Pop(i);
                 break;
             }
         }
