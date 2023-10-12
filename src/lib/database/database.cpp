@@ -7,7 +7,8 @@
 Database::Database()
     :m_id(TabDynInt(0)),
     m_groupe(TabDynString(0)),
-    m_matiere(TabDynString(0))
+    m_matiere(TabDynString(0)),
+    m_eleve(TabDynEleve(0))
 {
 
 }
@@ -52,4 +53,28 @@ void Database::AddGroupe(std::string groupe)
 void Database::AddMatiere(std::string matiere)
 {
     m_matiere.Add(matiere);
+}
+
+int Database::GetId(unsigned int i) const
+{
+    return m_id.Get(i);
+}
+
+std::string Database::GetGroupe(unsigned int i) const
+{
+    return m_groupe.Get(i);
+}
+
+std::string Database::GetMatiere(unsigned int i) const
+{
+    return m_matiere.Get(i);
+}
+
+TabDynString Database::GetElement(unsigned int i) const
+{
+    TabDynString retour(3);
+    retour.Add(convertToString(m_id.Get(i)));
+    retour.Add(m_groupe.Get(i));
+    retour.Add(m_matiere.Get(i));
+    return retour;
 }

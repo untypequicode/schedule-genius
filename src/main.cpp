@@ -22,6 +22,7 @@ int main()
 //    std::string nom_fichier = "eleve.csv";
 //    Fichier fichiertest(nom_fichier, 201);
     Database datatest();
+    std::cout << convertToString(-54) << convertToString(132) << '\n';
 //    fichiertest.GetTexte();
 //  genererEleveViaCsv(nom_fichier);
 
