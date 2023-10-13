@@ -26,6 +26,7 @@ public:
     void SetPrenom(std::string prenom);
     void SetNom(std::string nom);
     void SetNiveauScolaire(std::string niveau_scolaire);
+    void CopyMatiere(TabDynString tab_ref);
     void SetMatiere(unsigned int i, std::string matiere);
     void AddMatiere(std::string matiere);
     std::string PopMatiere();

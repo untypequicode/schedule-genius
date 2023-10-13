@@ -100,6 +100,10 @@ void Eleve::SetNiveauScolaire(std::string niveau_scolaire)
     m_niveau_scolaire = niveau_scolaire;
 }
 
+void Eleve::CopyMatiere(TabDynString tab_ref){
+    m_matieres.Copy(tab_ref);
+}
+
 void Eleve::SetMatiere(unsigned int id, std::string matiere)
 {
     m_matieres.Set(id, matiere);
