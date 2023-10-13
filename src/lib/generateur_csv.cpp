@@ -1,4 +1,4 @@
-#include "generateur_csv.hpp"
+#include "generateur_csv.h"
 
 CsvGenerateur::CsvGenerateur()
 	: CsvGenerateur(200)
@@ -46,7 +46,7 @@ CsvGenerateur::~CsvGenerateur()
 
 //std::array <std::string,29> const NOM = {"Dupont", "Martin", "Dubois", "Bernard", "Thomas", "Robert", "Richard", "Petit", "Durand", "Leroy",
 //"Moreau", "Simon", "Laurent", "Lefebvre", "Michel", "Garcia", "David", "Roux", "Bonnet", "Fournier",
-//"Lopez", "Legrand", "Martinez", "Ferreira", "Fernandez", "Blanc", "André", "Leroux", "Rousseau" };
+//"Lopez", "Legrand", "Martinez", "Ferreira", "Fernandez", "Blanc", "Andrï¿½", "Leroux", "Rousseau" };
 //
 //std::vector <std::string> MATIERE_SPE = { "Francais", "Histoire" "Geo", "EMC", "EPS", "SPC", "SVT", "Maths", "NSI", "Philo",
 //"Anglais", "Espagnole", "Allemand", "Italien", "Russe" };
@@ -58,7 +58,7 @@ void CsvGenerateur::creerCsv()
 	std::ofstream myfile;
 	myfile.open("eleve.csv");
 
-	// Première ligne du csv avec les différentes catégories
+	// Premiï¿½re ligne du csv avec les diffï¿½rentes catï¿½gories
 	myfile << "ID;" << " PRENOM;" << "NOM;" << "Annee;";
 	for (int i = 1; i < 11; i++)
 	{

@@ -6,6 +6,8 @@
 #include <cstdlib>
 #include <ctime>
 #include "tab_dyn/tab_dyn.h"
+#include "fichier.h"
+
 
 class CsvGenerateur
 {
@@ -23,6 +25,9 @@ private:
     TabDynString m_nom;
     TabDynString m_matiere_spe;
     TabDynString m_matiere_restante;
+    TabDynChar split;
+
+
     unsigned int m_id_eleve;
 
     unsigned int NOMBRE_MATIERE_SPE;
