@@ -32,9 +32,9 @@ TabDynEleve::TabDynEleve(const TabDynEleve& tabDynEleve)
 
 TabDynEleve::~TabDynEleve()
 {
-    if (m_tab != nullptr)
+    if (m_security)
     {
-        if (m_security)
+        if (m_tab != nullptr)
         {
             delete[] m_tab;
         }
@@ -57,10 +57,7 @@ Eleve TabDynEleve::Get(unsigned int index) const
     {
         return m_tab[index];
     }
-    else
-    {
-        return Eleve();
-    }
+    return Eleve();
 }
 
 Eleve* TabDynEleve::GetTab() const
@@ -78,16 +75,7 @@ void TabDynEleve::Set(unsigned int index, Eleve i)
 
 Eleve TabDynEleve::Pop()
 {
-    if (m_nbElem > 0)
-    {
-        Eleve elem = m_tab[m_nbElem - 1];
-        m_nbElem--;
-        return elem;
-    }
-    else
-    {
-        return Eleve();
-    }
+    return Pop(m_nbElem - 1);
 }
 
 Eleve TabDynEleve::Pop(int index)
@@ -102,10 +90,7 @@ Eleve TabDynEleve::Pop(int index)
         m_nbElem--;
         return elem;
     }
-    else
-    {
-        return Eleve();
-    }
+    return Eleve();
 }
 
 void TabDynEleve::Remove(Eleve elem, int num)
@@ -118,12 +103,8 @@ void TabDynEleve::Remove(Eleve elem, int num)
             count++;
             if (count == num)
             {
-                for (unsigned int j = i; j < m_nbElem - 1; j++)
-                {
-                    m_tab[j] = m_tab[j + 1];
-                }
-                m_nbElem--;
-                break;
+                Pop(i);
+                return;
             }
         }
     }
@@ -135,11 +116,7 @@ void TabDynEleve::Remove(Eleve elem)
     {
         if (m_tab[i].GetId() == elem.GetId())
         {
-            for (unsigned int j = i; j < m_nbElem - 1; j++)
-            {
-                m_tab[j] = m_tab[j + 1];
-            }
-            m_nbElem--;
+            Pop(i);
             i--;
         }
     }
@@ -153,12 +130,8 @@ void TabDynEleve::Remove(Eleve elem, bool first)
         {
             if (m_tab[i].GetId() == elem.GetId())
             {
-                for (unsigned int j = i; j < m_nbElem - 1; j++)
-                {
-                    m_tab[j] = m_tab[j + 1];
-                }
-                m_nbElem--;
-                break;
+                Pop(i);
+                return;
             }
         }
     }
@@ -168,11 +141,7 @@ void TabDynEleve::Remove(Eleve elem, bool first)
         {
             if (m_tab[i].GetId() == elem.GetId())
             {
-                for (unsigned int j = i; j < m_nbElem - 1; j++)
-                {
-                    m_tab[j] = m_tab[j + 1];
-                }
-                m_nbElem--;
+                Pop(i);
                 break;
             }
         }
