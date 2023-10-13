@@ -1,13 +1,13 @@
-#ifndef DEF_PROF
-#define DEF_PROF
+#ifndef DEF_PROFS
+#define DEF_PROFS
 #include "../tab_dyn/tab_dyn.h"
 
-class Prof
+class Profs
 {
 public:
-    Prof();
-    Prof(unsigned int id, std::string prenom, std::string nom, unsigned int nb_heure);
-    ~Prof();
+    Profs();
+    Profs(unsigned int id, std::string prenom, std::string nom, unsigned int nb_heure);
+    ~Profs();
 
     std::string GetPrenom() const;
     std::string GetNom() const;
