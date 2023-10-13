@@ -8,12 +8,12 @@ public:
     Database();
     Database(const Database& database);
     Database(unsigned int taille);
-    void AjusteTaille();
-    void EcraserData(Fichier fichier);
+    void AjusterTaille();
+    void EcraserData(Fichier source);
+    void AjouterData(Fichier source);
 
     Eleve GetEleve(unsigned int index) const;
     TabDynString GetAllData(unsigned int index) const;
-
 
 private:
     TabDynEleve m_eleve;
