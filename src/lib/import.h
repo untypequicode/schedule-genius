@@ -44,6 +44,7 @@ transforme la chaine de caractère entrée en int si correspondance
 */
 
 std::string convertToString(int nombre);
+std::string convertToString(unsigned int nombre);
 /*
 Transforme le nombre entré en chaine de caractère
 */
