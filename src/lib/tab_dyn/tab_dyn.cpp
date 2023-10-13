@@ -76,6 +76,15 @@ void TabDyn::Clear()
     m_nbElemMax = 0;
 }
 
+void TabDyn::Clear(bool save_tab_memory)
+{
+    m_nbElem = 0;
+    if (not save_tab_memory)
+    {
+        m_nbElemMax = 0;
+    }
+}
+
 void TabDyn::SetSecurity(bool security)
 {
     m_security = security;
