@@ -38,14 +38,5 @@ en parametre le fichier à lire, le caractere à sauter et la caracter (unique !
 renvoie un tableau de valeur séparé par le split jusqu'à atteindre end
 */
 
-int convertToInt(std::string nombre);
-/*
-transforme la chaine de caractère entrée en int si correspondance
-*/
 
-std::string convertToString(int nombre);
-std::string convertToString(unsigned int nombre);
-/*
-Transforme le nombre entré en chaine de caractère
-*/
 #endif
