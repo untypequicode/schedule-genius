@@ -4,8 +4,10 @@
 #include "lib/fichier.h"
 #include "lib/dict_dyn/dict_dyn.h"
 #include "lib/character/matieres.h"
-#include "lib/character/prof.h"
-//#include "lib/database/database.h"
+#include "lib/database/database.h"
+
+
+
 
 int main()
 {
@@ -17,10 +19,10 @@ int main()
 
     //// Vincent
     //
-//    std::string nom_fichier = "eleve.csv";
-//    Fichier fichiertest(nom_fichier, 201);
-//    Database datatest();
-//    std::cout << convertToString(-54) << convertToString(132) << '\n';
+    std::string nom_fichier = "eleve.csv";
+    Fichier fichiertest(nom_fichier, 201);
+    Database datatest();
+    std::cout << convertToString(-54) << convertToString(132) << '\n';
 //    fichiertest.GetTexte();
 //  genererEleveViaCsv(nom_fichier);
 

@@ -53,7 +53,7 @@ void Database::AjusteTaille()
 void Database::EcraserData(Fichier fichier)
 {
     m_eleve.Clear();
-    m_taille = 0;
+    m_taille = fichier.GetNbLigne();
     {
         unsigned int indice = 0;
         TabDynString matiere(0);
@@ -75,8 +75,9 @@ void Database::EcraserData(Fichier fichier)
                     while (ligne != lignetest)
                     {
                         std::getline(myfile, ligne);
-                        for (char carac : ligne)
+                        for(char carac : ligne)
                         {
+                            m_taille += 1;
                             if (indice < 5)
                             {
                                 if (carac != ';')
