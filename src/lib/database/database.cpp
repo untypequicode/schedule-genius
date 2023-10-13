@@ -51,7 +51,6 @@ void Database::EcraserData(Fichier source)
 {
     m_eleve.Clear();
     unsigned int indice = 0;
-    TabDynString matiere(0);
     std::ifstream myfile;
     if (myfile)
     {
@@ -69,6 +68,8 @@ void Database::EcraserData(Fichier source)
 
                 while (ligne != lignetest)
                 {
+
+                    TabDynString matiere(0);
                     std::getline(myfile, ligne);
                     for(char carac : ligne)
                     {
@@ -98,11 +99,8 @@ void Database::EcraserData(Fichier source)
                     }
 
                     Eleve eleve(convertToInt(data.Pop(0)), data.Pop(0), data.Pop(0), data.Pop(0));
+                    eleve.CopyMatiere(matiere);
                     m_eleve.Add(eleve);
-                    while (matiere.GetNbElem() > 0)
-                    {
-                        m_eleve.Get(m_eleve.GetNbElem() - 1).AddMatiere(matiere.Pop(0));
-                    }
                     std::getline(myfiletest, lignetest);
                     data.Clear(false);
                     matiere.Clear(false);
@@ -116,6 +114,7 @@ void Database::EcraserData(Fichier source)
 
             for (unsigned int i = 0; i < source.GetNbLigne(); i++)
             {
+                TabDynString matiere(0);
                 std::getline(myfile, ligne);
                 for (char carac : ligne)
                 {
@@ -145,11 +144,8 @@ void Database::EcraserData(Fichier source)
 
                 Eleve eleve(1, data.Pop(0), data.Pop(0), data.Pop(0));
                 data.Clear(false);
-                for(unsigned int i = 0; i < matiere.GetNbElem(); i)
-                {
-                    eleve.AddMatiere(matiere.Get(i));
-                }
-                matiere.Clear(false);
+                eleve.CopyMatiere(matiere);
+                std::cout << eleve.GetPrenom() << std::endl;
 //                m_eleve.Add(eleve);
                 indice = 0;
             }
@@ -208,10 +204,7 @@ void Database::AjouterData(Fichier source)
 
                     Eleve eleve(convertToInt(data.Pop(0)), data.Pop(0), data.Pop(0), data.Pop(0));
                     m_eleve.Add(eleve);
-                    while (matiere.GetNbElem() > 0)
-                    {
-                        m_eleve.Get(m_eleve.GetNbElem() - 1).AddMatiere(matiere.Pop(0));
-                    }
+                    eleve.CopyMatiere(matiere);
                     std::getline(myfiletest, lignetest);
                     data.Clear(false);
                     matiere.Clear(false);
@@ -253,10 +246,7 @@ void Database::AjouterData(Fichier source)
 
                 Eleve eleve(convertToInt(data.Pop(0)), data.Pop(0), data.Pop(0), data.Pop(0));
                 data.Clear(false);
-                for(unsigned int i = 0; i < matiere.GetNbElem(); i++)
-                {
-                    eleve.AddMatiere(matiere.Pop(i));
-                }
+                eleve.CopyMatiere(matiere);
                 matiere.Clear(false);
                 m_eleve.Add(eleve);
                 indice = 0;
