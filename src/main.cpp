@@ -19,10 +19,10 @@ int main()
 
     //// Vincent
     //
-    std::string nom_fichier = "eleve.csv";
-    Fichier fichiertest(nom_fichier, 201);
-    Database datatest();
-    std::cout << convertToString(-54) << convertToString(132) << '\n';
+//    std::string nom_fichier = "eleve.csv";
+//    Fichier fichiertest(nom_fichier, 201);
+//    Database datatest();
+//    std::cout << convertToString(-54) << convertToString(132) << '\n';
 //    fichiertest.GetTexte();
 //  genererEleveViaCsv(nom_fichier);
 
@@ -71,7 +71,7 @@ int main()
         std::cout << dictDynIntString.Get(3) << std::endl;
         std::cout << dictDynIntString.Get(4) << std::endl;
         std::cout << "..." << std::endl;
-        dictDynIntString.Pop();
+        dictDynIntString.Pop(1);
         std::cout << dictDynIntString.Get(0) << std::endl;
         std::cout << dictDynIntString.Get(1) << std::endl;
         std::cout << dictDynIntString.Get(2) << std::endl;

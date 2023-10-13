@@ -64,10 +64,15 @@ std::string DictDynIntString::Get(int key) const
             return m_values[i];
         }
     }
-    return "";
+    return "/0";
 }
 
-std::string *DictDynIntString::GetTab() const
+int* DictDynIntString::GetKeys() const
+{
+    return m_keys;
+}
+
+std::string* DictDynIntString::GetValues() const
 {
     return m_values;
 }
@@ -84,24 +89,19 @@ void DictDynIntString::Set(int key, std::string value)
     }
 }
 
-std::string DictDynIntString::Pop()
-{
-    return Pop(m_nbElem - 1);
-}
-
 std::string DictDynIntString::Pop(int key)
 {
-    std::string value = "";
     for (int i = 0; i < m_nbElem; i++)
     {
         if (m_keys[i] == key)
         {
-            value = m_values[i];
+            //m_keys.Pop(i);
+            std::string value = m_values[i];
             Remove(key, i);
             return value;
         }
     }
-    return value;
+    return "/0";
 }
 
 void DictDynIntString::Remove(int key, int num)

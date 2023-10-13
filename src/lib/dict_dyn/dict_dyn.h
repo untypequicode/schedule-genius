@@ -15,13 +15,13 @@ public:
     void Append(int key, std::string value);
     void Add(int key, std::string value);
     std::string Get(int key) const;
-    std::string* GetTab() const;
+    int* GetKeys() const;
+    std::string* GetValues() const;
     void Set(int key, std::string value);
-    std::string Pop();
     std::string Pop(int key);
-    void Remove(int key, int num);
-    void Remove(int key);
-    void Remove(int key, bool first);
+    void Remove(int value, int num);
+    void Remove(int value);
+    void Remove(int value, bool first);
 
 private:
     void AddAppend(int key, std::string value, bool addition);
