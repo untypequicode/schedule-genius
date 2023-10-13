@@ -15,8 +15,8 @@ public:
     void Append(int key, std::string value);
     void Add(int key, std::string value);
     std::string Get(int key) const;
-    int* GetKeys() const;
-    std::string* GetValues() const;
+    TabDynInt GetKeys() const;
+    TabDynString GetValues() const;
     void Set(int key, std::string value);
     std::string Pop(int key);
     void Remove(int value, int num);
@@ -25,9 +25,10 @@ public:
 
 private:
     void AddAppend(int key, std::string value, bool addition);
+    void Delete(int i);
 
-    int* m_keys;
-    std::string* m_values;
+    TabDynInt m_keys;
+    TabDynString m_values;
 };
 
 #endif
