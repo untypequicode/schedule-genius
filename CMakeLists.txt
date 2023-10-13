@@ -26,6 +26,10 @@ add_executable(Schedule_Genius src/main.cpp
         src/lib/character/matieres.h
         src/lib/database/database.cpp
         src/lib/database/database.h
-        src/lib/character/prof.cpp
-        src/lib/character/prof.h
+        src/lib/character/profs.cpp
+        src/lib/character/profs.h
+        src/lib/character/salles.cpp
+        src/lib/character/salles.h
+        src/lib/character/groupes.cpp
+        src/lib/character/groupes.h
 )
