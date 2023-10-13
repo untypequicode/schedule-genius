@@ -18,7 +18,6 @@
 * ~Database()
 *
 * Méthodes :
-* void AjusterTaille()
 * void EcraserData(Fichier source)
 * void AjouterData(Fichier source)
 *
@@ -28,7 +27,6 @@
 * TabDynString GetAllData(unsigned int index) const
 *
 * Attributs :
-* insigned int m_taille
 * TabDynEleve m_eleve
 */
 
@@ -38,7 +36,6 @@ public:
     Database(unsigned int taille);
     Database(const Database& database);
 
-    void AjusterTaille();
     void EcraserData(Fichier source);
     void AjouterData(Fichier source);
 
@@ -49,7 +46,6 @@ public:
 
 private:
     TabDynEleve m_eleve;
-    unsigned int m_taille;
 };
 
 
