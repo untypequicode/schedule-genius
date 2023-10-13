@@ -5,77 +5,274 @@
 #include "database.h"
 
 Database::Database()
-    :m_id(TabDynInt(0)),
-    m_groupe(TabDynString(0)),
-    m_matiere(TabDynString(0)),
-    m_eleve(TabDynEleve(0))
+    :m_taille(0),
+    m_eleve(TabDynEleve(m_taille))
+
 {
 
-}
+};
+
+Database::Database(unsigned int taille)
+    :m_taille(taille),
+    m_eleve(TabDynEleve(m_taille))
+{
+
+};
 
 Database::Database(const Database& database)
-    :m_id(database.GetId()),
-    m_groupe(database.GetGroupe()),
-    m_matiere(database.GetMatiere())
+    :m_taille(database.m_taille),
+    m_eleve(database.m_eleve)
 {
 
-}
+};
 
-TabDynInt Database::GetId() const
+Eleve Database::GetEleve(unsigned int index) const
 {
-    return m_id;
-}
+    return m_eleve.Get(index);
+};
 
-TabDynString Database::GetGroupe() const
+TabDynString Database::GetAllData(unsigned int index) const
 {
-    return m_groupe;
-}
-
-TabDynString Database::GetMatiere() const
-{
-    return m_matiere;
-}
-
-void Database::GenererId()
-{
-    for (int i = m_id.GetNbElem(); i < m_groupe.GetNbElem(); i++)
+    TabDynString retour(5);
+    retour.Add(convertToString(m_eleve.Get(index).GetId()));
+    retour.Add(m_eleve.Get(index).GetPrenom());
+    retour.Add(m_eleve.Get(index).GetNom());
+    retour.Add(m_eleve.Get(index).GetNiveauScolaire());
+    for (unsigned int i = 0; i < m_eleve.Get(index).GetNbMatiere(); i++)
     {
-        //if (i not in m_groupe)
-        m_id.Add(i);
+        retour.Add(m_eleve.Get(index).GetMatiere(i));
+    }
+    return retour;
+};
+
+void Database::AjusterTaille()
+{
+    m_taille = m_eleve.GetNbElem();
+};
+
+void Database::EcraserData(Fichier source)
+{
+    m_eleve.Clear();
+    m_taille = source.GetNbLigne();
+    {
+        unsigned int indice = 0;
+        TabDynString matiere(0);
+        std::ifstream myfile;
+        if (myfile)
+        {
+            myfile.open(source.GetNom());
+            TabDynString data(5);
+            std::string ligne = "";
+
+            if (m_taille <= 0)
+            {
+                std::ifstream myfiletest;
+                {
+                    myfiletest.open(source.GetNom());
+                    std::string lignetest;
+                    std::getline(myfile, lignetest);
+
+                    while (ligne != lignetest)
+                    {
+                        std::getline(myfile, ligne);
+                        for(char carac : ligne)
+                        {
+                            if (indice < 5)
+                            {
+                                if (carac != ';')
+                                {
+                                    data.Add(data.Pop(indice) + carac);
+                                }
+
+                                else
+                                {
+                                    indice += 1;
+                                }
+                            }
+
+                            else if (carac != ';')
+                            {
+                                matiere.Add(matiere.Pop() + carac);
+                            }
+
+                            else
+                            {
+                                matiere.Add("");
+                            }
+
+                        }
+
+                        Eleve eleve(convertToInt(data.Pop(0)), data.Pop(0), data.Pop(0), data.Pop(0));
+                        m_eleve.Add(eleve);
+                        while (matiere.GetNbElem() > 0)
+                        {
+                            m_eleve.Get(m_eleve.GetNbElem() - 1).AddMatiere(matiere.Pop(0));
+                        }
+                        std::getline(myfiletest, lignetest);
+                        data.Clear();
+                        matiere.Clear();
+                        m_taille += 1;
+                        indice = 0;
+                    }
+                }
+            }
+
+            else
+            {
+
+                for (unsigned int i = 0; i < m_taille; i++)
+                {
+                    std::getline(myfile, ligne);
+                    for (char carac : ligne)
+                    {
+                        if (indice < 6)
+                        {
+                            if (carac != ';')
+                            {
+                                data.Add(data.Pop(indice) + carac);
+                            }
+
+                            else
+                            {
+                                indice += 1;
+                            }
+                        }
+
+                        else if (carac != ';')
+                        {
+                            matiere.Add(matiere.Pop() + carac);
+                        }
+
+                        else
+                        {
+                            matiere.Add("");
+                        }
+                    }
+
+                    Eleve eleve(convertToInt(data.Pop(0)), data.Pop(0), data.Pop(0), data.Pop(0));
+                    data.Clear();
+                    for(unsigned int i = 0; i < matiere.GetNbElem(); i++)
+                    {
+                        eleve.AddMatiere(matiere.Pop(i));
+                    }
+                    matiere.Clear();
+                    m_eleve.Add(eleve);
+                    indice = 0;
+                }
+            }
+        }
     }
 }
 
-void Database::AddGroupe(std::string groupe)
+void Database::AjouterData(Fichier source)
 {
-    m_groupe.Add(groupe);
-}
+    m_taille = m_eleve.GetNbElem();
+    {
+        unsigned int indice = 0;
+        TabDynString matiere(0);
+        std::ifstream myfile;
+        if (myfile)
+        {
+            myfile.open(source.GetNom());
+            TabDynString data(5);
+            std::string ligne = "";
 
-void Database::AddMatiere(std::string matiere)
-{
-    m_matiere.Add(matiere);
-}
+            if (source.GetNbLigne() <= 0)
+            {
+                std::ifstream myfiletest;
+                {
+                    myfiletest.open(source.GetNom());
+                    std::string lignetest;
+                    std::getline(myfile, lignetest);
 
-int Database::GetId(unsigned int i) const
-{
-    return m_id.Get(i);
-}
+                    while (ligne != lignetest)
+                    {
+                        std::getline(myfile, ligne);
+                        for(char carac : ligne)
+                        {
+                            if (indice < 5)
+                            {
+                                if (carac != ';')
+                                {
+                                    data.Add(data.Pop(indice) + carac);
+                                }
 
-std::string Database::GetGroupe(unsigned int i) const
-{
-    return m_groupe.Get(i);
-}
+                                else
+                                {
+                                    indice += 1;
+                                }
+                            }
 
-std::string Database::GetMatiere(unsigned int i) const
-{
-    return m_matiere.Get(i);
-}
+                            else if (carac != ';')
+                            {
+                                matiere.Add(matiere.Pop() + carac);
+                            }
 
-/*TabDynString Database::GetElement(unsigned int i) const
-{
-    TabDynString retour(3);
-    retour.Add(convertToString(m_id.Get(i)));
-    retour.Add(m_groupe.Get(i));
-    retour.Add(m_matiere.Get(i));
-    return retour;
+                            else
+                            {
+                                matiere.Add("");
+                            }
+
+                        }
+
+                        Eleve eleve(convertToInt(data.Pop(0)), data.Pop(0), data.Pop(0), data.Pop(0));
+                        m_eleve.Add(eleve);
+                        while (matiere.GetNbElem() > 0)
+                        {
+                            m_eleve.Get(m_eleve.GetNbElem() - 1).AddMatiere(matiere.Pop(0));
+                        }
+                        std::getline(myfiletest, lignetest);
+                        data.Clear();
+                        matiere.Clear();
+                        m_taille += 1;
+                        indice = 0;
+                    }
+                }
+            }
+
+            else
+            {
+                m_taille += source.GetNbLigne();
+                for (unsigned int i = 0; i < source.GetNbLigne(); i++)
+                {
+                    std::getline(myfile, ligne);
+                    for (char carac : ligne)
+                    {
+                        if (indice < 6)
+                        {
+                            if (carac != ';')
+                            {
+                                data.Add(data.Pop(indice) + carac);
+                            }
+
+                            else
+                            {
+                                indice += 1;
+                            }
+                        }
+
+                        else if (carac != ';')
+                        {
+                            matiere.Add(matiere.Pop() + carac);
+                        }
+
+                        else
+                        {
+                            matiere.Add("");
+                        }
+                    }
+
+                    Eleve eleve(convertToInt(data.Pop(0)), data.Pop(0), data.Pop(0), data.Pop(0));
+                    data.Clear();
+                    for(unsigned int i = 0; i < matiere.GetNbElem(); i++)
+                    {
+                        eleve.AddMatiere(matiere.Pop(i));
+                    }
+                    matiere.Clear();
+                    m_eleve.Add(eleve);
+                    indice = 0;
+                }
+            }
+        }
+    }
 }
-*/

@@ -64,4 +64,17 @@ private:
 protected :
     std::string m_name;
 };
+
+
+int convertToInt(std::string nombre);
+/*
+transforme la chaine de caractères entrée en int si correspondance
+*/
+
+std::string convertToString(int nombre);
+std::string convertToString(unsigned int nombre);
+/*
+Transforme le nombre entré en chaine de caractères
+*/
+
 #endif

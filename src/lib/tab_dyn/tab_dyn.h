@@ -60,6 +60,7 @@ public :
     unsigned int GetNbElemMax() const;
     void SetParam(bool add_with_multiple, unsigned int addition);
     void Clear();
+    void Clear(bool save_tab_memory);
     void SetSecurity(bool security);
 
 protected :
@@ -118,6 +119,7 @@ public :
     TabDynString(const TabDynString& tabDynString);
     ~TabDynString();
 
+    void Copy(TabDynString tab_ref);
     void Append(std::string str);
     void Add(std::string str);
     std::string Get(unsigned int index) const;
