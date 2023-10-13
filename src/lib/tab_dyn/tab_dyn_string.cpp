@@ -41,6 +41,14 @@ TabDynString::~TabDynString()
     }
 }
 
+void TabDynString::Copy(TabDynString tab_ref)
+{
+    for (unsigned int i = 0; i < tab_ref.GetNbElem(); i++)
+    {
+        Append(tab_ref.Get(i));
+    }
+}
+
 void TabDynString::Append(std::string str)
 {
     AddAppend(str, false);

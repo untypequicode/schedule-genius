@@ -119,6 +119,7 @@ public :
     TabDynString(const TabDynString& tabDynString);
     ~TabDynString();
 
+    void Copy(TabDynString tab_ref);
     void Append(std::string str);
     void Add(std::string str);
     std::string Get(unsigned int index) const;
