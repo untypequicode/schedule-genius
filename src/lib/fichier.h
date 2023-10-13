@@ -60,8 +60,6 @@ public:
 
 private:
     int m_nb_ligne;
-
-protected :
     std::string m_name;
 };
 

@@ -6,7 +6,7 @@
 
 Database::Database()
     :m_taille(0),
-    m_eleve(TabDynEleve(m_taille))
+    m_eleve(TabDynEleve(0))
 
 {
 
@@ -14,7 +14,7 @@ Database::Database()
 
 Database::Database(unsigned int taille)
     :m_taille(taille),
-    m_eleve(TabDynEleve(m_taille))
+    m_eleve(TabDynEleve(taille))
 {
 
 };
@@ -22,6 +22,11 @@ Database::Database(unsigned int taille)
 Database::Database(const Database& database)
     :m_taille(database.m_taille),
     m_eleve(database.m_eleve)
+{
+
+};
+
+Database::~Database()
 {
 
 };
@@ -109,8 +114,8 @@ void Database::EcraserData(Fichier source)
                             m_eleve.Get(m_eleve.GetNbElem() - 1).AddMatiere(matiere.Pop(0));
                         }
                         std::getline(myfiletest, lignetest);
-                        data.Clear();
-                        matiere.Clear();
+                        data.Clear(false);
+                        matiere.Clear(false);
                         m_taille += 1;
                         indice = 0;
                     }
@@ -150,12 +155,12 @@ void Database::EcraserData(Fichier source)
                     }
 
                     Eleve eleve(convertToInt(data.Pop(0)), data.Pop(0), data.Pop(0), data.Pop(0));
-                    data.Clear();
+                    data.Clear(false);
                     for(unsigned int i = 0; i < matiere.GetNbElem(); i++)
                     {
                         eleve.AddMatiere(matiere.Pop(i));
                     }
-                    matiere.Clear();
+                    matiere.Clear(false);
                     m_eleve.Add(eleve);
                     indice = 0;
                 }
@@ -222,8 +227,8 @@ void Database::AjouterData(Fichier source)
                             m_eleve.Get(m_eleve.GetNbElem() - 1).AddMatiere(matiere.Pop(0));
                         }
                         std::getline(myfiletest, lignetest);
-                        data.Clear();
-                        matiere.Clear();
+                        data.Clear(false);
+                        matiere.Clear(false);
                         m_taille += 1;
                         indice = 0;
                     }
@@ -263,12 +268,12 @@ void Database::AjouterData(Fichier source)
                     }
 
                     Eleve eleve(convertToInt(data.Pop(0)), data.Pop(0), data.Pop(0), data.Pop(0));
-                    data.Clear();
+                    data.Clear(false);
                     for(unsigned int i = 0; i < matiere.GetNbElem(); i++)
                     {
                         eleve.AddMatiere(matiere.Pop(i));
                     }
-                    matiere.Clear();
+                    matiere.Clear(false);
                     m_eleve.Add(eleve);
                     indice = 0;
                 }
