@@ -86,48 +86,63 @@ std::string DictDynIntString::Pop(int key)
         if (m_keys.Get(i) == key)
         {
             m_keys.Pop(i);
-            return m_values.Get(i);
+            return m_values.Pop(i);
         }
     }
     return "/0";
 }
 
-void DictDynIntString::Remove(int key, int num)
+void DictDynIntString::Remove(std::string value, int num)
 {
     if (num < m_nbElem)
     {
-//        m_keys.Remove(key, num);
-//        m_values.Remove(key, num);
-        m_nbElem--;
-    }
-}
-
-void DictDynIntString::Remove(int key)
-{
-    for (int i = 0; i < m_nbElem; i++)
-    {
-        if (m_keys.Get(i) == key)
-        {
-//            m_keys.Remove(key);
-//            m_values.Remove(key);
-            return;
+        int count = 0;
+        for (int i = 0; i < m_nbElem; i++) {
+            if (m_values.Get(i) == value) {
+                count++;
+                if (count == num) {
+                    m_keys.Pop(i);
+                    m_values.Pop(i);
+                    return;
+                }
+            }
         }
     }
 }
 
-void DictDynIntString::Remove(int key, bool first)
+void DictDynIntString::Remove(std::string value)
+{
+    for (int i = 0; i < m_nbElem; i++)
+    {
+        if (m_values.Get(i) == value)
+        {
+            m_keys.Pop(i);
+            m_values.Pop(i);
+            i--;
+        }
+    }
+}
+
+void DictDynIntString::Remove(std::string value, bool first)
 {
     if (first)
     {
-//        Remove(key);
+        for (int i = 0; i < m_nbElem; i++)
+        {
+            if (m_values.Get(i) == value)
+            {
+                m_keys.Pop(i);
+                return;
+            }
+        }
     }
     else
     {
         for (int i = m_nbElem - 1; i >= 0; i--)
         {
-            if (m_keys.Get(i) == key)
+            if (m_values.Get(i) == value)
             {
-//                Remove(key, i);
+                m_keys.Pop(i);
                 return;
             }
         }
@@ -157,9 +172,4 @@ void DictDynIntString::AddAppend(int key, std::string value, bool addition)
     {
         std::cout << "Erreur : le tableau est plein" << std::endl;
     }
-}
-
-void DictDynIntString::Delete(int i)
-{
-//    m_keys;
 }

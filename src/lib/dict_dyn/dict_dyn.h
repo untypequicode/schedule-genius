@@ -19,13 +19,12 @@ public:
     TabDynString GetValues() const;
     void Set(int key, std::string value);
     std::string Pop(int key);
-    void Remove(int value, int num);
-    void Remove(int value);
-    void Remove(int value, bool first);
+    void Remove(std::string value, int num);
+    void Remove(std::string value);
+    void Remove(std::string, bool first);
 
 private:
     void AddAppend(int key, std::string value, bool addition);
-    void Delete(int i);
 
     TabDynInt m_keys;
     TabDynString m_values;
