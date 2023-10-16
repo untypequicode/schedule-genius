@@ -14,6 +14,7 @@ public:
             TabDynInt horaire,
             Profs prof,
             unsigned int niveau_scolaire);
+    Groupes(const Groupes& groupes);
     ~Groupes();
 
     unsigned int GetId();

@@ -8,6 +8,7 @@ class Matieres
 public:
     Matieres();
     Matieres(std::string nom, unsigned int id,unsigned int nb_heure);
+    Matieres(const Matieres& matieres);
     ~Matieres();
 
     std::string GetNom();
