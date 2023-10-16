@@ -57,7 +57,6 @@ void Database::EcraserData(Fichier source)
         myfile.open(source.GetNom());
         TabDynString data(5);
         std::string ligne = "";
-
         if (source.GetNbLigne() <= 0)
         {
             std::ifstream myfiletest;
@@ -65,10 +64,8 @@ void Database::EcraserData(Fichier source)
                 myfiletest.open(source.GetNom());
                 std::string lignetest;
                 std::getline(myfile, lignetest);
-
                 while (ligne != lignetest)
                 {
-
                     TabDynString matiere(0);
                     std::getline(myfile, ligne);
                     for(char carac : ligne)
@@ -85,19 +82,15 @@ void Database::EcraserData(Fichier source)
                                 indice += 1;
                             }
                         }
-
                         else if (carac != ';')
                         {
                             matiere.Add(matiere.Pop() + carac);
                         }
-
                         else
                         {
                             matiere.Add("");
                         }
-
                     }
-
                     Eleve eleve(convertToInt(data.Pop(0)), data.Pop(0), data.Pop(0), data.Pop(0));
                     eleve.CopyMatiere(matiere);
                     m_eleve.Add(eleve);
@@ -108,10 +101,8 @@ void Database::EcraserData(Fichier source)
                 }
             }
         }
-
         else
         {
-
             for (unsigned int i = 0; i < source.GetNbLigne(); i++)
             {
                 TabDynString matiere(0);
@@ -124,13 +115,11 @@ void Database::EcraserData(Fichier source)
                         {
                             data.Add(data.Pop(indice) + carac);
                         }
-
                         else
                         {
                             indice += 1;
                         }
                     }
-
                     else if (carac != ';')
                     {
                         matiere.Add(matiere.Pop() + carac);

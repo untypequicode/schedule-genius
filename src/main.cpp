@@ -16,18 +16,18 @@ int main()
 {
     //// Micky
     //
-    CsvGenerateur exemple;
-    exemple.creerCsv();
+   // CsvGenerateur exemple;
+    //exemple.creerCsv();
 
 
     //// Vincent
-    //
-//    std::string nom_fichier = "eleve.csv";
-//    Fichier fichiertest(nom_fichier, 201);
+
+    std::string nom_fichier = "eleve.csv";
+    Fichier fichiertest(nom_fichier, 201);
 //    Database datatest();
-//    std::cout << convertToString(-54) << convertToString(132) << '\n';
-//    fichiertest.GetTexte();
-//  genererEleveViaCsv(nom_fichier);
+    fichiertest.GetTexte();
+//    genererEleveViaCsv(fichiertest);
+
 
     //// Ethan
     //
