@@ -12,6 +12,12 @@ Matieres::Matieres(std::string nom, unsigned int id,unsigned int nb_heure)
 
 }
 
+Matieres::Matieres(const Matieres& matieres)
+ : m_nom(matieres.m_nom), m_id(matieres.m_id), m_nb_heure(matieres.m_nb_heure)
+{
+
+}
+
 Matieres::~Matieres()
 {
 

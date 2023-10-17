@@ -7,6 +7,7 @@ class Profs
 public:
     Profs();
     Profs(unsigned int id, std::string prenom, std::string nom, unsigned int nb_heure);
+    Profs(const Profs& profs);
     ~Profs();
 
     std::string GetPrenom() const;
