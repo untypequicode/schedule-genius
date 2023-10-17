@@ -53,7 +53,7 @@ int main()
         std::cout << dictDynIntString.Get(3) << std::endl;
         std::cout << dictDynIntString.Get(4) << std::endl;
         std::cout << "..." << std::endl;
-        dictDynIntString.Remove(2);
+        dictDynIntString.Remove("test2", 1);
         std::cout << dictDynIntString.Get(0) << std::endl;
         std::cout << dictDynIntString.Get(1) << std::endl;
         std::cout << dictDynIntString.Get(2) << std::endl;

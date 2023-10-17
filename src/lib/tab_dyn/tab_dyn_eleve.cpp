@@ -41,14 +41,14 @@ TabDynEleve::~TabDynEleve()
     }
 }
 
-void TabDynEleve::Append(Eleve i)
+void TabDynEleve::Append(Eleve eleve)
 {
-    AddAppend(i, false);
+    AddAppend(eleve, false);
 }
 
-void TabDynEleve::Add(Eleve i)
+void TabDynEleve::Add(Eleve eleve)
 {
-    AddAppend(i, true);
+    AddAppend(eleve, true);
 }
 
 Eleve TabDynEleve::Get(unsigned int index) const
@@ -148,7 +148,7 @@ void TabDynEleve::Remove(Eleve elem, bool first)
     }
 }
 
-void TabDynEleve::AddAppend(Eleve i, bool addition)
+void TabDynEleve::AddAppend(Eleve eleve, bool addition)
 {
     if (m_nbElemMax == 0)
     {
@@ -162,12 +162,12 @@ void TabDynEleve::AddAppend(Eleve i, bool addition)
             m_tab = new Eleve[1];
             m_nbElemMax = 1;
         }
-        m_tab[0] = i;
+        m_tab[0] = eleve;
         m_nbElem = 1;
     }
     else if (m_nbElem < m_nbElemMax)
     {
-        m_tab[m_nbElem] = i;
+        m_tab[m_nbElem] = eleve;
         m_nbElem++;
     }
     else if (m_nbElem == m_nbElemMax)
@@ -186,14 +186,14 @@ void TabDynEleve::AddAppend(Eleve i, bool addition)
         }
         else
         {
-            new_tab = new Eleve[m_nbElemMax +1];
+            new_tab = new Eleve[m_nbElemMax + 1];
         }
         for (unsigned int i = 0; i < m_nbElem; i++)
         {
             new_tab[i] = m_tab[i];
         }
         delete[] m_tab;
-        new_tab[m_nbElem] = i;
+        new_tab[m_nbElem] = eleve;
         if (addition)
         {
             if (m_add_with_multiple)
