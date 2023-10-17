@@ -9,7 +9,10 @@ Eleve::Eleve()
 
 }
 
-Eleve::Eleve(unsigned int id, std::string prenom, std::string nom, std::string niveau_scolaire)
+Eleve::Eleve(unsigned int id,
+             std::string prenom,
+             std::string nom,
+             std::string niveau_scolaire)
         : m_id(id),
           m_prenom(prenom),
           m_nom(nom),
@@ -100,7 +103,8 @@ void Eleve::SetNiveauScolaire(std::string niveau_scolaire)
     m_niveau_scolaire = niveau_scolaire;
 }
 
-void Eleve::CopyMatiere(TabDynString tab_ref){
+void Eleve::CopyMatiere(TabDynString tab_ref)
+{
     m_matieres.Copy(tab_ref);
 }
 

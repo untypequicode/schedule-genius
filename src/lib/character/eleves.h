@@ -39,10 +39,16 @@ public:
 
 private:
     unsigned int m_id;
+    unsigned int m_nb_matiere;
+    unsigned int horaire1;
+    unsigned int horaire2;
     std::string m_prenom;
     std::string m_nom;
     std::string m_niveau_scolaire;
     TabDynString m_matieres;
+    TabDynInt m_horaires;
+    Groupes m_groupes;
+
 };
 
 class TabDynEleve : public TabDyn

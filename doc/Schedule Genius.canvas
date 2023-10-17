@@ -3,10 +3,10 @@
 		{"id":"a279b8ebdbe419b1","type":"group","x":-3140,"y":-1280,"width":2840,"height":1460,"label":"DataBase"},
 		{"id":"f24732b99408c89a","type":"group","x":-1240,"y":-896,"width":440,"height":642,"label":"Profs"},
 		{"id":"9fa7e5db31303473","type":"group","x":-2200,"y":-929,"width":400,"height":679,"label":"Groupes"},
-		{"id":"919a78d4180a693d","type":"group","x":-2820,"y":-400,"width":440,"height":544,"color":"2","label":"Matieres Temp"},
+		{"id":"919a78d4180a693d","type":"group","x":-2820,"y":-340,"width":440,"height":544,"color":"2","label":"Matieres Temp"},
+		{"id":"999f3e7e489db12a","type":"group","x":-3120,"y":-1158,"width":300,"height":758,"label":"Eleves"},
 		{"id":"b8b0448a68db0ad5","type":"group","x":-760,"y":-480,"width":440,"height":494,"label":"Salles"},
 		{"id":"13afbd8a3a9dc3e6","type":"group","x":-1720,"y":-250,"width":440,"height":459,"label":"Matieres"},
-		{"id":"999f3e7e489db12a","type":"group","x":-3120,"y":-1158,"width":300,"height":662,"label":"Eleves"},
 		{"id":"84a609c882619b18","type":"group","x":640,"y":-380,"width":1680,"height":1000,"label":"Fichiers"},
 		{"id":"c00955830002ed0f","type":"group","x":1300,"y":80,"width":970,"height":520,"label":"Ethan"},
 		{"id":"90b7f59aaac4a7f6","type":"group","x":1300,"y":-320,"width":530,"height":690,"label":"HPP"},
@@ -64,15 +64,16 @@
 		{"id":"6ec312482d150312","type":"text","text":"horaires_tab","x":-3101,"y":-757,"width":250,"height":60,"color":"4"},
 		{"id":"546fb805f5d8ac85","type":"text","text":"groupes_id","x":-3101,"y":-673,"width":250,"height":60,"color":"4"},
 		{"id":"aab15f22fd67a82b","type":"text","text":"id","x":-3101,"y":-1132,"width":250,"height":60,"color":"1"},
-		{"id":"a964265e1a865e89","type":"text","text":"matieres_id","x":-3101,"y":-586,"width":250,"height":60,"color":"4"},
 		{"id":"6d4fe535d699e8f2","type":"text","text":"horaires_tab","x":-1219,"y":-364,"width":399,"height":60,"color":"4"},
 		{"id":"a74dd028f58c1766","x":-1194,"y":-455,"width":250,"height":60,"color":"4","type":"text","text":"salle_id"},
 		{"id":"64501a1b699b94f1","x":-2178,"y":-399,"width":250,"height":60,"color":"4","type":"text","text":"salle_id"},
 		{"id":"be799c2dcb64d8aa","type":"text","text":"id","x":-1700,"y":-210,"width":400,"height":60,"color":"1"},
 		{"id":"d38a8381a56cb39c","type":"text","text":"nom","x":-1700,"y":-104,"width":400,"height":60},
 		{"id":"e5dc2956a7633c5a","type":"text","text":"nb_heure","x":-1700,"y":-4,"width":400,"height":60},
-		{"id":"fbf2523b12326f91","type":"text","text":"id","x":-2800,"y":-360,"width":400,"height":60,"color":"1"},
-		{"id":"58d69f0a5249d5df","type":"text","text":"nom","x":-2800,"y":-254,"width":400,"height":60}
+		{"id":"ccbade7ddbc61e58","x":-3101,"y":-583,"width":250,"height":60,"type":"text","text":"nb_matieres"},
+		{"id":"a964265e1a865e89","type":"text","text":"matieres_id","x":-2925,"y":-496,"width":250,"height":60,"color":"4"},
+		{"id":"fbf2523b12326f91","type":"text","text":"id","x":-2800,"y":-300,"width":400,"height":60,"color":"1"},
+		{"id":"58d69f0a5249d5df","type":"text","text":"nom","x":-2800,"y":-194,"width":400,"height":60}
 	],
 	"edges":[
 		{"id":"348019e37b1509c0","fromNode":"0485262ab79b9b92","fromSide":"right","toNode":"75e20c2443e8b37c","toSide":"left","color":"1"},
@@ -123,6 +124,7 @@
 		{"id":"38b57abcd80ac3a9","fromNode":"58d69f0a5249d5df","fromSide":"right","toNode":"d38a8381a56cb39c","toSide":"left","fromEnd":"arrow","color":"5"},
 		{"id":"9f8094b35ddcd661","fromNode":"546fb805f5d8ac85","fromSide":"right","toNode":"ad7b83d8016a8c9d","toSide":"left"},
 		{"id":"718ab096a164e6da","fromNode":"a74dd028f58c1766","fromSide":"right","toNode":"42173e3b781ad515","toSide":"left"},
-		{"id":"6d641011ff6715d4","fromNode":"64501a1b699b94f1","fromSide":"right","toNode":"a74dd028f58c1766","toSide":"left"}
+		{"id":"6d641011ff6715d4","fromNode":"64501a1b699b94f1","fromSide":"right","toNode":"a74dd028f58c1766","toSide":"left"},
+		{"id":"eccbd1cd5527edcf","fromNode":"ccbade7ddbc61e58","fromSide":"right","toNode":"a964265e1a865e89","toSide":"left"}
 	]
 }
