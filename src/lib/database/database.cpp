@@ -5,23 +5,25 @@
 #include "database.h"
 
 Database::Database()
-    :m_taille(0),
-    m_eleve(TabDynEleve(m_taille))
+    :m_eleve(TabDynEleve(0))
 
 {
 
 };
 
 Database::Database(unsigned int taille)
-    :m_taille(taille),
-    m_eleve(TabDynEleve(m_taille))
+    :m_eleve(TabDynEleve(taille))
 {
 
 };
 
 Database::Database(const Database& database)
-    :m_taille(database.m_taille),
-    m_eleve(database.m_eleve)
+    :m_eleve(database.m_eleve)
+{
+
+};
+
+Database::~Database()
 {
 
 };
@@ -45,234 +47,80 @@ TabDynString Database::GetAllData(unsigned int index) const
     return retour;
 };
 
-void Database::AjusterTaille()
-{
-    m_taille = m_eleve.GetNbElem();
-};
-
 void Database::EcraserData(Fichier source)
 {
+    std::cout << "Depart" << std::endl;
     m_eleve.Clear();
-    m_taille = source.GetNbLigne();
+    TabDynEleve retour(10);
+    std::ifstream myfile;
+    TabDynString data;
+    data.Add("");
+    TabDynString matieres;
+    matieres.Add("");
+    unsigned int indice = 0;
+    std::string ligne = "";
+    myfile.open(source.GetNom());
+    unsigned int last = 0;
+
+    if (/*source.GetNbLigne() <= 0*/ true)
     {
-        unsigned int indice = 0;
-        TabDynString matiere(0);
-        std::ifstream myfile;
-        if (myfile)
+        std::ifstream myfiletest;
+        myfiletest.open(source.GetNom());
+        std::string lignetest;
+        std::getline(myfiletest, lignetest);
+        std::getline(myfiletest, lignetest);
+        std::getline(myfile, ligne);
+
+        while(true)
         {
-            myfile.open(source.GetNom());
-            TabDynString data(5);
-            std::string ligne = "";
-
-            if (m_taille <= 0)
+            std::cout << "depart de la " << last << "eme ligne" << std::endl;
+            std::getline(myfile, ligne);
+            for(char carac : ligne)
             {
-                std::ifstream myfiletest;
+                if (indice < 4)
                 {
-                    myfiletest.open(source.GetNom());
-                    std::string lignetest;
-                    std::getline(myfile, lignetest);
-
-                    while (ligne != lignetest)
+                    if (carac == ';')
                     {
-                        std::getline(myfile, ligne);
-                        for(char carac : ligne)
-                        {
-                            if (indice < 5)
-                            {
-                                if (carac != ';')
-                                {
-                                    data.Add(data.Pop(indice) + carac);
-                                }
-
-                                else
-                                {
-                                    indice += 1;
-                                }
-                            }
-
-                            else if (carac != ';')
-                            {
-                                matiere.Add(matiere.Pop() + carac);
-                            }
-
-                            else
-                            {
-                                matiere.Add("");
-                            }
-
-                        }
-
-                        Eleve eleve(convertToInt(data.Pop(0)), data.Pop(0), data.Pop(0), data.Pop(0));
-                        m_eleve.Add(eleve);
-                        while (matiere.GetNbElem() > 0)
-                        {
-                            m_eleve.Get(m_eleve.GetNbElem() - 1).AddMatiere(matiere.Pop(0));
-                        }
-                        std::getline(myfiletest, lignetest);
-                        data.Clear();
-                        matiere.Clear();
-                        m_taille += 1;
-                        indice = 0;
+                        data.Add("");
+                        indice++;
+                    }
+                    else
+                    {
+                        data.Add(data.Pop(indice) + carac);
+                    }
+                }
+                else
+                {
+                    if (carac == ';')
+                    {
+                        matieres.Add("");
+                    }
+                    else
+                    {
+                        matieres.Add(matieres.Pop() + carac);
                     }
                 }
             }
-
-            else
+            Eleve eleve(convertToInt(data.Get(0)), data.Get(1), data.Get(2), data.Get(3));
+//            retour.Add(eleve);
+//            std::cout << eleve.GetId() << " " << eleve.GetNom() << eleve.GetPrenom() << eleve.GetNiveauScolaire() << std::endl;
+            data.Clear();
+            for (unsigned int i = 0; i < matieres.GetNbElem(); i++)
             {
-
-                for (unsigned int i = 0; i < m_taille; i++)
-                {
-                    std::getline(myfile, ligne);
-                    for (char carac : ligne)
-                    {
-                        if (indice < 6)
-                        {
-                            if (carac != ';')
-                            {
-                                data.Add(data.Pop(indice) + carac);
-                            }
-
-                            else
-                            {
-                                indice += 1;
-                            }
-                        }
-
-                        else if (carac != ';')
-                        {
-                            matiere.Add(matiere.Pop() + carac);
-                        }
-
-                        else
-                        {
-                            matiere.Add("");
-                        }
-                    }
-
-                    Eleve eleve(convertToInt(data.Pop(0)), data.Pop(0), data.Pop(0), data.Pop(0));
-                    data.Clear();
-                    for(unsigned int i = 0; i < matiere.GetNbElem(); i++)
-                    {
-                        eleve.AddMatiere(matiere.Pop(i));
-                    }
-                    matiere.Clear();
-                    m_eleve.Add(eleve);
-                    indice = 0;
-                }
+                retour.Get(last).AddMatiere(matieres.Get(i));
+                std::cout << matieres.Get(i) << std::endl;
             }
+            last++;
+            std::getline(myfiletest, lignetest);
+            std::cout << "fin de la " << last -1 << "eme ligne" << std::endl;
+            std::cout << "test : " << (ligne != lignetest) << std::endl;
+            if(ligne == lignetest)
+                break;
         }
     }
+    std::cout << "Fin";
 }
 
 void Database::AjouterData(Fichier source)
 {
-    m_taille = m_eleve.GetNbElem();
-    {
-        unsigned int indice = 0;
-        TabDynString matiere(0);
-        std::ifstream myfile;
-        if (myfile)
-        {
-            myfile.open(source.GetNom());
-            TabDynString data(5);
-            std::string ligne = "";
-
-            if (source.GetNbLigne() <= 0)
-            {
-                std::ifstream myfiletest;
-                {
-                    myfiletest.open(source.GetNom());
-                    std::string lignetest;
-                    std::getline(myfile, lignetest);
-
-                    while (ligne != lignetest)
-                    {
-                        std::getline(myfile, ligne);
-                        for(char carac : ligne)
-                        {
-                            if (indice < 5)
-                            {
-                                if (carac != ';')
-                                {
-                                    data.Add(data.Pop(indice) + carac);
-                                }
-
-                                else
-                                {
-                                    indice += 1;
-                                }
-                            }
-
-                            else if (carac != ';')
-                            {
-                                matiere.Add(matiere.Pop() + carac);
-                            }
-
-                            else
-                            {
-                                matiere.Add("");
-                            }
-
-                        }
-
-                        Eleve eleve(convertToInt(data.Pop(0)), data.Pop(0), data.Pop(0), data.Pop(0));
-                        m_eleve.Add(eleve);
-                        while (matiere.GetNbElem() > 0)
-                        {
-                            m_eleve.Get(m_eleve.GetNbElem() - 1).AddMatiere(matiere.Pop(0));
-                        }
-                        std::getline(myfiletest, lignetest);
-                        data.Clear();
-                        matiere.Clear();
-                        m_taille += 1;
-                        indice = 0;
-                    }
-                }
-            }
-
-            else
-            {
-                m_taille += source.GetNbLigne();
-                for (unsigned int i = 0; i < source.GetNbLigne(); i++)
-                {
-                    std::getline(myfile, ligne);
-                    for (char carac : ligne)
-                    {
-                        if (indice < 6)
-                        {
-                            if (carac != ';')
-                            {
-                                data.Add(data.Pop(indice) + carac);
-                            }
-
-                            else
-                            {
-                                indice += 1;
-                            }
-                        }
-
-                        else if (carac != ';')
-                        {
-                            matiere.Add(matiere.Pop() + carac);
-                        }
-
-                        else
-                        {
-                            matiere.Add("");
-                        }
-                    }
-
-                    Eleve eleve(convertToInt(data.Pop(0)), data.Pop(0), data.Pop(0), data.Pop(0));
-                    data.Clear();
-                    for(unsigned int i = 0; i < matiere.GetNbElem(); i++)
-                    {
-                        eleve.AddMatiere(matiere.Pop(i));
-                    }
-                    matiere.Clear();
-                    m_eleve.Add(eleve);
-                    indice = 0;
-                }
-            }
-        }
-    }
 }

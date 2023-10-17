@@ -30,8 +30,9 @@ add_executable(Schedule_Genius src/main.cpp
         src/lib/character/profs.h
         src/lib/character/salles.cpp
         src/lib/character/salles.h
-        src/lib/character/groupes.cpp
-        src/lib/character/groupes.h
+#        src/lib/character/groupes.cpp
+#        src/lib/character/groupes.h
         src/lib/character/matieres_temp.cpp
         src/lib/character/matieres_temp.h
+        src/lib/tab_dyn/tab_dyn_int_unsigned.cpp
 )
