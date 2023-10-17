@@ -49,24 +49,31 @@ TabDynString Database::GetAllData(unsigned int index) const
 
 void Database::EcraserData(Fichier source)
 {
+    std::cout << "Depart" << std::endl;
     m_eleve.Clear();
-    TabDynEleve retour;
+    TabDynEleve retour(10);
     std::ifstream myfile;
     TabDynString data;
     data.Add("");
+    TabDynString matieres;
+    matieres.Add("");
     unsigned int indice = 0;
     std::string ligne = "";
     myfile.open(source.GetNom());
+    unsigned int last = 0;
 
-    if (source.GetNbLigne() <= 0)
+    if (/*source.GetNbLigne() <= 0*/ true)
     {
         std::ifstream myfiletest;
         myfiletest.open(source.GetNom());
         std::string lignetest;
         std::getline(myfiletest, lignetest);
+        std::getline(myfiletest, lignetest);
+        std::getline(myfile, ligne);
 
-        while (ligne != lignetest)
+        while(true)
         {
+            std::cout << "depart de la " << last << "eme ligne" << std::endl;
             std::getline(myfile, ligne);
             for(char carac : ligne)
             {
@@ -84,12 +91,34 @@ void Database::EcraserData(Fichier source)
                 }
                 else
                 {
-                    retour.Add(Eleve(convertToInt(data.Get(0)), data.Get(1), data.Get(2), data.Get(3)));
-                    data.Clear();
+                    if (carac == ';')
+                    {
+                        matieres.Add("");
+                    }
+                    else
+                    {
+                        matieres.Add(matieres.Pop() + carac);
+                    }
                 }
             }
+            Eleve eleve(convertToInt(data.Get(0)), data.Get(1), data.Get(2), data.Get(3));
+//            retour.Add(eleve);
+//            std::cout << eleve.GetId() << " " << eleve.GetNom() << eleve.GetPrenom() << eleve.GetNiveauScolaire() << std::endl;
+            data.Clear();
+            for (unsigned int i = 0; i < matieres.GetNbElem(); i++)
+            {
+                retour.Get(last).AddMatiere(matieres.Get(i));
+                std::cout << matieres.Get(i) << std::endl;
+            }
+            last++;
+            std::getline(myfiletest, lignetest);
+            std::cout << "fin de la " << last -1 << "eme ligne" << std::endl;
+            std::cout << "test : " << (ligne != lignetest) << std::endl;
+            if(ligne == lignetest)
+                break;
         }
     }
+    std::cout << "Fin";
 }
 
 void Database::AjouterData(Fichier source)
