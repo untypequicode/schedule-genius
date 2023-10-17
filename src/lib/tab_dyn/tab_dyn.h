@@ -191,6 +191,60 @@ private :
     int unsigned* m_tab;
 };
 
+class TabDynDouble : public TabDyn
+{
+public :
+    TabDynDouble();
+    TabDynDouble(unsigned int nbElemMax);
+    TabDynDouble(unsigned int nbElemMax, bool add_with_multiple, unsigned int addition);
+    TabDynDouble(const TabDynDouble& TabDynDouble);
+    ~TabDynDouble();
+
+
+    void Append(double c);
+    void Add(double c);
+    double Get(unsigned int index) const;
+    double* GetTab() const;
+    void Set(unsigned int index, double c);
+    double Pop();
+    double Pop(int index);
+    void Remove(double elem, int num);
+    void Remove(double elem);
+    void Remove(double elem, bool first);
+
+private :
+    void AddAppend(double c, bool addition);
+
+    double* m_tab;
+};
+
+class TabDynFloat : public TabDyn
+{
+public :
+    TabDynFloat();
+    TabDynFloat(unsigned int nbElemMax);
+    TabDynFloat(unsigned int nbElemMax, bool add_with_multiple, unsigned int addition);
+    TabDynFloat(const TabDynFloat& TabDynFloat);
+    ~TabDynFloat();
+
+
+    void Append(float c);
+    void Add(float c);
+    float Get(unsigned int index) const;
+    float* GetTab() const;
+    void Set(unsigned int index, float c);
+    float Pop();
+    float Pop(int index);
+    void Remove(float elem, int num);
+    void Remove(float elem);
+    void Remove(float elem, bool first);
+
+private :
+    void AddAppend(float c, bool addition);
+
+    float* m_tab;
+};
+
 class TabDynInt : public TabDyn
 {
 public :
