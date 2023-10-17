@@ -3,6 +3,8 @@
 
 #include "../tab_dyn/tab_dyn.h"
 #include "profs.h"
+#include "matieres_temp.h"
+#include "salles.h"
 
 class Groupes
 {
@@ -18,19 +20,31 @@ public:
     ~Groupes();
 
     unsigned int GetId();
+    unsigned int GetNiveauScolaire();
+
     std::string GetNom();
+
     TabDynString GetMatiere();
     TabDynInt GetHoraire();
+
     Profs GetProf();
-    unsigned int GetNiveauScolaire();
+
+    void SetId(unsigned int id);
+    void SetNom(std::string nom);
+    void SetMatiere(TabDynString matiere);
+    void SetHoraire(TabDynInt horaire);
+    void SetProf(Profs prof);
+    void SetNiveauScolaire(unsigned int niveau_scolaire);
 
 private:
     unsigned int m_id;
+    unsigned int m_niveau_scolaire;
     std::string m_nom;
     TabDynString m_matiere;
     TabDynInt m_horaire;
     Profs m_prof;
-    unsigned int m_niveau_scolaire;
+    Matieres_temp m_matiere_temp;
+    Salles m_salle;
 };
 
 

@@ -72,3 +72,33 @@ unsigned int Groupes::GetNiveauScolaire()
 {
     return m_niveau_scolaire;
 }
+
+void Groupes::SetId(unsigned int id)
+{
+    m_id = id;
+}
+
+void Groupes::SetNom(std::string nom)
+{
+    m_nom = nom;
+}
+
+void Groupes::SetMatiere(TabDynString matiere)
+{
+    m_matiere = matiere;
+}
+
+void Groupes::SetHoraire(TabDynInt horaire)
+{
+    m_horaire = horaire;
+}
+
+void Groupes::SetProf(Profs prof)
+{
+    m_prof = prof;
+}
+
+void Groupes::SetNiveauScolaire(unsigned int niveau_scolaire)
+{
+    m_niveau_scolaire = niveau_scolaire;
+}

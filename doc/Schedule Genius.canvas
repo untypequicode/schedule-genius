@@ -3,7 +3,7 @@
 		{"id":"a279b8ebdbe419b1","type":"group","x":-3140,"y":-1280,"width":2840,"height":1460,"label":"DataBase"},
 		{"id":"f24732b99408c89a","type":"group","x":-1240,"y":-896,"width":440,"height":642,"label":"Profs"},
 		{"id":"9fa7e5db31303473","type":"group","x":-2200,"y":-929,"width":400,"height":679,"label":"Groupes"},
-		{"id":"919a78d4180a693d","type":"group","x":-2740,"y":-485,"width":440,"height":544,"color":"2","label":"Matieres Temp"},
+		{"id":"919a78d4180a693d","type":"group","x":-2820,"y":-400,"width":440,"height":544,"color":"2","label":"Matieres Temp"},
 		{"id":"b8b0448a68db0ad5","type":"group","x":-760,"y":-480,"width":440,"height":494,"label":"Salles"},
 		{"id":"13afbd8a3a9dc3e6","type":"group","x":-1720,"y":-250,"width":440,"height":459,"label":"Matieres"},
 		{"id":"999f3e7e489db12a","type":"group","x":-3120,"y":-1158,"width":300,"height":662,"label":"Eleves"},
@@ -58,8 +58,6 @@
 		{"id":"242df74aa1c281b5","type":"text","text":"matieres_id","x":-2178,"y":-643,"width":250,"height":60,"color":"4"},
 		{"id":"7be777c391a4c21f","type":"text","text":"horaires_tab","x":-2178,"y":-556,"width":250,"height":60,"color":"4"},
 		{"id":"588538e0bce3e97b","type":"text","text":"niveau_scolaire","x":-2178,"y":-475,"width":250,"height":60},
-		{"id":"fbf2523b12326f91","type":"text","text":"id","x":-2720,"y":-445,"width":400,"height":60,"color":"1"},
-		{"id":"58d69f0a5249d5df","type":"text","text":"nom","x":-2720,"y":-339,"width":400,"height":60},
 		{"id":"c2cfdd3e11b94c31","type":"text","text":"nom","x":-3101,"y":-1042,"width":250,"height":60},
 		{"id":"0981ad95d5907fbc","type":"text","text":"prenom","x":-3101,"y":-938,"width":250,"height":60},
 		{"id":"191f428f9fe408d2","type":"text","text":"niveau_scolaire","x":-3101,"y":-852,"width":250,"height":60},
@@ -72,7 +70,9 @@
 		{"id":"64501a1b699b94f1","x":-2178,"y":-399,"width":250,"height":60,"color":"4","type":"text","text":"salle_id"},
 		{"id":"be799c2dcb64d8aa","type":"text","text":"id","x":-1700,"y":-210,"width":400,"height":60,"color":"1"},
 		{"id":"d38a8381a56cb39c","type":"text","text":"nom","x":-1700,"y":-104,"width":400,"height":60},
-		{"id":"e5dc2956a7633c5a","type":"text","text":"nb_heure","x":-1700,"y":-4,"width":400,"height":60}
+		{"id":"e5dc2956a7633c5a","type":"text","text":"nb_heure","x":-1700,"y":-4,"width":400,"height":60},
+		{"id":"fbf2523b12326f91","type":"text","text":"id","x":-2800,"y":-360,"width":400,"height":60,"color":"1"},
+		{"id":"58d69f0a5249d5df","type":"text","text":"nom","x":-2800,"y":-254,"width":400,"height":60}
 	],
 	"edges":[
 		{"id":"348019e37b1509c0","fromNode":"0485262ab79b9b92","fromSide":"right","toNode":"75e20c2443e8b37c","toSide":"left","color":"1"},
@@ -117,7 +117,7 @@
 		{"id":"8eabdd741322c67f","fromNode":"242df74aa1c281b5","fromSide":"right","toNode":"be799c2dcb64d8aa","toSide":"left"},
 		{"id":"3eb60f36f5907d72","fromNode":"a964265e1a865e89","fromSide":"right","toNode":"fbf2523b12326f91","toSide":"left"},
 		{"id":"e9d3f836af99c3d6","fromNode":"919a78d4180a693d","fromSide":"right","toNode":"9fa7e5db31303473","toSide":"left"},
-		{"id":"87722e849f8ecd11","fromNode":"919a78d4180a693d","fromSide":"right","toNode":"9fa7e5db31303473","toSide":"left"},
+		{"id":"87722e849f8ecd11","fromNode":"fbf2523b12326f91","fromSide":"right","toNode":"9fa7e5db31303473","toSide":"left"},
 		{"id":"aa7a493297d9d11d","fromNode":"6ec312482d150312","fromSide":"right","toNode":"7be777c391a4c21f","toSide":"left"},
 		{"id":"3fa1ba86d76f3a05","fromNode":"fbf2523b12326f91","fromSide":"right","toNode":"be799c2dcb64d8aa","toSide":"left","fromEnd":"arrow","color":"5"},
 		{"id":"38b57abcd80ac3a9","fromNode":"58d69f0a5249d5df","fromSide":"right","toNode":"d38a8381a56cb39c","toSide":"left","fromEnd":"arrow","color":"5"},
