@@ -17,8 +17,10 @@ public:
 
     std::string GetPrenom() const;
     std::string GetNom() const;
+
     unsigned int GetId() const;
     unsigned int GetNbHeure();
+    
     TabDynInt GetHoraires();
 
     void SetHoraires(unsigned int horaires1,
@@ -27,6 +29,8 @@ public:
                      unsigned int horaires2);
     void SetNbHeure(unsigned int nb_heure);
     void SetId(unsigned int id);
+    void SetPrenom(std::string prenom);
+    void SetNom(std::string nom);
 
 private:
     unsigned int m_horaire1;

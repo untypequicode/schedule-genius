@@ -83,3 +83,13 @@ void Profs::AddHoraires(unsigned int horaires1, unsigned int horaires2)
     m_horaires_tab.Add(horaires1);
     m_horaires_tab.Add(horaires2);
 }
+
+void Profs::SetPrenom(std::string prenom)
+{
+    m_prenom = prenom;
+}
+
+void Profs::SetNom(std::string nom)
+{
+    m_nom = nom;
+}
