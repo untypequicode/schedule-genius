@@ -151,25 +151,33 @@ void DictDynIntString::Remove(std::string value, bool first)
 
 void DictDynIntString::AddAppend(int key, std::string value, bool addition)
 {
+    for (unsigned int i = 0; i < m_nbElem; i++)
+    {
+        if (m_keys.Get(i) == key)
+        {
+            m_values.Set(i, value);
+            return;
+        }
+    }
     if (m_nbElem < m_nbElemMax)
+    {
+        m_values.Set(m_nbElem, value);
+        m_keys.Set(m_nbElem, key);
+        m_nbElem++;
+    }
+    else if (m_nbElem == m_nbElemMax)
     {
         if (addition)
         {
-            for (unsigned int i = 0; i < m_nbElem; i++)
-            {
-                if (m_keys.Get(i) == key)
-                {
-//                    m_values[i] += value;
-                    return;
-                }
-            }
+            m_keys.Add(key);
+            m_values.Add(value);
         }
-        m_keys.Set(m_nbElem - 1, key);
-        m_values.Set(m_nbElem - 1, value);
+        else
+        {
+            m_keys.Append(key);
+            m_values.Append(value);
+        }
         m_nbElem++;
-    }
-    else
-    {
-        std::cout << "Erreur : le tableau est plein" << std::endl;
+        m_nbElemMax = m_keys.GetNbElemMax();
     }
 }
