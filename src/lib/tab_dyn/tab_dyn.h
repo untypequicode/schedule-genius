@@ -164,6 +164,33 @@ private :
     char* m_tab;
 };
 
+class TabDynIntUnsigned : public TabDyn
+{
+public :
+    TabDynIntUnsigned();
+    TabDynIntUnsigned(unsigned int nbElemMax);
+    TabDynIntUnsigned(unsigned int nbElemMax, bool add_with_multiple, unsigned int addition);
+    TabDynIntUnsigned(const TabDynIntUnsigned& tabDynIntUnsigned);
+    ~TabDynIntUnsigned();
+
+
+    void Append(int unsigned c);
+    void Add(int unsigned c);
+    int unsigned Get(unsigned int index) const;
+    int unsigned* GetTab() const;
+    void Set(unsigned int index, int unsigned c);
+    int unsigned Pop();
+    int unsigned Pop(int index);
+    void Remove(int unsigned elem, int num);
+    void Remove(int unsigned elem);
+    void Remove(int unsigned elem, bool first);
+
+private :
+    void AddAppend(int unsigned c, bool addition);
+
+    int unsigned* m_tab;
+};
+
 class TabDynInt : public TabDyn
 {
 public :
