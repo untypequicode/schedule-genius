@@ -49,7 +49,7 @@ TabDynString Database::GetAllData(unsigned int index) const
 
 void Database::EcraserData(Fichier source)
 {
-    std::cout << "Depart" << std::endl;
+    std::cout << "DEPART" << std::endl << std::endl;
     m_eleve.Clear();
     TabDynEleve retour(10);
     std::ifstream myfile;
@@ -105,6 +105,7 @@ void Database::EcraserData(Fichier source)
 //            retour.Add(eleve);
 //            std::cout << eleve.GetId() << " " << eleve.GetNom() << eleve.GetPrenom() << eleve.GetNiveauScolaire() << std::endl;
             data.Clear();
+            std::cout << "Matieres facultatives : " << std::endl;
             for (unsigned int i = 0; i < matieres.GetNbElem(); i++)
             {
                 retour.Get(last).AddMatiere(matieres.Get(i));
@@ -115,12 +116,12 @@ void Database::EcraserData(Fichier source)
             last++;
             std::getline(myfiletest, lignetest);
             std::cout << "fin de la " << last -1 << "eme ligne" << std::endl;
-            std::cout << "test : " << (ligne != lignetest) << std::endl;
+            std::cout << "test : " << (ligne != lignetest) << std::endl << std::endl;
             if(ligne == lignetest)
                 break;
         }
     }
-    std::cout << "Fin";
+    std::cout << "FIN";
 }
 
 void Database::AjouterData(Fichier source)
