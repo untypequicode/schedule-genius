@@ -12,7 +12,11 @@ Profs::Profs(unsigned int id, std::string prenom, std::string nom, unsigned int 
 
 }
 
+Profs::Profs(const Profs& profs)
+ : m_id(profs.m_id), m_prenom(profs.m_prenom), m_nom(profs.m_nom), m_nb_heure(profs.m_nb_heure)
+{
 
+}
 
 Profs::~Profs()
 {
@@ -49,3 +53,15 @@ void Profs::SetId(unsigned int id)
     m_id = id;
 }
 
+void SetHoraires(unsigned int horaires1, unsigned int horaires2)
+{
+    m_horaires_tab.Clear();
+    m_horaires_tab.Add(horaires1);
+    m_horaires_tab.Add(horaires2);
+}
+
+void AddHoraires(unsigned int horaires1, unsigned int horaires2)
+{
+    m_horaires_tab.Add(horaires1);
+    m_horaires_tab.Add(horaires2);
+}

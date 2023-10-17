@@ -7,6 +7,7 @@ class Salles
 public:
     Salles();
     Salles(unsigned int id, std::string nom, unsigned int horaires1, unsigned int horaires2);
+    Salles(const Salles& salles);
     ~Salles();
 
     std::string GetNom();
@@ -18,10 +19,10 @@ public:
 
 private:
     TabDynInt m_horaires_tab;
-    unsigned int m_id;
     std::string m_nom;
     unsigned int m_horaire1;
     unsigned int m_horaire2;
+    unsigned int m_id;
 
 };
 

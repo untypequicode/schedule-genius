@@ -15,10 +15,15 @@ public:
     unsigned int GetId() const;
     unsigned int GetNbHeure();
 
+    void SetHoraires(unsigned int horaires1, unsigned int horaires2);
+    void AddHoraires(unsigned int horaires1, unsigned int horaires2);
     void SetNbHeure(unsigned int nb_heure);
     void SetId(unsigned int id);
 
 private:
+    unsigned int m_horaire1;
+    unsigned int m_horaire2;
+    TabDynInt m_horaires_tab;
     unsigned int m_id;
     std::string m_prenom;
     std::string m_nom;

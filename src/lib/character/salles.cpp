@@ -13,6 +13,12 @@ Salles::Salles(unsigned int id, std::string nom, unsigned int horaires1, unsigne
     m_horaires_tab.Add(horaires2);
 }
 
+Salles::Salles(const Salles& salles)
+ : m_id(salles.m_id), m_nom(salles.m_nom), m_horaires_tab(salles.m_horaires_tab)
+{
+
+}
+
 Salles::~Salles()
 {
 
