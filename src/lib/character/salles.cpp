@@ -57,3 +57,8 @@ void Salles::AddHoraires(unsigned int horaires1, unsigned int horaires2)
     m_horaires_tab.Add(horaires1);
     m_horaires_tab.Add(horaires2);
 }
+
+void Salles::SetNom(std::string nom)
+{
+    m_nom = nom;
+}

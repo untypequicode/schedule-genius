@@ -14,13 +14,16 @@ public:
     ~Salles();
 
     std::string GetNom();
+    
     unsigned int GetId();
+
     TabDynInt GetHoraires();
 
     void SetHoraires(unsigned int horaires1,
                      unsigned int horaires2);
     void AddHoraires(unsigned int horaires1,
                      unsigned int horaires2);
+    void SetNom(std::string nom);
 
 private:
 
