@@ -16,6 +16,8 @@ public:
     unsigned int GetNbHeure();
 
     void SetNbHeure(unsigned int nb_heure);
+    void SetNom(std::string nom);
+    void SetId(unsigned int id);
 
 private:
     std::string m_nom;

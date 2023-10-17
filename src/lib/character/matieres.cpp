@@ -42,3 +42,13 @@ unsigned int Matieres::GetNbHeure()
 {
     return m_nb_heure;
 }
+
+void Matieres::SetNom(std::string nom)
+{
+    m_nom = nom;
+}
+
+void Matieres::SetId(unsigned int id)
+{
+    m_id = id;
+}
