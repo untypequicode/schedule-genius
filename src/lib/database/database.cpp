@@ -56,7 +56,6 @@ void Database::EcraserData(Fichier source)
     TabDynString data;
     data.Add("");
     TabDynString matieres;
-    matieres.Add("");
     unsigned int indice = 0;
     std::string ligne = "";
     myfile.open(source.GetNom());
@@ -75,6 +74,7 @@ void Database::EcraserData(Fichier source)
         {
             std::cout << "depart de la " << last << "eme ligne" << std::endl;
             std::getline(myfile, ligne);
+            matieres.Add("");
             for(char carac : ligne)
             {
                 if (indice < 4)
@@ -101,7 +101,7 @@ void Database::EcraserData(Fichier source)
                     }
                 }
             }
-            Eleve eleve(convertToInt(data.Get(0)), data.Get(1), data.Get(2), data.Get(3));
+//            Eleve eleve(convertToInt(data.Get(0)), data.Get(1), data.Get(2), data.Get(3));
 //            retour.Add(eleve);
 //            std::cout << eleve.GetId() << " " << eleve.GetNom() << eleve.GetPrenom() << eleve.GetNiveauScolaire() << std::endl;
             data.Clear();
@@ -110,6 +110,8 @@ void Database::EcraserData(Fichier source)
                 retour.Get(last).AddMatiere(matieres.Get(i));
                 std::cout << matieres.Get(i) << std::endl;
             }
+            matieres.Clear();
+            indice = 0;
             last++;
             std::getline(myfiletest, lignetest);
             std::cout << "fin de la " << last -1 << "eme ligne" << std::endl;
