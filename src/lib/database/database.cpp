@@ -50,93 +50,43 @@ TabDynString Database::GetAllData(unsigned int index) const
 void Database::EcraserData(Fichier source)
 {
     m_eleve.Clear();
-    unsigned int indice = 0;
+    TabDynEleve retour;
     std::ifstream myfile;
-    if (myfile)
+    TabDynString data;
+    data.Add("");
+    unsigned int indice = 0;
+    std::string ligne = "";
+    myfile.open(source.GetNom());
+
+    if (source.GetNbLigne() <= 0)
     {
-        myfile.open(source.GetNom());
-        TabDynString data(5);
-        std::string ligne = "";
-        if (source.GetNbLigne() <= 0)
-        {
-            std::ifstream myfiletest;
-            {
-                myfiletest.open(source.GetNom());
-                std::string lignetest;
-                std::getline(myfile, lignetest);
-                while (ligne != lignetest)
-                {
-                    TabDynString matiere(0);
-                    std::getline(myfile, ligne);
-                    for(char carac : ligne)
-                    {
-                        if (indice < 5)
-                        {
-                            if (carac != ';')
-                            {
-                                data.Add(data.Pop(indice) + carac);
-                            }
+        std::ifstream myfiletest;
+        myfiletest.open(source.GetNom());
+        std::string lignetest;
+        std::getline(myfiletest, lignetest);
 
-                            else
-                            {
-                                indice += 1;
-                            }
-                        }
-                        else if (carac != ';')
-                        {
-                            matiere.Add(matiere.Pop() + carac);
-                        }
-                        else
-                        {
-                            matiere.Add("");
-                        }
-                    }
-                    Eleve eleve(convertToInt(data.Pop(0)), data.Pop(0), data.Pop(0), data.Pop(0));
-                    eleve.CopyMatiere(matiere);
-                    m_eleve.Add(eleve);
-                    std::getline(myfiletest, lignetest);
-                    data.Clear(false);
-                    matiere.Clear(false);
-                    indice = 0;
-                }
-            }
-        }
-        else
+        while (ligne != lignetest)
         {
-            for (unsigned int i = 0; i < source.GetNbLigne(); i++)
+            std::getline(myfile, ligne);
+            for(char carac : ligne)
             {
-                TabDynString matiere(0);
-                std::getline(myfile, ligne);
-                for (char carac : ligne)
+                if (indice < 4)
                 {
-                    if (indice < 6)
+                    if (carac == ';')
                     {
-                        if (carac != ';')
-                        {
-                            data.Add(data.Pop(indice) + carac);
-                        }
-                        else
-                        {
-                            indice += 1;
-                        }
+                        data.Add("");
+                        indice++;
                     }
-                    else if (carac != ';')
-                    {
-                        matiere.Add(matiere.Pop() + carac);
-                    }
-
                     else
                     {
-                        matiere.Add("");
+                        data.Add(data.Pop(indice) + carac);
                     }
                 }
-
-                Eleve eleve(1, data.Pop(0), data.Pop(0), data.Pop(0));
-                data.Clear(false);
-                eleve.CopyMatiere(matiere);
-                std::cout << eleve.GetPrenom() << std::endl;
-//                m_eleve.Add(eleve);
-                indice = 0;
+                else
+                {
+                    retour.Add(Eleve(convertToInt(data.Get(0)), data.Get(1), data.Get(2), data.Get(3)));
+                    data.Clear();
+                }
             }
         }
     }
@@ -144,102 +94,4 @@ void Database::EcraserData(Fichier source)
 
 void Database::AjouterData(Fichier source)
 {
-    unsigned int indice = 0;
-    TabDynString matiere(0);
-    std::ifstream myfile;
-    if (myfile)
-    {
-        myfile.open(source.GetNom());
-        TabDynString data(5);
-        std::string ligne = "";
-
-        if (source.GetNbLigne() <= 0)
-        {
-            std::ifstream myfiletest;
-            {
-                myfiletest.open(source.GetNom());
-                std::string lignetest;
-                std::getline(myfile, lignetest);
-
-                while (ligne != lignetest)
-                {
-                    std::getline(myfile, ligne);
-                    for(char carac : ligne)
-                    {
-                        if (indice < 5)
-                        {
-                            if (carac != ';')
-                            {
-                                data.Add(data.Pop(indice) + carac);
-                            }
-
-                            else
-                            {
-                                indice += 1;
-                            }
-                        }
-
-                        else if (carac != ';')
-                        {
-                            matiere.Add(matiere.Pop() + carac);
-                        }
-
-                        else
-                        {
-                            matiere.Add("");
-                        }
-
-                    }
-
-                    Eleve eleve(convertToInt(data.Pop(0)), data.Pop(0), data.Pop(0), data.Pop(0));
-                    m_eleve.Add(eleve);
-                    eleve.CopyMatiere(matiere);
-                    std::getline(myfiletest, lignetest);
-                    data.Clear(false);
-                    matiere.Clear(false);
-                    indice = 0;
-                }
-            }
-        }
-
-        else
-        {
-            for (unsigned int i = 0; i < source.GetNbLigne(); i++)
-            {
-                std::getline(myfile, ligne);
-                for (char carac : ligne)
-                {
-                    if (indice < 6)
-                    {
-                        if (carac != ';')
-                        {
-                            data.Add(data.Pop(indice) + carac);
-                        }
-
-                        else
-                        {
-                            indice += 1;
-                        }
-                    }
-
-                    else if (carac != ';')
-                    {
-                        matiere.Add(matiere.Pop() + carac);
-                    }
-
-                    else
-                    {
-                        matiere.Add("");
-                    }
-                }
-
-                Eleve eleve(convertToInt(data.Pop(0)), data.Pop(0), data.Pop(0), data.Pop(0));
-                data.Clear(false);
-                eleve.CopyMatiere(matiere);
-                matiere.Clear(false);
-                m_eleve.Add(eleve);
-                indice = 0;
-            }
-        }
-    }
 }
