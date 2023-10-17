@@ -27,6 +27,17 @@ Groupes::Groupes(unsigned int id,
 
 }
 
+Groupes::Groupes(const Groupes &groupes)
+ : m_id(groupes.m_id),
+   m_nom(groupes.m_nom),
+   m_matiere(groupes.m_matiere),
+   m_horaire(groupes.m_horaire),
+   m_prof(groupes.m_prof),
+   m_niveau_scolaire(groupes.m_niveau_scolaire)
+{
+
+}
+
 Groupes::~Groupes()
 {
 

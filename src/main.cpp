@@ -3,8 +3,11 @@
 #include "lib/import.h"
 #include "lib/fichier.h"
 #include "lib/dict_dyn/dict_dyn.h"
-#include "lib/character/matieres.h"
 #include "lib/database/database.h"
+#include "lib/character/eleves.h"
+#include "lib/character/groupes.h"
+#include "lib/character/profs.h"
+#include "lib/character/matieres.h"
 
 
 

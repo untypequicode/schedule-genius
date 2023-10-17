@@ -6,22 +6,29 @@ class Salles
 {
 public:
     Salles();
-    Salles(unsigned int id, std::string nom, unsigned int horaires1, unsigned int horaires2);
+    Salles(unsigned int id,
+           std::string nom,
+           unsigned int horaires1,
+           unsigned int horaires2);
+    Salles(const Salles& salles);
     ~Salles();
 
     std::string GetNom();
     unsigned int GetId();
     TabDynInt GetHoraires();
 
-    void SetHoraires(unsigned int horaires1, unsigned int horaires2);
-    void AddHoraires(unsigned int horaires1, unsigned int horaires2);
+    void SetHoraires(unsigned int horaires1,
+                     unsigned int horaires2);
+    void AddHoraires(unsigned int horaires1,
+                     unsigned int horaires2);
 
 private:
-    TabDynInt m_horaires_tab;
-    unsigned int m_id;
-    std::string m_nom;
+
     unsigned int m_horaire1;
     unsigned int m_horaire2;
+    unsigned int m_id;
+    TabDynInt m_horaires_tab;
+    std::string m_nom;
 
 };
 
