@@ -41,14 +41,9 @@ TabDynEleve::~TabDynEleve()
     }
 }
 
-void TabDynEleve::Append(Eleve eleve)
-{
-    AddAppend(eleve, false);
-}
-
 void TabDynEleve::Add(Eleve eleve)
 {
-    AddAppend(eleve, true);
+    Add(eleve, true);
 }
 
 Eleve TabDynEleve::Get(unsigned int index) const
@@ -148,7 +143,7 @@ void TabDynEleve::Remove(Eleve elem, bool first)
     }
 }
 
-void TabDynEleve::AddAppend(Eleve eleve, bool addition)
+void TabDynEleve::Add(Eleve eleve, bool addition)
 {
     if (m_nbElemMax == 0)
     {

@@ -60,8 +60,8 @@ public:
     TabDynEleve(const TabDynEleve& tabDynEleve);
     ~TabDynEleve();
 
-    void Append(Eleve i);
-    void Add(Eleve i);
+    void Add(Eleve eleve);
+    void Add(Eleve eleve, bool addition);
     Eleve Get(unsigned int index) const;
     Eleve* GetTab() const;
     void Set(unsigned int index, Eleve i);
@@ -72,8 +72,6 @@ public:
     void Remove(Eleve elem, bool first);
 
 private:
-    void AddAppend(Eleve i, bool addition);
-
     Eleve* m_tab;
 };
 
