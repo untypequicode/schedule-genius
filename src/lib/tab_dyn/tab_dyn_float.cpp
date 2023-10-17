@@ -41,6 +41,14 @@ TabDynFloat::~TabDynFloat()
     }
 }
 
+void TabDynFloat::Copy(TabDynFloat tab_ref)
+{
+    for (unsigned int i = 0; i < tab_ref.GetNbElem(); i++)
+    {
+        Append(tab_ref.Get(i));
+    }
+}
+
 void TabDynFloat::Append(float c)
 {
     AddAppend(c, false);

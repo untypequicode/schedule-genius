@@ -41,6 +41,14 @@ TabDynIntUnsigned::~TabDynIntUnsigned()
     }
 }
 
+void TabDynIntUnsigned::Copy(TabDynIntUnsigned tab_ref)
+{
+    for (unsigned int i = 0; i < tab_ref.GetNbElem(); i++)
+    {
+        Append(tab_ref.Get(i));
+    }
+}
+
 void TabDynIntUnsigned::Append(int unsigned c)
 {
     AddAppend(c, false);

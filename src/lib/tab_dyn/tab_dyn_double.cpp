@@ -41,6 +41,14 @@ TabDynDouble::~TabDynDouble()
     }
 }
 
+void TabDynDouble::Copy(TabDynDouble tab_ref)
+{
+    for (unsigned int i = 0; i < tab_ref.GetNbElem(); i++)
+    {
+        Append(tab_ref.Get(i));
+    }
+}
+
 void TabDynDouble::Append(double c)
 {
     AddAppend(c, false);

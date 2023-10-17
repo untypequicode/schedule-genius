@@ -71,71 +71,7 @@ protected :
     bool m_security;
 };
 
-/*
-* Classe TabDynString
-* Classe fille de TabDyn
-* Contient un tableau de std::string
-* 
-* Constructeurs :
-* TabDynString()
-* TabDynString(unsigned int nbElemMax)
-* TabDynString(const TabDynString& tabDynString)
-* 
-* Destructeur :
-* ~TabDynString()
-* 
-* Méthodes :
-* void Append(std::string str)
-* void Add(std::string str)
-* std::string Get(unsigned int index) const
-* std::string* GetTab() const
-* void Set(unsigned int index, std::string str)
-* 
-* Attributs :
-* std::string* m_tab;
-* 
-* Remarques :
-* 
-* Exemple :
-* TabDynString tab(10);
-* std::cout << tab.getNbElem() << std::endl;
-* std::cout << tab.getNbElemMax() << std::endl;
-* TabDynString tab2;
-* std::cout << tab2.getNbElem() << std::endl;
-* std::cout << tab2.getNbElemMax() << std::endl;
-* 
-* Sortie :
-* 0
-* 10
-* 0
-* 0
-*/
-class TabDynString : public TabDyn
-{
-public :
-    TabDynString();
-    TabDynString(unsigned int nbElemMax);
-    TabDynString(unsigned int nbElemMax, bool add_with_multiple, unsigned int addition);
-    TabDynString(const TabDynString& tabDynString);
-    ~TabDynString();
-
-    void Copy(TabDynString tab_ref);
-    void Append(std::string str);
-    void Add(std::string str);
-    std::string Get(unsigned int index) const;
-    std::string* GetTab() const;
-    void Set(unsigned int index, std::string str);
-    std::string Pop();
-    std::string Pop(int index);
-    void Remove(std::string elem, int num);
-    void Remove(std::string elem);
-    void Remove(std::string elem, bool first);
-
-private :
-    void AddAppend(std::string str, bool addition);
-
-    std::string* m_tab;
-};
+/* SPLIT */
 
 class TabDynChar : public TabDyn
 {
@@ -146,7 +82,7 @@ public :
     TabDynChar(const TabDynChar& tabDynChar);
     ~TabDynChar();
 
-
+    void Copy(TabDynChar tab_ref);
     void Append(char c);
     void Add(char c);
     char Get(unsigned int index) const;
@@ -164,32 +100,42 @@ private :
     char* m_tab;
 };
 
-class TabDynIntUnsigned : public TabDyn
+/* SPLIT */
+
+
+
+
+class TabDynString : public TabDyn
 {
 public :
-    TabDynIntUnsigned();
-    TabDynIntUnsigned(unsigned int nbElemMax);
-    TabDynIntUnsigned(unsigned int nbElemMax, bool add_with_multiple, unsigned int addition);
-    TabDynIntUnsigned(const TabDynIntUnsigned& tabDynIntUnsigned);
-    ~TabDynIntUnsigned();
+    TabDynString();
+    TabDynString(unsigned int nbElemMax);
+    TabDynString(unsigned int nbElemMax, bool add_with_multiple, unsigned int addition);
+    TabDynString(const TabDynString& tabDynString);
+    ~TabDynString();
 
-
-    void Append(int unsigned c);
-    void Add(int unsigned c);
-    int unsigned Get(unsigned int index) const;
-    int unsigned* GetTab() const;
-    void Set(unsigned int index, int unsigned c);
-    int unsigned Pop();
-    int unsigned Pop(int index);
-    void Remove(int unsigned elem, int num);
-    void Remove(int unsigned elem);
-    void Remove(int unsigned elem, bool first);
+    void Copy(TabDynString tab_ref);
+    void Append(std::string c);
+    void Add(std::string c);
+    std::string Get(unsigned int index) const;
+    std::string* GetTab() const;
+    void Set(unsigned int index, std::string c);
+    std::string Pop();
+    std::string Pop(int index);
+    void Remove(std::string elem, int num);
+    void Remove(std::string elem);
+    void Remove(std::string elem, bool first);
 
 private :
-    void AddAppend(int unsigned c, bool addition);
+    void AddAppend(std::string c, bool addition);
 
-    int unsigned* m_tab;
+    std::string* m_tab;
 };
+
+
+
+
+
 
 class TabDynDouble : public TabDyn
 {
@@ -197,10 +143,10 @@ public :
     TabDynDouble();
     TabDynDouble(unsigned int nbElemMax);
     TabDynDouble(unsigned int nbElemMax, bool add_with_multiple, unsigned int addition);
-    TabDynDouble(const TabDynDouble& TabDynDouble);
+    TabDynDouble(const TabDynDouble& tabDynDouble);
     ~TabDynDouble();
 
-
+    void Copy(TabDynDouble tab_ref);
     void Append(double c);
     void Add(double c);
     double Get(unsigned int index) const;
@@ -218,16 +164,85 @@ private :
     double* m_tab;
 };
 
+
+
+
+
+
+class TabDynIntUnsigned : public TabDyn
+{
+public :
+    TabDynIntUnsigned();
+    TabDynIntUnsigned(unsigned int nbElemMax);
+    TabDynIntUnsigned(unsigned int nbElemMax, bool add_with_multiple, unsigned int addition);
+    TabDynIntUnsigned(const TabDynIntUnsigned& tabDynIntUnsigned);
+    ~TabDynIntUnsigned();
+
+    void Copy(TabDynIntUnsigned tab_ref);
+    void Append(int unsigned c);
+    void Add(int unsigned c);
+    int unsigned Get(unsigned int index) const;
+    int unsigned* GetTab() const;
+    void Set(unsigned int index, int unsigned c);
+    int unsigned Pop();
+    int unsigned Pop(int index);
+    void Remove(int unsigned elem, int num);
+    void Remove(int unsigned elem);
+    void Remove(int unsigned elem, bool first);
+
+private :
+    void AddAppend(int unsigned c, bool addition);
+
+    int unsigned* m_tab;
+};
+
+
+
+
+
+
+class TabDynInt : public TabDyn
+{
+public :
+    TabDynInt();
+    TabDynInt(unsigned int nbElemMax);
+    TabDynInt(unsigned int nbElemMax, bool add_with_multiple, unsigned int addition);
+    TabDynInt(const TabDynInt& tabDynInt);
+    ~TabDynInt();
+
+    void Copy(TabDynInt tab_ref);
+    void Append(int c);
+    void Add(int c);
+    int Get(unsigned int index) const;
+    int* GetTab() const;
+    void Set(unsigned int index, int c);
+    int Pop();
+    int Pop(int index);
+    void Remove(int elem, int num);
+    void Remove(int elem);
+    void Remove(int elem, bool first);
+
+private :
+    void AddAppend(int c, bool addition);
+
+    int* m_tab;
+};
+
+
+
+
+
+
 class TabDynFloat : public TabDyn
 {
 public :
     TabDynFloat();
     TabDynFloat(unsigned int nbElemMax);
     TabDynFloat(unsigned int nbElemMax, bool add_with_multiple, unsigned int addition);
-    TabDynFloat(const TabDynFloat& TabDynFloat);
+    TabDynFloat(const TabDynFloat& tabDynFloat);
     ~TabDynFloat();
 
-
+    void Copy(TabDynFloat tab_ref);
     void Append(float c);
     void Add(float c);
     float Get(unsigned int index) const;
@@ -245,30 +260,7 @@ private :
     float* m_tab;
 };
 
-class TabDynInt : public TabDyn
-{
-public :
-    TabDynInt();
-    TabDynInt(unsigned int nbElemMax);
-    TabDynInt(unsigned int nbElemMax, bool add_with_multiple, unsigned int addition);
-    TabDynInt(const TabDynInt& tabDynInt);
-    ~TabDynInt();
 
-    void Append(int i);
-    void Add(int i);
-    int Get(unsigned int index) const;
-    int* GetTab() const;
-    void Set(unsigned int index, int i);
-    int Pop();
-    int Pop(int index);
-    void Remove(int elem, int num);
-    void Remove(int elem);
-    void Remove(int elem, bool first);
-
-private :
-    void AddAppend(int i, bool addition);
-
-    int* m_tab;
-};
+/* SPLIT */
 
 #endif

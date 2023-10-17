@@ -41,14 +41,22 @@ TabDynInt::~TabDynInt()
     }
 }
 
-void TabDynInt::Append(int i)
+void TabDynInt::Copy(TabDynInt tab_ref)
 {
-    AddAppend(i, false);
+    for (unsigned int i = 0; i < tab_ref.GetNbElem(); i++)
+    {
+        Append(tab_ref.Get(i));
+    }
 }
 
-void TabDynInt::Add(int i)
+void TabDynInt::Append(int c)
 {
-    AddAppend(i, true);
+    AddAppend(c, false);
+}
+
+void TabDynInt::Add(int c)
+{
+    AddAppend(c, true);
 }
 
 int TabDynInt::Get(unsigned int index) const
@@ -57,7 +65,7 @@ int TabDynInt::Get(unsigned int index) const
     {
         return m_tab[index];
     }
-    return m_tab[m_nbElem - 1];
+    return '\0';
 }
 
 int* TabDynInt::GetTab() const
@@ -65,11 +73,11 @@ int* TabDynInt::GetTab() const
     return m_tab;
 }
 
-void TabDynInt::Set(unsigned int index, int i)
+void TabDynInt::Set(unsigned int index, int c)
 {
     if (index < m_nbElem)
     {
-        m_tab[index] = i;
+        m_tab[index] = c;
     }
 }
 
@@ -82,15 +90,15 @@ int TabDynInt::Pop(int index)
 {
     if (index < m_nbElem)
     {
-        int elem = m_tab[index];
+        int c = m_tab[index];
         for (unsigned int i = index; i < m_nbElem - 1; i++)
         {
             m_tab[i] = m_tab[i + 1];
         }
         m_nbElem--;
-        return elem;
+        return c;
     }
-    return -1;
+    return '\0';
 }
 
 void TabDynInt::Remove(int elem, int num)
@@ -148,7 +156,7 @@ void TabDynInt::Remove(int elem, bool first)
     }
 }
 
-void TabDynInt::AddAppend(int i, bool addition)
+void TabDynInt::AddAppend(int c, bool addition)
 {
     if (m_nbElemMax == 0)
     {
@@ -162,12 +170,12 @@ void TabDynInt::AddAppend(int i, bool addition)
             m_tab = new int[1];
             m_nbElemMax = 1;
         }
-        m_tab[0] = i;
+        m_tab[0] = c;
         m_nbElem = 1;
     }
     else if (m_nbElem < m_nbElemMax)
     {
-        m_tab[m_nbElem] = i;
+        m_tab[m_nbElem] = c;
         m_nbElem++;
     }
     else if (m_nbElem == m_nbElemMax)
@@ -186,14 +194,14 @@ void TabDynInt::AddAppend(int i, bool addition)
         }
         else
         {
-            new_tab = new int[m_nbElemMax +1];
+            new_tab = new int[m_nbElemMax + 1];
         }
         for (unsigned int i = 0; i < m_nbElem; i++)
         {
             new_tab[i] = m_tab[i];
         }
         delete[] m_tab;
-        new_tab[m_nbElem] = i;
+        new_tab[m_nbElem] = c;
         if (addition)
         {
             if (m_add_with_multiple)
@@ -210,6 +218,5 @@ void TabDynInt::AddAppend(int i, bool addition)
             m_nbElemMax++;
         }
         m_nbElem++;
-        m_tab = new_tab;
     }
 }

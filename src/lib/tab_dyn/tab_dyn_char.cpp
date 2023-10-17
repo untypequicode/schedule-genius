@@ -41,6 +41,14 @@ TabDynChar::~TabDynChar()
     }
 }
 
+void TabDynChar::Copy(TabDynChar tab_ref)
+{
+    for (unsigned int i = 0; i < tab_ref.GetNbElem(); i++)
+    {
+        Append(tab_ref.Get(i));
+    }
+}
+
 void TabDynChar::Append(char c)
 {
     AddAppend(c, false);
