@@ -6,7 +6,12 @@ class Profs
 {
 public:
     Profs();
-    Profs(unsigned int id, std::string prenom, std::string nom, unsigned int nb_heure);
+    Profs(unsigned int id,
+          std::string prenom,
+          std::string nom,
+          unsigned int nb_heure,
+          unsigned int horaires1,
+          unsigned int horaires2);
     Profs(const Profs& profs);
     ~Profs();
 
@@ -14,20 +19,23 @@ public:
     std::string GetNom() const;
     unsigned int GetId() const;
     unsigned int GetNbHeure();
+    TabDynInt GetHoraires();
 
-    void SetHoraires(unsigned int horaires1, unsigned int horaires2);
-    void AddHoraires(unsigned int horaires1, unsigned int horaires2);
+    void SetHoraires(unsigned int horaires1,
+                     unsigned int horaires2);
+    void AddHoraires(unsigned int horaires1,
+                     unsigned int horaires2);
     void SetNbHeure(unsigned int nb_heure);
     void SetId(unsigned int id);
 
 private:
     unsigned int m_horaire1;
     unsigned int m_horaire2;
-    TabDynInt m_horaires_tab;
+    unsigned int m_nb_heure;
     unsigned int m_id;
+    TabDynInt m_horaires_tab;
     std::string m_prenom;
     std::string m_nom;
-    unsigned int m_nb_heure;
 };
 
 

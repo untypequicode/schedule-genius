@@ -1,12 +1,16 @@
 #include "salles.h"
 
 Salles::Salles()
- : Salles(0, "/0", 0, 0)
+ : Salles(0, "/0",
+          0, 0)
 {
 
 }
 
-Salles::Salles(unsigned int id, std::string nom, unsigned int horaires1, unsigned int horaires2)
+Salles::Salles(unsigned int id,
+               std::string nom,
+               unsigned int horaires1,
+               unsigned int horaires2)
  : m_id(id), m_nom(nom)
 {
     m_horaires_tab.Add(horaires1);
@@ -14,7 +18,9 @@ Salles::Salles(unsigned int id, std::string nom, unsigned int horaires1, unsigne
 }
 
 Salles::Salles(const Salles& salles)
- : m_id(salles.m_id), m_nom(salles.m_nom), m_horaires_tab(salles.m_horaires_tab)
+ : m_id(salles.m_id),
+ m_nom(salles.m_nom),
+ m_horaires_tab(salles.m_horaires_tab)
 {
 
 }
