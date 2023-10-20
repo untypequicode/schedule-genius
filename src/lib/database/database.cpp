@@ -101,7 +101,7 @@ void Database::EcraserData(Fichier source)
                     }
                 }
             }
-//            Eleve eleve(convertToInt(data.Get(0)), data.Get(1), data.Get(2), data.Get(3));
+            Eleve eleve(convertToInt(data.Get(0)), data.Get(1), data.Get(2), data.Get(3));
 //            retour.Add(eleve);
 //            std::cout << eleve.GetId() << " " << eleve.GetNom() << eleve.GetPrenom() << eleve.GetNiveauScolaire() << std::endl;
             data.Clear();
