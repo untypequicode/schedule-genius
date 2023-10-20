@@ -272,108 +272,6 @@ TabDynString Fichier::GiveTab(TabDynChar split)
     }
 }
 
-TabDynEleve Fichier::GenererEleve()
-{
-    TabDynEleve retour(m_nb_ligne);
-    unsigned int indice = 0;
-    TabDynString matiere(3);
-    std::ifstream myfile;
-    if (myfile)
-    {
-        myfile.open(m_name);
-        TabDynString data(5);
-        TabDynString matiere(2);
-        std::string ligne = "";
-
-        if (m_nb_ligne <= 0)
-        {
-            std::ifstream myfiletest;
-            {
-                myfiletest.open(m_name);
-                std::string lignetest;
-                std::getline(myfile, lignetest);
-
-                while (ligne != lignetest)
-                {
-                    std::getline(myfile, ligne);
-                    for (char carac : ligne)
-                    {
-                        if (indice < 5)
-                        {
-                            if (carac != ';')
-                            {
-                                data.Add(data.Pop(indice) + carac);
-                            }
-                        }
-
-                        else if (indice < 5)
-                        {
-                            indice += 1;
-                        }
-
-                        else if (carac != ';')
-                        {
-                            matiere.Add(matiere.Pop() + carac);
-                        }
-
-                        else
-                        {
-                            matiere.Add("");
-                        }
-
-                    }
-
-                    Eleve eleve(convertToInt(data.Pop(0)), data.Pop(0), data.Pop(0), data.Pop(0));
-                    std::getline(myfiletest, lignetest);
-                    data.Clear();
-                    retour.Add(eleve);
-                    indice = 0;
-                }
-            }
-        }
-
-        else
-        {
-
-            for (unsigned int i = 0; i < m_nb_ligne; i++)
-            {
-                std::getline(myfile, ligne);
-                for (char carac : ligne)
-                {
-                    if (indice < 6)
-                    {
-                        if (carac != ';')
-                        {
-                            data.Add(data.Pop(indice) + carac);
-                        }
-                    }
-
-                    else if (indice < 6)
-                    {
-                        indice += 1;
-                    }
-
-                    else if (carac != ';')
-                    {
-                        matiere.Add(matiere.Pop() + carac);
-                    }
-
-                    else
-                    {
-                        matiere.Add("");
-                    }
-                }
-
-                Eleve eleve(convertToInt(data.Pop(0)), data.Pop(0), data.Pop(0), data.Pop(0));
-                data.Clear();
-                retour.Add(eleve);
-                indice = 0;
-            }
-        }
-    }
-    return retour;
-}
-
 int convertToInt(std::string nombre)
 {
     int convert = 0;
@@ -513,11 +411,6 @@ std::string convertToString(unsigned int nombre) {
 
     std::string convert = "";
     char signe = ' ';
-
-    if (nombre < 0) {
-        nombre *= -1;
-        signe = '-';
-    }
 
     while (nombre != 0) {
         int nb = nombre % 10;
