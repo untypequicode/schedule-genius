@@ -107,6 +107,11 @@ void Eleve::CopyMatiere(TabDynString tab_ref){
     m_matieres.Copy(tab_ref);
 }
 
+void Eleve::SetSecurity(bool security)
+{
+    m_matieres.SetSecurity(security);
+}
+
 void Eleve::SetMatiere(unsigned int id, std::string matiere)
 {
     m_matieres.Set(id, matiere);

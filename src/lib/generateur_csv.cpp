@@ -20,7 +20,6 @@ CsvGenerateur::CsvGenerateur(unsigned int M_NOMBRE_ELEVE)
 	Fichier fichier_nom("nom.txt", 53);
 	for (int i = 0; i < fichier_matiere_spe.GiveTab(split).GetNbElem(); i++)
 	{
-        std::cout << "index = " << i << std::endl;
 		m_matiere_spe.Add(fichier_matiere_spe.GiveTab(split).Get(i));
 	};
 	for (int i = 0; i < fichier_prenom.GiveTab(split).GetNbElem(); i++)
