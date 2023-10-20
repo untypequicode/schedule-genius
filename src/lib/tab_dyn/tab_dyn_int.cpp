@@ -40,9 +40,9 @@ TabDynInt::~TabDynInt()
 
 void TabDynInt::Copy(TabDynInt& tab_dyn_ref)
 {
-    for (unsigned int i = 0; i < tab_dyn_ref.GetNbElem(); i++)
+    for (unsigned int i = 0; i < tab_dyn_ref.m_nb_elem; i++)
     {
-        Add(tab_dyn_ref.Get(i), false);
+        Add(m_tab[i], false);
     }
 }
 
@@ -67,11 +67,13 @@ void TabDynInt::Add(int value, bool add_with_multiple)
         }
         m_tab[0] = value;
         m_nb_elem = 1;
+        return;
     }
     else if (m_nb_elem < m_nb_elem_max)
     {
         m_tab[m_nb_elem] = value;
         m_nb_elem++;
+        return;
     }
     else if (m_nb_elem == m_nb_elem_max)
     {
@@ -113,6 +115,7 @@ void TabDynInt::Add(int value, bool add_with_multiple)
             m_nb_elem_max++;
         }
         m_nb_elem++;
+        return;
     }
 }
 
