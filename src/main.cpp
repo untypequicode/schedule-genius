@@ -34,10 +34,10 @@ int main()
     Database datatest;
     datatest.EcraserData(fichiertest);
     std::cout << "fin" << std::endl;
-    for(int i = 0; i < datatest.GetEleve(0).GetNbMatiere(); i++)
-    {
-        std::cout << datatest.GetEleve(0).GetMatiere(i) << std::endl;
-    }
+//    for(int i = 0; i < datatest.GetEleve(0).GetNbMatiere(); i++)
+//    {
+//        std::cout << datatest.GetEleve(0).GetMatiere(i) << std::endl;
+//    }
 
 
     //// Ethan
@@ -52,6 +52,7 @@ int main()
 //    groupe.AddEleve(eleve);
 //    std::string matiere_eleve = groupe.GetEleve(0).GetMatiere(1);
 //    std::cout << groupe.GetEleve(0).m_prenom << std::endl;
+
 
 
     return 0;

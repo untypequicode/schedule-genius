@@ -26,6 +26,7 @@ public:
     void SetNiveauScolaire(std::string niveau_scolaire);
 
     void CopyMatiere(TabDynString tab_dyn_ref);
+    void SetSecurity(bool security);
     void AddMatiere(std::string value);
     void AddMatiere(std::string value, bool add_with_addition);
     std::string GetMatiere(unsigned int i) const;
