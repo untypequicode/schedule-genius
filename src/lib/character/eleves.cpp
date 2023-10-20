@@ -27,7 +27,7 @@ Eleve::Eleve(const Eleve& eleve)
           m_niveau_scolaire(eleve.GetNiveauScolaire()),
           m_matieres(eleve.m_matieres)
 {
-
+    
 }
 
 Eleve::~Eleve()

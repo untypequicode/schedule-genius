@@ -13,12 +13,14 @@ CsvGenerateur::CsvGenerateur(unsigned int M_NOMBRE_ELEVE)
 	m_matiere_spe.SetSecurity(false);
 	m_prenom.SetSecurity(false);
 	m_nom.SetSecurity(false);
+    m_matiere_restante.SetSecurity(false);
 	split.Add(';');
 	Fichier fichier_matiere_spe("matiere_spe.txt", 9);
 	Fichier fichier_prenom("prenom.txt", 13);
 	Fichier fichier_nom("nom.txt", 53);
 	for (int i = 0; i < fichier_matiere_spe.GiveTab(split).GetNbElem(); i++)
 	{
+        std::cout << "index = " << i << std::endl;
 		m_matiere_spe.Add(fichier_matiere_spe.GiveTab(split).Get(i));
 	};
 	for (int i = 0; i < fichier_prenom.GiveTab(split).GetNbElem(); i++)

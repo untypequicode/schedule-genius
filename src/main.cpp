@@ -16,21 +16,28 @@ int main()
 {
     //// Micky
     //
-   // CsvGenerateur exemple;
-    //exemple.creerCsv();
+//    TabDynInt tabDynInt(5);
+//    tabDynInt.SetSecurity(false);
+//    for (int i = 0; i < 10; i++)
+//    {
+//        tabDynInt.Add(i);
+//    }
+//    std::cout << tabDynInt.Get(0) << std::endl;
+    CsvGenerateur exemple;
+    exemple.creerCsv();
 
 
     //// Vincent
 
-    std::string nom_fichier = "eleve.csv";
-    Fichier fichiertest(nom_fichier, 201);
-    Database datatest;
-    datatest.EcraserData(fichiertest);
-    std::cout << "fin" << std::endl;
-    for(int i = 0; i < datatest.GetEleve(0).GetNbMatiere(); i++)
-    {
-        std::cout << datatest.GetEleve(0).GetMatiere(i) << std::endl;
-    }
+//    std::string nom_fichier = "eleve.csv";
+//    Fichier fichiertest(nom_fichier, 201);
+//    Database datatest;
+//    datatest.EcraserData(fichiertest);
+//    std::cout << "fin" << std::endl;
+//    for(int i = 0; i < datatest.GetEleve(0).GetNbMatiere(); i++)
+//    {
+//        std::cout << datatest.GetEleve(0).GetMatiere(i) << std::endl;
+//    }
 
 
     //// Ethan
@@ -45,45 +52,8 @@ int main()
 //    groupe.AddEleve(eleve);
 //    std::string matiere_eleve = groupe.GetEleve(0).GetMatiere(1);
 //    std::cout << groupe.GetEleve(0).m_prenom << std::endl;
-      DictDynIntString dictDynIntString(5);
-        dictDynIntString.Add(0, "test");
-        dictDynIntString.Add(1, "test2");
-        dictDynIntString.Add(2, "test3");
-        dictDynIntString.Add(3, "test4");
-        dictDynIntString.Add(4, "test5");
-        std::cout << dictDynIntString.Get(0) << std::endl;
-        std::cout << dictDynIntString.Get(1) << std::endl;
-        std::cout << dictDynIntString.Get(2) << std::endl;
-        std::cout << dictDynIntString.Get(3) << std::endl;
-        std::cout << dictDynIntString.Get(4) << std::endl;
-        std::cout << "..." << std::endl;
-        dictDynIntString.Remove("test2", 1);
-        std::cout << dictDynIntString.Get(0) << std::endl;
-        std::cout << dictDynIntString.Get(1) << std::endl;
-        std::cout << dictDynIntString.Get(2) << std::endl;
-        std::cout << dictDynIntString.Get(3) << std::endl;
-        std::cout << dictDynIntString.Get(4) << std::endl;
-        std::cout << "..." << std::endl;
-        dictDynIntString.Pop(1);
-        std::cout << dictDynIntString.Get(0) << std::endl;
-        std::cout << dictDynIntString.Get(1) << std::endl;
-        std::cout << dictDynIntString.Get(2) << std::endl;
-        std::cout << dictDynIntString.Get(3) << std::endl;
-        std::cout << dictDynIntString.Get(4) << std::endl;
-        std::cout << "..." << std::endl;
-        dictDynIntString.Set(0, "test6");
-        std::cout << dictDynIntString.Get(0) << std::endl;
-        std::cout << dictDynIntString.Get(1) << std::endl;
-        std::cout << dictDynIntString.Get(2) << std::endl;
-        std::cout << dictDynIntString.Get(3) << std::endl;
-        std::cout << dictDynIntString.Get(4) << std::endl;
-        std::cout << "..." << std::endl;
-        dictDynIntString.Pop(1);
-        std::cout << dictDynIntString.Get(0) << std::endl;
-        std::cout << dictDynIntString.Get(1) << std::endl;
-        std::cout << dictDynIntString.Get(2) << std::endl;
-        std::cout << dictDynIntString.Get(3) << std::endl;
-        std::cout << dictDynIntString.Get(4) << std::endl;
+
+
 
     return 0;
 }
