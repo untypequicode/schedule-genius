@@ -111,7 +111,7 @@ void Eleve::SetMatiere(unsigned int id, std::string matiere)
 
 void Eleve::AddMatiere(std::string matiere)
 {
-    m_matieres.Append(matiere);
+    m_matieres.Add(matiere, false);
 }
 
 std::string Eleve::PopMatiere()

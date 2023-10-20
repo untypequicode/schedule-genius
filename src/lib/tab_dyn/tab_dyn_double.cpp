@@ -6,62 +6,119 @@ TabDynDouble::TabDynDouble()
 
 }
 
-TabDynDouble::TabDynDouble(unsigned int nbElemMax)
-        : TabDyn(nbElemMax),
-          m_tab(new double[nbElemMax])
+TabDynDouble::TabDynDouble(unsigned int nb_elem_max)
+        : TabDyn(nb_elem_max),
+          m_tab(new double[nb_elem_max])
 {
 
 }
 
-TabDynDouble::TabDynDouble(unsigned int nbElemMax, bool add_with_multiple, unsigned int addition)
-        : TabDyn(nbElemMax, add_with_multiple, addition),
-          m_tab(new double[nbElemMax])
+TabDynDouble::TabDynDouble(unsigned int nb_elem_max, bool add_with_multiple, unsigned int number_addition)
+        : TabDyn(nb_elem_max, add_with_multiple, number_addition),
+          m_tab(new double[nb_elem_max])
 {
 
 }
 
-TabDynDouble::TabDynDouble(const TabDynDouble& tabDynDouble)
-        : TabDyn(tabDynDouble),
-          m_tab(new double[tabDynDouble.m_nbElemMax])
+TabDynDouble::TabDynDouble(const TabDynDouble& tab_dyn_ref)
+        : TabDyn(tab_dyn_ref),
+          m_tab(new double[tab_dyn_ref.m_nb_elem_max])
 {
-    for (unsigned int i = 0; i < tabDynDouble.m_nbElem; i++)
+    for (unsigned int i = 0; i < tab_dyn_ref.m_nb_elem; i++)
     {
-        m_tab[i] = tabDynDouble.m_tab[i];
+        m_tab[i] = tab_dyn_ref.m_tab[i];
     }
 }
 
 TabDynDouble::~TabDynDouble()
 {
-    if (m_security)
+    if (m_security and m_tab != nullptr)
     {
-        if (m_tab != nullptr)
+        delete[] m_tab;
+    }
+}
+
+void TabDynDouble::Copy(TabDynDouble& tab_dyn_ref)
+{
+    for (unsigned int i = 0; i < tab_dyn_ref.GetNbElem(); i++)
+    {
+        Add(tab_dyn_ref.Get(i), false);
+    }
+}
+
+void TabDynDouble::Add(double value)
+{
+    Add(value, true);
+}
+
+void TabDynDouble::Add(double value, bool add_with_multiple)
+{
+    if (m_nb_elem_max == 0)
+    {
+        if (add_with_multiple)
         {
-            delete[] m_tab;
+            m_tab = new double[m_number_addition];
+            m_nb_elem_max = m_number_addition;
         }
+        else
+        {
+            m_tab = new double[1];
+            m_nb_elem_max = 1;
+        }
+        m_tab[0] = value;
+        m_nb_elem = 1;
     }
-}
-
-void TabDynDouble::Copy(TabDynDouble tab_ref)
-{
-    for (unsigned int i = 0; i < tab_ref.GetNbElem(); i++)
+    else if (m_nb_elem < m_nb_elem_max)
     {
-        Append(tab_ref.Get(i));
+        m_tab[m_nb_elem] = value;
+        m_nb_elem++;
     }
-}
-
-void TabDynDouble::Append(double c)
-{
-    AddAppend(c, false);
-}
-
-void TabDynDouble::Add(double c)
-{
-    AddAppend(c, true);
+    else if (m_nb_elem == m_nb_elem_max)
+    {
+        double* new_tab;
+        if (add_with_multiple)
+        {
+            if (m_add_with_multiple)
+            {
+                new_tab = new double[m_nb_elem_max * m_number_addition];
+            }
+            else
+            {
+                new_tab = new double[m_nb_elem_max + m_number_addition];
+            }
+        }
+        else
+        {
+            new_tab = new double[m_nb_elem_max + 1];
+        }
+        for (unsigned int i = 0; i < m_nb_elem; i++)
+        {
+            new_tab[i] = m_tab[i];
+        }
+        delete[] m_tab;
+        new_tab[m_nb_elem] = value;
+        if (add_with_multiple)
+        {
+            if (m_add_with_multiple)
+            {
+                m_nb_elem_max *= m_number_addition;
+            }
+            else
+            {
+                m_nb_elem_max += m_number_addition;
+            }
+        }
+        else
+        {
+            m_nb_elem_max++;
+        }
+        m_nb_elem++;
+    }
 }
 
 double TabDynDouble::Get(unsigned int index) const
 {
-    if (index < m_nbElem)
+    if (index < m_nb_elem)
     {
         return m_tab[index];
     }
@@ -73,40 +130,40 @@ double* TabDynDouble::GetTab() const
     return m_tab;
 }
 
-void TabDynDouble::Set(unsigned int index, double c)
+void TabDynDouble::Set(unsigned int index, double value)
 {
-    if (index < m_nbElem)
+    if (index < m_nb_elem)
     {
-        m_tab[index] = c;
+        m_tab[index] = value;
     }
 }
 
 double TabDynDouble::Pop()
 {
-    return Pop(m_nbElem - 1);
+    return Pop(m_nb_elem - 1);
 }
 
 double TabDynDouble::Pop(int index)
 {
-    if (index < m_nbElem)
+    if (index < m_nb_elem)
     {
         double c = m_tab[index];
-        for (unsigned int i = index; i < m_nbElem - 1; i++)
+        for (unsigned int i = index; i < m_nb_elem - 1; i++)
         {
             m_tab[i] = m_tab[i + 1];
         }
-        m_nbElem--;
+        m_nb_elem--;
         return c;
     }
     return '\0';
 }
 
-void TabDynDouble::Remove(double elem, int num)
+void TabDynDouble::Remove(double value, int num)
 {
     int count = 0;
-    for (unsigned int i = 0; i < m_nbElem; i++)
+    for (unsigned int i = 0; i < m_nb_elem; i++)
     {
-        if (m_tab[i] == elem)
+        if (m_tab[i] == value)
         {
             count++;
             if (count == num)
@@ -118,11 +175,11 @@ void TabDynDouble::Remove(double elem, int num)
     }
 }
 
-void TabDynDouble::Remove(double elem)
+void TabDynDouble::Remove(double value)
 {
-    for (unsigned int i = 0; i < m_nbElem; i++)
+    for (unsigned int i = 0; i < m_nb_elem; i++)
     {
-        if (m_tab[i] == elem)
+        if (m_tab[i] == value)
         {
             Pop(i);
             i--;
@@ -130,13 +187,13 @@ void TabDynDouble::Remove(double elem)
     }
 }
 
-void TabDynDouble::Remove(double elem, bool first)
+void TabDynDouble::Remove(double value, bool first)
 {
     if (first)
     {
-        for (unsigned int i = 0; i < m_nbElem; i++)
+        for (unsigned int i = 0; i < m_nb_elem; i++)
         {
-            if (m_tab[i] == elem)
+            if (m_tab[i] == value)
             {
                 Pop(i);
                 return;
@@ -145,78 +202,13 @@ void TabDynDouble::Remove(double elem, bool first)
     }
     else
     {
-        for (unsigned int i = m_nbElem - 1; i >= 0; i--)
+        for (unsigned int i = m_nb_elem - 1; i >= 0; i--)
         {
-            if (m_tab[i] == elem)
+            if (m_tab[i] == value)
             {
                 Pop(i);
                 break;
             }
         }
-    }
-}
-
-void TabDynDouble::AddAppend(double c, bool addition)
-{
-    if (m_nbElemMax == 0)
-    {
-        if (addition)
-        {
-            m_tab = new double[m_addition];
-            m_nbElemMax = m_addition;
-        }
-        else
-        {
-            m_tab = new double[1];
-            m_nbElemMax = 1;
-        }
-        m_tab[0] = c;
-        m_nbElem = 1;
-    }
-    else if (m_nbElem < m_nbElemMax)
-    {
-        m_tab[m_nbElem] = c;
-        m_nbElem++;
-    }
-    else if (m_nbElem == m_nbElemMax)
-    {
-        double* new_tab;
-        if (addition)
-        {
-            if (m_add_with_multiple)
-            {
-                new_tab = new double[m_nbElemMax * m_addition];
-            }
-            else
-            {
-                new_tab = new double[m_nbElemMax + m_addition];
-            }
-        }
-        else
-        {
-            new_tab = new double[m_nbElemMax + 1];
-        }
-        for (unsigned int i = 0; i < m_nbElem; i++)
-        {
-            new_tab[i] = m_tab[i];
-        }
-        delete[] m_tab;
-        new_tab[m_nbElem] = c;
-        if (addition)
-        {
-            if (m_add_with_multiple)
-            {
-                m_nbElemMax *= m_addition;
-            }
-            else
-            {
-                m_nbElemMax += m_addition;
-            }
-        }
-        else
-        {
-            m_nbElemMax++;
-        }
-        m_nbElem++;
     }
 }

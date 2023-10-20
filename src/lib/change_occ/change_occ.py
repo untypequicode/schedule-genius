@@ -32,11 +32,11 @@ for groupe in change_list:
     if len(groupe[-1]) == 1:
         with open(path + groupe[-1][0] + ".h", "r") as f:
             text = f.read().split("/* SPLIT */")
-            with open(groupe[-1][0] + ".h", "w") as g:
+            with open(path + groupe[-1][0] + ".h", "w") as g:
                 g.write(text[0])
-                g.write("/* SPLIT */\n")
+                g.write("/* SPLIT */")
                 g.write(text[1])
-                g.write("/* SPLIT */\n")
+                g.write("/* SPLIT */")
 
                 lignes = text[1].split("\n")
                 for fichier in groupe[1:-1]:
@@ -44,11 +44,11 @@ for groupe in change_list:
                     for line in lignes:
                         for i in range(1, len(groupe[0])):
                             line = line.replace(groupe[0][i], fichier[i])
-                        # g.write(line + "\n")
+                        g.write(line + "\n")
                         print(".", end="")
                     print()
 
-                g.write("/* SPLIT */\n")
+                g.write("/* SPLIT */")
                 g.write(text[3])
 
 print()

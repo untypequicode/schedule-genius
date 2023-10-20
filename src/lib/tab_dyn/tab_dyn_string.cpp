@@ -6,62 +6,119 @@ TabDynString::TabDynString()
 
 }
 
-TabDynString::TabDynString(unsigned int nbElemMax)
-        : TabDyn(nbElemMax),
-          m_tab(new std::string[nbElemMax])
+TabDynString::TabDynString(unsigned int nb_elem_max)
+        : TabDyn(nb_elem_max),
+          m_tab(new std::string[nb_elem_max])
 {
 
 }
 
-TabDynString::TabDynString(unsigned int nbElemMax, bool add_with_multiple, unsigned int addition)
-        : TabDyn(nbElemMax, add_with_multiple, addition),
-          m_tab(new std::string[nbElemMax])
+TabDynString::TabDynString(unsigned int nb_elem_max, bool add_with_multiple, unsigned int number_addition)
+        : TabDyn(nb_elem_max, add_with_multiple, number_addition),
+          m_tab(new std::string[nb_elem_max])
 {
 
 }
 
-TabDynString::TabDynString(const TabDynString& tabDynString)
-        : TabDyn(tabDynString),
-          m_tab(new std::string[tabDynString.m_nbElemMax])
+TabDynString::TabDynString(const TabDynString& tab_dyn_ref)
+        : TabDyn(tab_dyn_ref),
+          m_tab(new std::string[tab_dyn_ref.m_nb_elem_max])
 {
-    for (unsigned int i = 0; i < tabDynString.m_nbElem; i++)
+    for (unsigned int i = 0; i < tab_dyn_ref.m_nb_elem; i++)
     {
-        m_tab[i] = tabDynString.m_tab[i];
+        m_tab[i] = tab_dyn_ref.m_tab[i];
     }
 }
 
 TabDynString::~TabDynString()
 {
-    if (m_security)
+    if (m_security and m_tab != nullptr)
     {
-        if (m_tab != nullptr)
+        delete[] m_tab;
+    }
+}
+
+void TabDynString::Copy(TabDynString& tab_dyn_ref)
+{
+    for (unsigned int i = 0; i < tab_dyn_ref.GetNbElem(); i++)
+    {
+        Add(tab_dyn_ref.Get(i), false);
+    }
+}
+
+void TabDynString::Add(std::string value)
+{
+    Add(value, true);
+}
+
+void TabDynString::Add(std::string value, bool add_with_multiple)
+{
+    if (m_nb_elem_max == 0)
+    {
+        if (add_with_multiple)
         {
-            delete[] m_tab;
+            m_tab = new std::string[m_number_addition];
+            m_nb_elem_max = m_number_addition;
         }
+        else
+        {
+            m_tab = new std::string[1];
+            m_nb_elem_max = 1;
+        }
+        m_tab[0] = value;
+        m_nb_elem = 1;
     }
-}
-
-void TabDynString::Copy(TabDynString tab_ref)
-{
-    for (unsigned int i = 0; i < tab_ref.GetNbElem(); i++)
+    else if (m_nb_elem < m_nb_elem_max)
     {
-        Append(tab_ref.Get(i));
+        m_tab[m_nb_elem] = value;
+        m_nb_elem++;
     }
-}
-
-void TabDynString::Append(std::string c)
-{
-    AddAppend(c, false);
-}
-
-void TabDynString::Add(std::string c)
-{
-    AddAppend(c, true);
+    else if (m_nb_elem == m_nb_elem_max)
+    {
+        std::string* new_tab;
+        if (add_with_multiple)
+        {
+            if (m_add_with_multiple)
+            {
+                new_tab = new std::string[m_nb_elem_max * m_number_addition];
+            }
+            else
+            {
+                new_tab = new std::string[m_nb_elem_max + m_number_addition];
+            }
+        }
+        else
+        {
+            new_tab = new std::string[m_nb_elem_max + 1];
+        }
+        for (unsigned int i = 0; i < m_nb_elem; i++)
+        {
+            new_tab[i] = m_tab[i];
+        }
+        delete[] m_tab;
+        new_tab[m_nb_elem] = value;
+        if (add_with_multiple)
+        {
+            if (m_add_with_multiple)
+            {
+                m_nb_elem_max *= m_number_addition;
+            }
+            else
+            {
+                m_nb_elem_max += m_number_addition;
+            }
+        }
+        else
+        {
+            m_nb_elem_max++;
+        }
+        m_nb_elem++;
+    }
 }
 
 std::string TabDynString::Get(unsigned int index) const
 {
-    if (index < m_nbElem)
+    if (index < m_nb_elem)
     {
         return m_tab[index];
     }
@@ -73,40 +130,40 @@ std::string* TabDynString::GetTab() const
     return m_tab;
 }
 
-void TabDynString::Set(unsigned int index, std::string c)
+void TabDynString::Set(unsigned int index, std::string value)
 {
-    if (index < m_nbElem)
+    if (index < m_nb_elem)
     {
-        m_tab[index] = c;
+        m_tab[index] = value;
     }
 }
 
 std::string TabDynString::Pop()
 {
-    return Pop(m_nbElem - 1);
+    return Pop(m_nb_elem - 1);
 }
 
 std::string TabDynString::Pop(int index)
 {
-    if (index < m_nbElem)
+    if (index < m_nb_elem)
     {
         std::string c = m_tab[index];
-        for (unsigned int i = index; i < m_nbElem - 1; i++)
+        for (unsigned int i = index; i < m_nb_elem - 1; i++)
         {
             m_tab[i] = m_tab[i + 1];
         }
-        m_nbElem--;
+        m_nb_elem--;
         return c;
     }
     return "\0";
 }
 
-void TabDynString::Remove(std::string elem, int num)
+void TabDynString::Remove(std::string value, int num)
 {
     int count = 0;
-    for (unsigned int i = 0; i < m_nbElem; i++)
+    for (unsigned int i = 0; i < m_nb_elem; i++)
     {
-        if (m_tab[i] == elem)
+        if (m_tab[i] == value)
         {
             count++;
             if (count == num)
@@ -118,11 +175,11 @@ void TabDynString::Remove(std::string elem, int num)
     }
 }
 
-void TabDynString::Remove(std::string elem)
+void TabDynString::Remove(std::string value)
 {
-    for (unsigned int i = 0; i < m_nbElem; i++)
+    for (unsigned int i = 0; i < m_nb_elem; i++)
     {
-        if (m_tab[i] == elem)
+        if (m_tab[i] == value)
         {
             Pop(i);
             i--;
@@ -130,13 +187,13 @@ void TabDynString::Remove(std::string elem)
     }
 }
 
-void TabDynString::Remove(std::string elem, bool first)
+void TabDynString::Remove(std::string value, bool first)
 {
     if (first)
     {
-        for (unsigned int i = 0; i < m_nbElem; i++)
+        for (unsigned int i = 0; i < m_nb_elem; i++)
         {
-            if (m_tab[i] == elem)
+            if (m_tab[i] == value)
             {
                 Pop(i);
                 return;
@@ -145,78 +202,13 @@ void TabDynString::Remove(std::string elem, bool first)
     }
     else
     {
-        for (unsigned int i = m_nbElem - 1; i >= 0; i--)
+        for (unsigned int i = m_nb_elem - 1; i >= 0; i--)
         {
-            if (m_tab[i] == elem)
+            if (m_tab[i] == value)
             {
                 Pop(i);
                 break;
             }
         }
-    }
-}
-
-void TabDynString::AddAppend(std::string c, bool addition)
-{
-    if (m_nbElemMax == 0)
-    {
-        if (addition)
-        {
-            m_tab = new std::string[m_addition];
-            m_nbElemMax = m_addition;
-        }
-        else
-        {
-            m_tab = new std::string[1];
-            m_nbElemMax = 1;
-        }
-        m_tab[0] = c;
-        m_nbElem = 1;
-    }
-    else if (m_nbElem < m_nbElemMax)
-    {
-        m_tab[m_nbElem] = c;
-        m_nbElem++;
-    }
-    else if (m_nbElem == m_nbElemMax)
-    {
-        std::string* new_tab;
-        if (addition)
-        {
-            if (m_add_with_multiple)
-            {
-                new_tab = new std::string[m_nbElemMax * m_addition];
-            }
-            else
-            {
-                new_tab = new std::string[m_nbElemMax + m_addition];
-            }
-        }
-        else
-        {
-            new_tab = new std::string[m_nbElemMax + 1];
-        }
-        for (unsigned int i = 0; i < m_nbElem; i++)
-        {
-            new_tab[i] = m_tab[i];
-        }
-        delete[] m_tab;
-        new_tab[m_nbElem] = c;
-        if (addition)
-        {
-            if (m_add_with_multiple)
-            {
-                m_nbElemMax *= m_addition;
-            }
-            else
-            {
-                m_nbElemMax += m_addition;
-            }
-        }
-        else
-        {
-            m_nbElemMax++;
-        }
-        m_nbElem++;
     }
 }
