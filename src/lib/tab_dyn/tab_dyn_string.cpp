@@ -115,6 +115,7 @@ void TabDynString::Add(std::string value, bool add_with_multiple)
             m_nb_elem_max++;
         }
         m_nb_elem++;
+        m_tab = new_tab;
         return;
     }
 }
