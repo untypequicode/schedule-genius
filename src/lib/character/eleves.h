@@ -18,22 +18,24 @@ public:
     std::string GetNiveauScolaire() const;
     unsigned int GetNbMatiere() const;
     unsigned int GetNbMatiereMax() const;
-    std::string* GetMatieres() const;
-    std::string GetMatiere(unsigned int i) const;
 
     void SetEleve(unsigned int id, std::string prenom, std::string nom, std::string niveau_scolaire);
     void SetId(unsigned int id);
     void SetPrenom(std::string prenom);
     void SetNom(std::string nom);
     void SetNiveauScolaire(std::string niveau_scolaire);
-    void CopyMatiere(TabDynString tab_ref);
-    void SetMatiere(unsigned int i, std::string matiere);
-    void AddMatiere(std::string matiere);
+
+    void CopyMatiere(TabDynString tab_dyn_ref);
+    void AddMatiere(std::string value);
+    void AddMatiere(std::string value, bool add_with_addition);
+    std::string GetMatiere(unsigned int i) const;
+    std::string* GetMatieres() const;
+    void SetMatiere(unsigned int i, std::string value);
     std::string PopMatiere();
     std::string PopMatiere(int index);
-    void RemoveMatiere(std::string matiere, int num);
-    void RemoveMatiere(std::string matiere);
-    void RemoveMatiere(std::string matiere, bool first);
+    void RemoveMatiere(std::string value, int num);
+    void RemoveMatiere(std::string value);
+    void RemoveMatiere(std::string value, bool is_first);
 
 
 

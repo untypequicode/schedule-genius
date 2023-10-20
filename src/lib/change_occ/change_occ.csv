@@ -1,0 +1,7 @@
+tab_dyn_char.cpp,char,Char,'\0'
+tab_dyn_string.cpp,std::string,String,"\0"
+tab_dyn_double.cpp,double,Double,'\0'
+tab_dyn_int_unsigned.cpp,int unsigned,IntUnsigned,'\0'
+tab_dyn_int.cpp,int,Int,'\0'
+tab_dyn_float.cpp,float,Float,'\0'
+tab_dyn

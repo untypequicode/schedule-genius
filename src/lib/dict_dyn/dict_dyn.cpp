@@ -47,7 +47,7 @@ void DictDynIntString::Add(int key, std::string value)
 
 std::string DictDynIntString::Get(int key) const
 {
-    for (unsigned int i = 0; i < m_nbElem; i++)
+    for (unsigned int i = 0; i < m_nb_elem; i++)
     {
         if (m_keys.Get(i) == key)
         {
@@ -69,7 +69,7 @@ TabDynString DictDynIntString::GetValues() const
 
 void DictDynIntString::Set(int key, std::string value)
 {
-    for (unsigned int i = 0; i < m_nbElem; i++)
+    for (unsigned int i = 0; i < m_nb_elem; i++)
     {
         if (m_keys.Get(i) == key)
         {
@@ -81,7 +81,7 @@ void DictDynIntString::Set(int key, std::string value)
 
 std::string DictDynIntString::Pop(int key)
 {
-    for (int i = 0; i < m_nbElem; i++)
+    for (int i = 0; i < m_nb_elem; i++)
     {
         if (m_keys.Get(i) == key)
         {
@@ -94,10 +94,10 @@ std::string DictDynIntString::Pop(int key)
 
 void DictDynIntString::Remove(std::string value, int num)
 {
-    if (num < m_nbElem)
+    if (num < m_nb_elem)
     {
         int count = 0;
-        for (int i = 0; i < m_nbElem; i++) {
+        for (int i = 0; i < m_nb_elem; i++) {
             if (m_values.Get(i) == value) {
                 count++;
                 if (count == num) {
@@ -112,7 +112,7 @@ void DictDynIntString::Remove(std::string value, int num)
 
 void DictDynIntString::Remove(std::string value)
 {
-    for (int i = 0; i < m_nbElem; i++)
+    for (int i = 0; i < m_nb_elem; i++)
     {
         if (m_values.Get(i) == value)
         {
@@ -127,7 +127,7 @@ void DictDynIntString::Remove(std::string value, bool first)
 {
     if (first)
     {
-        for (int i = 0; i < m_nbElem; i++)
+        for (int i = 0; i < m_nb_elem; i++)
         {
             if (m_values.Get(i) == value)
             {
@@ -138,7 +138,7 @@ void DictDynIntString::Remove(std::string value, bool first)
     }
     else
     {
-        for (int i = m_nbElem - 1; i >= 0; i--)
+        for (int i = m_nb_elem - 1; i >= 0; i--)
         {
             if (m_values.Get(i) == value)
             {
@@ -151,7 +151,7 @@ void DictDynIntString::Remove(std::string value, bool first)
 
 void DictDynIntString::AddAppend(int key, std::string value, bool addition)
 {
-    for (unsigned int i = 0; i < m_nbElem; i++)
+    for (unsigned int i = 0; i < m_nb_elem; i++)
     {
         if (m_keys.Get(i) == key)
         {
@@ -159,13 +159,13 @@ void DictDynIntString::AddAppend(int key, std::string value, bool addition)
             return;
         }
     }
-    if (m_nbElem < m_nbElemMax)
+    if (m_nb_elem < m_nb_elem_max)
     {
-        m_values.Set(m_nbElem, value);
-        m_keys.Set(m_nbElem, key);
-        m_nbElem++;
+        m_values.Set(m_nb_elem, value);
+        m_keys.Set(m_nb_elem, key);
+        m_nb_elem++;
     }
-    else if (m_nbElem == m_nbElemMax)
+    else if (m_nb_elem == m_nb_elem_max)
     {
         if (addition)
         {
@@ -174,10 +174,10 @@ void DictDynIntString::AddAppend(int key, std::string value, bool addition)
         }
         else
         {
-            m_keys.Append(key);
-            m_values.Append(value);
+            m_keys.Add(key, false);
+            m_values.Add(value, false);
         }
-        m_nbElem++;
-        m_nbElemMax = m_keys.GetNbElemMax();
+        m_nb_elem++;
+        m_nb_elem_max = m_keys.GetNbElemMax();
     }
 }

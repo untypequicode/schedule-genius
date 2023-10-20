@@ -49,14 +49,13 @@ TabDynString Database::GetAllData(unsigned int index) const
 
 void Database::EcraserData(Fichier source)
 {
-    std::cout << "Depart" << std::endl;
+    std::cout << "DEPART" << std::endl << std::endl;
     m_eleve.Clear();
     TabDynEleve retour(10);
     std::ifstream myfile;
     TabDynString data;
     data.Add("");
     TabDynString matieres;
-    matieres.Add("");
     unsigned int indice = 0;
     std::string ligne = "";
     myfile.open(source.GetNom());
@@ -75,6 +74,7 @@ void Database::EcraserData(Fichier source)
         {
             std::cout << "depart de la " << last << "eme ligne" << std::endl;
             std::getline(myfile, ligne);
+            matieres.Add("");
             for(char carac : ligne)
             {
                 if (indice < 4)
@@ -101,24 +101,27 @@ void Database::EcraserData(Fichier source)
                     }
                 }
             }
-            Eleve eleve(convertToInt(data.Get(0)), data.Get(1), data.Get(2), data.Get(3));
+//            Eleve eleve(convertToInt(data.Get(0)), data.Get(1), data.Get(2), data.Get(3));
 //            retour.Add(eleve);
 //            std::cout << eleve.GetId() << " " << eleve.GetNom() << eleve.GetPrenom() << eleve.GetNiveauScolaire() << std::endl;
             data.Clear();
+            std::cout << "Matieres facultatives : " << std::endl;
             for (unsigned int i = 0; i < matieres.GetNbElem(); i++)
             {
                 retour.Get(last).AddMatiere(matieres.Get(i));
                 std::cout << matieres.Get(i) << std::endl;
             }
+            matieres.Clear();
+            indice = 0;
             last++;
             std::getline(myfiletest, lignetest);
             std::cout << "fin de la " << last -1 << "eme ligne" << std::endl;
-            std::cout << "test : " << (ligne != lignetest) << std::endl;
+            std::cout << "test : " << (ligne != lignetest) << std::endl << std::endl;
             if(ligne == lignetest)
                 break;
         }
     }
-    std::cout << "Fin";
+    std::cout << "FIN";
 }
 
 void Database::AjouterData(Fichier source)

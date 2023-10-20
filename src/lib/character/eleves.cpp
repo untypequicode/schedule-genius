@@ -1,10 +1,11 @@
 #include "eleves.h"
 
 Eleve::Eleve()
-        : m_id(0),
-          m_prenom("/0"),
-          m_nom("/0"),
-          m_niveau_scolaire("/0")
+        : m_id('\0'),
+          m_prenom("\0"),
+          m_nom("\0"),
+          m_niveau_scolaire("\0"),
+          m_matieres()
 {
 
 }
@@ -16,7 +17,8 @@ Eleve::Eleve(unsigned int id,
         : m_id(id),
           m_prenom(prenom),
           m_nom(nom),
-          m_niveau_scolaire(niveau_scolaire)
+          m_niveau_scolaire(niveau_scolaire),
+          m_matieres()
 {
 
 }
@@ -25,7 +27,8 @@ Eleve::Eleve(const Eleve& eleve)
         : m_id(eleve.GetId()),
           m_prenom(eleve.GetPrenom()),
           m_nom(eleve.GetNom()),
-          m_niveau_scolaire(eleve.GetNiveauScolaire())
+          m_niveau_scolaire(eleve.GetNiveauScolaire()),
+          m_matieres(eleve.m_matieres)
 {
 
 }
@@ -115,7 +118,12 @@ void Eleve::SetMatiere(unsigned int id, std::string matiere)
 
 void Eleve::AddMatiere(std::string matiere)
 {
-    m_matieres.Append(matiere);
+    m_matieres.Add(matiere, false);
+}
+
+void Eleve::AddMatiere(std::string value, bool add_with_addition)
+{
+    m_matieres.Add(value, add_with_addition);
 }
 
 std::string Eleve::PopMatiere()
