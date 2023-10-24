@@ -4,14 +4,16 @@ with open("change_occ.csv", "r") as f:
     for groupe in f.read().split("exit"):
         change_list.append([])
         for line in groupe.split("\n"):
-            line = line.replace("\n", "")
-            change_list[-1].append([])
-            split = line.split(",")
-            for i in split:
-                if i != "":
-                    change_list[-1][-1].append(i)
-            if change_list[-1][-1] == []:
-                change_list[-1].pop(-1)
+            if len(line) > 0:
+                if line[0] != "#":
+                    line = line.replace("\n", "")
+                    change_list[-1].append([])
+                    split = line.split(",")
+                    for i in split:
+                        if i != "":
+                            change_list[-1][-1].append(i)
+                    if change_list[-1][-1] == []:
+                        change_list[-1].pop(-1)
 
 for groupe in change_list:
     path = input(f'Nom du dossier des fichiers pour {groupe[0][0]} : ')

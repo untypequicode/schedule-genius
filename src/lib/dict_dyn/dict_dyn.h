@@ -3,31 +3,90 @@
 
 #include "../tab_dyn/tab_dyn.h"
 
-class DictDynIntString : public TabDyn
+class DictDyn
 {
 public:
-    DictDynIntString();
-    DictDynIntString(unsigned int nbElemMax);
-    DictDynIntString(unsigned int nbElemMax, bool add_with_multiple, unsigned int addition);
-    DictDynIntString(const DictDynIntString& dictDynIntString);
-    ~DictDynIntString();
+    DictDyn();
+    DictDyn(unsigned int nb_elem_max);
+    DictDyn(unsigned int nb_elem_max, bool add_with_multiple, unsigned int number_addition);
+    DictDyn(const DictDyn& dict_dyn);
+    ~DictDyn();
 
-    void Append(int key, std::string value);
-    void Add(int key, std::string value);
-    std::string Get(int key) const;
-    TabDynInt GetKeys() const;
-    TabDynString GetValues() const;
-    void Set(int key, std::string value);
-    std::string Pop(int key);
-    void Remove(std::string value, int num);
-    void Remove(std::string value);
-    void Remove(std::string, bool first);
+    unsigned int GetNbElem() const;
+    unsigned int GetNbElemMax() const;
+    void Clear();
+    void Clear(bool save_tab_memory);
 
-private:
-    void AddAppend(int key, std::string value, bool addition);
-
-    TabDynInt m_keys;
-    TabDynString m_values;
+protected:
+    unsigned int m_nb_elem;
+    unsigned int m_nb_elem_max;
 };
+
+/* SPLIT */
+
+class DictDynCharDouble : public DictDyn
+{
+public:
+    DictDynCharDouble();
+    DictDynCharDouble(unsigned int nb_elem_max);
+    DictDynCharDouble(unsigned int nb_elem_max, bool add_with_multiple, unsigned int number_addition);
+    DictDynCharDouble(const DictDynCharDouble& dict_dyn_ref);
+    ~DictDynCharDouble();
+
+    void SetParam(bool add_with_multiple, unsigned int number_addition);
+    void SetSecurity(bool security);
+
+    void Copy(DictDynCharDouble& dict_dyn_ref);
+    void Add(char key, double value);
+    void Add(char key, double value, bool add_with_multiple);
+    double Get(char key) const;
+    TabDynChar GetTabKeys() const;
+    TabDynDouble GetTabValues() const;
+    void Set(char key, double value);
+
+    double Pop(char key);
+    void Remove(double value, int num);
+    void Remove(double value);
+    void Remove(double value, bool is_first);
+
+protected:
+    TabDynChar m_tab_keys;
+    TabDynDouble m_tab_values;
+};
+
+/* SPLIT */
+
+class DictDynCharInt : public DictDyn
+{
+public:
+    DictDynCharInt();
+    DictDynCharInt(unsigned int nb_elem_max);
+    DictDynCharInt(unsigned int nb_elem_max, bool add_with_multiple, unsigned int number_addition);
+    DictDynCharInt(const DictDynCharInt& dict_dyn_ref);
+    ~DictDynCharInt();
+
+    void SetParam(bool add_with_multiple, unsigned int number_addition);
+    void SetSecurity(bool security);
+
+    void Copy(DictDynCharInt& dict_dyn_ref);
+    void Add(char key, int value);
+    void Add(char key, int value, bool add_with_multiple);
+    int Get(char key) const;
+    TabDynChar GetTabKeys() const;
+    TabDynInt GetTabValues() const;
+    void Set(char key, int value);
+
+    int Pop(char key);
+    void Remove(int value, int num);
+    void Remove(int value);
+    void Remove(int value, bool is_first);
+
+protected:
+    TabDynChar m_tab_keys;
+    TabDynInt m_tab_values;
+};
+
+
+/* SPLIT */
 
 #endif

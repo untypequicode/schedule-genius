@@ -50,6 +50,9 @@ add_executable(Schedule_Genius src/main.cpp
 
             ### Dict_dyn
                 src/lib/dict_dyn/dict_dyn.cpp
+                src/lib/dict_dyn/dict_dyn_char_double.cpp
+                src/lib/dict_dyn/dict_dyn_char_int.cpp
+#                src/lib/dict_dyn/dict_dyn_int_eleve.cpp
 
             ### Character
                 src/lib/character/eleves.cpp

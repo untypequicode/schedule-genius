@@ -32,7 +32,7 @@ TabDynProfs::TabDynProfs(const TabDynProfs& tab_dyn_ref)
 
 TabDynProfs::~TabDynProfs()
 {
-    if (m_security and m_tab != nullptr)
+    if (m_security and m_tab != nullptr and m_tab != NULL)
     {
         delete[] m_tab;
     }

@@ -32,7 +32,7 @@ TabDynInt::TabDynInt(const TabDynInt& tab_dyn_ref)
 
 TabDynInt::~TabDynInt()
 {
-    if (m_security and m_tab != nullptr)
+    if (m_security and m_tab != nullptr and m_tab != NULL)
     {
         delete[] m_tab;
     }

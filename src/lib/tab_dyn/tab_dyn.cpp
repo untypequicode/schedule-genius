@@ -1,6 +1,5 @@
 #include "tab_dyn.h"
 
-
 TabDyn::TabDyn()
         : m_nb_elem(0),
           m_nb_elem_max(0),

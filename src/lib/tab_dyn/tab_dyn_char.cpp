@@ -32,7 +32,7 @@ TabDynChar::TabDynChar(const TabDynChar& tab_dyn_ref)
 
 TabDynChar::~TabDynChar()
 {
-    if (m_security and m_tab != nullptr)
+    if (m_security and m_tab != nullptr and m_tab != NULL)
     {
         delete[] m_tab;
     }

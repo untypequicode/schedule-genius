@@ -32,7 +32,7 @@ TabDynIntUnsigned::TabDynIntUnsigned(const TabDynIntUnsigned& tab_dyn_ref)
 
 TabDynIntUnsigned::~TabDynIntUnsigned()
 {
-    if (m_security and m_tab != nullptr)
+    if (m_security and m_tab != nullptr and m_tab != NULL)
     {
         delete[] m_tab;
     }
