@@ -38,5 +38,35 @@ private:
     std::string m_nom;
 };
 
+/* SPLIT */
+
+class TabDynProfs : public TabDyn
+{
+public :
+    TabDynProfs();
+    TabDynProfs(unsigned int nb_elem_max);
+    TabDynProfs(unsigned int nb_elem_max, bool add_with_multiple, unsigned int number_addition);
+    TabDynProfs(const TabDynProfs& tab_dyn_ref);
+    ~TabDynProfs();
+
+    void Copy(TabDynProfs& tab_dyn_ref);
+    void Add(Profs value);
+    void Add(Profs value, bool add_with_multiple);
+    Profs Get(unsigned int index) const;
+    Profs* GetTab() const;
+    void Set(unsigned int index, Profs value);
+
+    Profs Pop();
+    Profs Pop(int index);
+    void Remove(Profs value, int num);
+    void Remove(Profs value);
+    void Remove(Profs value, bool is_first);
+
+private :
+    Profs* m_tab;
+};
+
+
+/* SPLIT */
 
 #endif

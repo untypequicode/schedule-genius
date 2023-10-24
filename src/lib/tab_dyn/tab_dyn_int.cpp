@@ -151,13 +151,13 @@ int TabDynInt::Pop(int index)
 {
     if (index < m_nb_elem)
     {
-        int c = m_tab[index];
+        int value = m_tab[index];
         for (unsigned int i = index; i < m_nb_elem - 1; i++)
         {
             m_tab[i] = m_tab[i + 1];
         }
         m_nb_elem--;
-        return c;
+        return value;
     }
     return '\0';
 }

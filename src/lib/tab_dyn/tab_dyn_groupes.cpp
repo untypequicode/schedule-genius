@@ -1,28 +1,28 @@
-#include "tab_dyn.h"
+#include "../character/groupes.h"
 
-TabDynIntUnsigned::TabDynIntUnsigned()
+TabDynGroupes::TabDynGroupes()
         : TabDyn()
 {
 
 }
 
-TabDynIntUnsigned::TabDynIntUnsigned(unsigned int nb_elem_max)
+TabDynGroupes::TabDynGroupes(unsigned int nb_elem_max)
         : TabDyn(nb_elem_max),
-          m_tab(new int unsigned[nb_elem_max])
+          m_tab(new Groupes[nb_elem_max])
 {
 
 }
 
-TabDynIntUnsigned::TabDynIntUnsigned(unsigned int nb_elem_max, bool add_with_multiple, unsigned int number_addition)
+TabDynGroupes::TabDynGroupes(unsigned int nb_elem_max, bool add_with_multiple, unsigned int number_addition)
         : TabDyn(nb_elem_max, add_with_multiple, number_addition),
-          m_tab(new int unsigned[nb_elem_max])
+          m_tab(new Groupes[nb_elem_max])
 {
 
 }
 
-TabDynIntUnsigned::TabDynIntUnsigned(const TabDynIntUnsigned& tab_dyn_ref)
+TabDynGroupes::TabDynGroupes(const TabDynGroupes& tab_dyn_ref)
         : TabDyn(tab_dyn_ref),
-          m_tab(new int unsigned[tab_dyn_ref.m_nb_elem_max])
+          m_tab(new Groupes[tab_dyn_ref.m_nb_elem_max])
 {
     for (unsigned int i = 0; i < tab_dyn_ref.m_nb_elem; i++)
     {
@@ -30,7 +30,7 @@ TabDynIntUnsigned::TabDynIntUnsigned(const TabDynIntUnsigned& tab_dyn_ref)
     }
 }
 
-TabDynIntUnsigned::~TabDynIntUnsigned()
+TabDynGroupes::~TabDynGroupes()
 {
     if (m_security and m_tab != nullptr)
     {
@@ -38,7 +38,7 @@ TabDynIntUnsigned::~TabDynIntUnsigned()
     }
 }
 
-void TabDynIntUnsigned::Copy(TabDynIntUnsigned& tab_dyn_ref)
+void TabDynGroupes::Copy(TabDynGroupes& tab_dyn_ref)
 {
     for (unsigned int i = 0; i < tab_dyn_ref.m_nb_elem; i++)
     {
@@ -46,23 +46,23 @@ void TabDynIntUnsigned::Copy(TabDynIntUnsigned& tab_dyn_ref)
     }
 }
 
-void TabDynIntUnsigned::Add(int unsigned value)
+void TabDynGroupes::Add(Groupes value)
 {
     Add(value, true);
 }
 
-void TabDynIntUnsigned::Add(int unsigned value, bool add_with_multiple)
+void TabDynGroupes::Add(Groupes value, bool add_with_multiple)
 {
     if (m_nb_elem_max == 0)
     {
         if (add_with_multiple)
         {
-            m_tab = new int unsigned[m_number_addition];
+            m_tab = new Groupes[m_number_addition];
             m_nb_elem_max = m_number_addition;
         }
         else
         {
-            m_tab = new int unsigned[1];
+            m_tab = new Groupes[1];
             m_nb_elem_max = 1;
         }
         m_tab[0] = value;
@@ -77,21 +77,21 @@ void TabDynIntUnsigned::Add(int unsigned value, bool add_with_multiple)
     }
     else if (m_nb_elem == m_nb_elem_max)
     {
-        int unsigned* new_tab;
+        Groupes* new_tab;
         if (add_with_multiple)
         {
             if (m_add_with_multiple)
             {
-                new_tab = new int unsigned[m_nb_elem_max * m_number_addition];
+                new_tab = new Groupes[m_nb_elem_max * m_number_addition];
             }
             else
             {
-                new_tab = new int unsigned[m_nb_elem_max + m_number_addition];
+                new_tab = new Groupes[m_nb_elem_max + m_number_addition];
             }
         }
         else
         {
-            new_tab = new int unsigned[m_nb_elem_max + 1];
+            new_tab = new Groupes[m_nb_elem_max + 1];
         }
         for (unsigned int i = 0; i < m_nb_elem; i++)
         {
@@ -120,21 +120,21 @@ void TabDynIntUnsigned::Add(int unsigned value, bool add_with_multiple)
     }
 }
 
-int unsigned TabDynIntUnsigned::Get(unsigned int index) const
+Groupes TabDynGroupes::Get(unsigned int index) const
 {
     if (index < m_nb_elem)
     {
         return m_tab[index];
     }
-    return '\0';
+    return Groupes();
 }
 
-int unsigned* TabDynIntUnsigned::GetTab() const
+Groupes* TabDynGroupes::GetTab() const
 {
     return m_tab;
 }
 
-void TabDynIntUnsigned::Set(unsigned int index, int unsigned value)
+void TabDynGroupes::Set(unsigned int index, Groupes value)
 {
     if (index < m_nb_elem)
     {
@@ -142,16 +142,16 @@ void TabDynIntUnsigned::Set(unsigned int index, int unsigned value)
     }
 }
 
-int unsigned TabDynIntUnsigned::Pop()
+Groupes TabDynGroupes::Pop()
 {
     return Pop(m_nb_elem - 1);
 }
 
-int unsigned TabDynIntUnsigned::Pop(int index)
+Groupes TabDynGroupes::Pop(int index)
 {
     if (index < m_nb_elem)
     {
-        int unsigned value = m_tab[index];
+        Groupes value = m_tab[index];
         for (unsigned int i = index; i < m_nb_elem - 1; i++)
         {
             m_tab[i] = m_tab[i + 1];
@@ -159,15 +159,15 @@ int unsigned TabDynIntUnsigned::Pop(int index)
         m_nb_elem--;
         return value;
     }
-    return '\0';
+    return Groupes();
 }
 
-void TabDynIntUnsigned::Remove(int unsigned value, int num)
+void TabDynGroupes::Remove(Groupes value, int num)
 {
     int count = 0;
     for (unsigned int i = 0; i < m_nb_elem; i++)
     {
-        if (m_tab[i] == value)
+        if (m_tab[i].GetId() == value.GetId())
         {
             count++;
             if (count == num)
@@ -179,11 +179,11 @@ void TabDynIntUnsigned::Remove(int unsigned value, int num)
     }
 }
 
-void TabDynIntUnsigned::Remove(int unsigned value)
+void TabDynGroupes::Remove(Groupes value)
 {
     for (unsigned int i = 0; i < m_nb_elem; i++)
     {
-        if (m_tab[i] == value)
+        if (m_tab[i].GetId() == value.GetId())
         {
             Pop(i);
             i--;
@@ -191,13 +191,13 @@ void TabDynIntUnsigned::Remove(int unsigned value)
     }
 }
 
-void TabDynIntUnsigned::Remove(int unsigned value, bool first)
+void TabDynGroupes::Remove(Groupes value, bool first)
 {
     if (first)
     {
         for (unsigned int i = 0; i < m_nb_elem; i++)
         {
-            if (m_tab[i] == value)
+            if (m_tab[i].GetId() == value.GetId())
             {
                 Pop(i);
                 return;
@@ -208,7 +208,7 @@ void TabDynIntUnsigned::Remove(int unsigned value, bool first)
     {
         for (unsigned int i = m_nb_elem - 1; i >= 0; i--)
         {
-            if (m_tab[i] == value)
+            if (m_tab[i].GetId() == value.GetId())
             {
                 Pop(i);
                 break;
