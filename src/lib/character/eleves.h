@@ -1,7 +1,7 @@
 #ifndef DEF_ELEVE
 #define DEF_ELEVE
 
-#include "../tab_dyn/tab_dyn.h"
+#include "../dict_dyn/dict_dyn.h"
 // inclure les groupes
 #include "groupes.h"
 
@@ -62,31 +62,69 @@ private:
 
 /* SPLIT */
 
-class TabDynEleve : public TabDyn
+class DictDynIntUnsignedInt : public DictDyn
 {
-public :
-    TabDynEleve();
-    TabDynEleve(unsigned int nb_elem_max);
-    TabDynEleve(unsigned int nb_elem_max, bool add_with_multiple, unsigned int number_addition);
-    TabDynEleve(const TabDynEleve& tab_dyn_ref);
-    ~TabDynEleve();
+public:
+    DictDynIntUnsignedInt();
+    DictDynIntUnsignedInt(unsigned int nb_elem_max);
+    DictDynIntUnsignedInt(unsigned int nb_elem_max, bool add_with_multiple, unsigned int number_addition);
+    DictDynIntUnsignedInt(const DictDynIntUnsignedInt& dict_dyn_ref);
+    ~DictDynIntUnsignedInt();
 
-    void Copy(TabDynEleve& tab_dyn_ref);
-    void Add(Eleve value);
-    void Add(Eleve value, bool add_with_multiple);
-    Eleve Get(unsigned int index) const;
-    Eleve* GetTab() const;
-    void Set(unsigned int index, Eleve value);
+    void SetParam(bool add_with_multiple, unsigned int number_addition);
+    void SetSecurity(bool security);
 
-    Eleve Pop();
-    Eleve Pop(int index);
-    void Remove(Eleve value, int num);
-    void Remove(Eleve value);
-    void Remove(Eleve value, bool is_first);
+    void Copy(DictDynIntUnsignedInt& dict_dyn_ref);
+    void Add(int unsigned key, int value);
+    void Add(int unsigned key, int value, bool add_with_multiple);
+    int Get(int unsigned key) const;
+    TabDynIntUnsigned GetTabKeys() const;
+    TabDynInt GetTabValues() const;
+    void Set(int unsigned key, int value);
 
-private :
-    Eleve* m_tab;
+    int Pop(int unsigned key);
+    void Remove(int value, int num);
+    void Remove(int value);
+    void Remove(int value, bool is_first);
+
+protected:
+    TabDynIntUnsigned m_tab_keys;
+    TabDynInt m_tab_values;
 };
+
+
+
+
+class DictDynIntUnsignedString : public DictDyn
+{
+public:
+    DictDynIntUnsignedString();
+    DictDynIntUnsignedString(unsigned int nb_elem_max);
+    DictDynIntUnsignedString(unsigned int nb_elem_max, bool add_with_multiple, unsigned int number_addition);
+    DictDynIntUnsignedString(const DictDynIntUnsignedString& dict_dyn_ref);
+    ~DictDynIntUnsignedString();
+
+    void SetParam(bool add_with_multiple, unsigned int number_addition);
+    void SetSecurity(bool security);
+
+    void Copy(DictDynIntUnsignedString& dict_dyn_ref);
+    void Add(int unsigned key, std::string value);
+    void Add(int unsigned key, std::string value, bool add_with_multiple);
+    std::string Get(int unsigned key) const;
+    TabDynIntUnsigned GetTabKeys() const;
+    TabDynString GetTabValues() const;
+    void Set(int unsigned key, std::string value);
+
+    std::string Pop(int unsigned key);
+    void Remove(std::string value, int num);
+    void Remove(std::string value);
+    void Remove(std::string value, bool is_first);
+
+protected:
+    TabDynIntUnsigned m_tab_keys;
+    TabDynString m_tab_values;
+};
+
 
 
 /* SPLIT */

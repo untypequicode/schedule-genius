@@ -60,6 +60,16 @@ for groupe in change_list:
     elif len(groupe[-1]) > 1:
         h_file = input("Nom du fichier .h (sans le .h) : ")
         h_path = input("Chemin du fichier .h : ")
+        split_location = ""
+        while split_location != "1" and split_location != "2":
+            split_location = input("Emplacement du split dans le fichier .h (1 ou 2): ")
+        split_location = int(split_location)
+        h_name = fichier[0].replace(".cpp", ".h").replace(h_file, "")
+        h_name_exclude = input("Partie à exclure du nom du fichier .h (séparé par ' ') : ")
+        for i in h_name_exclude.split(" "):
+            h_name = h_name.replace(i, "")
+        while h_name[0] == "_":
+            h_name = h_name[1:]
         with open(path + h_file + ".h", "r") as f:
             text = f.read().split("/* SPLIT */")
             if len(groupe[-1]) == 1:
@@ -67,12 +77,15 @@ for groupe in change_list:
             elif len(groupe[-1]) > 1:
                 last_index = len(groupe)
             for fichier in groupe[1:last_index]:
-                with open(h_path + fichier[0].replace(".cpp", ".h").replace(h_file, "")[1:], "r") as g:
+                with open(h_path + h_name, "r") as g:
                     text_h = g.read().split("/* SPLIT */")
-                    with open(h_path + fichier[0].replace(".cpp", ".h").replace(h_file, "")[1:], "w") as h:
+                    with open(h_path + h_name, "w") as h:
                         h.write(text_h[0])
                         h.write("/* SPLIT */")
-                        lignes = text[1].split("\n")
+                        if split_location == 1:
+                            h.write(text_h[1])
+                            h.write("/* SPLIT */")
+                        lignes = text[split_location].split("\n")
                         print(fichier[0], end=" ")
                         for line in lignes:
                             for i in range(1, len(fichier)):
@@ -80,7 +93,7 @@ for groupe in change_list:
                             h.write(line + "\n")
                             print(".", end="")
                         h.write("/* SPLIT */")
-                        h.write(text[3])
+                        h.write(text[-1])
                 print()
 
 

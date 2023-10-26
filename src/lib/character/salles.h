@@ -66,4 +66,33 @@ private :
 
 /* SPLIT */
 
+class TabDynSalles : public TabDyn
+{
+public :
+    TabDynSalles();
+    TabDynSalles(unsigned int nb_elem_max);
+    TabDynSalles(unsigned int nb_elem_max, bool add_with_multiple, unsigned int number_addition);
+    TabDynSalles(const TabDynSalles& tab_dyn_ref);
+    ~TabDynSalles();
+
+    void Copy(TabDynSalles& tab_dyn_ref);
+    void Add(Salles value);
+    void Add(Salles value, bool add_with_multiple);
+    Salles Get(unsigned int index) const;
+    Salles* GetTab() const;
+    void Set(unsigned int index, Salles value);
+
+    Salles Pop();
+    Salles Pop(int index);
+    void Remove(Salles value, int num);
+    void Remove(Salles value);
+    void Remove(Salles value, bool is_first);
+
+private :
+    Salles* m_tab;
+};
+
+
+/* SPLIT */
+
 #endif
