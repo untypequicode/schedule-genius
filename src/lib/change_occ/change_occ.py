@@ -82,9 +82,10 @@ for groupe in change_list:
                     with open(h_path + h_name, "w") as h:
                         h.write(text_h[0])
                         h.write("/* SPLIT */")
-                        if split_location == 1:
+                        if split_location == 2:
                             h.write(text_h[1])
                             h.write("/* SPLIT */")
+
                         lignes = text[split_location].split("\n")
                         print(fichier[0], end=" ")
                         for line in lignes:
@@ -92,8 +93,12 @@ for groupe in change_list:
                                 line = line.replace(groupe[0][i], fichier[i])
                             h.write(line + "\n")
                             print(".", end="")
+
+                        if split_location == 1:
+                            h.write(text_h[2])
+                            h.write("/* SPLIT */")
                         h.write("/* SPLIT */")
-                        h.write(text[-1])
+                        h.write(text[3])
                 print()
 
 
