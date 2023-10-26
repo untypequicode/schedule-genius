@@ -43,7 +43,7 @@ private:
     TabDynString m_matiere;
     TabDynInt m_horaire;
     Profs m_prof;
-    Matieres_temp m_matiere_temp;
+    MatieresTemp m_matiere_temp;
     Salles m_salle;
 };
 
