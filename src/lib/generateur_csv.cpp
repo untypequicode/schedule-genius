@@ -53,20 +53,21 @@ CsvGenerateur::~CsvGenerateur()
 //"Anglais", "Espagnole", "Allemand", "Italien", "Russe" };
 
 
-void CsvGenerateur::creerCsv()
+void CsvGenerateur::creerCsv(bool entete)
 {
 	std::srand(static_cast<unsigned int>(std::time(nullptr)));
 	std::ofstream myfile;
 	myfile.open("eleve.csv");
 
-	// Premi�re ligne du csv avec les diff�rentes cat�gories
-	myfile << "ID;" << " PRENOM;" << "NOM;" << "Annee;";
-	for (int i = 1; i < 11; i++)
-	{
-		myfile << "MATIERE OPTIONNELLE" << i << ";";
-	};
-	myfile << "\n";
-
+    if (entete){
+        // Premi�re ligne du csv avec les diff�rentes cat�gories
+        myfile << "ID;" << " PRENOM;" << "NOM;" << "Annee;";
+        for (int i = 1; i < 11; i++)
+        {
+            myfile << "MATIERE OPTIONNELLE" << i << ";";
+        };
+        myfile << "\n";
+    }
 	// Autres lignes du csv
 	for (unsigned int i = 0; i < M_NOMBRE_ELEVE; i++)
 	{

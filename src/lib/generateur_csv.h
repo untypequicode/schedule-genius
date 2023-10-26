@@ -16,7 +16,7 @@ public:
     CsvGenerateur(unsigned int M_NOMBRE_ELEVE);
     ~CsvGenerateur();
 
-    void creerCsv();
+    void creerCsv(bool entete);
 
     unsigned int M_NOMBRE_ELEVE;
 
