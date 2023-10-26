@@ -1,28 +1,28 @@
-#include "tab_dyn.h"
+#include "../character/profs.h"
 
-TabDynFloat::TabDynFloat()
+TabDynProfs::TabDynProfs()
         : TabDyn()
 {
 
 }
 
-TabDynFloat::TabDynFloat(unsigned int nb_elem_max)
+TabDynProfs::TabDynProfs(unsigned int nb_elem_max)
         : TabDyn(nb_elem_max),
-          m_tab(new float[nb_elem_max])
+          m_tab(new Profs[nb_elem_max])
 {
 
 }
 
-TabDynFloat::TabDynFloat(unsigned int nb_elem_max, bool add_with_multiple, unsigned int number_addition)
+TabDynProfs::TabDynProfs(unsigned int nb_elem_max, bool add_with_multiple, unsigned int number_addition)
         : TabDyn(nb_elem_max, add_with_multiple, number_addition),
-          m_tab(new float[nb_elem_max])
+          m_tab(new Profs[nb_elem_max])
 {
 
 }
 
-TabDynFloat::TabDynFloat(const TabDynFloat& tab_dyn_ref)
+TabDynProfs::TabDynProfs(const TabDynProfs& tab_dyn_ref)
         : TabDyn(tab_dyn_ref),
-          m_tab(new float[tab_dyn_ref.m_nb_elem_max])
+          m_tab(new Profs[tab_dyn_ref.m_nb_elem_max])
 {
     for (unsigned int i = 0; i < tab_dyn_ref.m_nb_elem; i++)
     {
@@ -30,7 +30,7 @@ TabDynFloat::TabDynFloat(const TabDynFloat& tab_dyn_ref)
     }
 }
 
-TabDynFloat::~TabDynFloat()
+TabDynProfs::~TabDynProfs()
 {
     if (m_security and m_tab != nullptr and m_tab != NULL)
     {
@@ -38,7 +38,7 @@ TabDynFloat::~TabDynFloat()
     }
 }
 
-void TabDynFloat::Copy(TabDynFloat& tab_dyn_ref)
+void TabDynProfs::Copy(TabDynProfs& tab_dyn_ref)
 {
     for (unsigned int i = 0; i < tab_dyn_ref.m_nb_elem; i++)
     {
@@ -46,23 +46,23 @@ void TabDynFloat::Copy(TabDynFloat& tab_dyn_ref)
     }
 }
 
-void TabDynFloat::Add(float value)
+void TabDynProfs::Add(Profs value)
 {
     Add(value, true);
 }
 
-void TabDynFloat::Add(float value, bool add_with_multiple)
+void TabDynProfs::Add(Profs value, bool add_with_multiple)
 {
     if (m_nb_elem_max == 0)
     {
         if (add_with_multiple)
         {
-            m_tab = new float[m_number_addition];
+            m_tab = new Profs[m_number_addition];
             m_nb_elem_max = m_number_addition;
         }
         else
         {
-            m_tab = new float[1];
+            m_tab = new Profs[1];
             m_nb_elem_max = 1;
         }
         m_tab[0] = value;
@@ -77,21 +77,21 @@ void TabDynFloat::Add(float value, bool add_with_multiple)
     }
     else if (m_nb_elem == m_nb_elem_max)
     {
-        float* new_tab;
+        Profs* new_tab;
         if (add_with_multiple)
         {
             if (m_add_with_multiple)
             {
-                new_tab = new float[m_nb_elem_max * m_number_addition];
+                new_tab = new Profs[m_nb_elem_max * m_number_addition];
             }
             else
             {
-                new_tab = new float[m_nb_elem_max + m_number_addition];
+                new_tab = new Profs[m_nb_elem_max + m_number_addition];
             }
         }
         else
         {
-            new_tab = new float[m_nb_elem_max + 1];
+            new_tab = new Profs[m_nb_elem_max + 1];
         }
         for (unsigned int i = 0; i < m_nb_elem; i++)
         {
@@ -120,21 +120,21 @@ void TabDynFloat::Add(float value, bool add_with_multiple)
     }
 }
 
-float TabDynFloat::Get(unsigned int index) const
+Profs TabDynProfs::Get(unsigned int index) const
 {
     if (index < m_nb_elem)
     {
         return m_tab[index];
     }
-    return '\0';
+    return Profs();
 }
 
-float* TabDynFloat::GetTab() const
+Profs* TabDynProfs::GetTab() const
 {
     return m_tab;
 }
 
-void TabDynFloat::Set(unsigned int index, float value)
+void TabDynProfs::Set(unsigned int index, Profs value)
 {
     if (index < m_nb_elem)
     {
@@ -142,16 +142,16 @@ void TabDynFloat::Set(unsigned int index, float value)
     }
 }
 
-float TabDynFloat::Pop()
+Profs TabDynProfs::Pop()
 {
     return Pop(m_nb_elem - 1);
 }
 
-float TabDynFloat::Pop(int index)
+Profs TabDynProfs::Pop(int index)
 {
     if (index < m_nb_elem)
     {
-        float value = m_tab[index];
+        Profs value = m_tab[index];
         for (unsigned int i = index; i < m_nb_elem - 1; i++)
         {
             m_tab[i] = m_tab[i + 1];
@@ -159,15 +159,15 @@ float TabDynFloat::Pop(int index)
         m_nb_elem--;
         return value;
     }
-    return '\0';
+    return Profs();
 }
 
-void TabDynFloat::Remove(float value, int num)
+void TabDynProfs::Remove(Profs value, int num)
 {
     int count = 0;
     for (unsigned int i = 0; i < m_nb_elem; i++)
     {
-        if (m_tab[i] == value)
+        if (m_tab[i].GetId() == value.GetId())
         {
             count++;
             if (count == num)
@@ -179,11 +179,11 @@ void TabDynFloat::Remove(float value, int num)
     }
 }
 
-void TabDynFloat::Remove(float value)
+void TabDynProfs::Remove(Profs value)
 {
     for (unsigned int i = 0; i < m_nb_elem; i++)
     {
-        if (m_tab[i] == value)
+        if (m_tab[i].GetId() == value.GetId())
         {
             Pop(i);
             i--;
@@ -191,13 +191,13 @@ void TabDynFloat::Remove(float value)
     }
 }
 
-void TabDynFloat::Remove(float value, bool first)
+void TabDynProfs::Remove(Profs value, bool first)
 {
     if (first)
     {
         for (unsigned int i = 0; i < m_nb_elem; i++)
         {
-            if (m_tab[i] == value)
+            if (m_tab[i].GetId() == value.GetId())
             {
                 Pop(i);
                 return;
@@ -208,7 +208,7 @@ void TabDynFloat::Remove(float value, bool first)
     {
         for (unsigned int i = m_nb_elem - 1; i >= 0; i--)
         {
-            if (m_tab[i] == value)
+            if (m_tab[i].GetId() == value.GetId())
             {
                 Pop(i);
                 break;

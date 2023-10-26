@@ -4,13 +4,13 @@
 #include "../tab_dyn/tab_dyn.h"
 #include "profs.h"
 
-class Matieres_temp
+class MatieresTemp
 {
 public:
-    Matieres_temp();
-    Matieres_temp(std::string nom, unsigned int id);
-    Matieres_temp(const Matieres_temp& matieres_temp);
-    ~Matieres_temp();
+    MatieresTemp();
+    MatieresTemp(std::string nom, unsigned int id);
+    MatieresTemp(const MatieresTemp& matieres_temp);
+    ~MatieresTemp();
 
     unsigned int GetId();
     std::string GetNom();
@@ -23,5 +23,11 @@ private:
     std::string m_nom;
 };
 
+/* SPLIT */
+
+
+
+
+/* SPLIT */
 
 #endif

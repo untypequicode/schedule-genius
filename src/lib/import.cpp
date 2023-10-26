@@ -133,27 +133,22 @@ TabDynEleve genererEleveViaCsv(std::string const nom_fichier)
             {
                 test += 1;
             }
-
             else if (test == 0)
             {
                 id += character;
             }
-
             else if (test == 1)
             {
                 prenom += character;
             }
-
             else if (test == 2)
             {
                 nom += character;
             }
-
             else if (test == 3)
             {
                 niveau += character;
             }
-
             else if (test == 4)
             {
                 if (test2)
@@ -165,24 +160,20 @@ TabDynEleve genererEleveViaCsv(std::string const nom_fichier)
                     test2 = false;
                     eleves.Add(elevetest);
                 }
-
                 if (not (character == '1' or character == '2' or character == '3' or character == '4' or character == '5' or character == '6' or character == '7' or character == '8' or character == '9' or character == '0'))
                 {
                     if (character == ';')
                     {
                         matiere += " ";
                     }
-
                     else
                         matiere += character;
                 }
-
                 else
                 {
                     test = 5;
                 }
             }
-
             if (test == 5)
             {
                 for (i; i < 11; ++i)
@@ -203,6 +194,7 @@ TabDynEleve genererEleveViaCsv(std::string const nom_fichier)
             return eleves;
         }
     }
+    return TabDynEleve();
 }
 
 TabDynString splitFichier(std::string nom_fichier, char split, char end)

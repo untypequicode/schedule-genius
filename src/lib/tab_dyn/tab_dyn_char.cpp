@@ -32,7 +32,7 @@ TabDynChar::TabDynChar(const TabDynChar& tab_dyn_ref)
 
 TabDynChar::~TabDynChar()
 {
-    if (m_security and m_tab != nullptr)
+    if (m_security and m_tab != nullptr and m_tab != NULL)
     {
         delete[] m_tab;
     }
@@ -151,13 +151,13 @@ char TabDynChar::Pop(int index)
 {
     if (index < m_nb_elem)
     {
-        char c = m_tab[index];
+        char value = m_tab[index];
         for (unsigned int i = index; i < m_nb_elem - 1; i++)
         {
             m_tab[i] = m_tab[i + 1];
         }
         m_nb_elem--;
-        return c;
+        return value;
     }
     return '\0';
 }

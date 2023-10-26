@@ -54,28 +54,35 @@ private:
 
 };
 
+/* SPLIT */
+
 class TabDynEleve : public TabDyn
 {
-public:
+public :
     TabDynEleve();
-    TabDynEleve(unsigned int nbElemMax);
-    TabDynEleve(unsigned int nbElemMax, bool add_with_multiple, unsigned int addition);
-    TabDynEleve(const TabDynEleve& tabDynEleve);
+    TabDynEleve(unsigned int nb_elem_max);
+    TabDynEleve(unsigned int nb_elem_max, bool add_with_multiple, unsigned int number_addition);
+    TabDynEleve(const TabDynEleve& tab_dyn_ref);
     ~TabDynEleve();
 
-    void Add(Eleve eleve);
-    void Add(Eleve eleve, bool addition);
+    void Copy(TabDynEleve& tab_dyn_ref);
+    void Add(Eleve value);
+    void Add(Eleve value, bool add_with_multiple);
     Eleve Get(unsigned int index) const;
     Eleve* GetTab() const;
-    void Set(unsigned int index, Eleve i);
+    void Set(unsigned int index, Eleve value);
+
     Eleve Pop();
     Eleve Pop(int index);
-    void Remove(Eleve elem, int num);
-    void Remove(Eleve elem);
-    void Remove(Eleve elem, bool first);
+    void Remove(Eleve value, int num);
+    void Remove(Eleve value);
+    void Remove(Eleve value, bool is_first);
 
-private:
+private :
     Eleve* m_tab;
 };
+
+
+/* SPLIT */
 
 #endif

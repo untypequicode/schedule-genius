@@ -1,28 +1,28 @@
-#include "tab_dyn.h"
+#include "../character/groupes.h"
 
-TabDynFloat::TabDynFloat()
+TabDynGroupes::TabDynGroupes()
         : TabDyn()
 {
 
 }
 
-TabDynFloat::TabDynFloat(unsigned int nb_elem_max)
+TabDynGroupes::TabDynGroupes(unsigned int nb_elem_max)
         : TabDyn(nb_elem_max),
-          m_tab(new float[nb_elem_max])
+          m_tab(new Groupes[nb_elem_max])
 {
 
 }
 
-TabDynFloat::TabDynFloat(unsigned int nb_elem_max, bool add_with_multiple, unsigned int number_addition)
+TabDynGroupes::TabDynGroupes(unsigned int nb_elem_max, bool add_with_multiple, unsigned int number_addition)
         : TabDyn(nb_elem_max, add_with_multiple, number_addition),
-          m_tab(new float[nb_elem_max])
+          m_tab(new Groupes[nb_elem_max])
 {
 
 }
 
-TabDynFloat::TabDynFloat(const TabDynFloat& tab_dyn_ref)
+TabDynGroupes::TabDynGroupes(const TabDynGroupes& tab_dyn_ref)
         : TabDyn(tab_dyn_ref),
-          m_tab(new float[tab_dyn_ref.m_nb_elem_max])
+          m_tab(new Groupes[tab_dyn_ref.m_nb_elem_max])
 {
     for (unsigned int i = 0; i < tab_dyn_ref.m_nb_elem; i++)
     {
@@ -30,7 +30,7 @@ TabDynFloat::TabDynFloat(const TabDynFloat& tab_dyn_ref)
     }
 }
 
-TabDynFloat::~TabDynFloat()
+TabDynGroupes::~TabDynGroupes()
 {
     if (m_security and m_tab != nullptr and m_tab != NULL)
     {
@@ -38,7 +38,7 @@ TabDynFloat::~TabDynFloat()
     }
 }
 
-void TabDynFloat::Copy(TabDynFloat& tab_dyn_ref)
+void TabDynGroupes::Copy(TabDynGroupes& tab_dyn_ref)
 {
     for (unsigned int i = 0; i < tab_dyn_ref.m_nb_elem; i++)
     {
@@ -46,23 +46,23 @@ void TabDynFloat::Copy(TabDynFloat& tab_dyn_ref)
     }
 }
 
-void TabDynFloat::Add(float value)
+void TabDynGroupes::Add(Groupes value)
 {
     Add(value, true);
 }
 
-void TabDynFloat::Add(float value, bool add_with_multiple)
+void TabDynGroupes::Add(Groupes value, bool add_with_multiple)
 {
     if (m_nb_elem_max == 0)
     {
         if (add_with_multiple)
         {
-            m_tab = new float[m_number_addition];
+            m_tab = new Groupes[m_number_addition];
             m_nb_elem_max = m_number_addition;
         }
         else
         {
-            m_tab = new float[1];
+            m_tab = new Groupes[1];
             m_nb_elem_max = 1;
         }
         m_tab[0] = value;
@@ -77,21 +77,21 @@ void TabDynFloat::Add(float value, bool add_with_multiple)
     }
     else if (m_nb_elem == m_nb_elem_max)
     {
-        float* new_tab;
+        Groupes* new_tab;
         if (add_with_multiple)
         {
             if (m_add_with_multiple)
             {
-                new_tab = new float[m_nb_elem_max * m_number_addition];
+                new_tab = new Groupes[m_nb_elem_max * m_number_addition];
             }
             else
             {
-                new_tab = new float[m_nb_elem_max + m_number_addition];
+                new_tab = new Groupes[m_nb_elem_max + m_number_addition];
             }
         }
         else
         {
-            new_tab = new float[m_nb_elem_max + 1];
+            new_tab = new Groupes[m_nb_elem_max + 1];
         }
         for (unsigned int i = 0; i < m_nb_elem; i++)
         {
@@ -120,21 +120,21 @@ void TabDynFloat::Add(float value, bool add_with_multiple)
     }
 }
 
-float TabDynFloat::Get(unsigned int index) const
+Groupes TabDynGroupes::Get(unsigned int index) const
 {
     if (index < m_nb_elem)
     {
         return m_tab[index];
     }
-    return '\0';
+    return Groupes();
 }
 
-float* TabDynFloat::GetTab() const
+Groupes* TabDynGroupes::GetTab() const
 {
     return m_tab;
 }
 
-void TabDynFloat::Set(unsigned int index, float value)
+void TabDynGroupes::Set(unsigned int index, Groupes value)
 {
     if (index < m_nb_elem)
     {
@@ -142,16 +142,16 @@ void TabDynFloat::Set(unsigned int index, float value)
     }
 }
 
-float TabDynFloat::Pop()
+Groupes TabDynGroupes::Pop()
 {
     return Pop(m_nb_elem - 1);
 }
 
-float TabDynFloat::Pop(int index)
+Groupes TabDynGroupes::Pop(int index)
 {
     if (index < m_nb_elem)
     {
-        float value = m_tab[index];
+        Groupes value = m_tab[index];
         for (unsigned int i = index; i < m_nb_elem - 1; i++)
         {
             m_tab[i] = m_tab[i + 1];
@@ -159,15 +159,15 @@ float TabDynFloat::Pop(int index)
         m_nb_elem--;
         return value;
     }
-    return '\0';
+    return Groupes();
 }
 
-void TabDynFloat::Remove(float value, int num)
+void TabDynGroupes::Remove(Groupes value, int num)
 {
     int count = 0;
     for (unsigned int i = 0; i < m_nb_elem; i++)
     {
-        if (m_tab[i] == value)
+        if (m_tab[i].GetId() == value.GetId())
         {
             count++;
             if (count == num)
@@ -179,11 +179,11 @@ void TabDynFloat::Remove(float value, int num)
     }
 }
 
-void TabDynFloat::Remove(float value)
+void TabDynGroupes::Remove(Groupes value)
 {
     for (unsigned int i = 0; i < m_nb_elem; i++)
     {
-        if (m_tab[i] == value)
+        if (m_tab[i].GetId() == value.GetId())
         {
             Pop(i);
             i--;
@@ -191,13 +191,13 @@ void TabDynFloat::Remove(float value)
     }
 }
 
-void TabDynFloat::Remove(float value, bool first)
+void TabDynGroupes::Remove(Groupes value, bool first)
 {
     if (first)
     {
         for (unsigned int i = 0; i < m_nb_elem; i++)
         {
-            if (m_tab[i] == value)
+            if (m_tab[i].GetId() == value.GetId())
             {
                 Pop(i);
                 return;
@@ -208,7 +208,7 @@ void TabDynFloat::Remove(float value, bool first)
     {
         for (unsigned int i = m_nb_elem - 1; i >= 0; i--)
         {
-            if (m_tab[i] == value)
+            if (m_tab[i].GetId() == value.GetId())
             {
                 Pop(i);
                 break;

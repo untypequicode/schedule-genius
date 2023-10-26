@@ -47,5 +47,35 @@ private:
     Salles m_salle;
 };
 
+/* SPLIT */
+
+class TabDynGroupes : public TabDyn
+{
+public :
+    TabDynGroupes();
+    TabDynGroupes(unsigned int nb_elem_max);
+    TabDynGroupes(unsigned int nb_elem_max, bool add_with_multiple, unsigned int number_addition);
+    TabDynGroupes(const TabDynGroupes& tab_dyn_ref);
+    ~TabDynGroupes();
+
+    void Copy(TabDynGroupes& tab_dyn_ref);
+    void Add(Groupes value);
+    void Add(Groupes value, bool add_with_multiple);
+    Groupes Get(unsigned int index) const;
+    Groupes* GetTab() const;
+    void Set(unsigned int index, Groupes value);
+
+    Groupes Pop();
+    Groupes Pop(int index);
+    void Remove(Groupes value, int num);
+    void Remove(Groupes value);
+    void Remove(Groupes value, bool is_first);
+
+private :
+    Groupes* m_tab;
+};
+
+
+/* SPLIT */
 
 #endif
