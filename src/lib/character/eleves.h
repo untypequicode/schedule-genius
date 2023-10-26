@@ -2,12 +2,14 @@
 #define DEF_ELEVE
 
 #include "../tab_dyn/tab_dyn.h"
+// inclure les groupes
+#include "groupes.h"
 
 class Eleve
 {
 public:
     Eleve();
-    Eleve(unsigned int id, std::string prenom, std::string nom, std::string niveau_scolaire);
+    Eleve(unsigned int id, std::string prenom, std::string nom, std::string niveau_scolaire, Groupes groupes);
     //Eleve(std::string prenom, std::string nom, std::string niveau_scolaire);
     Eleve(const Eleve& eleve);
     ~Eleve();

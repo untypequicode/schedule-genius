@@ -13,12 +13,14 @@ Eleve::Eleve()
 Eleve::Eleve(unsigned int id,
              std::string prenom,
              std::string nom,
-             std::string niveau_scolaire)
+             std::string niveau_scolaire,
+             Groupes groupes)
         : m_id(id),
           m_prenom(prenom),
           m_nom(nom),
           m_niveau_scolaire(niveau_scolaire),
-          m_matieres()
+          m_matieres(),
+          m_groupes(groupes)
 {
 
 }
@@ -28,7 +30,8 @@ Eleve::Eleve(const Eleve& eleve)
           m_prenom(eleve.GetPrenom()),
           m_nom(eleve.GetNom()),
           m_niveau_scolaire(eleve.GetNiveauScolaire()),
-          m_matieres(eleve.m_matieres)
+          m_matieres(eleve.m_matieres),
+          m_groupes(eleve.m_groupes)
 {
     
 }
