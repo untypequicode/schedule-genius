@@ -9,7 +9,11 @@ class Eleve
 {
 public:
     Eleve();
-    Eleve(unsigned int id, std::string prenom, std::string nom, std::string niveau_scolaire, Groupes groupes);
+    Eleve(unsigned int id,
+          std::string prenom,
+          std::string nom,
+          std::string niveau_scolaire,
+          Groupes groupes);
     //Eleve(std::string prenom, std::string nom, std::string niveau_scolaire);
     Eleve(const Eleve& eleve);
     ~Eleve();
