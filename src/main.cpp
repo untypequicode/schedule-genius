@@ -16,15 +16,9 @@ int main()
 {
     //// Micky
     //
-//    TabDynInt tabDynInt(5);
-//    tabDynInt.SetSecurity(false);
-//    for (int i = 0; i < 10; i++)
-//    {
-//        tabDynInt.Add(i);
-//    }
-//    std::cout << tabDynInt.Get(0) << std::endl;
-    CsvGenerateur exemple;
-    exemple.creerCsv();
+
+//    CsvGenerateur exemple;
+//    exemple.creerCsv(true);
 
 
     //// Vincent
