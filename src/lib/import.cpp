@@ -153,12 +153,12 @@ TabDynEleve genererEleveViaCsv(std::string const nom_fichier)
             {
                 if (test2)
                 {
-                    Eleve elevetest(fake_id, prenom, nom, niveau);
-                    std::cout << "eleve numero " << id << " : ";
-                    std::cout << prenom << " " << nom << std::endl;
-                    std::cout << "en annee " << niveau << std::endl;
-                    test2 = false;
-                    eleves.Add(elevetest);
+//                    Eleve elevetest(fake_id, prenom, nom, niveau);
+//                    std::cout << "eleve numero " << id << " : ";
+//                    std::cout << prenom << " " << nom << std::endl;
+//                    std::cout << "en annee " << niveau << std::endl;
+//                    test2 = false;
+//                    eleves.Add(elevetest);
                 }
                 if (not (character == '1' or character == '2' or character == '3' or character == '4' or character == '5' or character == '6' or character == '7' or character == '8' or character == '9' or character == '0'))
                 {
