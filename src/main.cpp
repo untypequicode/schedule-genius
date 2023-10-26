@@ -1,52 +1,53 @@
+#include "lib/generation_groupes.h"
+#include "lib/generateur_csv.h"
+#include "lib/import.h"
+#include "lib/fichier.h"
+#include "lib/dict_dyn/dict_dyn.h"
+#include "lib/database/database.h"
+#include "lib/character/eleves.h"
+#include "lib/character/groupes.h"
+#include "lib/character/profs.h"
+#include "lib/character/matieres.h"
 
-#include <iostream>
+
+
 
 int main()
 {
-	// type name;
-	// char		- character			- 'r'
-	// int		- integer			- 50, 42, 500, -400
-	// float	- floating points	- 5.5f
-	// double	- double precision	- 5.0
-	int age;
-	float mark;
-	double height;
+    //// Micky
+    //
 
-	// Initialization
-	// variable = value
-	age = 42; 
-	mark = 18.5f;
-	height = 200.50;
-
-	// Declaration and Initialization
-	// int age = 42;
-	// float mark = 18.5f;
-	// double height = 200.50;
-
-	int a = 50;
-	int b = 20;
-	int c = a + b;
-
-	// Operators : + * - / % & | 
+//    CsvGenerateur exemple;
+//    exemple.creerCsv(true);
 
 
+    //// Vincent
 
-	std::cout << "Hello, World" << std::endl;
-	std::cout << c << std::endl;
-	std::cout << 50 + a << std::endl;
-	//std::cin.ignore();
+    std::string nom_fichier = "eleve.csv";
+    Fichier fichiertest(nom_fichier, 201);
+    Database datatest;
+    datatest.EcraserData(fichiertest);
+    std::cout << "fin" << std::endl;
+//    for(int i = 0; i < datatest.GetEleve(0).GetNbMatiere(); i++)
+//    {
+//        std::cout << datatest.GetEleve(0).GetMatiere(i) << std::endl;
+//    }
 
-	int number = 0;
-	std::cout << "Enter a number: ";
-	std::cin >> number;
-	std::cin.ignore();
-	std::cout << "The number is: " << number << std::endl;
 
-	int d = 0, e = 0;
-	std::cout<<"Enter d then e: ";
-	std::cin >> d >> e;
-	std::cin.ignore();
-	std::cout << "d + e = " << d + e << std::endl;
+    //// Ethan
+    //
+//    Eleve eleve(0, "Ethan", "Facca", "L1");
+//    eleve.AddMatiere("Maths");
+//    eleve.AddMatiere("Physique");
+//    std::cout << eleve.GetMatiere(0) << std::endl;
+//    std::cout << eleve.GetMatiere(1) << std::endl;
+//    std::cout << eleve.GetMatiere(3) << std::endl;
+//    Groupe groupe("L1", "info");
+//    groupe.AddEleve(eleve);
+//    std::string matiere_eleve = groupe.GetEleve(0).GetMatiere(1);
+//    std::cout << groupe.GetEleve(0).m_prenom << std::endl;
 
-	return 0;
+
+
+    return 0;
 }
