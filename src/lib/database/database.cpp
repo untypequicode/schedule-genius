@@ -101,23 +101,23 @@ void Database::EcraserData(Fichier source)
                     }
                 }
             }
-            Eleve eleve(convertToInt(data.Get(0)), data.Get(1), data.Get(2), data.Get(3));
-            eleve.SetSecurity(false);
-            retour.Add(eleve);
-            std::cout << eleve.GetId() << " " << eleve.GetNom() << eleve.GetPrenom() << eleve.GetNiveauScolaire() << std::endl;
-            data.Clear();
-            std::cout << "Matieres facultatives : " << std::endl;
-            for (unsigned int i = 0; i < matieres.GetNbElem(); i++)
-            {
-                retour.Get(last).AddMatiere(matieres.Get(i));
-                std::cout << matieres.Get(i) << std::endl;
-            }
-            matieres.Clear();
-            indice = 0;
-            last++;
-            std::getline(myfiletest, lignetest);
-            std::cout << "fin de la " << last -1 << "eme ligne" << std::endl;
-            std::cout << "test : " << (ligne != lignetest) << std::endl << std::endl;
+//            Eleve eleve(convertToInt(data.Get(0)), data.Get(1), data.Get(2), data.Get(3));
+//            eleve.SetSecurity(false);
+//            retour.Add(eleve);
+//            std::cout << eleve.GetId() << " " << eleve.GetNom() << eleve.GetPrenom() << eleve.GetNiveauScolaire() << std::endl;
+//            data.Clear();
+//            std::cout << "Matieres facultatives : " << std::endl;
+//            for (unsigned int i = 0; i < matieres.GetNbElem(); i++)
+//            {
+//                retour.Get(last).AddMatiere(matieres.Get(i));
+//                std::cout << matieres.Get(i) << std::endl;
+//            }
+//            matieres.Clear();
+//            indice = 0;
+//            last++;
+//            std::getline(myfiletest, lignetest);
+//            std::cout << "fin de la " << last -1 << "eme ligne" << std::endl;
+//            std::cout << "test : " << (ligne != lignetest) << std::endl << std::endl;
             if(ligne == lignetest)
                 break;
         }
