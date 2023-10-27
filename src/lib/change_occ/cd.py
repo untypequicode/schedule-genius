@@ -1,7 +1,7 @@
 import os
 class Cd:
     def __init__(self, path = ""):
-        self.m_original_path = path
+        self.m_path = path
     def Set_path(self, path):
         self.m_path = path
 
