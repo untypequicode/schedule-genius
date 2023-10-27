@@ -30,7 +30,7 @@ def main():
             print(cd.Ls(cd.GetPath()))
 
         elif response[0] == "cd" and len(response) >= 2:
-            cd.Cd(cd.GetPath(), response[1])
+            cd.Cd(response[1])
             print(cd.GetPath())
             if cd.GetPath() == False:
                 print(f'Emplacement "{response[1]}" incorrect')
