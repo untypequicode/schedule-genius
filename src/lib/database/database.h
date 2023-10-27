@@ -10,9 +10,8 @@
 * COntient une liste d'élèves et son nombre d'éléments
 *
 * Constructeurs :
-* Database() : m_taille(0), m_eleve(TabDynEleve(0))
-* Database(unsigned int taille) : m_taille(taille), m_eleve(TabDynEleve(taille))
-* Database(const Database& database) : m_taille(database.m_taille), m_eleve(database.m_eleve)
+* Database() :m_eleve(TabDynEleve(0))
+* Database(const Database& database) :m_eleve(database.m_eleve)
 *
 * Destructeur:
 * ~Database()

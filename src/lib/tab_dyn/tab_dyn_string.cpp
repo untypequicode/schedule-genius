@@ -124,7 +124,6 @@ std::string TabDynString::Get(unsigned int index) const
 {
     if (index < m_nb_elem)
     {
-        std::cout << "coucou " << m_tab[index] << " uocuoc " << std::endl;
         return m_tab[index];
     }
     return "\0";

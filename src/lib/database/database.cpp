@@ -11,12 +11,6 @@ Database::Database()
 
 };
 
-Database::Database(unsigned int taille)
-    :m_eleve(TabDynEleve(taille))
-{
-
-};
-
 Database::Database(const Database& database)
     :m_eleve(database.m_eleve)
 {
