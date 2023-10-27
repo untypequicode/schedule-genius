@@ -17,7 +17,7 @@ int main()
     //// Micky
     //
 
-//    CsvGenerateur exemple;
+//    CsvGenerateur exemple(10);
 //    exemple.creerCsv(true);
 
 
@@ -27,9 +27,17 @@ int main()
     Fichier fichiertest(nom_fichier, 201);
     Database datatest;
     datatest.EcraserData(fichiertest);
-    TabDynString data = datatest.GetAllData(1);
-    for(int i = 0; i < 200; i++)
-        std::cout << datatest.GetEleve(i).GetId() << datatest.GetEleve(i).GetNom() << datatest.GetEleve(i).GetPrenom() << datatest.GetEleve(i).GetNiveauScolaire() << std::endl;
+    TabDynString data;
+    for(int i = 0; i <= 1; i++) {
+        std::cout << "\nDEBUT" << std::endl;
+        std::cout << "hello " << data.Get(0) << " jj " << data.Get(1) << data.Get(2) << data.Get(3)<< " fin" << std::endl;
+        std::cout << "FIN\n" << std::endl;
+        data = datatest.GetAllData(i);
+        std::cout << "\ndebut" << std::endl;
+        std::cout << "bjr " << datatest.GetEleve(i).GetId() << std::endl;
+        std::cout << "hello " << data.Get(0) << " jj " << data.Get(1) << data.Get(2) << data.Get(3)<< " fin" << std::endl;
+        std::cout << "fin\n" << std::endl;
+    }
 
 
     return 0;

@@ -25,6 +25,7 @@
 * Accesseurs:
 * Eleve GetEleve(unsigned int index) const
 * TabDynString GetAllData(unsigned int index) const
+* unsigned int GetTaille() const
 *
 * Attributs :
 * TabDynEleve m_eleve
@@ -39,6 +40,7 @@ public:
     void EcraserData(Fichier source);
     void AjouterData(Fichier source);
 
+    unsigned int GetTaille() const;
     Eleve GetEleve(unsigned int index) const;
     TabDynString GetAllData(unsigned int index) const;
 
