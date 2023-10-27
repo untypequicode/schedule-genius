@@ -5,20 +5,22 @@ class Cd:
             self.m_path = os.getcwd() + "/"
         else:
             self.m_path = path
-    def Set_path(self, path):
+    def SetPath(self, path):
         self.m_path = path
-    def Get_path(self)-> str:
+    def GetPath(self)-> str:
         return self.m_path
 
-    def Get_actual_path(self)-> str:
+    def GetActualPath(self)-> str:
         return os.getcwd() + '/'
     def Ls(self, path) -> list:
         """ return the list of directories """
         assert isinstance(path, str), " Le chemin doit être un string "
         return os.listdir(self.m_path + path)
+
     def __Split_path(self, path):
         """ Split the path """
-        list_element_in_path = self.__Borned_by(self.m_path, "/")
+        copy_self_path = self.m_path
+        list_element_in_path = self.__Borned_by(copy_self_path, "/")
         new_path = ""
         indice_max = len(list_element_in_path) - 1
         while path[2:] == "../":
@@ -26,6 +28,7 @@ class Cd:
             indice_max -= 1
         for i in range(indice_max):
             new_path += list_element_in_path[i]
+            self.m_path += list_element_in_path[i]
         new_path += path
         return new_path
 
@@ -48,15 +51,16 @@ class Cd:
 
     def Cd(self, actual_path, path) -> str :
         """ return False if  """
+        print(self.Get_path())
         assert isinstance(path, str), " Le chemin doit être un string "
         assert isinstance(actual_path, str) or actual_path is None, "Le chemin doit être un string ou un objet de type None"
         if actual_path is not None:
             self.m_path = actual_path
         path = self.__Split_path(path)
+        print(path,"hello", self.m_path)
         if not os.path.exists(path):
             return False
-        else:
-            return path
+        return path
 
 # test = Cd()
 # print(test.Get_path())
