@@ -47,6 +47,9 @@ TabDynString Database::GetAllData(unsigned int index) const
     return retour;
 };
 
+// Salut, c'est moi, le mec qui a fait le code de la fonction EcraserData
+//wtf XD Github Copilote finit les phrases
+
 void Database::EcraserData(Fichier source)
 {
 
