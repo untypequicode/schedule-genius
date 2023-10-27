@@ -27,7 +27,7 @@ def main():
                     print(ligne[0] + " "*(nb_espace-len(ligne[0])) + ligne[1])
 
         elif response[0] == "ls":
-            print(cd.Ls(cd.GetPath()))
+            print(cd.Ls())
 
         elif response[0] == "cd" and len(response) >= 2:
             cd.Cd(response[1])
