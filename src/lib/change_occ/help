@@ -1,0 +1,6 @@
+help : aide
+exit : sortie du programme
+ls : liste des dossiers et fichiers
+cd : changer de dossiers
+load : ajouter un fichier au chargement
+unload : enlever un fichier au chargement
