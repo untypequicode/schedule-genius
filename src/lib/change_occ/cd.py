@@ -23,10 +23,12 @@ class Cd:
         up_list, path = self.__Split_path(path)
         return os.path.exists(up_list + path)
 
-    def Cd(self, path) -> str :
+    def Cd(self, actual_path, path) -> str :
         """ return False if  """
         assert isinstance(path, str), " Le chemin doit être un string "
-
+        assert isinstance(actual_path, str) or actual_path is None, "Le chemin doit être un string ou un objet de type None"
+        if actual_path is not None:
+            self.m_path = actual_path
         up_list, path = self.__Split_path(path)
         if not os.path.exists(up_list + self.m_path + path):
             return False
