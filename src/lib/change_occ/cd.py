@@ -1,10 +1,17 @@
 import os
 class Cd:
     def __init__(self, path = ""):
-        self.m_path = path
+        if path == "":
+            self.m_path = os.getcwd() + "/"
+        else:
+            self.m_path = path
     def Set_path(self, path):
         self.m_path = path
+    def Get_path(self)-> str:
+        return self.m_path
 
+    def Get_actual_path(self)-> str:
+        return os.getcwd() + '/'
     def Ls(self, path) -> list:
         """ return the list of directories """
         assert isinstance(path, str), " Le chemin doit être un string "
@@ -34,3 +41,7 @@ class Cd:
             return False
         else:
             return up_list + self.m_path + path
+
+
+test = Cd()
+print(test.Get_path())
