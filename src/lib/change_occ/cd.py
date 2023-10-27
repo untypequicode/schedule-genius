@@ -14,7 +14,18 @@ class Cd:
         return os.getcwd() + '/'
     def Ls(self) -> list:
         """ return the list of directories """
-        return os.listdir(self.m_path)
+        ls = os.listdir(self.m_path)
+        ls_sort = {}
+        ls_sort["dir"] = []
+        ls_sort["file"] = []
+        for elem in ls:
+            if os.path.isdir(os.path.join(self.m_path, elem)):
+                ls_sort["dir"].append(elem)
+        for elem in ls:
+            if os.path.isfile(os.path.join(self.m_path, elem)):
+                ls_sort["file"].append(elem)
+        return ls_sort
+
 
     def __Split_path(self, path):
         """ Split the path """
