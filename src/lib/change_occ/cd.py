@@ -12,10 +12,9 @@ class Cd:
 
     def GetActualPath(self)-> str:
         return os.getcwd() + '/'
-    def Ls(self, path) -> list:
+    def Ls(self) -> list:
         """ return the list of directories """
-        assert isinstance(path, str), " Le chemin doit être un string "
-        return os.listdir(self.m_path + path)
+        return os.listdir(self.m_path)
 
     def __Split_path(self, path):
         """ Split the path """
@@ -51,10 +50,8 @@ class Cd:
 
     def Cd(self, path) -> str :
         """ return False if  """
-        print(self.Get_path())
         assert isinstance(path, str), " Le chemin doit être un string "
         path = self.__Split_path(path)
-        print(path,"hello", self.m_path)
         if not os.path.exists(path):
             return False
         return path
