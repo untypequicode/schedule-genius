@@ -20,14 +20,14 @@ class Cd:
         """ Split the path """
         list_element_in_path = self.__Borned_by(self.m_path, "/")
         new_path = ""
-        indice_max = len(list_element_in_path - 1)
+        indice_max = len(list_element_in_path) - 1
         while path[2:] == "../":
             path = path[2:]
             indice_max -= 1
         for i in range(indice_max):
-            new_path.append(list_element_in_path[i])
-        new_path.append(path)
-        return new_paths
+            new_path += list_element_in_path[i]
+        new_path += path
+        return new_path
 
     def __Borned_by(self, string, separator)-> str:
         new_list = []
@@ -58,5 +58,5 @@ class Cd:
         else:
             return path
 
-test = Cd()
-print(test.Get_path())
+# test = Cd()
+# print(test.Get_path())
