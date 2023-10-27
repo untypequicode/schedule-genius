@@ -4,3 +4,19 @@ ls : liste des dossiers et fichiers
 cd : changer de dossiers
 load : ajouter un fichier au chargement
 unload : enlever un fichier au chargement
+--------------------------- : ---------------------------
+load : library de chargement
+load list : liste des fichiers a charger
+load ls : liste des fichiers a charger
+load mount -a : charger tous les fichiers
+load mnt -a : charger tous les fichiers
+load mount -a \ "file" "file" : charger tous les fichiers sauf le ou les fichiers "file"
+load mnt -a \ "file" "file" : charger tous les fichiers sauf le ou les fichiers "file"
+load mount "file" : charger un fichier
+load mnt "file" : charger un fichier
+load unmount -a : decharger tous les fichiers
+load umnt -a : decharger tous les fichiers
+load unmount -a \ "file" "file" : decharger tous les fichiers sauf le ou les fichiers "file"
+load umnt -a \ "file" "file" : decharger tous les fichiers sauf le ou les fichiers "file"
+load unmount "file" : decharger un fichier
+load umnt "file" : decharger un fichier

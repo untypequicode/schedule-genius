@@ -34,19 +34,47 @@ def main():
 
         elif response[0] == "cd" and len(response) >= 2:
             cd.Cd(response[1])
-            print(cd.GetPath())
             if cd.GetPath() == False:
                 print(f'Emplacement "{response[1]}" incorrect')
 
         elif response[0] == "load" and len(response) >= 2:
-            file_path = cd.GetPath() + response[1]
-            if cd.Exist(file_path):
-                file_load.append(file_path)
+            if (response[1] == "mount" or response[1] == "mnt") and len(response) >= 3:
+                if response[2] == "-a":
+                    ls = cd.LsFile()
+                    for file in ls:
+                        file_load.append(cd.GetPath() + file)
+                else:
+                    file_path = cd.GetPath() + response[2]
+                    if cd.IsFile(file_path):
+                        file_load.append(file_path)
+                if len(response) >= 5 and response[3] == "\\":
+                    for file_unmount in response[4:]:
+                        file_path = cd.GetPath() + file_unmount
+                        if cd.Exist(file_path) and file_path in file_load :
+                            file_load.remove(file_path)
+            elif (response[1] == "unmount" or response[1] == "umnt") and len(response) >= 3:
+                if response[2] == "-a" and len(response) >= 3:
+                    file_load = []
+                else:
+                    file_path = cd.GetPath() + response[2]
+                    if cd.Exist(file_path):
+                        file_load.remove(file_path)
+                if len(response) >= 5 and response[3] == "\\":
+                    for file_mount in response[4:]:
+                        file_load.append(cd.GetPath() + file_mount)
+            elif response[1] == "list" or response[1] == "ls":
+                if len(file_load) == 0:
+                    print("Aucun fichier n'est chargé.")
+                else:
+                    for file in file_load:
+                        print(file)
 
-        elif response[0] == "unload" and len(response) >= 2:
-            file_path = cd.GetPath() + response[1]
-            if cd.Exist(file_path):
-                file_load.remove(file_path)
+            else:
+                print(f'Commande "{response[1]}" inconnue.')
+
+
+
+
 
         else:
             print(f'Commande "{response[0]}" inconnue.')

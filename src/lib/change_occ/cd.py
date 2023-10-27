@@ -24,6 +24,25 @@ class Cd:
             if os.path.isfile(os.path.join(self.m_path, elem)):
                 ls_sort["file"].append(elem)
         return ls_sort
+
+    def LsFile(self) -> list:
+        """ return the list of directories """
+        ls = os.listdir(self.m_path)
+        ls_file = []
+        for elem in ls:
+            if os.path.isfile(os.path.join(self.m_path, elem)):
+                ls_file.append(elem)
+        return ls_file
+
+    def LsDir(self) -> list:
+        """ return the list of directories """
+        ls = os.listdir(self.m_path)
+        ls_dir = []
+        for elem in ls:
+            if os.path.isdir(os.path.join(self.m_path, elem)):
+                ls_dir.append(elem)
+        return ls_dir
+
     def __Split_path(self, path):
         """ Split the path """
         list_element_in_path = self.__Borned_by(self.m_path, "/")
@@ -36,7 +55,6 @@ class Cd:
             new_path += list_element_in_path[i] + '/'
             self.m_path += list_element_in_path[i]
         new_path += path
-        print(new_path + 'hey')
         return new_path
     def __Borned_by(self, string, separator)-> str:
         new_list = []
@@ -51,8 +69,18 @@ class Cd:
 
     def Exist(self, path) -> bool:
         assert isinstance(path, str), " Le chemin doit être un string "
+        """ Return a bool """
+        return self.IsDir(path) or self.IsFile(path)
+
+    def IsDir(self, path) -> bool:
+        assert isinstance(path, str), " Le chemin doit être un string "
         """ Return a bool"""
-        return os.path.isdir(path) or os.path.isfile(path)
+        return os.path.isdir(path)
+
+    def IsFile(self, path) -> bool:
+        assert isinstance(path, str), " Le chemin doit être un string "
+        """ Return a bool"""
+        return os.path.isfile(path)
 
     def Cd(self, path) -> str :
         """ return False if """
