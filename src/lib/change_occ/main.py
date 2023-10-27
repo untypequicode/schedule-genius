@@ -10,7 +10,7 @@ def main():
 
     terminal = Terminal()
     cd = Cd()
-    response = terminal.GetInput()
+    response = terminal.GetInput(cd.GetPath())
     file_load = []
 
     while response != "exit":
@@ -50,7 +50,7 @@ def main():
         else:
             print(f'Commande "{response[0]}" inconnue.')
 
-        response = terminal.GetInput()
+        response = terminal.GetInput(cd.GetPath())
 
     print("Fin du programme.")
 
