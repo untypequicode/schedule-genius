@@ -5,7 +5,7 @@ TabDyn::TabDyn()
           m_nb_elem_max(0),
           m_add_with_multiple(true),
           m_number_addition(2),
-          m_security(true)
+          m_security(false)
 {
 
 }

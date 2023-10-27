@@ -27,26 +27,9 @@ int main()
     Fichier fichiertest(nom_fichier, 201);
     Database datatest;
     datatest.EcraserData(fichiertest);
-    std::cout << "fin" << std::endl;
-//    for(int i = 0; i < datatest.GetEleve(0).GetNbMatiere(); i++)
-//    {
-//        std::cout << datatest.GetEleve(0).GetMatiere(i) << std::endl;
-//    }
-
-
-    //// Ethan
-    //
-//    Eleve eleve(0, "Ethan", "Facca", "L1");
-//    eleve.AddMatiere("Maths");
-//    eleve.AddMatiere("Physique");
-//    std::cout << eleve.GetMatiere(0) << std::endl;
-//    std::cout << eleve.GetMatiere(1) << std::endl;
-//    std::cout << eleve.GetMatiere(3) << std::endl;
-//    Groupe groupe("L1", "info");
-//    groupe.AddEleve(eleve);
-//    std::string matiere_eleve = groupe.GetEleve(0).GetMatiere(1);
-//    std::cout << groupe.GetEleve(0).m_prenom << std::endl;
-
+    TabDynString data = datatest.GetAllData(1);
+    for(int i = 0; i < 10; i++)
+        std::cout << datatest.GetEleve(i).GetId() << "t" << datatest.GetEleve(i).GetNom() << 'e' << datatest.GetEleve(i).GetPrenom() << 's' << datatest.GetEleve(i).GetNiveauScolaire() << 't' << std::endl;
 
 
     return 0;
