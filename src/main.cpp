@@ -28,8 +28,8 @@ int main()
     Database datatest;
     datatest.EcraserData(fichiertest);
     TabDynString data = datatest.GetAllData(1);
-    for(int i = 0; i < 10; i++)
-        std::cout << datatest.GetEleve(i).GetId() << "t" << datatest.GetEleve(i).GetNom() << 'e' << datatest.GetEleve(i).GetPrenom() << 's' << datatest.GetEleve(i).GetNiveauScolaire() << 't' << std::endl;
+    for(int i = 0; i < 200; i++)
+        std::cout << datatest.GetEleve(i).GetId() << datatest.GetEleve(i).GetNom() << datatest.GetEleve(i).GetPrenom() << datatest.GetEleve(i).GetNiveauScolaire() << std::endl;
 
 
     return 0;

@@ -47,9 +47,6 @@ TabDynString Database::GetAllData(unsigned int index) const
     return retour;
 };
 
-// Salut, c'est moi, le mec qui a fait le code de la fonction EcraserData
-//wtf XD Github Copilote finit les phrases
-
 void Database::EcraserData(Fichier source)
 {
 
@@ -107,12 +104,7 @@ void Database::EcraserData(Fichier source)
 
             Groupes groupetest;
             Eleve eleve(convertToInt(data.Get(0)), data.Get(1), data.Get(2), data.Get(3), groupetest);
-            std::cout << "test" << std::endl;
-            eleve.SetSecurity(false);
-            retour.SetSecurity(false);
-            retour.Add(eleve);
-            std::cout << "test" << std::endl;
-            std::cout << eleve.GetId() << " " << eleve.GetNom() << eleve.GetPrenom() << eleve.GetNiveauScolaire() << std::endl;
+            m_eleve.Add(eleve);
             data.Clear();
 //            std::cout << "Matieres facultatives : " << std::endl;
 //            for (unsigned int i = 0; i < matieres.GetNbElem(); i++)
@@ -124,15 +116,13 @@ void Database::EcraserData(Fichier source)
             indice = 0;
             last++;
             std::getline(myfiletest, lignetest);
-            std::cout << "fin de la " << last -1 << "eme ligne" << std::endl;
-            std::cout << "test : " << (ligne != lignetest) << std::endl << std::endl;
             if(ligne == lignetest)
                 break;
         }
     }
-    std::cout << "FIN";
 }
 
 void Database::AjouterData(Fichier source)
 {
+
 }
