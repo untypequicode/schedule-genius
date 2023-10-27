@@ -17,27 +17,31 @@ def main():
         response = response.split(" ")
         if response[0] == "help":
             with open("help", "r") as help:
-                for ligne in help.read().split("\n"):
-                    ligne = ligne.split(" : ")
-                    print(ligne[0] + " "*(20-len(ligne[0])) + ligne[1])
+                lignes = help.read().split("\n")
+                nb_espace = 0
+                for i in range(len(lignes)):
+                    lignes[i] = lignes[i].split(" : ")
+                    nb_espace = max(nb_espace, len(lignes[i][0]))
+                nb_espace += 5
+                for ligne in lignes:
+                    print(ligne[0] + " "*(nb_espace-len(ligne[0])) + ligne[1])
 
         elif response[0] == "ls":
-            print(cd.Ls(terminal.GetPath()))
+            print(cd.Ls(cd.GetPath()))
 
         elif response[0] == "cd" and len(response) >= 2:
-            path = cd.Cd(terminal.GetPath(), response[1])
-            if path != False:
-                terminal.SetPath(path)
-            else:
+            cd.Cd(cd.GetPath(), response[1])
+            print(cd.GetPath())
+            if cd.GetPath() == False:
                 print(f'Emplacement "{response[1]}" incorrect')
 
         elif response[0] == "load" and len(response) >= 2:
-            file_path = terminal.GetPath() + response[1]
+            file_path = cd.GetPath() + response[1]
             if cd.Exist(file_path):
                 file_load.append(file_path)
 
         elif response[0] == "unload" and len(response) >= 2:
-            file_path = terminal.GetPath() + response[1]
+            file_path = cd.GetPath() + response[1]
             if cd.Exist(file_path):
                 file_load.remove(file_path)
 
