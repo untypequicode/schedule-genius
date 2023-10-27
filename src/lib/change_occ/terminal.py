@@ -1,8 +1,14 @@
 class Terminal:
     def __init__(self):
-        self.m_path = ""
+        self.__m_path = ""
     def GetInput(self):
-        return input(f'>>> {self.m_path} >>> ')
+        return input(f'{self.__m_path} >>> ')
+
+    def GetPath(self):
+        return self.__m_path
+
+    def SetPath(self, path):
+        self.__m_path = path
 
 
 

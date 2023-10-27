@@ -1,5 +1,6 @@
-from change_occ import FileChangeOcc
-from cd import Cd
+#from change_occ import FileChangeOcc
+from terminal import Terminal
+from cd import Cd,os
 
 def main():
     # file = FileChangeOcc("change_occ.csv")
@@ -8,7 +9,10 @@ def main():
     #     print(groupe)
 
     terminal = Terminal()
+    cd = Cd()
     response = terminal.GetInput()
+    file_load = []
+
     while response != "exit":
         response = response.split(" ")
         if response[0] == "help":
@@ -18,16 +22,25 @@ def main():
             print("get : affiche le fichier .csv")
 
         elif response[0] == "ls":
-            print(cd.ls(terminal.m_path))
+            print(cd.Ls(terminal.GetPath()))
 
         elif response[0] == "cd" and len(response) >= 2:
-            terminal.m_path = cd.cd(terminal.m_path, response[1])
+            terminal.SetPath(cd.Cd(terminal.GetPath(), response[1]))
 
+        elif response[0] == "load" and len(response) >= 2:
+            file_path = terminal.GetPath() + response[1]
+            if cd.Exist(file_path):
+                file_load.append(file_path)
+
+        elif response[0] == "unload" and len(response) >= 2:
+            file_path = terminal.GetPath() + response[1]
+            if cd.Exist(file_path):
+                file_load.remove(file_path)
 
 
 
         else:
-            print("Commande inconnue")
+            print(f'Commande "{response[0]}" inconnue')
 
         response = terminal.GetInput()
 
