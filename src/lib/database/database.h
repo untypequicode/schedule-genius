@@ -42,11 +42,19 @@ public:
     unsigned int GetTaille() const;
     Eleve GetEleve(unsigned int index) const;
     TabDynString GetAllData(unsigned int index) const;
+    void SELECT(std::string table, std::string parametre);
+    void SELECT(std::string table, std::string parametre, std::string condition, int valeur);
+    void SELECT(std::string table, std::string parametre, std::string condition, std::string valeur);
 
     ~Database();
 
 private:
     TabDynEleve m_eleve;
+    TabDynInt m_Id;
+    TabDynString m_Prenom;
+    TabDynString m_Nom;
+    TabDynString m_NiveauScolaire;
+    TabDynString m_Matiere;
 };
 
 

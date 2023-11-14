@@ -6,7 +6,6 @@
 
 Database::Database()
     :m_eleve(TabDynEleve(0))
-
 {
 
 };
@@ -192,4 +191,142 @@ void Database::AjouterData(Fichier source)
         }
     }
     m_eleve.Pop();
+}
+
+void Database::SELECT(std::string table, std::string parametre)
+{
+    if (table == "eleve")
+        TabDynEleve select = m_eleve; //TODO
+}
+
+void Database::SELECT(std::string table, std::string parametre, std::string condition, int valeur)
+{
+    if(table == "eleve") {
+        if (parametre == "ID") {
+            if (condition == "<" or condition == "<=")
+            {
+                for(unsigned int i = 0; i < m_eleve.GetNbElem(); i++)
+                {
+                    if(m_eleve.Get(i).GetId() < valeur)
+                    {
+                        std::cout << m_eleve.Get(i).GetId() << " " << m_eleve.Get(i).GetPrenom() << " " << m_eleve.Get(i).GetNom() << " " << m_eleve.Get(i).GetNiveauScolaire() << std::endl;
+                    }
+                }
+            }
+            if(condition == "=" or condition == "==" or condition == "<=" or condition == ">=")
+            {
+                for(unsigned int i = 0; i < m_eleve.GetNbElem(); i++)
+                {
+                    if(m_eleve.Get(i).GetId() == valeur)
+                    {
+                        std::cout << m_eleve.Get(i).GetId() << " " << m_eleve.Get(i).GetPrenom() << " " << m_eleve.Get(i).GetNom() << " " << m_eleve.Get(i).GetNiveauScolaire() << std::endl;
+                    }
+                }
+            }
+            if(condition == ">" or condition == ">=")
+            {
+                for(unsigned int i = 0; i < m_eleve.GetNbElem(); i++)
+                {
+                    if(m_eleve.Get(i).GetId() > valeur)
+                    {
+                        std::cout << m_eleve.Get(i).GetId() << " " << m_eleve.Get(i).GetPrenom() << " " << m_eleve.Get(i).GetNom() << " " << m_eleve.Get(i).GetNiveauScolaire() << std::endl;
+                    }
+                }
+            }
+            else if(condition == "!=")
+            {
+                for(unsigned int i =0; i < m_eleve.GetNbElem(); i++)
+                {
+                    if(m_eleve.Get(i).GetId() != valeur)
+                    {
+                        std::cout << m_eleve.Get(i).GetId() << " " << m_eleve.Get(i).GetPrenom() << " " << m_eleve.Get(i).GetNom() << " " << m_eleve.Get(i).GetNiveauScolaire() << std::endl;
+                    }
+                }
+            }
+            else
+            {
+                std::cerr << "Erreur : condition non reconnue" << std::endl;
+            }
+        }
+        else if(parametre == "prenom")
+        {
+            if(condition == "=" or condition == "==")
+            {
+                for(unsigned int i = 0; i < m_eleve.GetNbElem(); i++)
+                {
+                    if(m_eleve.Get(i).GetPrenom() == convertToString(valeur))
+                    {
+                        std::cout << m_eleve.Get(i).GetId() << " " << m_eleve.Get(i).GetPrenom() << " " << m_eleve.Get(i).GetNom() << " " << m_eleve.Get(i).GetNiveauScolaire() << std::endl;
+                    }
+                }
+            }
+            else if(condition == "!=")
+            {
+                for(unsigned int i = 0; i < m_eleve.GetNbElem(); i++)
+                {
+                    if(m_eleve.Get(i).GetPrenom() != convertToString(valeur))
+                    {
+                        std::cout << m_eleve.Get(i).GetId() << " " << m_eleve.Get(i).GetPrenom() << " " << m_eleve.Get(i).GetNom() << " " << m_eleve.Get(i).GetNiveauScolaire() << std::endl;
+                    }
+                }
+            }
+            else
+            {
+                std::cerr << "Erreur : condition non reconnue" << std::endl;
+            }
+        }
+        else if(condition == "nom")
+        {
+            if(condition == "=" or condition == "==")
+            {
+                for(unsigned int i = 0; i < m_eleve.GetNbElem(); i++)
+                {
+                    if(m_eleve.Get(i).GetNom() == convertToString(valeur))
+                    {
+                        std::cout << m_eleve.Get(i).GetId() << " " << m_eleve.Get(i).GetPrenom() << " " << m_eleve.Get(i).GetNom() << " " << m_eleve.Get(i).GetNiveauScolaire() << std::endl;
+                    }
+                }
+            }
+            else
+            {
+                std::cerr << "Erreur : condition non reconnue" << std::endl;
+            }
+        }
+        else if(condition == "niveau_scolaire")
+        {
+            if(condition == "=" or condition == "==")
+            {
+                for(unsigned int i = 0; i < m_eleve.GetNbElem(); i++)
+                {
+                    if(m_eleve.Get(i).GetNiveauScolaire() == convertToString(valeur))
+                    {
+                        std::cout << m_eleve.Get(i).GetId() << " " << m_eleve.Get(i).GetPrenom() << " " << m_eleve.Get(i).GetNom() << " " << m_eleve.Get(i).GetNiveauScolaire() << std::endl;
+                    }
+                }
+            }
+            else if(condition == "!=")
+            {
+                for(unsigned int i = 0; i < m_eleve.GetNbElem(); i++)
+                {
+                    if(m_eleve.Get(i).GetNiveauScolaire() != convertToString(valeur))
+                    {
+                        std::cout << m_eleve.Get(i).GetId() << " " << m_eleve.Get(i).GetPrenom() << " " << m_eleve.Get(i).GetNom() << " " << m_eleve.Get(i).GetNiveauScolaire() << std::endl;
+                    }
+                }
+            }
+            else
+            {
+                std::cerr << "Erreur : condition non reconnue" << std::endl;
+            }
+        }
+        else
+        {
+            std::cerr << "Erreur : parametre non reconnu" << std::endl;
+        }
+    }
+}
+
+void Database::SELECT(std::string table, std::string parametre, std::string condition, std::string valeur)
+{
+    return;
 }

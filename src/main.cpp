@@ -17,7 +17,7 @@ int main()
     //// Micky
     //
 
-    CsvGenerateur exemple(10);
+    CsvGenerateur exemple(1000);
     exemple.creerCsv(true);
 
 
@@ -27,10 +27,7 @@ int main()
     Fichier fichiertest(nom_fichier, 201);
     Database datatest;
     datatest.EcraserData(fichiertest);
-    for(int i = 0; i < 10; i++) {
-        TabDynString data = datatest.GetAllData(i);
-        std::cout << data.Get(0) << " " << data.Get(1) << " " << data.Get(2) << data.Get(3) << std::endl;
-    }
+    datatest.SELECT("eleve", "ID", "!=", 7);
 
 
     return 0;
