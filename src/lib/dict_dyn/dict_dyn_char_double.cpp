@@ -99,6 +99,101 @@ void DictDynCharDouble::Set(char key, double value)
     }
 }
 
+DictDynCharDouble DictDynCharDouble::filtreelement(DictDynCharDouble dict_dyn_ref, std::string condition, double value)
+{
+    DictDynCharDouble dict_dyn_result;
+    if(condition == "<"){
+        for (int i = 0; i < dict_dyn_ref.m_tab_values.GetNbElem(); i++) {
+            if (dict_dyn_ref.m_tab_values.Get(i) < value) {
+                dict_dyn_result.Add(dict_dyn_ref.m_tab_keys.Get(i), dict_dyn_ref.m_tab_values.Get(i));
+            }
+        }
+    }
+    else if(condition == "<="){
+        for (int i = 0; i < dict_dyn_ref.m_tab_values.GetNbElem(); i++) {
+            if (dict_dyn_ref.m_tab_values.Get(i) <= value) {
+                dict_dyn_result.Add(dict_dyn_ref.m_tab_keys.Get(i), dict_dyn_ref.m_tab_values.Get(i));
+            }
+        }
+    }
+    else if(condition == "==" or condition == "="){
+        for (int i = 0; i < dict_dyn_ref.m_tab_values.GetNbElem(); i++) {
+            if (dict_dyn_ref.m_tab_values.Get(i) == value) {
+                dict_dyn_result.Add(dict_dyn_ref.m_tab_keys.Get(i), dict_dyn_ref.m_tab_values.Get(i));
+            }
+        }
+    }
+    else if(condition == ">="){
+        for (int i = 0; i < dict_dyn_ref.m_tab_values.GetNbElem(); i++) {
+            if (dict_dyn_ref.m_tab_values.Get(i) >= value) {
+                dict_dyn_result.Add(dict_dyn_ref.m_tab_keys.Get(i), dict_dyn_ref.m_tab_values.Get(i));
+            }
+        }
+    }
+    else if(condition == ">"){
+        for (int i = 0; i < dict_dyn_ref.m_tab_values.GetNbElem(); i++) {
+            if (dict_dyn_ref.m_tab_values.Get(i) > value) {
+                dict_dyn_result.Add(dict_dyn_ref.m_tab_keys.Get(i), dict_dyn_ref.m_tab_values.Get(i));
+            }
+        }
+    }
+    else if(condition == "!="){
+        for (int i = 0; i < dict_dyn_ref.m_tab_values.GetNbElem(); i++) {
+            if (dict_dyn_ref.m_tab_values.Get(i) != value) {
+                dict_dyn_result.Add(dict_dyn_ref.m_tab_keys.Get(i), dict_dyn_ref.m_tab_values.Get(i));
+            }
+        }
+    }
+    return dict_dyn_result;
+}
+
+DictDynCharDouble DictDynCharDouble::filtrekey(DictDynCharDouble dict_dyn_ref, std::string condition, char value)
+{
+    DictDynCharDouble dict_dyn_result;
+    if(condition == "<"){
+        for (int i = 0; i < dict_dyn_ref.m_tab_keys.GetNbElem(); i++){
+            if(dict_dyn_ref.m_tab_keys.Get(i) < value){
+                dict_dyn_result.Add(dict_dyn_ref.m_tab_keys.Get(i), dict_dyn_ref.m_tab_values.Get(i));
+            }
+        }
+    }
+    else if(condition == "<=") {
+        for (int i = 0; i < dict_dyn_ref.m_tab_keys.GetNbElem(); i++){
+            if (dict_dyn_ref.m_tab_keys.Get(i) <= value) {
+                dict_dyn_result.Add(dict_dyn_ref.m_tab_keys.Get(i), dict_dyn_ref.m_tab_values.Get(i));
+            }
+        }
+    }
+    else if(condition == "==" or condition == "="){
+        for (int i = 0; i < dict_dyn_ref.m_tab_keys.GetNbElem(); i++) {
+            if (dict_dyn_ref.m_tab_keys.Get(i) == value) {
+                dict_dyn_result.Add(dict_dyn_ref.m_tab_keys.Get(i), dict_dyn_ref.m_tab_values.Get(i));
+            }
+        }
+    }
+    else if(condition == ">="){
+        for (int i = 0; i < dict_dyn_ref.m_tab_keys.GetNbElem(); i++) {
+            if (dict_dyn_ref.m_tab_keys.Get(i) >= value) {
+                dict_dyn_result.Add(dict_dyn_ref.m_tab_keys.Get(i), dict_dyn_ref.m_tab_values.Get(i));
+            }
+        }
+    }
+    else if(condition == ">"){
+        for (int i = 0; i < dict_dyn_ref.m_tab_keys.GetNbElem(); i++) {
+            if (dict_dyn_ref.m_tab_keys.Get(i) > value) {
+                dict_dyn_result.Add(dict_dyn_ref.m_tab_keys.Get(i), dict_dyn_ref.m_tab_values.Get(i));
+            }
+        }
+    }
+    else if(condition == "!="){
+        for (int i = 0; i < dict_dyn_ref.m_tab_keys.GetNbElem(); i++) {
+            if (dict_dyn_ref.m_tab_keys.Get(i) != value) {
+                dict_dyn_result.Add(dict_dyn_ref.m_tab_keys.Get(i), dict_dyn_ref.m_tab_values.Get(i));
+            }
+        }
+    }
+}
+
 double DictDynCharDouble::Pop(char key)
 {
     for (int i = 0; i < m_tab_keys.GetNbElem(); i++){
@@ -148,7 +243,7 @@ void DictDynCharDouble::Remove(double value, bool is_first)
         }
     }
     else{
-        for (int i = m_tab_values.GetNbElem() - 1; i >= 0 ; i++){
+        for (int i = m_tab_values.GetNbElem() - 1; i >= 0 ; i--){
             if(m_tab_values.Get(i) == value){
                 m_tab_keys.Pop(i);
                 m_tab_values.Pop(i);

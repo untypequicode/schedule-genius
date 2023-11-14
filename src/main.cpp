@@ -23,29 +23,25 @@ int main()
 
     //// Vincent
 
-    std::string nom_fichier = "eleve.csv";
-    Fichier fichiertest(nom_fichier, 201);
-    Database datatest;
-    datatest.EcraserData(fichiertest);
-    std::cout << "fin" << std::endl;
-//    for(int i = 0; i < datatest.GetEleve(0).GetNbMatiere(); i++)
-//    {
-//        std::cout << datatest.GetEleve(0).GetMatiere(i) << std::endl;
-//    }
-
-
     //// Ethan
     //
-//    Eleve eleve(0, "Ethan", "Facca", "L1");
-//    eleve.AddMatiere("Maths");
-//    eleve.AddMatiere("Physique");
-//    std::cout << eleve.GetMatiere(0) << std::endl;
-//    std::cout << eleve.GetMatiere(1) << std::endl;
-//    std::cout << eleve.GetMatiere(3) << std::endl;
-//    Groupe groupe("L1", "info");
-//    groupe.AddEleve(eleve);
-//    std::string matiere_eleve = groupe.GetEleve(0).GetMatiere(1);
-//    std::cout << groupe.GetEleve(0).m_prenom << std::endl;
+DictDynCharDouble dict;
+dict.Add('a', 1.0);
+dict.Add('b', 2.0);
+dict.Add('c', 3.0);
+dict.Add('d', 4.0);
+dict.Add('e', 5.0);
+dict.Add('f', 6.0);
+dict.Add('g', 7.0);
+dict.Add('h', 8.0);
+dict.Add('i', 9.0);
+dict.Add('j', 10.0);
+TabDynChar key = dict.GetTabKeys();
+TabDynDouble value = dict.GetTabValues();
+for(unsigned int i =0; i < key.GetNbElem(); i++)
+{
+    std::cout << key.Get(i) << " : " << value.Get(i) << std::endl;
+}
 
 
 

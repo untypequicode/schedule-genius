@@ -44,6 +44,9 @@ public:
     TabDynDouble GetTabValues() const;
     void Set(char key, double value);
 
+    DictDynCharDouble filtreelement(DictDynCharDouble dict_dyn_ref, std::string condition, double value);
+    DictDynCharDouble filtrekey(DictDynCharDouble dict_dyn_ref, std::string condition, char value);
+
     double Pop(char key);
     void Remove(double value, int num);
     void Remove(double value);
