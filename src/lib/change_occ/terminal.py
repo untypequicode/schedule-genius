@@ -25,10 +25,10 @@ class Terminal:
         ''' Add a list of terminal '''
         assert isinstance(path, list), "path must be a list"
         for elem in path:
-            with open(path, "r") as f:
+            with open(elem, "r") as f:
                 for line in f.read().split("\n"):
                     if line != "":
-                        self.m_list_terminal.append(line)
+                        self.m_list_cmd.append(line)
 
     def __str__(self):
         return f""

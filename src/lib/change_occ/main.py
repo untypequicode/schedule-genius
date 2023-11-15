@@ -39,7 +39,10 @@ def main():
                 print(f'Emplacement "{response[1]}" incorrect')
 
         elif response[0] == "load" and len(response) >= 2:
-            load.SetInput(response[1:], cd)
+            load_return = load.SetInput(response[1:], cd)
+            if 'run' in response[-1] and len(load_return) == 2:
+                if load_return[0] == 'Terminal':
+                    terminal.AddTerminal(load_return[1])
 
         else:
             print(f'Commande "{response[0]}" inconnue.')
