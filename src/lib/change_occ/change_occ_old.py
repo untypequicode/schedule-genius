@@ -101,9 +101,6 @@ for groupe in change_list:
                         h.write(text[3])
                 print()
 
-
-
-
 print()
 
 print("Fin du programme")
