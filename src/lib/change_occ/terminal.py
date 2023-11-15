@@ -21,7 +21,7 @@ class Terminal:
             else:
                 print(ls_first[i])
 
-    def AddTerminal(self, path:list): -> None
+    def AddTerminal(self, path:list)-> None:
         ''' Add a list of terminal '''
         assert isinstance(path, list), "path must be a list"
         for elem in path:
