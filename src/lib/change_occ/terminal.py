@@ -21,12 +21,14 @@ class Terminal:
             else:
                 print(ls_first[i])
 
-    def AddTerminal(self, path:str): -> None
-        ''' Add a terminal '''
-        with open(path, "r") as f:
-            for line in f.read().split("\n"):
-                if line != "":
-                    self.m_list_terminal.append(line)
+    def AddTerminal(self, path:list): -> None
+        ''' Add a list of terminal '''
+        assert isinstance(path, list), "path must be a list"
+        for elem in path:
+            with open(path, "r") as f:
+                for line in f.read().split("\n"):
+                    if line != "":
+                        self.m_list_terminal.append(line)
 
     def __str__(self):
         return f""
