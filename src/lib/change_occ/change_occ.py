@@ -9,9 +9,7 @@ class ChangeOcc:
 
     def Begin(self, index = 0):
         self.as_begin = True
-        pass
 
     def Change(self, directory, file):
         if not self.as_begin:
             self.Begin(0)
-        pass
