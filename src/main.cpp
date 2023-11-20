@@ -33,27 +33,5 @@ int main()
     dict.Add('e', 4.4);
     dict.Add('f', 5.5);
     dict.Add('g', 6.6);
-
-    std::cout << "cles : ";
-    for (unsigned int i = 0 ; i < dict.GetNbElem(); i++)
-        std::cout << dict.GetTabKeys().Get(i) << " ; ";
-    std::cout << std::endl;
-    std::cout << "valeurs : ";
-    for (unsigned int i = 0; i < dict.GetNbElem(); i++)
-        std::cout << dict.GetTabValues().Get(i) << " ; ";
-    std::cout << std::endl;
-    std::cout << "taille du tableau de cle : " << dict.GetTabKeys().GetNbElem() << std::endl;
-    std::cout << "taille du tableau de valeur : " << dict.GetTabValues().GetNbElem() << std::endl;
-    std::cout << "taille du dictionnaire : " << dict.GetNbElem() << std::endl << std::endl;
-
-    std::cout << "test de la fonction IfElement : " << std::endl;
-    for(unsigned int i = 0; i < dict.GetNbElem(); i++)
-    {
-        std::cout << "est-ce que " << dict.GetTabValues().Get(i) << " est inferieur a 3.4 ?" << std::endl;
-        if (dict.IfElement(i, "<", 3.4))
-            std::cout << "oui" << std::endl;
-        else
-            std::cout << "non" << std::endl;
-    }
     return 0;
 }
