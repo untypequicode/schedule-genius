@@ -52,6 +52,9 @@ public:
     void Remove(double value);
     void Remove(double value, bool is_first);
 
+    bool IfKey(char cle, std::string condition, char value);
+    bool IfElement(char cle, std::string condition, double value);
+
 protected:
     TabDynChar m_tab_keys;
     TabDynDouble m_tab_values;

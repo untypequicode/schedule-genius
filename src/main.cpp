@@ -37,5 +37,13 @@ int main()
     for(unsigned int i = 0; i < dict.GetNbElem(); i++)
         std::cout << dict.GetTabKeys().Get(i) << " : " << dict.GetTabValues().Get(i) << std::endl;
 
+    std::cout << std::endl  << "filtre : " << std::endl;
+
+    DictDynCharDouble dict_filtre = dict.FiltreElement("is not", 3.3).FiltreKey("is", 'c');
+
+
+     for(unsigned int i = 0; i < dict_filtre.GetNbElem(); i++)
+        std::cout << dict_filtre.GetTabKeys().Get(i) << " : " << dict_filtre.GetTabValues().Get(i) << std::endl;
+
     return 0;
 }

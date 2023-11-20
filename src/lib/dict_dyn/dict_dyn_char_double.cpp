@@ -101,9 +101,27 @@ void DictDynCharDouble::Set(char key, double value)
     }
 }
 
-bool DictDynCharDouble::IfElement(unsigned int index ,std::string condition, double value)
+bool DictDynCharDouble::IfElement(char cle ,std::string condition, double value)
 {
     if(condition == "=" or condition == "==" or condition == "is")
+        return (Get(cle) == value);
+    else if(condition == "!=" or condition == "is not")
+        return (Get(cle) != value);
+    else if(condition == "<")
+        return(Get(cle) < value);
+    else if(condition == "<=")
+        return(Get(cle) <= value);
+    else if(condition == ">")
+        return(Get(cle) > value);
+    else if(condition == ">=")
+        return(Get(cle) >= value);
+    else
+        std::cerr << "Error: condition not found" << std::endl;
+}
+
+bool DictDynCharDouble::IfElement(unsigned int index, std::string condition, double value)
+{
+    if(condition == "==" or condition == "=" or condition == "is")
         return (m_tab_values.Get(index) == value);
     else if(condition == "!=" or condition == "is not")
         return (m_tab_values.Get(index) != value);
@@ -119,20 +137,38 @@ bool DictDynCharDouble::IfElement(unsigned int index ,std::string condition, dou
         std::cerr << "Error: condition not found" << std::endl;
 }
 
-bool DictDynCharDouble::IfKey(unsigned int index, std::string condition, char value)
+bool DictDynCharDouble::IfKey(char cle, std::string condition, char value)
 {
     if(condition == "=" or condition == "==" or condition == "is")
-        return (m_tab_keys.Get(index) == value);
+        return (cle == value);
     else if(condition == "!=" or condition == "is not")
-        return (m_tab_keys.Get(index) != value);
+        return (cle != value);
     else if(condition == "<")
-        return(m_tab_keys.Get(index) < value);
+        return(cle < value);
     else if(condition == "<=")
-        return(m_tab_keys.Get(index) <= value);
+        return(cle <= value);
     else if(condition == ">")
-        return(m_tab_keys.Get(index) > value);
+        return(cle > value);
     else if(condition == ">=")
-        return(m_tab_keys.Get(index) >= value);
+        return(cle >= value);
+    else
+        std::cerr << "Error: condition not found" << std::endl;
+}
+
+bool DictDynCharDouble::IfKey(unsigned int index, std::string condition, char value)
+{
+    if (condition == "=" or condition == "==" or condition == "is")
+        return (m_tab_keys.Get(index) == value);
+    else if (condition == "!=" or condition == "is not")
+        return (m_tab_keys.Get(index) != value);
+    else if (condition == "<")
+        return (m_tab_keys.Get(index) < value);
+    else if (condition == "<=")
+        return (m_tab_keys.Get(index) <= value);
+    else if (condition == ">")
+        return (m_tab_keys.Get(index) > value);
+    else if (condition == ">=")
+        return (m_tab_keys.Get(index) >= value);
     else
         std::cerr << "Error: condition not found" << std::endl;
 }
