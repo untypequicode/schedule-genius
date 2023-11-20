@@ -52,13 +52,11 @@ public:
     void Remove(double value);
     void Remove(double value, bool is_first);
 
-    //go protected
-    bool IfElement(unsigned int index, std::string condition, double value);
-    bool IfKey(unsigned int index, std::string condition, char value);
-
 protected:
     TabDynChar m_tab_keys;
     TabDynDouble m_tab_values;
+    bool IfElement(unsigned int index, std::string condition, double value);
+    bool IfKey(unsigned int index, std::string condition, char value);
 };
 
 /* SPLIT */

@@ -33,5 +33,9 @@ int main()
     dict.Add('e', 4.4);
     dict.Add('f', 5.5);
     dict.Add('g', 6.6);
+
+    for(unsigned int i = 0; i < dict.GetNbElem(); i++)
+        std::cout << dict.GetTabKeys().Get(i) << " : " << dict.GetTabValues().Get(i) << std::endl;
+
     return 0;
 }
