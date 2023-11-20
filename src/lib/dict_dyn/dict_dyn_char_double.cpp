@@ -67,6 +67,8 @@ void DictDynCharDouble::Add(char key, double value, bool add_with_multiple)
     }
     m_tab_keys.Add(key, add_with_multiple);
     m_tab_values.Add(value, add_with_multiple);
+    m_nb_elem++;
+
 }
 
 double DictDynCharDouble::Get(char key) const
@@ -99,96 +101,134 @@ void DictDynCharDouble::Set(char key, double value)
     }
 }
 
-DictDynCharDouble DictDynCharDouble::filtreelement(DictDynCharDouble dict_dyn_ref, std::string condition, double value)
+bool DictDynCharDouble::IfElement(unsigned int index ,std::string condition, double value)
+{
+    if(condition == "=" or condition == "==" or condition == "is")
+        return (m_tab_values.Get(index) == value);
+    else if(condition == "!=" or condition == "is not")
+        return (m_tab_values.Get(index) != value);
+    else if(condition == "<")
+        return(m_tab_values.Get(index) < value);
+    else if(condition == "<=")
+        return(m_tab_values.Get(index) <= value);
+    else if(condition == ">")
+        return(m_tab_values.Get(index) > value);
+    else if(condition == ">=")
+        return(m_tab_values.Get(index) >= value);
+    else
+        std::cerr << "Error: condition not found" << std::endl;
+}
+
+bool DictDynCharDouble::IfKey(unsigned int index, std::string condition, char value)
+{
+    if(condition == "=" or condition == "==" or condition == "is")
+        return (m_tab_keys.Get(index) == value);
+    else if(condition == "!=" or condition == "is not")
+        return (m_tab_keys.Get(index) != value);
+    else if(condition == "<")
+        return(m_tab_keys.Get(index) < value);
+    else if(condition == "<=")
+        return(m_tab_keys.Get(index) <= value);
+    else if(condition == ">")
+        return(m_tab_keys.Get(index) > value);
+    else if(condition == ">=")
+        return(m_tab_keys.Get(index) >= value);
+    else
+        std::cerr << "Error: condition not found" << std::endl;
+}
+
+DictDynCharDouble DictDynCharDouble::FiltreElement(std::string condition, double value)
 {
     DictDynCharDouble dict_dyn_result;
     if(condition == "<"){
-        for (int i = 0; i < dict_dyn_ref.m_tab_values.GetNbElem(); i++) {
-            if (dict_dyn_ref.m_tab_values.Get(i) < value) {
-                dict_dyn_result.Add(dict_dyn_ref.m_tab_keys.Get(i), dict_dyn_ref.m_tab_values.Get(i));
+        for (int i = 0; i < m_tab_values.GetNbElem(); i++) {
+            if (m_tab_values.Get(i) < value) {
+                dict_dyn_result.Add(m_tab_keys.Get(i), m_tab_values.Get(i), true);
             }
         }
     }
     else if(condition == "<="){
-        for (int i = 0; i < dict_dyn_ref.m_tab_values.GetNbElem(); i++) {
-            if (dict_dyn_ref.m_tab_values.Get(i) <= value) {
-                dict_dyn_result.Add(dict_dyn_ref.m_tab_keys.Get(i), dict_dyn_ref.m_tab_values.Get(i));
+        for (int i = 0; i < m_tab_values.GetNbElem(); i++) {
+            if (m_tab_values.Get(i) <= value) {
+                dict_dyn_result.Add(dict_dyn_result.m_tab_values.Get(i), true);
             }
         }
     }
     else if(condition == "==" or condition == "="){
-        for (int i = 0; i < dict_dyn_ref.m_tab_values.GetNbElem(); i++) {
-            if (dict_dyn_ref.m_tab_values.Get(i) == value) {
-                dict_dyn_result.Add(dict_dyn_ref.m_tab_keys.Get(i), dict_dyn_ref.m_tab_values.Get(i));
+        for (int i = 0; i < m_tab_values.GetNbElem(); i++) {
+            if (m_tab_values.Get(i) == value) {
+                dict_dyn_result.Add(dict_dyn_result.m_tab_values.Get(i), true);
             }
         }
     }
     else if(condition == ">="){
-        for (int i = 0; i < dict_dyn_ref.m_tab_values.GetNbElem(); i++) {
-            if (dict_dyn_ref.m_tab_values.Get(i) >= value) {
-                dict_dyn_result.Add(dict_dyn_ref.m_tab_keys.Get(i), dict_dyn_ref.m_tab_values.Get(i));
+        for (int i = 0; i < m_tab_values.GetNbElem(); i++) {
+            if (m_tab_values.Get(i) < value) {
+                dict_dyn_result.Remove(dict_dyn_result.m_tab_values.Get(i), true);
             }
         }
     }
     else if(condition == ">"){
-        for (int i = 0; i < dict_dyn_ref.m_tab_values.GetNbElem(); i++) {
-            if (dict_dyn_ref.m_tab_values.Get(i) > value) {
-                dict_dyn_result.Add(dict_dyn_ref.m_tab_keys.Get(i), dict_dyn_ref.m_tab_values.Get(i));
+        for (int i = 0; i < m_tab_values.GetNbElem(); i++) {
+            if (m_tab_values.Get(i) <= value) {
+                dict_dyn_result.Remove(dict_dyn_result.m_tab_values.Get(i), true);
             }
         }
     }
     else if(condition == "!="){
-        for (int i = 0; i < dict_dyn_ref.m_tab_values.GetNbElem(); i++) {
-            if (dict_dyn_ref.m_tab_values.Get(i) != value) {
-                dict_dyn_result.Add(dict_dyn_ref.m_tab_keys.Get(i), dict_dyn_ref.m_tab_values.Get(i));
+        for (int i = 0; i < m_tab_values.GetNbElem(); i++) {
+            if (m_tab_values.Get(i) == value) {
+                dict_dyn_result.Remove(dict_dyn_result.m_tab_values.Get(i), true);
             }
         }
     }
+    else
+        std::cerr << "Error: condition not found" << std::endl;
     return dict_dyn_result;
 }
 
-DictDynCharDouble DictDynCharDouble::filtrekey(DictDynCharDouble dict_dyn_ref, std::string condition, char value)
+DictDynCharDouble DictDynCharDouble::FiltreKey(std::string condition, char value)
 {
     DictDynCharDouble dict_dyn_result;
     if(condition == "<"){
-        for (int i = 0; i < dict_dyn_ref.m_tab_keys.GetNbElem(); i++){
-            if(dict_dyn_ref.m_tab_keys.Get(i) < value){
-                dict_dyn_result.Add(dict_dyn_ref.m_tab_keys.Get(i), dict_dyn_ref.m_tab_values.Get(i));
+        for (int i = 0; i < m_tab_keys.GetNbElem(); i++){
+            if(m_tab_keys.Get(i) < value){
+                dict_dyn_result.Add(m_tab_keys.Get(i), m_tab_values.Get(i));
             }
         }
     }
     else if(condition == "<=") {
-        for (int i = 0; i < dict_dyn_ref.m_tab_keys.GetNbElem(); i++){
-            if (dict_dyn_ref.m_tab_keys.Get(i) <= value) {
-                dict_dyn_result.Add(dict_dyn_ref.m_tab_keys.Get(i), dict_dyn_ref.m_tab_values.Get(i));
+        for (int i = 0; i < m_tab_keys.GetNbElem(); i++){
+            if (m_tab_keys.Get(i) <= value) {
+                dict_dyn_result.Add(m_tab_keys.Get(i), m_tab_values.Get(i));
             }
         }
     }
     else if(condition == "==" or condition == "="){
-        for (int i = 0; i < dict_dyn_ref.m_tab_keys.GetNbElem(); i++) {
-            if (dict_dyn_ref.m_tab_keys.Get(i) == value) {
-                dict_dyn_result.Add(dict_dyn_ref.m_tab_keys.Get(i), dict_dyn_ref.m_tab_values.Get(i));
+        for (int i = 0; i < m_tab_keys.GetNbElem(); i++) {
+            if (m_tab_keys.Get(i) == value) {
+                dict_dyn_result.Add(m_tab_keys.Get(i), m_tab_values.Get(i));
             }
         }
     }
     else if(condition == ">="){
-        for (int i = 0; i < dict_dyn_ref.m_tab_keys.GetNbElem(); i++) {
-            if (dict_dyn_ref.m_tab_keys.Get(i) >= value) {
-                dict_dyn_result.Add(dict_dyn_ref.m_tab_keys.Get(i), dict_dyn_ref.m_tab_values.Get(i));
+        for (int i = 0; i < m_tab_keys.GetNbElem(); i++) {
+            if (m_tab_keys.Get(i) >= value) {
+                dict_dyn_result.Add(m_tab_keys.Get(i), m_tab_values.Get(i));
             }
         }
     }
     else if(condition == ">"){
-        for (int i = 0; i < dict_dyn_ref.m_tab_keys.GetNbElem(); i++) {
-            if (dict_dyn_ref.m_tab_keys.Get(i) > value) {
-                dict_dyn_result.Add(dict_dyn_ref.m_tab_keys.Get(i), dict_dyn_ref.m_tab_values.Get(i));
+        for (int i = 0; i < m_tab_keys.GetNbElem(); i++) {
+            if (m_tab_keys.Get(i) > value) {
+                dict_dyn_result.Add(m_tab_keys.Get(i), m_tab_values.Get(i));
             }
         }
     }
     else if(condition == "!="){
-        for (int i = 0; i < dict_dyn_ref.m_tab_keys.GetNbElem(); i++) {
-            if (dict_dyn_ref.m_tab_keys.Get(i) != value) {
-                dict_dyn_result.Add(dict_dyn_ref.m_tab_keys.Get(i), dict_dyn_ref.m_tab_values.Get(i));
+        for (int i = 0; i < m_tab_keys.GetNbElem(); i++) {
+            if (m_tab_keys.Get(i) != value) {
+                dict_dyn_result.Add(m_tab_keys.Get(i), m_tab_values.Get(i));
             }
         }
     }

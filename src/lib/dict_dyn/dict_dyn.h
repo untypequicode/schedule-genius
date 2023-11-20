@@ -44,13 +44,17 @@ public:
     TabDynDouble GetTabValues() const;
     void Set(char key, double value);
 
-    DictDynCharDouble filtreelement(DictDynCharDouble dict_dyn_ref, std::string condition, double value);
-    DictDynCharDouble filtrekey(DictDynCharDouble dict_dyn_ref, std::string condition, char value);
+    DictDynCharDouble FiltreElement(std::string condition, double value);
+    DictDynCharDouble FiltreKey(std::string condition, char value);
 
     double Pop(char key);
     void Remove(double value, int num);
     void Remove(double value);
     void Remove(double value, bool is_first);
+
+    //go protected
+    bool IfElement(unsigned int index, std::string condition, double value);
+    bool IfKey(unsigned int index, std::string condition, char value);
 
 protected:
     TabDynChar m_tab_keys;

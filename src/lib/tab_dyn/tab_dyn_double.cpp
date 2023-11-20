@@ -139,6 +139,7 @@ void TabDynDouble::Set(unsigned int index, double value)
     if (index < m_nb_elem)
     {
         m_tab[index] = value;
+        m_nb_elem += 1;
     }
 }
 

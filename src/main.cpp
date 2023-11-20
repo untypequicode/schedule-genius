@@ -25,25 +25,35 @@ int main()
 
     //// Ethan
     //
-DictDynCharDouble dict;
-dict.Add('a', 1.0);
-dict.Add('b', 2.0);
-dict.Add('c', 3.0);
-dict.Add('d', 4.0);
-dict.Add('e', 5.0);
-dict.Add('f', 6.0);
-dict.Add('g', 7.0);
-dict.Add('h', 8.0);
-dict.Add('i', 9.0);
-dict.Add('j', 10.0);
-TabDynChar key = dict.GetTabKeys();
-TabDynDouble value = dict.GetTabValues();
-for(unsigned int i =0; i < key.GetNbElem(); i++)
-{
-    std::cout << key.Get(i) << " : " << value.Get(i) << std::endl;
-}
+    DictDynCharDouble dict;
+    dict.Add('a', 0.0);
+    dict.Add('b', 1.1);
+    dict.Add('c', 2.2);
+    dict.Add('d', 3.3);
+    dict.Add('e', 4.4);
+    dict.Add('f', 5.5);
+    dict.Add('g', 6.6);
 
+    std::cout << "cles : ";
+    for (unsigned int i = 0 ; i < dict.GetNbElem(); i++)
+        std::cout << dict.GetTabKeys().Get(i) << " ; ";
+    std::cout << std::endl;
+    std::cout << "valeurs : ";
+    for (unsigned int i = 0; i < dict.GetNbElem(); i++)
+        std::cout << dict.GetTabValues().Get(i) << " ; ";
+    std::cout << std::endl;
+    std::cout << "taille du tableau de cle : " << dict.GetTabKeys().GetNbElem() << std::endl;
+    std::cout << "taille du tableau de valeur : " << dict.GetTabValues().GetNbElem() << std::endl;
+    std::cout << "taille du dictionnaire : " << dict.GetNbElem() << std::endl << std::endl;
 
-
+    std::cout << "test de la fonction IfElement : " << std::endl;
+    for(unsigned int i = 0; i < dict.GetNbElem(); i++)
+    {
+        std::cout << "est-ce que " << dict.GetTabValues().Get(i) << " est inferieur a 3.4 ?" << std::endl;
+        if (dict.IfElement(i, "<", 3.4))
+            std::cout << "oui" << std::endl;
+        else
+            std::cout << "non" << std::endl;
+    }
     return 0;
 }
