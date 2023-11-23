@@ -2,6 +2,8 @@
 from terminal import Terminal
 from cd import Cd
 from load import Load
+from change_occ import ChangeOcc
+from change_header import ChangeHeader
 
 def main():
     # file = FileChangeOcc("change_occ.csv")
@@ -11,8 +13,10 @@ def main():
 
     terminal = Terminal()
     cd = Cd()
-    response = terminal.GetInput(cd.GetPath())
     load = Load()
+    # response = terminal.GetInput(cd.GetPath())
+    load.SetInput("key __terminal__ mnt terminal".split(" "), cd)
+    response = "load key __terminal__ run"
 
     while response != "exit":
         response = response.split(" ")
@@ -40,13 +44,20 @@ def main():
 
         elif response[0] == "load" and len(response) >= 2:
             load_return = load.SetInput(response[1:], cd)
-            if 'run' in response[-1] and len(load_return) == 2:
-                if load_return[0] == 'Terminal':
+            if 'run' in response and len(load_return) >= 2:
+                if load_return[0] == '__terminal__':
                     terminal.AddTerminal(load_return[1])
+                if '__.cpp__' in  load_return[0]:
+                    for file in load_return[1]:
+                        a = ChangeOcc(file)
+                        a.Change(cd.GetPath())
+                if '__.h__' in load_return[0] and len(load_return) >= 3:
+                    for file in load_return[1]:
+                        a = ChangeHeader(file)
+                        a.Change(cd.GetPath(), load_return[2][0], int(load_return[2][1]), int(load_return[2][2]))
 
         else:
             print(f'Commande "{response[0]}" inconnue.')
-
         response = terminal.GetInput(cd.GetPath())
 
     print("Fin du programme.")

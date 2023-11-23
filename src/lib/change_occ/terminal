@@ -1,4 +1,7 @@
-ls
-cd ../
-ls
-exit
+cd load_file/
+load key basic__.cpp__.h__ mnt tab_dyn_basic
+load key class__.cpp__ mnt tab_dyn_class
+cd ../../
+cd tab_dyn/
+load key basic__.cpp__.h__ run tab_dyn.h 1 2
+load key class__.cpp__ run

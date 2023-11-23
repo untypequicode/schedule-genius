@@ -34,7 +34,11 @@ class Load:
                 return None
             elif input[0] == "run":
                 if key == "__terminal__":
-                    return 'Terminal', self.m_file_load[key]
+                    return key, self.m_file_load[key]
+                elif "__.cpp__" in key or "__.h__" in key:
+                    if len(input) >= 2 and "__.h__" in key:
+                        return key, self.m_file_load[key], input[1:]
+                    return key, self.m_file_load[key]
             print(f'Commande "{input[0:]}" inconnue.')
             return None
         print("Error: input empty")
