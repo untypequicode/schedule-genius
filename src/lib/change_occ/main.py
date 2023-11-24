@@ -4,6 +4,7 @@ from cd import Cd
 from load import Load
 from change_occ import ChangeOcc
 from change_header import ChangeHeader
+from change_header_double import ChangeHeaderDouble
 
 def main():
     # file = FileChangeOcc("change_occ.csv")
@@ -23,7 +24,7 @@ def main():
         if response[0] == "help":
             with open("help", "r") as help:
                 lignes = help.read().split("\n")
-                help_content = [[],[]]
+                help_content = [[], []]
                 for i in range(len(lignes)):
                     lignes[i] = lignes[i].split(" : ")
                     help_content[0].append(lignes[i][0])
@@ -55,6 +56,19 @@ def main():
                     for file in load_return[1]:
                         a = ChangeHeader(file)
                         a.Change(cd.GetPath(), load_return[2][0], int(load_return[2][1]), int(load_return[2][2]))
+                elif '__.h2__' in load_return[0] and len(load_return) >= 3:
+                    for file in load_return[1]:
+                        a = ChangeHeaderDouble(file)
+                        b = load_return[2][4:]
+                        replace_origin = []
+                        replace_new = []
+                        if '__' in b:
+                            while b[0] != '__':
+                                replace_origin.append(b.pop(0))
+                            b.pop(0)
+                            replace_new = b
+                        a.Change(cd.GetPath(), load_return[2][0], int(load_return[2][1]), load_return[2][2], int(load_return[2][3]), replace_origin, replace_new)
+                
 
         else:
             print(f'Commande "{response[0]}" inconnue.')
