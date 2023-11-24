@@ -75,7 +75,6 @@ private :
     Groupes* m_tab;
 };
 
-
 /* SPLIT */
 
 /* SPLIT */

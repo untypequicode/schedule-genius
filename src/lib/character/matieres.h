@@ -53,7 +53,6 @@ private :
     Matieres* m_tab;
 };
 
-
 /* SPLIT */
 
 /* SPLIT */
