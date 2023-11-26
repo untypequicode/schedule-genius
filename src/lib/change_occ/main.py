@@ -7,11 +7,6 @@ from change_header import ChangeHeader
 from change_header_double import ChangeHeaderDouble
 
 def main():
-    # file = FileChangeOcc("change_occ.csv")
-    # file.GetGroup()
-    # for groupe in file.m_group:
-    #     print(groupe)
-
     terminal = Terminal()
     cd = Cd()
     load = Load()
