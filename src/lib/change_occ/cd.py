@@ -1,22 +1,81 @@
 import os
 class Cd:
+    """
+    Une classe qui représente un chemin dans le système de fichiers.
+
+    ...
+
+    Attributes
+    ----------
+    m_path : str
+        un chemin vers un répertoire.
+
+    Methods
+    -------
+    SetPath(path: str)
+        Définit m_path.
+
+    GetPath() -> str
+        Retourne m_path.
+
+    GetActualPath() -> str
+        Retourne le chemin actuel où se trouve le script.
+
+    Ls() -> dict
+        Retourne un dictionnaire avec deux listes de noms: 'dir' pour les dossiers et 'file' pour les fichiers.
+
+    LsFile() -> list
+        Retourne une liste des noms de fichiers dans m_path.
+
+    LsDir() -> list
+        Retourne une liste des noms de répertoires dans m_path.
+
+    __Split_path(path: str) -> str
+        Retourne le chemin relatif à m_path.
+
+    __Borned_by(string: str, separator: str) -> str
+        Retourne une liste de sous-chaînes de la chaîne divisée par le séparateur.
+
+    Exist(path: str) -> bool
+        Vérifie si le chemin (répertoire ou fichier) existe dans le système de fichiers.
+
+    IsDir(path: str) -> bool
+        Vérifie si le chemin est un répertoire dans le système de fichiers.
+
+    IsFile(path: str) -> bool
+        Vérifie si le chemin est un fichier dans le système de fichiers.
+
+    Cd(path: str) -> str
+        Change m_path au chemin donné, si le chemin existe dans le système de fichiers.
+    """
     def __init__(self, path = ""):
+        """
+        Parameters
+        ----------
+        path : str, optional
+            Un chemin vers un répertoire (par défaut est le répertoire courant du script)
+        """
         if path == "":
             self.m_path = os.getcwd().replace("\\","/") + "/"
         else:
             self.m_path = path.replace("\\", "/")
+
     def SetPath(self, path):
+        """Définit m_path à un nouveau chemin."""
         self.m_path = path
+
     def GetPath(self)-> str:
+        """Retourne m_path."""
         return self.m_path
+
     def GetActualPath(self)-> str:
+        """Retourne le chemin actuel où se trouve le script."""
         return os.getcwd() + '/'
+
     def Ls(self) -> list:
-        """ return the list of directories """
+        """Retourne la liste des chemins dans m_path."""
         ls = os.listdir(self.m_path)
-        ls_sort = {}
-        ls_sort["dir"] = []
-        ls_sort["file"] = []
+        ls_sort = {"dir": [], "file": []}
         for elem in ls:
             if os.path.isdir(os.path.join(self.m_path, elem)):
                 ls_sort["dir"].append(elem)
@@ -26,25 +85,19 @@ class Cd:
         return ls_sort
 
     def LsFile(self) -> list:
-        """ return the list of directories """
+        """Retourne la liste des fichiers dans m_path."""
         ls = os.listdir(self.m_path)
-        ls_file = []
-        for elem in ls:
-            if os.path.isfile(os.path.join(self.m_path, elem)):
-                ls_file.append(elem)
+        ls_file = [elem for elem in ls if os.path.isfile(os.path.join(self.m_path, elem))]
         return ls_file
 
     def LsDir(self) -> list:
-        """ return the list of directories """
+        """Retourne la liste des répertoires dans m_path."""
         ls = os.listdir(self.m_path)
-        ls_dir = []
-        for elem in ls:
-            if os.path.isdir(os.path.join(self.m_path, elem)):
-                ls_dir.append(elem)
+        ls_dir = [elem for elem in ls if os.path.isdir(os.path.join(self.m_path, elem))]
         return ls_dir
 
     def __Split_path(self, path):
-        """ Split the path """
+        """Retourne le chemin relatif à m_path."""
         list_element_in_path = self.__Borned_by(self.m_path, "/")
         new_path = ""
         indice_max = len(list_element_in_path)
@@ -56,7 +109,9 @@ class Cd:
             self.m_path += list_element_in_path[i]
         new_path += path
         return new_path
+
     def __Borned_by(self, string, separator)-> str:
+        """Retourne une liste de sous-chaînes de la chaîne divisée par le séparateur."""
         new_list = []
         string_temp = ""
         for element in string:
@@ -68,22 +123,22 @@ class Cd:
         return new_list
 
     def Exist(self, path) -> bool:
+        """Vérifie si le chemin (répertoire ou fichier) existe dans le système de fichiers."""
         assert isinstance(path, str), " Le chemin doit être un string "
-        """ Return a bool """
         return self.IsDir(path) or self.IsFile(path)
 
     def IsDir(self, path) -> bool:
+        """Vérifie si le chemin est un répertoire dans le système de fichiers."""
         assert isinstance(path, str), " Le chemin doit être un string "
-        """ Return a bool"""
         return os.path.isdir(path)
 
     def IsFile(self, path) -> bool:
+        """Vérifie si le chemin est un fichier dans le système de fichiers."""
         assert isinstance(path, str), " Le chemin doit être un string "
-        """ Return a bool"""
         return os.path.isfile(path)
 
     def Cd(self, path) -> str :
-        """ return False if """
+        """Change m_path au chemin donné, si le chemin existe dans le système de fichiers."""
         assert isinstance(path, str), " Le chemin doit être un string "
         a = self.__Split_path(path)
         if not self.Exist(a):
