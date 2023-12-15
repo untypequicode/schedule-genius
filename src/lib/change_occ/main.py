@@ -52,6 +52,7 @@ def main():
                 if load_return[0] == '__terminal__':
                     terminal.AddTerminal(load_return[1])
                 if '__.cpp__' in  load_return[0]:
+                    print(load_return)
                     for file in load_return[1]:
                         a = ChangeOcc(file)
                         a.Change(cd.GetPath())

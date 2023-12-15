@@ -90,7 +90,35 @@ private :
 
 /* SPLIT */
 
+class DictDynIntUnsignedEleve : public DictDyn
+{
+public:
+    DictDynIntUnsignedEleve();
+    DictDynIntUnsignedEleve(unsigned int nb_elem_max);
+    DictDynIntUnsignedEleve(unsigned int nb_elem_max, bool add_with_multiple, unsigned int number_addition);
+    DictDynIntUnsignedEleve(const DictDynIntUnsignedEleve& dict_dyn_ref);
+    ~DictDynIntUnsignedEleve();
 
+    void SetParam(bool add_with_multiple, unsigned int number_addition);
+    void SetSecurity(bool security);
+
+    void Copy(DictDynIntUnsignedEleve& dict_dyn_ref);
+    void Add(int unsigned key, Eleve value);
+    void Add(int unsigned key, Eleve value, bool add_with_multiple);
+    Eleve Get(int unsigned key) const;
+    TabDynIntUnsigned GetTabKeys() const;
+    TabDynEleve GetTabValues() const;
+    void Set(int unsigned key, Eleve value);
+
+    Eleve Pop(int unsigned key);
+    void Remove(Eleve value, int num);
+    void Remove(Eleve value);
+    void Remove(Eleve value, bool is_first);
+
+protected:
+    TabDynIntUnsigned m_tab_keys;
+    TabDynEleve m_tab_values;
+};
 
 /* SPLIT */
 

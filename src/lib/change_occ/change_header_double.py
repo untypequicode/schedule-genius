@@ -34,6 +34,7 @@ class ChangeHeaderDouble:
             for file_new in self.m_header_new:
                 file_path = file_new.split("/")[-1]
                 # Remplacer les correspondances dans replace_origin par replace_new
+                print(replace_origin, replace_new)
                 for i in range(min(len(replace_origin), len(replace_new))):
                     file_path = file_path.replace(replace_origin[i], replace_new[i])
                 # Ouvrez le fichier avec le nouvel en-tête et remplacez l'ancien en-tête par le nouveau

@@ -1,4 +1,3 @@
 dict_dyn_char_double.cpp,char,Char,double,Double,'\0',m_tab_keys.Get(i) == key,m_tab_values.Get(i) == value
 dict_dyn_char_int.cpp,char,Char,int,Int
 dict_dyn_int_unsigned_string.cpp,int unsigned,IntUnsigned,std::string,String,"\0"
-dict_dyn
