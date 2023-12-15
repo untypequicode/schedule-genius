@@ -36,14 +36,25 @@ int main()
 
     for(unsigned int i = 0; i < dict.GetNbElem(); i++)
         std::cout << dict.GetTabKeys().Get(i) << " : " << dict.GetTabValues().Get(i) << std::endl;
+    std::cout << "nombre d'elements : " << dict.GetNbElem() << std::endl;
 
-    std::cout << std::endl  << "filtre : " << std::endl;
+    std::cout <<  "filtre : = b or = a or = g" << std::endl;
+    TabDynString condition;
+    condition.Add("=");
+    condition.Add("=");
+    condition.Add("==");
+    TabDynChar value;
+    value.Add('b');
+    value.Add('a');
+    value.Add('g');
+    TabDynString OrAnd;
+    OrAnd.Add("or");
+    OrAnd.Add("or");
 
-    DictDynCharDouble dict_filtre = dict.FiltreElement("is not", 3.3).FiltreKey("is", 'c');
-
+    DictDynCharDouble dict_filtre = dict.FiltreKey(condition, value, OrAnd);
 
      for(unsigned int i = 0; i < dict_filtre.GetNbElem(); i++)
         std::cout << dict_filtre.GetTabKeys().Get(i) << " : " << dict_filtre.GetTabValues().Get(i) << std::endl;
-
+        std::cout << "end";
     return 0;
 }

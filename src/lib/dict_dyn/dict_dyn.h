@@ -44,8 +44,14 @@ public:
     TabDynDouble GetTabValues() const;
     void Set(char key, double value);
 
-    DictDynCharDouble FiltreElement(std::string condition, double value);
+    DictDynCharDouble FiltreValue(std::string condition, double value);
+    DictDynCharDouble FiltreValue(TabDynString condition, TabDynDouble value, TabDynString OrAnd);
+    DictDynCharDouble FiltreKey(TabDynString condition, TabDynChar value, TabDynString OrAnd);
+    DictDynCharDouble FiltreAndValue(TabDynString condition, TabDynDouble value);
+    DictDynCharDouble FiltreOrValue(TabDynString condition, TabDynDouble value);
     DictDynCharDouble FiltreKey(std::string condition, char value);
+    DictDynCharDouble FiltreAndKey(TabDynString condition, TabDynChar value);
+    DictDynCharDouble FiltreOrKey(TabDynString condition, TabDynChar value);
 
     double Pop(char key);
     void Remove(double value, int num);
@@ -53,14 +59,15 @@ public:
     void Remove(double value, bool is_first);
 
     bool IfKey(char cle, std::string condition, char value);
-    bool IfElement(char cle, std::string condition, double value);
+    bool IfValue(char cle, std::string condition, double value);
 
 protected:
     TabDynChar m_tab_keys;
     TabDynDouble m_tab_values;
-    bool IfElement(unsigned int index, std::string condition, double value);
+    bool IfValue(unsigned int index, std::string condition, double value);
     bool IfKey(unsigned int index, std::string condition, char value);
 };
+DictDynCharDouble fusion(DictDynCharDouble dict_dyn_ref, DictDynCharDouble dict_dyn_ref2);
 
 /* SPLIT */
 
