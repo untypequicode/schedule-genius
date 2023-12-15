@@ -63,6 +63,9 @@ private :
     Salles* m_tab;
 };
 
-/* SPLIT *//* SPLIT */
+/* SPLIT */
+
+
+/* SPLIT */
 
 #endif

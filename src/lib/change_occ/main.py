@@ -29,7 +29,7 @@ def main():
                     lignes[i] = lignes[i].split(" : ")
                     help_content[0].append(lignes[i][0])
                     help_content[1].append(lignes[i][1])
-                terminal.Print(help_content[0],help_content[1])
+                terminal.Print(help_content[0], help_content[1])
 
         # Si l'utilisateur entre 'ls', trie les dossiers et les fichiers et les imprime dans le terminal
         elif response[0] == "ls":
