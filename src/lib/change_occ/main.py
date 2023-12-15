@@ -5,8 +5,13 @@ from change_occ import ChangeOcc
 from change_header import ChangeHeader
 from change_header_double import ChangeHeaderDouble
 
-# Définition de la fonction principale
 def main():
+    """
+    Fonction principale du programme.
+    Initialise les instances pour le Terminal, Cd et Load.
+    Gère les entrées de l'utilisateur et exécute les commandes correspondantes.
+    """
+
     # Initialiser les instances pour le Terminal, Cd et Load
     terminal = Terminal()
     cd = Cd()
@@ -19,6 +24,7 @@ def main():
     # Boucle tant que l'utilisateur n'entre pas 'exit'
     while response != "exit":
         response = response.split(" ")
+
         # S'il entre 'help', ouvrez et lisez le fichier d'aide et l'imprimez dans le terminal
         if response[0] == "help":
             with open("help", "r") as help:
@@ -51,8 +57,7 @@ def main():
             if 'run' in response and len(load_return) >= 2:
                 if load_return[0] == '__terminal__':
                     terminal.AddTerminal(load_return[1])
-                if '__.cpp__' in  load_return[0]:
-                    print(load_return)
+                if '__.cpp__' in load_return[0]:
                     for file in load_return[1]:
                         a = ChangeOcc(file)
                         a.Change(cd.GetPath())
@@ -72,7 +77,6 @@ def main():
                             b.pop(0)
                             replace_new = b
                         a.Change(cd.GetPath(), load_return[2][0], int(load_return[2][1]), load_return[2][2], int(load_return[2][3]), replace_origin, replace_new)
-
 
         # Si l'utilisateur entre une commande inconnue, imprime une alerte
         else:

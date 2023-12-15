@@ -1,17 +1,17 @@
 def ChangeOccString(content: str, origin: list, new: list) -> str:
     """
-    Cette fonction remplace dans la chaîne 'content' toutes les occurrences des éléments
-    de la liste 'origin' par les éléments correspondants de la liste 'new'.
-    Elle s'arrête dès qu'elle atteint la fin de la liste la plus courte.
+    Remplace toutes les occurrences des éléments de la liste 'origin' par les éléments correspondants de la liste 'new' dans la chaîne 'content'.
+    S'arrête lorsque la fin de la liste la plus courte est atteinte.
 
-    Input:
+    Parameters:
         content (str): La chaîne originale.
         origin (list): Liste des éléments à remplacer dans 'content'.
         new (list): Liste des éléments par lesquels remplacer dans 'content'.
 
-    Return:
-        new_content (str): La chaîne 'content' après remplacement des occurrences.
+    Returns:
+        str: La chaîne 'content' après le remplacement des occurrences.
     """
+
     new_content = content
     for i in range(min(len(new), len(origin))):
         new_content = new_content.replace(origin[i], new[i])
@@ -20,19 +20,18 @@ def ChangeOccString(content: str, origin: list, new: list) -> str:
 
 def GetFile(file_path: str, index: int) -> tuple:
     """
-    Cette fonction lit un fichier dont chaque ligne est séparée par des virgules
-    ('file_path') et retourne un tuple de deux dictionnaires.
-    Le premier dictionnaire contient la ligne d'index donné du fichier comme clé
-    et le reste des données de la ligne comme valeurs.
+    Lit un fichier où chaque ligne est séparée par des virgules ('file_path') et renvoie un tuple de deux dictionnaires.
+    Le premier dictionnaire contient la ligne à l'index donné du fichier en tant que clé et le reste des données de la ligne en tant que valeurs.
     Le second dictionnaire contient le reste du fichier de la même manière.
 
-    Input:
+    Parameters:
         file_path (str): Le chemin vers le fichier à lire.
         index (int): L'index de la ligne à utiliser pour le premier dictionnaire.
 
-    Return:
-        file_origin (dict): Dictionnaire contenant la ligne d'index donnée.
-        file_new (dict): Dictionnaire contenant le reste du fichier.
+    Returns:
+        tuple: Deux dictionnaires - file_origin et file_new.
+               file_origin contient la ligne à l'index donné.
+               file_new contient le reste du fichier.
     """
     with open(file_path, "r") as file:
         content = file.read().split("\n")
