@@ -1,2 +1,2 @@
 dict_dyn_char_double.cpp,char,Char,double,Double,'\0',m_tab_keys.Get(i) == key,m_tab_values.Get(i) == value,#include "dict_dyn.h"
-dict_dyn_int_unsigned_eleves.cpp,int unsigned,IntUnsigned,Eleve,Eleve,Eleve(),m_tab_keys.Get(i).GetId() == key.GetId(),m_tab_values.Get(i).GetId() == value.GetId(),#include "../character/eleves.h"
+dict_dyn_int_unsigned_eleves.cpp,int unsigned,IntUnsigned,Eleve,Eleve,Eleve(),m_tab_keys.Get(i) == key,m_tab_values.Get(i).GetId() == value.GetId(),#include "../character/eleves.h"
