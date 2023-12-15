@@ -88,7 +88,6 @@ protected:
 
 
 
-
 class DictDynIntUnsignedString : public DictDyn
 {
 public:
@@ -118,7 +117,6 @@ protected:
     TabDynIntUnsigned m_tab_keys;
     TabDynString m_tab_values;
 };
-
 
 /* SPLIT */
 

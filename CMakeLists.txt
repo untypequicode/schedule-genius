@@ -53,7 +53,7 @@ add_executable(Schedule_Genius src/main.cpp
                 src/lib/dict_dyn/dict_dyn_char_double.cpp
                 src/lib/dict_dyn/dict_dyn_char_int.cpp
                 src/lib/dict_dyn/dict_dyn_int_unsigned_string.cpp
-#                src/lib/dict_dyn/dict_dyn_int_eleve.cpp
+                src/lib/dict_dyn/dict_dyn_int_unsigned_eleves.cpp
 
             ### Character
                 src/lib/character/eleves.cpp

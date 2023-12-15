@@ -14,7 +14,7 @@ public:
     ~Salles();
 
     std::string GetNom();
-    
+
     unsigned int GetId();
 
     TabDynInt GetHoraires();
@@ -62,6 +62,8 @@ public :
 private :
     Salles* m_tab;
 };
+
+/* SPLIT */
 
 
 /* SPLIT */
