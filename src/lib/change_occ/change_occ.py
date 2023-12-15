@@ -1,91 +1,66 @@
-change_list = []
+from tools import ChangeOccString, GetFile
 
-with open("change_occ.csv", "r") as f:
-    for groupe in f.read().split("exit"):
-        change_list.append([])
-        for line in groupe.split("\n"):
-            if len(line) > 0:
-                if line[0] != "#":
-                    line = line.replace("\n", "")
-                    change_list[-1].append([])
-                    split = line.split(",")
-                    for i in split:
-                        if i != "":
-                            change_list[-1][-1].append(i)
-                    if change_list[-1][-1] == []:
-                        change_list[-1].pop(-1)
+class ChangeOcc:
+    """
+    Classe pour changer les occurrences dans un fichier.
+    """
 
-for groupe in change_list:
-    path = input(f'Nom du dossier des fichiers pour {groupe[0][0]} : ')
-    with open(path + groupe[0][0], "r") as f:
-        lignes = f.readlines()
-        if len(groupe[-1]) == 1:
-            last_index = -1
-        elif len(groupe[-1]) > 1:
-            last_index = len(groupe)
-        for fichier in groupe[1:last_index]:
-            print(fichier[0], end=" ")
-            with open(path + fichier[0], "w") as g:
-                for line in lignes:
-                    for i in range(1, len(fichier)):
-                        line = line.replace(groupe[0][i], fichier[i])
-                    g.write(line)
-                    print(".", end="")
-            print()
-    if len(groupe[-1]) == 1:
-        with open(path + groupe[-1][0] + ".h", "r") as f:
-            text = f.read().split("/* SPLIT */")
-            with open(path + groupe[-1][0] + ".h", "w") as g:
-                g.write(text[0])
-                g.write("/* SPLIT */")
-                g.write(text[1])
-                g.write("/* SPLIT */")
+    def __init__(self, file_path=""):
+        """
+        Constructeur de la classe ChangeOcc.
 
-                lignes = text[1].split("\n")
-                if len(groupe[-1]) == 1:
-                    last_index = -1
-                elif len(groupe[-1]) > 1:
-                    last_index = len(groupe)
-                for fichier in groupe[1:last_index]:
-                    print(fichier[0], end=" ")
-                    for line in lignes:
-                        for i in range(1, len(fichier)):
-                            line = line.replace(groupe[0][i], fichier[i])
-                        g.write(line + "\n")
-                        print(".", end="")
-                    print()
+        Parameters
+        ----------
+        file_path : str, optional
+            Chemin vers le fichier dans lequel changer les occurrences, par défaut une chaîne vide.
+        """
+        self.is_begin = False
+        self.m_file_path = file_path
+        self.m_file_origin = {}
+        self.m_file_new = {}
 
-                g.write("/* SPLIT */")
-                g.write(text[3])
-    elif len(groupe[-1]) > 1:
-        h_file = input("Nom du fichier .h (sans le .h) : ")
-        h_path = input("Chemin du fichier .h : ")
-        with open(path + h_file + ".h", "r") as f:
-            text = f.read().split("/* SPLIT */")
-            if len(groupe[-1]) == 1:
-                last_index = -1
-            elif len(groupe[-1]) > 1:
-                last_index = len(groupe)
-            for fichier in groupe[1:last_index]:
-                with open(h_path + fichier[0].replace(".cpp", ".h").replace(h_file, "")[1:], "r") as g:
-                    text_h = g.read().split("/* SPLIT */")
-                    with open(h_path + fichier[0].replace(".cpp", ".h").replace(h_file, "")[1:], "w") as h:
-                        h.write(text_h[0])
-                        h.write("/* SPLIT */")
-                        lignes = text[1].split("\n")
-                        print(fichier[0], end=" ")
-                        for line in lignes:
-                            for i in range(1, len(fichier)):
-                                line = line.replace(groupe[0][i], fichier[i])
-                            h.write(line + "\n")
-                            print(".", end="")
-                        h.write("/* SPLIT */")
-                        h.write(text[3])
-                print()
+    def SetFilePath(self, file_path):
+        """
+        Définit le chemin vers le fichier sur lequel opérer.
 
+        Parameters
+        ----------
+        file_path : str
+            Chemin vers le fichier.
+        """
+        self.m_file_path = file_path
 
+    def Begin(self, index=0):
+        """
+        Commence le processus en obtenant le fichier original et le nouveau fichier.
 
+        Parameters
+        ----------
+        index : int, optional
+            Index à utiliser pour obtenir le fichier, par défaut 0.
+        """
+        self.m_file_origin, self.m_file_new = GetFile(self.m_file_path, index)
+        self.is_begin = True
 
-print()
+    def Change(self, directory):
+        """
+        Duplique le fichier dans le répertoire et change les occurrences.
 
-print("Fin du programme")
+        Parameters
+        ----------
+        directory : str
+            Répertoire dans lequel dupliquer le fichier.
+        """
+        if not self.is_begin:
+            self.Begin(0)
+        for file_new in self.m_file_new:
+            for file_origin in self.m_file_origin:
+                with open(directory + file_origin, "r") as f:
+                    text = f.read()
+                    a = ChangeOccString(text, self.m_file_origin[file_origin], self.m_file_new[file_new])
+                    with open(directory + file_new, "w") as g:
+                        g.write(a)
+
+# Exemple d'utilisation de la classe ChangeOcc
+# a = ChangeOcc("load_file/tab_dyn_basic")
+# a.Change("../tab_dyn/")
