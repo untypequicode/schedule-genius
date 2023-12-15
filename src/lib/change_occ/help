@@ -1,22 +1,29 @@
-help : aide
-exit : sortie du programme
-ls : liste des dossiers et fichiers
-cd : changer de dossiers
-load : ajouter un fichier au chargement
-unload : enlever un fichier au chargement
+Aide :
+- help : Affiche l'aide.
+- exit : Quitte le programme.
+- ls : Liste les dossiers et fichiers.
+- cd : Changer de dossier.
+- load : Ajouter ou enlever un fichier au chargement.
 --------------------------- : ---------------------------
-load : library de chargement
-load list : liste des fichiers a charger
-load ls : liste des fichiers a charger
-load mount -a : charger tous les fichiers
-load mnt -a : charger tous les fichiers
-load mount -a \ "file" "file" : charger tous les fichiers sauf le ou les fichiers "file"
-load mnt -a \ "file" "file" : charger tous les fichiers sauf le ou les fichiers "file"
-load mount "file" : charger un fichier
-load mnt "file" : charger un fichier
-load unmount -a : decharger tous les fichiers
-load umnt -a : decharger tous les fichiers
-load unmount -a \ "file" "file" : decharger tous les fichiers sauf le ou les fichiers "file"
-load umnt -a \ "file" "file" : decharger tous les fichiers sauf le ou les fichiers "file"
-load unmount "file" : decharger un fichier
-load umnt "file" : decharger un fichier
+Fonctionnalités détaillées :
+- load list ou load ls : Liste des fichiers à charger.
+- load mount -a ou load mnt -a : Charger tous les fichiers.
+- load mount -a \ "file" "file" ou load mnt -a \ "file" "file" : Charger tous les fichiers sauf le(s) fichier(s) spécifié(s).
+- load mount "file" ou load mnt "file" : Charger un fichier.
+- load unmount -a ou load umnt -a : Démonter tous les fichiers.
+- load unmount -a \ "file" "file" ou load umnt -a \ "file" "file" : Démonter tous les fichiers sauf le(s) fichier(s) spécifié(s).
+- load unmount "file" ou load umnt "file" : Démonter un fichier.
+--------------------------- : ---------------------------
+Commandes avancées :
+- load run : Exécuter les commandes chargées.
+- load key : Afficher la liste des clés chargées.
+- load key "key" : Charger les fichiers associés à une clé.
+- load key "key" run : Exécuter les commandes associées à une clé.
+--------------------------- : ---------------------------
+Exemples :
+1. Lister les fichiers et dossiers : ls
+2. Changer de dossier : cd nom_du_dossier
+3. Charger et exécuter des commandes à partir d'un fichier : load key __terminal__ mnt terminal run
+4. Modifier les occurrences dans un fichier : load key fichier_occ.cpp run
+5. Modifier les en-têtes d'un fichier : load key fichier_header.h run fichier_modifie.h 1 2
+6. Modifier les en-têtes de deux fichiers simultanément : load key fichier_header_double.h2 run fichier_origine.h 1 fichier_modifie.h 2 __ remplacement__

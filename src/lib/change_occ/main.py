@@ -32,7 +32,10 @@ def main():
                 help_content = [[], []]
                 # Décomposez les lignes en commandes et explications respectives et imprimez-les pour l'utilisateur
                 for i in range(len(lignes)):
-                    lignes[i] = lignes[i].split(" : ")
+                    if " : " in lignes[i]:
+                        lignes[i] = lignes[i].split(" : ")
+                    else:
+                        lignes[i] = lignes[i].split(" :")
                     help_content[0].append(lignes[i][0])
                     help_content[1].append(lignes[i][1])
                 terminal.Print(help_content[0], help_content[1])
