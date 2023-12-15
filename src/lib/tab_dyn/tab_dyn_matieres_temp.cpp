@@ -1,28 +1,28 @@
 #include "../character/matieres_temp.h"
 
-TabDynMatieres::TabDynMatieres()
+TabDynMatieresTemp::TabDynMatieresTemp()
         : TabDyn()
 {
 
 }
 
-TabDynMatieres::TabDynMatieres(unsigned int nb_elem_max)
+TabDynMatieresTemp::TabDynMatieresTemp(unsigned int nb_elem_max)
         : TabDyn(nb_elem_max),
-          m_tab(new Matieres[nb_elem_max])
+          m_tab(new MatieresTemp[nb_elem_max])
 {
 
 }
 
-TabDynMatieres::TabDynMatieres(unsigned int nb_elem_max, bool add_with_multiple, unsigned int number_addition)
+TabDynMatieresTemp::TabDynMatieresTemp(unsigned int nb_elem_max, bool add_with_multiple, unsigned int number_addition)
         : TabDyn(nb_elem_max, add_with_multiple, number_addition),
-          m_tab(new Matieres[nb_elem_max])
+          m_tab(new MatieresTemp[nb_elem_max])
 {
 
 }
 
-TabDynMatieres::TabDynMatieres(const TabDynMatieres& tab_dyn_ref)
+TabDynMatieresTemp::TabDynMatieresTemp(const TabDynMatieresTemp& tab_dyn_ref)
         : TabDyn(tab_dyn_ref),
-          m_tab(new Matieres[tab_dyn_ref.m_nb_elem_max])
+          m_tab(new MatieresTemp[tab_dyn_ref.m_nb_elem_max])
 {
     for (unsigned int i = 0; i < tab_dyn_ref.m_nb_elem; i++)
     {
@@ -30,7 +30,7 @@ TabDynMatieres::TabDynMatieres(const TabDynMatieres& tab_dyn_ref)
     }
 }
 
-TabDynMatieres::~TabDynMatieres()
+TabDynMatieresTemp::~TabDynMatieresTemp()
 {
     if (m_security and m_tab != nullptr and m_tab != NULL)
     {
@@ -38,7 +38,7 @@ TabDynMatieres::~TabDynMatieres()
     }
 }
 
-void TabDynMatieres::Copy(TabDynMatieres& tab_dyn_ref)
+void TabDynMatieresTemp::Copy(TabDynMatieresTemp& tab_dyn_ref)
 {
     for (unsigned int i = 0; i < tab_dyn_ref.m_nb_elem; i++)
     {
@@ -46,23 +46,23 @@ void TabDynMatieres::Copy(TabDynMatieres& tab_dyn_ref)
     }
 }
 
-void TabDynMatieres::Add(Matieres value)
+void TabDynMatieresTemp::Add(MatieresTemp value)
 {
     Add(value, true);
 }
 
-void TabDynMatieres::Add(Matieres value, bool add_with_multiple)
+void TabDynMatieresTemp::Add(MatieresTemp value, bool add_with_multiple)
 {
     if (m_nb_elem_max == 0)
     {
         if (add_with_multiple)
         {
-            m_tab = new Matieres[m_number_addition];
+            m_tab = new MatieresTemp[m_number_addition];
             m_nb_elem_max = m_number_addition;
         }
         else
         {
-            m_tab = new Matieres[1];
+            m_tab = new MatieresTemp[1];
             m_nb_elem_max = 1;
         }
         m_tab[0] = value;
@@ -77,21 +77,21 @@ void TabDynMatieres::Add(Matieres value, bool add_with_multiple)
     }
     else if (m_nb_elem == m_nb_elem_max)
     {
-        Matieres* new_tab;
+        MatieresTemp* new_tab;
         if (add_with_multiple)
         {
             if (m_add_with_multiple)
             {
-                new_tab = new Matieres[m_nb_elem_max * m_number_addition];
+                new_tab = new MatieresTemp[m_nb_elem_max * m_number_addition];
             }
             else
             {
-                new_tab = new Matieres[m_nb_elem_max + m_number_addition];
+                new_tab = new MatieresTemp[m_nb_elem_max + m_number_addition];
             }
         }
         else
         {
-            new_tab = new Matieres[m_nb_elem_max + 1];
+            new_tab = new MatieresTemp[m_nb_elem_max + 1];
         }
         for (unsigned int i = 0; i < m_nb_elem; i++)
         {
@@ -120,21 +120,21 @@ void TabDynMatieres::Add(Matieres value, bool add_with_multiple)
     }
 }
 
-Matieres TabDynMatieres::Get(unsigned int index) const
+MatieresTemp TabDynMatieresTemp::Get(unsigned int index) const
 {
     if (index < m_nb_elem)
     {
         return m_tab[index];
     }
-    return Matieres();
+    return MatieresTemp();
 }
 
-Matieres* TabDynMatieres::GetTab() const
+MatieresTemp* TabDynMatieresTemp::GetTab() const
 {
     return m_tab;
 }
 
-void TabDynMatieres::Set(unsigned int index, Matieres value)
+void TabDynMatieresTemp::Set(unsigned int index, MatieresTemp value)
 {
     if (index < m_nb_elem)
     {
@@ -142,16 +142,16 @@ void TabDynMatieres::Set(unsigned int index, Matieres value)
     }
 }
 
-Matieres TabDynMatieres::Pop()
+MatieresTemp TabDynMatieresTemp::Pop()
 {
     return Pop(m_nb_elem - 1);
 }
 
-Matieres TabDynMatieres::Pop(int index)
+MatieresTemp TabDynMatieresTemp::Pop(int index)
 {
     if (index < m_nb_elem)
     {
-        Matieres value = m_tab[index];
+        MatieresTemp value = m_tab[index];
         for (unsigned int i = index; i < m_nb_elem - 1; i++)
         {
             m_tab[i] = m_tab[i + 1];
@@ -159,10 +159,10 @@ Matieres TabDynMatieres::Pop(int index)
         m_nb_elem--;
         return value;
     }
-    return Matieres();
+    return MatieresTemp();
 }
 
-void TabDynMatieres::Remove(Matieres value, int num)
+void TabDynMatieresTemp::Remove(MatieresTemp value, int num)
 {
     int count = 0;
     for (unsigned int i = 0; i < m_nb_elem; i++)
@@ -179,7 +179,7 @@ void TabDynMatieres::Remove(Matieres value, int num)
     }
 }
 
-void TabDynMatieres::Remove(Matieres value)
+void TabDynMatieresTemp::Remove(MatieresTemp value)
 {
     for (unsigned int i = 0; i < m_nb_elem; i++)
     {
@@ -191,7 +191,7 @@ void TabDynMatieres::Remove(Matieres value)
     }
 }
 
-void TabDynMatieres::Remove(Matieres value, bool first)
+void TabDynMatieresTemp::Remove(MatieresTemp value, bool first)
 {
     if (first)
     {

@@ -25,30 +25,30 @@ private:
 
 /* SPLIT */
 
-class TabDynMatieres : public TabDyn
+class TabDynMatieresTemp : public TabDyn
 {
 public :
-    TabDynMatieres();
-    TabDynMatieres(unsigned int nb_elem_max);
-    TabDynMatieres(unsigned int nb_elem_max, bool add_with_multiple, unsigned int number_addition);
-    TabDynMatieres(const TabDynMatieres& tab_dyn_ref);
-    ~TabDynMatieres();
+    TabDynMatieresTemp();
+    TabDynMatieresTemp(unsigned int nb_elem_max);
+    TabDynMatieresTemp(unsigned int nb_elem_max, bool add_with_multiple, unsigned int number_addition);
+    TabDynMatieresTemp(const TabDynMatieresTemp& tab_dyn_ref);
+    ~TabDynMatieresTemp();
 
-    void Copy(TabDynMatieres& tab_dyn_ref);
-    void Add(Matieres value);
-    void Add(Matieres value, bool add_with_multiple);
-    Matieres Get(unsigned int index) const;
-    Matieres* GetTab() const;
-    void Set(unsigned int index, Matieres value);
+    void Copy(TabDynMatieresTemp& tab_dyn_ref);
+    void Add(MatieresTemp value);
+    void Add(MatieresTemp value, bool add_with_multiple);
+    MatieresTemp Get(unsigned int index) const;
+    MatieresTemp* GetTab() const;
+    void Set(unsigned int index, MatieresTemp value);
 
-    Matieres Pop();
-    Matieres Pop(int index);
-    void Remove(Matieres value, int num);
-    void Remove(Matieres value);
-    void Remove(Matieres value, bool is_first);
+    MatieresTemp Pop();
+    MatieresTemp Pop(int index);
+    void Remove(MatieresTemp value, int num);
+    void Remove(MatieresTemp value);
+    void Remove(MatieresTemp value, bool is_first);
 
 private :
-    Matieres* m_tab;
+    MatieresTemp* m_tab;
 };
 
 /* SPLIT */

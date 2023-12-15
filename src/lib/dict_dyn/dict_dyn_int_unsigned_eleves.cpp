@@ -60,7 +60,7 @@ void DictDynIntUnsignedEleve::Add(int unsigned key, Eleve value)
 void DictDynIntUnsignedEleve::Add(int unsigned key, Eleve value, bool add_with_multiple)
 {
     for (int i = 0; i < m_tab_keys.GetNbElem(); i++){
-        if(m_tab_keys.Get(i).GetId() == key.GetId()){
+        if(m_tab_keys.Get(i) == key){
             m_tab_values.Set(i, value);
             return;
         }
@@ -72,7 +72,7 @@ void DictDynIntUnsignedEleve::Add(int unsigned key, Eleve value, bool add_with_m
 Eleve DictDynIntUnsignedEleve::Get(int unsigned key) const
 {
     for (int i = 0; i < m_tab_keys.GetNbElem(); i++){
-        if(m_tab_keys.Get(i).GetId() == key.GetId()){
+        if(m_tab_keys.Get(i) == key){
             return m_tab_values.Get(i);
         }
     }
@@ -92,7 +92,7 @@ TabDynEleve DictDynIntUnsignedEleve::GetTabValues() const
 void DictDynIntUnsignedEleve::Set(int unsigned key, Eleve value)
 {
     for (int i = 0; i < m_tab_keys.GetNbElem(); i++){
-        if(m_tab_keys.Get(i).GetId() == key.GetId()){
+        if(m_tab_keys.Get(i) == key){
             m_tab_values.Set(i, value);
             return;
         }
@@ -102,7 +102,7 @@ void DictDynIntUnsignedEleve::Set(int unsigned key, Eleve value)
 Eleve DictDynIntUnsignedEleve::Pop(int unsigned key)
 {
     for (int i = 0; i < m_tab_keys.GetNbElem(); i++){
-        if(m_tab_keys.Get(i).GetId() == key.GetId()){
+        if(m_tab_keys.Get(i) == key){
             m_tab_keys.Pop(i);
             return m_tab_values.Pop(i);
         }
