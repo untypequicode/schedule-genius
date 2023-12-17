@@ -187,7 +187,7 @@ DictDynCharDouble DictDynCharDouble::FiltreValue(std::string condition, double v
 DictDynCharDouble DictDynCharDouble::FiltreValue(TabDynString condition, TabDynDouble value, TabDynString OrAnd)
 {
     DictDynCharDouble dict_dyn_result;
-    bool test = false;
+    bool test;
     unsigned int index = 0;
     for (unsigned int i = 0; i < m_nb_elem; i++) {
         test = IfValue(i, condition.Get(0), value.Get(0));
@@ -212,13 +212,15 @@ DictDynCharDouble DictDynCharDouble::FiltreValue(TabDynString condition, TabDynD
             else
             {
                 std::cerr << "Error : comparator forbidden, only 'and' and 'or' are allowed" << std::endl;
-                return DictDynCharDouble();
+                DictDynCharDouble a = DictDynCharDouble();
+                return a;
             }
         }
         index = 0;
         if(test)
         {
             dict_dyn_result.Add(m_tab_keys.Get(i), m_tab_values.Get(i));
+            test = false;
         }
     }
     return dict_dyn_result;
@@ -234,7 +236,8 @@ DictDynCharDouble DictDynCharDouble::FiltreKey(TabDynString condition, TabDynCha
         test = IfKey(i, condition.Get(0), value.Get(0));
         while (index < OrAnd.GetNbElem())
         {
-            if (OrAnd.Get(index) == "or" and !test) {
+            if (OrAnd.Get(index) == "or" and !test)
+            {
                 index++;
                 test = IfKey(i, condition.Get(index), value.Get(index));
             }
@@ -253,10 +256,11 @@ DictDynCharDouble DictDynCharDouble::FiltreKey(TabDynString condition, TabDynCha
             else
             {
                 std::cerr << "Error : comparator forbidden, only 'and' and 'or' are allowed" << std::endl;
-                return DictDynCharDouble();
+                DictDynCharDouble a = DictDynCharDouble();
+                return a;
             }
         }
-        index = 1;
+        index = 0;
         if(test)
         {
             dict_dyn_result.Add(m_tab_keys.Get(i), m_tab_values.Get(i));
@@ -373,7 +377,6 @@ DictDynCharDouble fusion(DictDynCharDouble dict_dyn_ref, DictDynCharDouble dict_
         dict_dyn_result.Add(key, dict_dyn_ref.Get(key));
 
     }
-    std::cout << "fusion end" << std::endl;
     return dict_dyn_result;
 }
 

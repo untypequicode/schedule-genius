@@ -38,23 +38,36 @@ int main()
         std::cout << dict.GetTabKeys().Get(i) << " : " << dict.GetTabValues().Get(i) << std::endl;
     std::cout << "nombre d'elements : " << dict.GetNbElem() << std::endl;
 
-    std::cout <<  "filtre : = b or = a or = g" << std::endl;
     TabDynString condition;
+    condition.Add(">");
+    condition.Add("<");
     condition.Add("=");
-    condition.Add("=");
-    condition.Add("==");
-    TabDynChar value;
-    value.Add('b');
-    value.Add('a');
-    value.Add('g');
+    TabDynDouble value;
+    value.Add(1);
+    value.Add(3);
+    value.Add(4.4);
     TabDynString OrAnd;
-    OrAnd.Add("or");
+    OrAnd.Add("and");
     OrAnd.Add("or");
 
-    DictDynCharDouble dict_filtre = dict.FiltreKey(condition, value, OrAnd);
+    DictDynCharDouble dict_filtre = dict.FiltreValue(condition, value, OrAnd);
 
-     for(unsigned int i = 0; i < dict_filtre.GetNbElem(); i++)
+    unsigned int i = 0;
+    unsigned int nb_parenthèse = condition.GetNbElem() - 1;
+    std::cout << "filtre : ";
+    for (unsigned int i = 0; i < nb_parenthèse; i++)
+        std::cout << "(";
+    while (i < condition.GetNbElem()) {
+        std::cout << condition.Get(i) << value.Get(i);
+        if (i != 0)
+            std::cout << ")";
+        std::cout << " ";
+        std::cout << OrAnd.Get(i) << " ";
+        i++;
+    }
+    std::cout << std::endl;
+    for(unsigned int i = 0; i < dict_filtre.GetNbElem(); i++)
         std::cout << dict_filtre.GetTabKeys().Get(i) << " : " << dict_filtre.GetTabValues().Get(i) << std::endl;
-        std::cout << "end";
+    std::cout << "end test";
     return 0;
 }
