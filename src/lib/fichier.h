@@ -38,7 +38,7 @@ class Fichier
 {
 public:
     Fichier();
-    //créer un fichier vide nommé empty.csv
+    //crée un fichier vide nommé empty.csv
     Fichier(std::string nom_fichier);
     //enregistre le fichier (privilégier un fichier existant)
     Fichier(std::string nom_fichier, unsigned int nombre_de_ligne);

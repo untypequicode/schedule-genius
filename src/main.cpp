@@ -68,6 +68,6 @@ int main()
     std::cout << std::endl;
     for(unsigned int i = 0; i < dict_filtre.GetNbElem(); i++)
         std::cout << dict_filtre.GetTabKeys().Get(i) << " : " << dict_filtre.GetTabValues().Get(i) << std::endl;
-    std::cout << "end test";
+    std::cout << "end test" << std::endl;
     return 0;
 }

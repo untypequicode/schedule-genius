@@ -33,7 +33,12 @@ Eleve Database::GetEleve(unsigned int index) const
     return m_eleve.Get(index);
 };
 
-TabDynString Database::GetAllData(unsigned int index) const
+TabDynEleve Database::GetEleve() const
+{
+    return m_eleve;
+};
+
+TabDynString Database::GetEleveData(unsigned int index) const
 {
     TabDynString retour(5);
     retour.Add(convertToString(m_eleve.Get(index).GetId()));
