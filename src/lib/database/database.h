@@ -6,8 +6,8 @@
 
 /*
 * Classe Database
-* Classe de stockage d'élèves
-* COntient une liste d'élèves et son nombre d'éléments
+* Classe de stockage d'informations
+* Contient une liste d'élèves et son nombre d'éléments
 *
 * Constructeurs :
 * Database() : m_taille(0), m_eleve(TabDynEleve(0))
@@ -24,7 +24,9 @@
 *
 * Accesseurs:
 * Eleve GetEleve(unsigned int index) const
-* TabDynString GetAllData(unsigned int index) const
+* TabDynString GetEleveData(unsigned int index) const
+* TabDynEleve GetEleve() const
+* unsigned int GetNbEleve() const
 *
 * Attributs :
 * TabDynEleve m_eleve
@@ -50,6 +52,9 @@ public:
     // renvoie toutes les données de l'élève à l'index donné
     TabDynEleve GetEleve() const;
     // renvoie la liste d'élève
+    unsigned int GetNbEleve() const;
+    // renvoie le nombre d'élève
+
 
     ~Database();
 

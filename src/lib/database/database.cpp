@@ -52,6 +52,11 @@ TabDynString Database::GetEleveData(unsigned int index) const
     return retour;
 };
 
+unsigned int Database::GetNbEleve() const
+{
+    return m_eleve.GetNbElem();
+};
+
 void Database::EcraserData(Fichier source)
 {
     std::cout << "DEPART" << std::endl << std::endl;
