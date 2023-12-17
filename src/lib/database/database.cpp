@@ -111,7 +111,7 @@ void Database::EcraserData(Fichier source)
     myfile.open(source.GetNom());
     unsigned int last = 0;
 
-    if (/*source.GetNbLigne() <= 0*/ true)
+    if (/*source.GetNbLigne() <= 0*/ true) // TODO : changer le if pour qu'il soit fonctionnel quand les Eleve seront implémentable
     {
         std::ifstream myfiletest;
         myfiletest.open(source.GetNom());
@@ -120,7 +120,7 @@ void Database::EcraserData(Fichier source)
         std::getline(myfiletest, lignetest);
         std::getline(myfile, ligne);
 
-        while(true)
+        while(ligne != lignetest)
         {
             std::getline(myfile, ligne);
             matieres.Add("");
@@ -150,6 +150,7 @@ void Database::EcraserData(Fichier source)
                     }
                 }
             }
+            // TODO : inserer les donnée des eleves quand les Eleve seront implémentable
 //            Eleve eleve(convertToInt(data.Get(0)), data.Get(1), data.Get(2), data.Get(3));
 //            eleve.SetSecurity(false);
 //            retour.Add(eleve);
@@ -167,12 +168,13 @@ void Database::EcraserData(Fichier source)
 //            std::getline(myfiletest, lignetest);
 //            std::cout << "fin de la " << last -1 << "eme ligne" << std::endl;
 //            std::cout << "test : " << (ligne != lignetest) << std::endl << std::endl;
-            if(ligne == lignetest)
-                break;
+
         }
+        // TODO : recoder a boucle en fonction de la taille du fichier
     }
 }
 
 void Database::AjouterData(Fichier source)
 {
+    // TODO : coder la fonction AjouterData a partir de la fonction EcraserData
 }

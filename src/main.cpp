@@ -40,6 +40,11 @@ int main()
     }
     std::cout << "]" << std::endl;
 
+    std::cout << "start geteleve" << std::endl;
+    Eleve test2 = database.GetEleve(1);
+    std::cout << "end geteleve" << std::endl << std::endl;
+    std::cout << "sortie de geteleve : TabDynString de format : ";
+    std::cout << "[" << test2.GetId() << ", " << test2.GetPrenom() << ", " << test2.GetNom() << ", " << test2.GetNiveauScolaire() << "]" << std::endl;
     //// Ethan
     //
     /*
