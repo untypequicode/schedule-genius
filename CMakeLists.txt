@@ -1,7 +1,10 @@
-cmake_minimum_required(VERSION 3.26)
+cmake_minimum_required(VERSION 3.22)
 project(Schedule_Genius)
 
 set(CMAKE_CXX_STANDARD 23)
+
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 
 add_executable(Schedule_Genius src/main.cpp
     # Headers
