@@ -16,9 +16,8 @@ int main()
 {
     //// Micky
     //
-
-//    CsvGenerateur exemple;
-//    exemple.creerCsv(true);
+    // CsvGenerateur exemple;
+    // exemple.creerCsv(true);
 
 
     //// Vincent
@@ -36,17 +35,6 @@ int main()
 
     //// Ethan
     //
-//    Eleve eleve(0, "Ethan", "Facca", "L1");
-//    eleve.AddMatiere("Maths");
-//    eleve.AddMatiere("Physique");
-//    std::cout << eleve.GetMatiere(0) << std::endl;
-//    std::cout << eleve.GetMatiere(1) << std::endl;
-//    std::cout << eleve.GetMatiere(3) << std::endl;
-//    Groupe groupe("L1", "info");
-//    groupe.AddEleve(eleve);
-//    std::string matiere_eleve = groupe.GetEleve(0).GetMatiere(1);
-//    std::cout << groupe.GetEleve(0).m_prenom << std::endl;
-
 
 
     return 0;
