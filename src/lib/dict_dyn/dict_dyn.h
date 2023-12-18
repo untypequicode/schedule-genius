@@ -230,8 +230,8 @@ public:
 protected:
     TabDynIntUnsigned m_tab_keys;
     TabDynString m_tab_values;
-    bool IfValue(unsigned int index, std::string condition, std::string value);
-    bool IfKey(unsigned int index, std::string condition, int unsigned value);
+    bool TestIfValue(unsigned int index, std::string condition, std::string value);
+    bool TestIfKey(unsigned int index, std::string condition, int unsigned value);
 };
 DictDynIntUnsignedString fusion(DictDynIntUnsignedString dict_dyn_ref, DictDynIntUnsignedString dict_dyn_ref2);
 

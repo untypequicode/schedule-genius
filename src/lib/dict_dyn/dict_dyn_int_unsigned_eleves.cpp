@@ -101,7 +101,7 @@ void DictDynIntUnsignedEleve::Set(int unsigned key, Eleve value)
     }
 }
 
-bool DictDynIntUnsignedEleve::IfValue(int unsigned cle ,std::string condition, Eleve value)
+/*bool DictDynIntUnsignedEleve::IfValue(int unsigned cle ,std::string condition, Eleve value)
 {
     if(condition == "=" or condition == "==" or condition == "is")
         return (Get(cle) == value);
@@ -378,7 +378,7 @@ DictDynIntUnsignedEleve fusion(DictDynIntUnsignedEleve dict_dyn_ref, DictDynIntU
 
     }
     return dict_dyn_result;
-}
+}*/
 
 Eleve DictDynIntUnsignedEleve::Pop(int unsigned key)
 {

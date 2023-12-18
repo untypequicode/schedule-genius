@@ -124,7 +124,7 @@ public:
     void Set(int unsigned key, Eleve value);
     //change la valeur associée à la clé
 
-    DictDynIntUnsignedEleve FiltreValue(std::string condition, Eleve value);
+    /*DictDynIntUnsignedEleve FiltreValue(std::string condition, Eleve value);
     // renvoie un dictionnaire filtré selon une condition sur la valeur
     DictDynIntUnsignedEleve FiltreValue(TabDynString condition, TabDynEleve value, TabDynString OrAnd);
     // renvoie un dictionnaire filtré selon plusieurs conditions sur la valeur
@@ -140,22 +140,22 @@ public:
     // renvoie un dictionnaire filtré dont les clés respecte toutes les conditions
     DictDynIntUnsignedEleve FiltreOrKey(TabDynString condition, TabDynIntUnsigned value);
     // renvoie un dictionnaire filtré dont les clés respecte au moins une des conditions
-
+    */
     Eleve Pop(int unsigned key);
     void Remove(Eleve value, int num);
     void Remove(Eleve value);
     void Remove(Eleve value, bool is_first);
 
-    bool IfKey(int unsigned cle, std::string condition, int unsigned value);
+    /*bool IfKey(int unsigned cle, std::string condition, int unsigned value);
     // renvoie si la clé respecte la condition
     bool IfValue(int unsigned cle, std::string condition, Eleve value);
-    // renvoie si la valeur respecte la condition
+    // renvoie si la valeur respecte la condition*/
 
 protected:
     TabDynIntUnsigned m_tab_keys;
     TabDynEleve m_tab_values;
-    bool IfValue(unsigned int index, std::string condition, Eleve value);
-    bool IfKey(unsigned int index, std::string condition, int unsigned value);
+    /*bool TestIfValue(unsigned int index, std::string condition, Eleve value);
+    bool TestIfKey(unsigned int index, std::string condition, int unsigned value);*/
 };
 DictDynIntUnsignedEleve fusion(DictDynIntUnsignedEleve dict_dyn_ref, DictDynIntUnsignedEleve dict_dyn_ref2);
 

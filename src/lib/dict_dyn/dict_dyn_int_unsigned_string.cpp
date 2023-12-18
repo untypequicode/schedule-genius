@@ -119,7 +119,7 @@ bool DictDynIntUnsignedString::IfValue(int unsigned cle ,std::string condition, 
         std::cerr << "Error: condition not found" << std::endl;
 }
 
-bool DictDynIntUnsignedString::IfValue(unsigned int index, std::string condition, std::string value)
+bool DictDynIntUnsignedString::TestIfValue(unsigned int index, std::string condition, std::string value)
 {
     if(condition == "==" or condition == "=" or condition == "is")
         return (m_tab_values.Get(index) == value);
@@ -155,7 +155,7 @@ bool DictDynIntUnsignedString::IfKey(int unsigned cle, std::string condition, in
         std::cerr << "Error: condition not found" << std::endl;
 }
 
-bool DictDynIntUnsignedString::IfKey(unsigned int index, std::string condition, int unsigned value)
+bool DictDynIntUnsignedString::TestIfKey(unsigned int index, std::string condition, int unsigned value)
 {
     if (condition == "=" or condition == "==" or condition == "is")
         return (m_tab_keys.Get(index) == value);
