@@ -7,7 +7,7 @@ Eleve::Eleve()
           m_niveau_scolaire("\0"),
           m_matieres()
 {
-
+m_matieres.SetSecurity(false);
 }
 
 Eleve::Eleve(unsigned int id,
@@ -22,7 +22,7 @@ Eleve::Eleve(unsigned int id,
           m_matieres(),
           m_groupes(groupes)
 {
-
+    m_matieres.SetSecurity(false);
 }
 
 Eleve::Eleve(const Eleve& eleve)
@@ -33,7 +33,7 @@ Eleve::Eleve(const Eleve& eleve)
           m_matieres(eleve.m_matieres),
           m_groupes(eleve.m_groupes)
 {
-    
+    m_matieres.SetSecurity(false);
 }
 
 Eleve::~Eleve()

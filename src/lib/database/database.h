@@ -10,9 +10,8 @@
 * COntient une liste d'élèves et son nombre d'éléments
 *
 * Constructeurs :
-* Database() : m_taille(0), m_eleve(TabDynEleve(0))
-* Database(unsigned int taille) : m_taille(taille), m_eleve(TabDynEleve(taille))
-* Database(const Database& database) : m_taille(database.m_taille), m_eleve(database.m_eleve)
+* Database() :m_eleve(TabDynEleve(0))
+* Database(const Database& database) :m_eleve(database.m_eleve)
 *
 * Destructeur:
 * ~Database()
@@ -25,6 +24,7 @@
 * Accesseurs:
 * Eleve GetEleve(unsigned int index) const
 * TabDynString GetAllData(unsigned int index) const
+* unsigned int GetTaille() const
 *
 * Attributs :
 * TabDynEleve m_eleve
@@ -39,13 +39,22 @@ public:
     void EcraserData(Fichier source);
     void AjouterData(Fichier source);
 
+    unsigned int GetTaille() const;
     Eleve GetEleve(unsigned int index) const;
     TabDynString GetAllData(unsigned int index) const;
+    void SELECT(std::string table, std::string parametre);
+    void SELECT(std::string table, std::string parametre, std::string condition, int valeur);
+    void SELECT(std::string table, std::string parametre, std::string condition, std::string valeur);
 
     ~Database();
 
 private:
     TabDynEleve m_eleve;
+    TabDynInt m_Id;
+    TabDynString m_Prenom;
+    TabDynString m_Nom;
+    TabDynString m_NiveauScolaire;
+    TabDynString m_Matiere;
 };
 
 

@@ -338,12 +338,12 @@ std::string convertToString(int nombre)
     }
 
     std::string convert = "";
-    char signe = ' ';
+    std::string signe = "";
 
     if (nombre < 0)
     {
         nombre *= -1;
-        signe = '-';
+        signe = "-";
     }
 
     while(nombre != 0)
@@ -410,8 +410,6 @@ std::string convertToString(unsigned int nombre) {
     }
 
     std::string convert = "";
-    char signe = ' ';
-
     while (nombre != 0) {
         int nb = nombre % 10;
         nombre /= 10;
@@ -438,5 +436,5 @@ std::string convertToString(unsigned int nombre) {
             convert = "9" + convert;
         }
     }
-    return signe + convert;
+    return convert;
 }
