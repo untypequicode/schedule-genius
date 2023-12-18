@@ -94,31 +94,70 @@ class DictDynIntUnsignedEleve : public DictDyn
 {
 public:
     DictDynIntUnsignedEleve();
+    //crée un dictionnaire vide
     DictDynIntUnsignedEleve(unsigned int nb_elem_max);
+    //crée un dictionnaire vide avec une taille
     DictDynIntUnsignedEleve(unsigned int nb_elem_max, bool add_with_multiple, unsigned int number_addition);
+    //crée un dictionnaire vide avec une taille et des paramètres
     DictDynIntUnsignedEleve(const DictDynIntUnsignedEleve& dict_dyn_ref);
+    //crée un dictionnaire à partir d'un autre dictionnaire
+
     ~DictDynIntUnsignedEleve();
 
     void SetParam(bool add_with_multiple, unsigned int number_addition);
+    //change les paramètres du dictionnaire
     void SetSecurity(bool security);
+    //change le paramètre de sécurité du dictionnaire (pour destruction) attention aux faille de sécurité
 
     void Copy(DictDynIntUnsignedEleve& dict_dyn_ref);
+    //copie un dictionnaire dans un autre
     void Add(int unsigned key, Eleve value);
+    //ajoute un couple key : value au dictionnaire
     void Add(int unsigned key, Eleve value, bool add_with_multiple);
+    //ajoute un couple key : value au dictionnaire avec des paramètres
     Eleve Get(int unsigned key) const;
+    //renvoie la valeur associée à la clé
     TabDynIntUnsigned GetTabKeys() const;
+    //renvoie le tableau des clés
     TabDynEleve GetTabValues() const;
+    //renvoie le tableau des valeurs
     void Set(int unsigned key, Eleve value);
+    //change la valeur associée à la clé
+
+    DictDynIntUnsignedEleve FiltreValue(std::string condition, Eleve value);
+    // renvoie un dictionnaire filtré selon une condition sur la valeur
+    DictDynIntUnsignedEleve FiltreValue(TabDynString condition, TabDynEleve value, TabDynString OrAnd);
+    // renvoie un dictionnaire filtré selon plusieurs conditions sur la valeur
+    DictDynIntUnsignedEleve FiltreAndValue(TabDynString condition, TabDynEleve value);
+    // renvoie un dictionnaire filtré dont les valeur respecte toutes les conditions
+    DictDynIntUnsignedEleve FiltreOrValue(TabDynString condition, TabDynEleve value);
+    // renvoie un dictionnaire filtré dont les valeur respecte au moins une des conditions
+    DictDynIntUnsignedEleve FiltreKey(std::string condition, int unsigned value);
+    // renvoie un dictionnaire filtré selon une condition sur la clé
+    DictDynIntUnsignedEleve FiltreKey(TabDynString condition, TabDynIntUnsigned value, TabDynString OrAnd);
+    // renvoie un dictionnaire filtré selon plusieurs conditions sur la clé
+    DictDynIntUnsignedEleve FiltreAndKey(TabDynString condition, TabDynIntUnsigned value);
+    // renvoie un dictionnaire filtré dont les clés respecte toutes les conditions
+    DictDynIntUnsignedEleve FiltreOrKey(TabDynString condition, TabDynIntUnsigned value);
+    // renvoie un dictionnaire filtré dont les clés respecte au moins une des conditions
 
     Eleve Pop(int unsigned key);
     void Remove(Eleve value, int num);
     void Remove(Eleve value);
     void Remove(Eleve value, bool is_first);
 
+    bool IfKey(int unsigned cle, std::string condition, int unsigned value);
+    // renvoie si la clé respecte la condition
+    bool IfValue(int unsigned cle, std::string condition, Eleve value);
+    // renvoie si la valeur respecte la condition
+
 protected:
     TabDynIntUnsigned m_tab_keys;
     TabDynEleve m_tab_values;
+    bool IfValue(unsigned int index, std::string condition, Eleve value);
+    bool IfKey(unsigned int index, std::string condition, int unsigned value);
 };
+DictDynIntUnsignedEleve fusion(DictDynIntUnsignedEleve dict_dyn_ref, DictDynIntUnsignedEleve dict_dyn_ref2);
 
 /* SPLIT */
 
