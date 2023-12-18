@@ -129,7 +129,6 @@ private :
 
 
 
-
 class TabDynDouble : public TabDyn
 {
 public :
@@ -155,7 +154,6 @@ public :
 private :
     double* m_tab;
 };
-
 
 
 
@@ -187,7 +185,6 @@ private :
 
 
 
-
 class TabDynInt : public TabDyn
 {
 public :
@@ -216,7 +213,6 @@ private :
 
 
 
-
 class TabDynFloat : public TabDyn
 {
 public :
@@ -242,7 +238,6 @@ public :
 private :
     float* m_tab;
 };
-
 
 /* SPLIT */
 

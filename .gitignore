@@ -3,6 +3,8 @@
 .trash/
 cmake-build-debug/
 cmake-build-release/
+build/
+.fleet/
 
 
 ## Ignore Visual Studio temporary files, build results, and

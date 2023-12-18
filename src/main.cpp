@@ -16,9 +16,8 @@ int main()
 {
     //// Micky
     //
-
-    CsvGenerateur exemple(1000);
-    exemple.creerCsv(true);
+    // CsvGenerateur exemple;
+    // exemple.creerCsv(true);
 
 
     //// Vincent
@@ -27,7 +26,15 @@ int main()
     Fichier fichiertest(nom_fichier, 201);
     Database datatest;
     datatest.EcraserData(fichiertest);
-    datatest.SELECT("eleve", "ID", "!=", 7);
+    std::cout << "fin" << std::endl;
+//    for(int i = 0; i < datatest.GetEleve(0).GetNbMatiere(); i++)
+//    {
+//        std::cout << datatest.GetEleve(0).GetMatiere(i) << std::endl;
+//    }
+
+
+    //// Ethan
+    //
 
 
     return 0;
