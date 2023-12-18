@@ -378,8 +378,8 @@ DictDynIntUnsignedEleve fusion(DictDynIntUnsignedEleve dict_dyn_ref, DictDynIntU
 
     }
     return dict_dyn_result;
-}*/
-
+}
+*/
 Eleve DictDynIntUnsignedEleve::Pop(int unsigned key)
 {
     for (int i = 0; i < m_tab_keys.GetNbElem(); i++){

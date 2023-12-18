@@ -177,7 +177,7 @@ DictDynIntUnsignedString DictDynIntUnsignedString::FiltreValue(std::string condi
 {
     DictDynIntUnsignedString dict_dyn_result;
     for (unsigned int i = 0; i < m_nb_elem; i++){
-        if(IfValue(i, condition, value)){
+        if(TestIfValue(i, condition, value)){
             dict_dyn_result.Add(m_tab_keys.Get(i), m_tab_values.Get(i));
         }
     }
@@ -190,18 +190,18 @@ DictDynIntUnsignedString DictDynIntUnsignedString::FiltreValue(TabDynString cond
     bool test;
     unsigned int index = 0;
     for (unsigned int i = 0; i < m_nb_elem; i++) {
-        test = IfValue(i, condition.Get(0), value.Get(0));
+        test = TestIfValue(i, condition.Get(0), value.Get(0));
         while (index < OrAnd.GetNbElem())
         {
             if (OrAnd.Get(index) == "or" and !test) {
                 index++;
-                test = IfValue(i, condition.Get(index), value.Get(index));
+                test = TestIfValue(i, condition.Get(index), value.Get(index));
             }
 
             else if (OrAnd.Get(index) == "and" and test)
             {
                 index++;
-                test = IfValue(i, condition.Get(index), value.Get(index));
+                test = TestIfValue(i, condition.Get(index), value.Get(index));
             }
 
             else if (OrAnd.Get(index) == "or" or OrAnd.Get(index) == "and")
@@ -233,19 +233,19 @@ DictDynIntUnsignedString DictDynIntUnsignedString::FiltreKey(TabDynString condit
     unsigned int index = 0;
     for (unsigned int i = 0; i < m_nb_elem; i++)
     {
-        test = IfKey(i, condition.Get(0), value.Get(0));
+        test = TestIfKey(i, condition.Get(0), value.Get(0));
         while (index < OrAnd.GetNbElem())
         {
             if (OrAnd.Get(index) == "or" and !test)
             {
                 index++;
-                test = IfKey(i, condition.Get(index), value.Get(index));
+                test = TestIfKey(i, condition.Get(index), value.Get(index));
             }
 
             else if (OrAnd.Get(index) == "and" and test)
             {
                 index++;
-                test = IfKey(m_tab_keys.Get(i), condition.Get(index), value.Get(index));
+                test = TestIfKey(m_tab_keys.Get(i), condition.Get(index), value.Get(index));
             }
 
             else if (OrAnd.Get(index) == "or" or OrAnd.Get(index) == "and")
@@ -277,7 +277,7 @@ DictDynIntUnsignedString DictDynIntUnsignedString::FiltreAndValue(TabDynString c
     for(unsigned int i = 0; i < m_nb_elem; i++)
     {
         for(unsigned int j = 0; j < condition.GetNbElem(); j++){
-            if(!IfValue(i, condition.Get(j), value.Get(j)))
+            if(!TestIfValue(i, condition.Get(j), value.Get(j)))
             {
                 test = false;
                 break;
@@ -297,7 +297,7 @@ DictDynIntUnsignedString DictDynIntUnsignedString::FiltreOrValue(TabDynString co
     for(unsigned int i = 0; i < m_nb_elem; i++)
     {
         for(unsigned int j = 0; j < condition.GetNbElem(); j++){
-            if(IfValue(i, condition.Get(j), value.Get(j)))
+            if(TestIfValue(i, condition.Get(j), value.Get(j)))
             {
                 test = true;
                 break;
@@ -314,7 +314,7 @@ DictDynIntUnsignedString DictDynIntUnsignedString::FiltreKey(std::string conditi
 {
     DictDynIntUnsignedString dict_dyn_result;
     for (unsigned int i = 0; i < m_nb_elem; i++){
-        if(IfKey(i, condition, value)){
+        if(TestIfKey(i, condition, value)){
             dict_dyn_result.Add(m_tab_keys.Get(i), m_tab_values.Get(i));
         }
     }
@@ -329,7 +329,7 @@ DictDynIntUnsignedString DictDynIntUnsignedString::FiltreAndKey(TabDynString con
     {
         for (unsigned int j = 0; j < condition.GetNbElem(); j++)
         {
-            if(!IfKey(i, condition.Get(j), value.Get(j))){
+            if(!TestIfKey(i, condition.Get(j), value.Get(j))){
                 test = false;
                 break;
             }
@@ -349,7 +349,7 @@ DictDynIntUnsignedString DictDynIntUnsignedString::FiltreOrKey(TabDynString cond
     {
         for (unsigned int j = 0; j < condition.GetNbElem(); j++)
         {
-            if(IfKey(i, condition.Get(j), value.Get(j))){
+            if(TestIfKey(i, condition.Get(j), value.Get(j))){
                 test = true;
                 break;
             }
