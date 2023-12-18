@@ -20,7 +20,7 @@ public:
 
     unsigned int GetId() const;
     unsigned int GetNbHeure();
-    
+
     TabDynInt GetHoraires();
 
     void SetHoraires(unsigned int horaires1,
@@ -70,6 +70,7 @@ private :
     Profs* m_tab;
 };
 
+/* SPLIT */
 
 /* SPLIT */
 

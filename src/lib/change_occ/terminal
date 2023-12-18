@@ -1,0 +1,20 @@
+cd load_file/
+load key tab_basic__.cpp__.h__ mnt tab_dyn_basic
+load key tab_class__.cpp__ mnt tab_dyn_class
+load key tab_class__.h2__ mnt tab_dyn_class
+cd ../../
+cd tab_dyn/
+load key tab_basic__.cpp__.h__ run tab_dyn.h 1 2
+load key tab_class__.cpp__ run
+cd ../
+load key tab_class__.h2__ run tab_dyn/tab_dyn.h 1 character/ 1 tab_dyn_ .cpp __  .h
+cd change_occ/load_file/
+load key dict_basic__.cpp__.h__ mnt dict_dyn_basic
+load key dict_class__.cpp__ mnt dict_dyn_class
+load key dict_class__.h2__ mnt dict_dyn_class
+cd ../../
+cd dict_dyn/
+load key dict_basic__.cpp__.h__ run dict_dyn.h 1 2
+load key dict_class__.cpp__ run
+cd ../
+load key dict_class__.h2__ run dict_dyn/dict_dyn.h 1 character/ 2 dict_dyn_ int_unsigned_ .cpp __   .h
