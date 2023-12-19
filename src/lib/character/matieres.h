@@ -7,23 +7,19 @@ class Matieres
 {
 public:
     Matieres();
-    Matieres(std::string nom, unsigned int id,unsigned int nb_heure);
+    Matieres(unsigned int id,
+             unsigned int nb_heure,
+             unsigned int niveau_scolaire,
+             std::string nom);
     Matieres(const Matieres& matieres);
     ~Matieres();
 
-    std::string GetNom();
-    unsigned int GetId();
-    unsigned int GetNbHeure();
-
-    void SetNbHeure(unsigned int nb_heure);
-    void SetNom(std::string nom);
-    void SetId(unsigned int id);
-
 private:
-    std::string m_nom;
     unsigned int m_id;
     unsigned int m_nb_heure;
-};
+    unsigned int m_niveau_scolaire;
+    std::string m_nom;
+
 
 /* SPLIT */
 
