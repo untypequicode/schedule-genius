@@ -24,6 +24,13 @@ public:
     TabDynIntUnsigned GetMatieres() const;
     TabDynIntUnsigned GetGroupes() const;
 
+    void SetId(unsigned int id);
+    void SetAnnee(unsigned int annee);
+    void SetNiveauScolaire(unsigned int niveau_scolaire);
+    void SetPrenom(std::string prenom);
+    void SetNom(std::string nom);
+    void SetMatieres(TabDynIntUnsigned matieres);
+    void SetGroupes(TabDynIntUnsigned groupes);
 
 private:
     unsigned int m_id;

@@ -72,3 +72,38 @@ TabDynIntUnsigned Eleve::GetGroupes() const
 {
     return m_groupes;
 }
+
+void Eleve::SetId(unsigned int id)
+{
+    m_id = id;
+}
+
+void Eleve::SetAnnee(unsigned int annee)
+{
+    m_annee = annee;
+}
+
+void Eleve::SetNiveauScolaire(unsigned int niveau_scolaire)
+{
+    m_niveau_scolaire = niveau_scolaire;
+}
+
+void Eleve::SetPrenom(std::string prenom)
+{
+    m_prenom = prenom;
+}
+
+void Eleve::SetNom(std::string nom)
+{
+    m_nom = nom;
+}
+
+void Eleve::SetMatieres(TabDynIntUnsigned matieres)
+{
+    m_matieres = matieres;
+}
+
+void Eleve::SetGroupes(TabDynIntUnsigned groupes)
+{
+    m_groupes = groupes;
+}
