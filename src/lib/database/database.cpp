@@ -113,6 +113,7 @@ void Database::EcraserData(Fichier source)
 
     if (/*source.GetNbLigne() <= 0*/ true) // TODO : changer le if pour qu'il soit fonctionnel quand les Eleve seront implémentable
     {
+        std::cout << "debut de la " << last << "eme ligne" << std::endl;
         std::ifstream myfiletest;
         myfiletest.open(source.GetNom());
         std::string lignetest;
@@ -151,23 +152,22 @@ void Database::EcraserData(Fichier source)
                 }
             }
             // TODO : inserer les donnée des eleves quand les Eleve seront implémentable
-//            Eleve eleve(convertToInt(data.Get(0)), data.Get(1), data.Get(2), data.Get(3));
-//            eleve.SetSecurity(false);
-//            retour.Add(eleve);
-//            std::cout << eleve.GetId() << " " << eleve.GetNom() << eleve.GetPrenom() << eleve.GetNiveauScolaire() << std::endl;
-//            data.Clear();
-//            std::cout << "Matieres facultatives : " << std::endl;
-//            for (unsigned int i = 0; i < matieres.GetNbElem(); i++)
-//            {
-//                retour.Get(last).AddMatiere(matieres.Get(i));
-//                std::cout << matieres.Get(i) << std::endl;
-//            }
-//            matieres.Clear();
-//            indice = 0;
-//            last++;
-//            std::getline(myfiletest, lignetest);
-//            std::cout << "fin de la " << last -1 << "eme ligne" << std::endl;
-//            std::cout << "test : " << (ligne != lignetest) << std::endl << std::endl;
+            Eleve eleve(convertToInt(data.Get(0)), convertToInt(data.Get(1)), convertToInt(data.Get(2)), data.Get(3), data.Get(4), matieres, TabDynString(0));
+            //eleve.SetSecurity(false);
+            retour.Add(eleve);
+            std::cout << eleve.GetId() << " " << eleve.GetNom() << eleve.GetPrenom() << eleve.GetNiveauScolaire() << std::endl;
+            data.Clear();
+            std::cout << "Matieres facultatives : " << std::endl;
+            for (unsigned int i = 0; i < matieres.GetNbElem(); i++)
+            {
+                std::cout << matieres.Get(i) << std::endl;
+            }
+            matieres.Clear();
+            indice = 0;
+            std::getline(myfiletest, lignetest);
+            std::cout << "fin de la " << last << "eme ligne" << std::endl;
+            last++;
+            std::cout << "test : " << (ligne != lignetest) << std::endl << std::endl;
 
         }
         // TODO : recoder a boucle en fonction de la taille du fichier
@@ -178,3 +178,4 @@ void Database::AjouterData(Fichier source)
 {
     // TODO : coder la fonction AjouterData a partir de la fonction EcraserData
 }
+//id, annee, niveau_scolaire, prenom, nom, matieres, groupe
