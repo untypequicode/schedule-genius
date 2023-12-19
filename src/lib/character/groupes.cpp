@@ -1,39 +1,39 @@
 #include "groupes.h"
 
 Groupes::Groupes()
- : m_id(0),
-   m_nom(""),
-   m_matiere(),
-   m_horaire(),
-   m_prof(),
-   m_niveau_scolaire(0)
+    : m_id(0),
+      m_niveau_scolaire(0),
+      m_nom("/0"),
+      m_matiere(TabDynIntUnsigned()),
+      m_salle(TabDynIntUnsigned()),
+      m_prof(TabDynIntUnsigned())
 {
 
 }
 
 Groupes::Groupes(unsigned int id,
+                 unsigned int niveau_scolaire,
                  std::string nom,
-                 TabDynString matiere,
-                 TabDynInt horaire,
-                 Profs prof,
-                 unsigned int niveau_scolaire)
- : m_id(id),
-   m_nom(nom),
-   m_matiere(matiere),
-   m_horaire(horaire),
-   m_prof(prof),
-   m_niveau_scolaire(niveau_scolaire)
-{
+                 TabDynIntUnsigned matiere,
+                 TabDynIntUnsigned salle,
+                 TabDynIntUnsigned prof)
+    : m_id(id),
+      m_nom(nom),
+      m_matiere(matiere),
+      m_salle(salle),
+      m_prof(prof),
+      m_niveau_scolaire(niveau_scolaire)
+ {
 
-}
+ }
 
 Groupes::Groupes(const Groupes &groupes)
- : m_id(groupes.m_id),
-   m_nom(groupes.m_nom),
-   m_matiere(groupes.m_matiere),
-   m_horaire(groupes.m_horaire),
-   m_prof(groupes.m_prof),
-   m_niveau_scolaire(groupes.m_niveau_scolaire)
+    : m_id(groupes.GetId()),
+      m_nom(groupes.GetNom()),
+      m_matiere(groupes.GetMatiere()),
+      m_salle(groupes.GetSalle()),
+      m_prof(groupes.GetProf()),
+      m_niveau_scolaire(groupes.GetNiveauScolaire())
 {
 
 }
@@ -43,34 +43,34 @@ Groupes::~Groupes()
 
 }
 
-unsigned int Groupes::GetId()
+unsigned int Groupes::GetId() const
 {
     return m_id;
 }
 
-std::string Groupes::GetNom()
+unsigned int Groupes::GetNiveauScolaire() const
+{
+    return m_niveau_scolaire;
+}
+
+std::string Groupes::GetNom() const
 {
     return m_nom;
 }
 
-TabDynString Groupes::GetMatiere()
-{
-    return m_matiere;
-}
-
-TabDynInt Groupes::GetHoraire()
-{
-    return m_horaire;
-}
-
-Profs Groupes::GetProf()
+TabDynIntUnsigned Groupes::GetProf() const
 {
     return m_prof;
 }
 
-unsigned int Groupes::GetNiveauScolaire()
+TabDynIntUnsigned Groupes::GetMatiere() const
 {
-    return m_niveau_scolaire;
+    return m_matiere;
+}
+
+TabDynIntUnsigned Groupes::GetSalle() const
+{
+    return m_salle;
 }
 
 void Groupes::SetId(unsigned int id)
@@ -78,27 +78,27 @@ void Groupes::SetId(unsigned int id)
     m_id = id;
 }
 
+void Groupes::SetNiveauScolaire(unsigned int niveau_scolaire)
+{
+    m_niveau_scolaire = niveau_scolaire;
+}
+
 void Groupes::SetNom(std::string nom)
 {
     m_nom = nom;
 }
 
-void Groupes::SetMatiere(TabDynString matiere)
-{
-    m_matiere = matiere;
-}
-
-void Groupes::SetHoraire(TabDynInt horaire)
-{
-    m_horaire = horaire;
-}
-
-void Groupes::SetProf(Profs prof)
+void Groupes::SetProf(TabDynIntUnsigned prof)
 {
     m_prof = prof;
 }
 
-void Groupes::SetNiveauScolaire(unsigned int niveau_scolaire)
+void Groupes::SetMatiere(TabDynIntUnsigned matiere)
 {
-    m_niveau_scolaire = niveau_scolaire;
+    m_matiere = matiere;
+}
+
+void Groupes::SetSalle(TabDynIntUnsigned salle)
+{
+    m_salle = salle;
 }

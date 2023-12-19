@@ -1,19 +1,26 @@
 #include "matieres.h"
 
 Matieres::Matieres()
- : Matieres("/0", 0, 0)
+    : m_id(0), m_nb_heure(0), m_niveau_scolaire(0), m_nom("/0")
 {
 
 }
 
-Matieres::Matieres(std::string nom, unsigned int id,unsigned int nb_heure)
- : m_nom(nom), m_id(id), m_nb_heure(nb_heure)
+Matieres::Matieres(unsigned int id,
+                   unsigned int nb_heure,
+                   unsigned int niveau_scolaire,
+                   std::string nom)
+    : m_id(id), m_nb_heure(nb_heure),
+    m_niveau_scolaire(niveau_scolaire), m_nom(nom)
 {
 
 }
 
 Matieres::Matieres(const Matieres& matieres)
- : m_nom(matieres.m_nom), m_id(matieres.m_id), m_nb_heure(matieres.m_nb_heure)
+ : m_id(matieres.GetId()),
+ m_nb_heure(matieres.GetNbHeure()),
+ m_niveau_scolaire(matieres.GetNiveauScolaire()),
+ m_nom(matieres.GetNom())
 {
 
 }
@@ -23,32 +30,22 @@ Matieres::~Matieres()
 
 }
 
-void Matieres::SetNbHeure(unsigned int nb_heure)
-{
-    m_nb_heure = nb_heure;
-}
-
-std::string Matieres::GetNom()
-{
-    return m_nom;
-}
-
-unsigned int Matieres::GetId()
+unsigned int Matieres::GetId() const
 {
     return m_id;
 }
 
-unsigned int Matieres::GetNbHeure()
+unsigned int Matieres::GetNbHeure() const
 {
     return m_nb_heure;
 }
 
-void Matieres::SetNom(std::string nom)
+unsigned int Matieres::GetNiveauScolaire() const
 {
-    m_nom = nom;
+    return m_niveau_scolaire;
 }
 
-void Matieres::SetId(unsigned int id)
+std::string Matieres::GetNom() const
 {
-    m_id = id;
+    return m_nom;
 }
