@@ -72,3 +72,33 @@ TabDynIntUnsigned Groupes::GetSalle() const
 {
     return m_salle;
 }
+
+void Groupes::SetId(unsigned int id)
+{
+    m_id = id;
+}
+
+void Groupes::SetNiveauScolaire(unsigned int niveau_scolaire)
+{
+    m_niveau_scolaire = niveau_scolaire;
+}
+
+void Groupes::SetNom(std::string nom)
+{
+    m_nom = nom;
+}
+
+void Groupes::SetProf(TabDynIntUnsigned prof)
+{
+    m_prof = prof;
+}
+
+void Groupes::SetMatiere(TabDynIntUnsigned matiere)
+{
+    m_matiere = matiere;
+}
+
+void Groupes::SetSalle(TabDynIntUnsigned salle)
+{
+    m_salle = salle;
+}

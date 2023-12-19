@@ -26,6 +26,14 @@ public:
     TabDynIntUnsigned GetMatiere() const;
     TabDynIntUnsigned GetSalle() const;
 
+    void SetId(unsigned int id);
+    void SetNiveauScolaire(unsigned int niveau_scolaire);
+    void SetNom(std::string nom);
+    void SetProf(TabDynIntUnsigned prof);
+    void SetMatiere(TabDynIntUnsigned matiere);
+    void SetSalle(TabDynIntUnsigned salle);
+
+
 private:
     unsigned int m_id;
     unsigned int m_niveau_scolaire;
