@@ -3,23 +3,33 @@
 
 #include "../tab_dyn/tab_dyn.h"
 
-class Matieres
-{
+class Matieres {
 public:
     Matieres();
+
     Matieres(unsigned int id,
              unsigned int nb_heure,
              unsigned int niveau_scolaire,
              std::string nom);
-    Matieres(const Matieres& matieres);
+
+    Matieres(const Matieres &matieres);
+
     ~Matieres();
+
+    unsigned int GetId() const;
+
+    unsigned int GetNbHeure() const;
+
+    unsigned int GetNiveauScolaire() const;
+
+    std::string GetNom() const;
 
 private:
     unsigned int m_id;
     unsigned int m_nb_heure;
     unsigned int m_niveau_scolaire;
     std::string m_nom;
-
+};
 
 /* SPLIT */
 
