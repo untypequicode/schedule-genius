@@ -19,6 +19,12 @@ public:
     Groupes(const Groupes& groupes);
     ~Groupes();
 
+    unsigned int GetId() const;
+    unsigned int GetNiveauScolaire() const;
+    std::string GetNom() const;
+    TabDynIntUnsigned GetProf() const;
+    TabDynIntUnsigned GetMatiere() const;
+    TabDynIntUnsigned GetSalle() const;
 
 private:
     unsigned int m_id;
