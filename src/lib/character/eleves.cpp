@@ -12,6 +12,18 @@ Eleve::Eleve()
 
 }
 
+Eleve::Eleve(const Eleve& eleve)
+        : m_id(eleve.GetId()),
+          m_annee(eleve.GetAnnee()),
+          m_niveau_scolaire(eleve.GetNiveauScolaire()),
+          m_prenom(eleve.GetPrenom()),
+          m_nom(eleve.GetNom()),
+          m_matieres(eleve.GetMatieres()),
+          m_groupes(eleve.GetGroupes())
+{
+
+}
+
 Eleve::Eleve(unsigned int id,
              unsigned int annee,
              unsigned int niveau_scolaire,

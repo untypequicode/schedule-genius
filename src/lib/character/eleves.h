@@ -6,6 +6,7 @@ class Eleve
 {
 public:
     Eleve();
+    Eleve(const Eleve& eleve);
     Eleve(unsigned int id,
           unsigned int annee,
           unsigned int niveau_scolaire,
