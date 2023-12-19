@@ -8,13 +8,12 @@ public:
     Eleve();
     Eleve(unsigned int id,
           unsigned int annee,
+          unsigned int niveau_scolaire,
           std::string prenom,
           std::string nom,
-          std::string niveau_scolaire,
           TabDynIntUnsigned matieres,
           TabDynIntUnsigned groupes);
     //Eleve
-    Eleve(const Eleve& eleve);
     ~Eleve();
 
     unsigned int GetId() const;

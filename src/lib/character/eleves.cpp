@@ -1,13 +1,13 @@
 #include "eleves.h"
 
 Eleve::Eleve()
-        : m_id(/0),
-          m_annee(/0),
-          m_niveau_scolaire(/0),
+        : m_id(0),
+          m_annee(0),
+          m_niveau_scolaire(0),
           m_prenom("/0"),
           m_nom("/0"),
-          m_matieres(),
-          m_groupes()
+          m_matieres(TabDynIntUnsigned()),
+          m_groupes(TabDynIntUnsigned())
 {
 
 }
@@ -33,20 +33,42 @@ Eleve::Eleve(unsigned int id,
 
 }
 
-Eleve::Eleve(const Eleve& eleve)
-        : m_id(eleve.m_id),
-          m_annee(eleve.m_annee),
-          m_niveau_scolaire(eleve.m_niveau_scolaire),
-          m_prenom(eleve.m_prenom),
-          m_nom(eleve.m_nom),
-          m_matieres(eleve.m_matieres),
-          m_groupes(eleve.m_groupes)
-{
-    
-}
-
 Eleve::~Eleve()
 {
 
 }
+
+unsigned int Eleve::GetId() const
+{
+    return m_id;
+}
+
+unsigned int Eleve::GetAnnee() const
+{
+    return m_annee;
+}
+
+unsigned int Eleve::GetNiveauScolaire() const
+{
+    return m_niveau_scolaire;
+}
+
+std::string Eleve::GetPrenom() const
+{
+    return m_prenom;
+}
+
+std::string Eleve::GetNom() const
+{
+    return m_nom;
+}
+
+TabDynIntUnsigned Eleve::GetMatieres() const
+{
+    return m_matieres;
+}
+
+TabDynIntUnsigned Eleve::GetGroupes() const
+{
+    return m_groupes;
 }
