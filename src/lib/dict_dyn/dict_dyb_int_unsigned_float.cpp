@@ -120,58 +120,61 @@ void DictDynIntUnsignedFloat::Set(int unsigned key, float value)
     }
 }
 
-bool DictDynIntUnsignedFloat::IfValue(int unsigned cle, std::string condition, float value)
+bool DictDynIntUnsignedFloat::IfValue(int unsigned key, std::string condition, float value_id)
 {
     if(condition == "=" or condition == "==" or condition == "is")
-        return (Get(cle) == value);
+      return (Get(key) == value_id);
     else if(condition == "!=" or condition == "is not")
-        return (Get(cle) != value);
+      return (Get(key) != value_id);
     else if(condition == "<")
-        return(Get(cle) < value);
+      return (Get(key) < value_id);
     else if(condition == "<=")
-        return(Get(cle) <= value);
+      return (Get(key) <= value_id);
     else if(condition == ">")
-        return(Get(cle) > value);
+      return (Get(key) > value_id);
     else if(condition == ">=")
-        return(Get(cle) >= value);
+      return (Get(key) >= value_id);
     else
         std::cerr << "Error: condition not found" << std::endl;
+    return false;
 }
 
-bool DictDynIntUnsignedFloat::TestIfValue(unsigned int index, std::string condition, float value)
+bool DictDynIntUnsignedFloat::TestIfValue(unsigned int index, std::string condition, float value_id)
 {
     if(condition == "==" or condition == "=" or condition == "is")
-        return (m_tab_values.Get(index) == value);
+      return (m_tab_values.Get(index) == value_id);
     else if(condition == "!=" or condition == "is not")
-        return (m_tab_values.Get(index) != value);
+      return (m_tab_values.Get(index) != value_id);
     else if(condition == "<")
-        return(m_tab_values.Get(index) < value);
+      return(m_tab_values.Get(index) < value_id);
     else if(condition == "<=")
-        return(m_tab_values.Get(index) <= value);
+      return(m_tab_values.Get(index) <= value_id);
     else if(condition == ">")
-        return(m_tab_values.Get(index) > value);
+      return(m_tab_values.Get(index) > value_id);
     else if(condition == ">=")
-        return(m_tab_values.Get(index) >= value);
+      return(m_tab_values.Get(index) >= value_id);
     else
-        std::cerr << "Error: condition not found" << std::endl;
+      std::cerr << "Error: condition not found" << std::endl;
+    return false;
 }
 
-bool DictDynIntUnsignedFloat::IfKey(int unsigned cle, std::string condition, int unsigned value)
+bool DictDynIntUnsignedFloat::IfKey(int unsigned key, std::string condition, int unsigned value)
 {
     if(condition == "=" or condition == "==" or condition == "is")
-        return (cle == value);
+        return (key == value);
     else if(condition == "!=" or condition == "is not")
-        return (cle != value);
+        return (key != value);
     else if(condition == "<")
-        return(cle < value);
+        return(key < value);
     else if(condition == "<=")
-        return(cle <= value);
+        return(key <= value);
     else if(condition == ">")
-        return(cle > value);
+        return(key > value);
     else if(condition == ">=")
-        return(cle >= value);
+        return(key >= value);
     else
-        std::cerr << "Error: condition not found" << std::endl;
+      std::cerr << "Error: condition not found" << std::endl;
+    return false;
 }
 
 bool DictDynIntUnsignedFloat::TestIfKey(unsigned int index, std::string condition, int unsigned value)
@@ -189,7 +192,8 @@ bool DictDynIntUnsignedFloat::TestIfKey(unsigned int index, std::string conditio
     else if (condition == ">=")
         return (m_tab_keys.Get(index) >= value);
     else
-        std::cerr << "Error: condition not found" << std::endl;
+      std::cerr << "Error: condition not found" << std::endl;
+    return false;
 }
 
 DictDynIntUnsignedFloat DictDynIntUnsignedFloat::FiltreValue(std::string condition, float value)

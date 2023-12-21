@@ -120,58 +120,61 @@ void DictDynCharInt::Set(char key, int value)
     }
 }
 
-bool DictDynCharInt::IfValue(char cle, std::string condition, int value)
+bool DictDynCharInt::IfValue(char key, std::string condition, int value_id)
 {
     if(condition == "=" or condition == "==" or condition == "is")
-        return (Get(cle) == value);
+      return (Get(key) == value_id);
     else if(condition == "!=" or condition == "is not")
-        return (Get(cle) != value);
+      return (Get(key) != value_id);
     else if(condition == "<")
-        return(Get(cle) < value);
+      return (Get(key) < value_id);
     else if(condition == "<=")
-        return(Get(cle) <= value);
+      return (Get(key) <= value_id);
     else if(condition == ">")
-        return(Get(cle) > value);
+      return (Get(key) > value_id);
     else if(condition == ">=")
-        return(Get(cle) >= value);
+      return (Get(key) >= value_id);
     else
         std::cerr << "Error: condition not found" << std::endl;
+    return false;
 }
 
-bool DictDynCharInt::TestIfValue(unsigned int index, std::string condition, int value)
+bool DictDynCharInt::TestIfValue(unsigned int index, std::string condition, int value_id)
 {
     if(condition == "==" or condition == "=" or condition == "is")
-        return (m_tab_values.Get(index) == value);
+      return (m_tab_values.Get(index) == value_id);
     else if(condition == "!=" or condition == "is not")
-        return (m_tab_values.Get(index) != value);
+      return (m_tab_values.Get(index) != value_id);
     else if(condition == "<")
-        return(m_tab_values.Get(index) < value);
+      return(m_tab_values.Get(index) < value_id);
     else if(condition == "<=")
-        return(m_tab_values.Get(index) <= value);
+      return(m_tab_values.Get(index) <= value_id);
     else if(condition == ">")
-        return(m_tab_values.Get(index) > value);
+      return(m_tab_values.Get(index) > value_id);
     else if(condition == ">=")
-        return(m_tab_values.Get(index) >= value);
+      return(m_tab_values.Get(index) >= value_id);
     else
-        std::cerr << "Error: condition not found" << std::endl;
+      std::cerr << "Error: condition not found" << std::endl;
+    return false;
 }
 
-bool DictDynCharInt::IfKey(char cle, std::string condition, char value)
+bool DictDynCharInt::IfKey(char key, std::string condition, char value)
 {
     if(condition == "=" or condition == "==" or condition == "is")
-        return (cle == value);
+        return (key == value);
     else if(condition == "!=" or condition == "is not")
-        return (cle != value);
+        return (key != value);
     else if(condition == "<")
-        return(cle < value);
+        return(key < value);
     else if(condition == "<=")
-        return(cle <= value);
+        return(key <= value);
     else if(condition == ">")
-        return(cle > value);
+        return(key > value);
     else if(condition == ">=")
-        return(cle >= value);
+        return(key >= value);
     else
-        std::cerr << "Error: condition not found" << std::endl;
+      std::cerr << "Error: condition not found" << std::endl;
+    return false;
 }
 
 bool DictDynCharInt::TestIfKey(unsigned int index, std::string condition, char value)
@@ -189,7 +192,8 @@ bool DictDynCharInt::TestIfKey(unsigned int index, std::string condition, char v
     else if (condition == ">=")
         return (m_tab_keys.Get(index) >= value);
     else
-        std::cerr << "Error: condition not found" << std::endl;
+      std::cerr << "Error: condition not found" << std::endl;
+    return false;
 }
 
 DictDynCharInt DictDynCharInt::FiltreValue(std::string condition, int value)
