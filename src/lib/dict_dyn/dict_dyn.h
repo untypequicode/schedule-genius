@@ -11,13 +11,6 @@ public:
     DictDyn(unsigned int nb_elem_max, bool add_with_multiple, unsigned int number_addition);
     DictDyn(const DictDyn& dict_dyn);
     ~DictDyn();
-
-    unsigned int GetNbElem() const;
-    unsigned int GetNbElemMax() const;
-    void SetParam(bool add_with_multiple, unsigned int number_addition);
-    void Clear();
-    void Clear(bool save_tab_memory);
-    void SetSecurity(bool security);
 };
 
 /* SPLIT */
@@ -33,13 +26,17 @@ public:
     //crée un dictionnaire vide avec une taille et des paramètres
     DictDynCharDouble(const DictDynCharDouble& dict_dyn_ref);
     //crée un dictionnaire à partir d'un autre dictionnaire
-
     ~DictDynCharDouble();
 
     void SetParam(bool add_with_multiple, unsigned int number_addition);
     //change les paramètres du dictionnaire
     void SetSecurity(bool security);
     //change le paramètre de sécurité du dictionnaire (pour destruction) attention aux faille de sécurité
+
+    unsigned int GetNbElem() const;
+    unsigned int GetNbElemMax() const;
+    void Clear();
+    void Clear(bool save_tab_memory);
 
     void Copy(DictDynCharDouble& dict_dyn_ref);
     //copie un dictionnaire dans un autre
@@ -78,17 +75,19 @@ public:
     void Remove(double value);
     void Remove(double value, bool is_first);
 
-    bool IfKey(char cle, std::string condition, char value);
+    bool IfKey(char key, std::string condition, char value);
     // renvoie si la clé respecte la condition
-    bool IfValue(char cle, std::string condition, double value);
+    bool IfValue(char key, std::string condition, double value);
     // renvoie si la valeur respecte la condition
 
 protected:
     TabDynChar m_tab_keys;
     TabDynDouble m_tab_values;
+
     bool TestIfValue(unsigned int index, std::string condition, double value);
     bool TestIfKey(unsigned int index, std::string condition, char value);
 };
+
 DictDynCharDouble fusion(DictDynCharDouble dict_dyn_ref, DictDynCharDouble dict_dyn_ref2);
 
 /* SPLIT */
@@ -104,13 +103,17 @@ public:
     //crée un dictionnaire vide avec une taille et des paramètres
     DictDynCharInt(const DictDynCharInt& dict_dyn_ref);
     //crée un dictionnaire à partir d'un autre dictionnaire
-
     ~DictDynCharInt();
 
     void SetParam(bool add_with_multiple, unsigned int number_addition);
     //change les paramètres du dictionnaire
     void SetSecurity(bool security);
     //change le paramètre de sécurité du dictionnaire (pour destruction) attention aux faille de sécurité
+
+    unsigned int GetNbElem() const;
+    unsigned int GetNbElemMax() const;
+    void Clear();
+    void Clear(bool save_tab_memory);
 
     void Copy(DictDynCharInt& dict_dyn_ref);
     //copie un dictionnaire dans un autre
@@ -149,17 +152,19 @@ public:
     void Remove(int value);
     void Remove(int value, bool is_first);
 
-    bool IfKey(char cle, std::string condition, char value);
+    bool IfKey(char key, std::string condition, char value);
     // renvoie si la clé respecte la condition
-    bool IfValue(char cle, std::string condition, int value);
+    bool IfValue(char key, std::string condition, int value);
     // renvoie si la valeur respecte la condition
 
 protected:
     TabDynChar m_tab_keys;
     TabDynInt m_tab_values;
+
     bool TestIfValue(unsigned int index, std::string condition, int value);
     bool TestIfKey(unsigned int index, std::string condition, char value);
 };
+
 DictDynCharInt fusion(DictDynCharInt dict_dyn_ref, DictDynCharInt dict_dyn_ref2);
 
 
@@ -175,13 +180,17 @@ public:
     //crée un dictionnaire vide avec une taille et des paramètres
     DictDynIntUnsignedString(const DictDynIntUnsignedString& dict_dyn_ref);
     //crée un dictionnaire à partir d'un autre dictionnaire
-
     ~DictDynIntUnsignedString();
 
     void SetParam(bool add_with_multiple, unsigned int number_addition);
     //change les paramètres du dictionnaire
     void SetSecurity(bool security);
     //change le paramètre de sécurité du dictionnaire (pour destruction) attention aux faille de sécurité
+
+    unsigned int GetNbElem() const;
+    unsigned int GetNbElemMax() const;
+    void Clear();
+    void Clear(bool save_tab_memory);
 
     void Copy(DictDynIntUnsignedString& dict_dyn_ref);
     //copie un dictionnaire dans un autre
@@ -220,17 +229,19 @@ public:
     void Remove(std::string value);
     void Remove(std::string value, bool is_first);
 
-    bool IfKey(int unsigned cle, std::string condition, int unsigned value);
+    bool IfKey(int unsigned key, std::string condition, int unsigned value);
     // renvoie si la clé respecte la condition
-    bool IfValue(int unsigned cle, std::string condition, std::string value);
+    bool IfValue(int unsigned key, std::string condition, std::string value);
     // renvoie si la valeur respecte la condition
 
 protected:
     TabDynIntUnsigned m_tab_keys;
     TabDynString m_tab_values;
+
     bool TestIfValue(unsigned int index, std::string condition, std::string value);
     bool TestIfKey(unsigned int index, std::string condition, int unsigned value);
 };
+
 DictDynIntUnsignedString fusion(DictDynIntUnsignedString dict_dyn_ref, DictDynIntUnsignedString dict_dyn_ref2);
 
 
@@ -246,13 +257,17 @@ public:
     //crée un dictionnaire vide avec une taille et des paramètres
     DictDynIntUnsignedFloat(const DictDynIntUnsignedFloat& dict_dyn_ref);
     //crée un dictionnaire à partir d'un autre dictionnaire
-
     ~DictDynIntUnsignedFloat();
 
     void SetParam(bool add_with_multiple, unsigned int number_addition);
     //change les paramètres du dictionnaire
     void SetSecurity(bool security);
     //change le paramètre de sécurité du dictionnaire (pour destruction) attention aux faille de sécurité
+
+    unsigned int GetNbElem() const;
+    unsigned int GetNbElemMax() const;
+    void Clear();
+    void Clear(bool save_tab_memory);
 
     void Copy(DictDynIntUnsignedFloat& dict_dyn_ref);
     //copie un dictionnaire dans un autre
@@ -291,17 +306,19 @@ public:
     void Remove(float value);
     void Remove(float value, bool is_first);
 
-    bool IfKey(int unsigned cle, std::string condition, int unsigned value);
+    bool IfKey(int unsigned key, std::string condition, int unsigned value);
     // renvoie si la clé respecte la condition
-    bool IfValue(int unsigned cle, std::string condition, float value);
+    bool IfValue(int unsigned key, std::string condition, float value);
     // renvoie si la valeur respecte la condition
 
 protected:
     TabDynIntUnsigned m_tab_keys;
     TabDynFloat m_tab_values;
+
     bool TestIfValue(unsigned int index, std::string condition, float value);
     bool TestIfKey(unsigned int index, std::string condition, int unsigned value);
 };
+
 DictDynIntUnsignedFloat fusion(DictDynIntUnsignedFloat dict_dyn_ref, DictDynIntUnsignedFloat dict_dyn_ref2);
 
 /* SPLIT */

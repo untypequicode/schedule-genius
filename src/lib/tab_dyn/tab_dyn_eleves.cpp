@@ -1,7 +1,8 @@
 #include "../character/eleves.h"
 
 TabDynEleve::TabDynEleve()
-        : TabDyn()
+        : TabDyn(),
+          m_tab(new Eleve[0])
 {
 
 }
@@ -26,7 +27,8 @@ TabDynEleve::TabDynEleve(const TabDynEleve& tab_dyn_ref)
 {
     for (unsigned int i = 0; i < tab_dyn_ref.m_nb_elem; i++)
     {
-        m_tab[i] = tab_dyn_ref.m_tab[i];
+        Add(tab_dyn_ref.Get(i));
+//        m_tab[i] = tab_dyn_ref.m_tab[i];
     }
 }
 

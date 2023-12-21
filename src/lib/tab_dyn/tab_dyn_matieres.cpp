@@ -1,7 +1,8 @@
 #include "../character/matieres.h"
 
 TabDynMatieres::TabDynMatieres()
-        : TabDyn()
+        : TabDyn(),
+          m_tab(new Matieres[0])
 {
 
 }
@@ -26,7 +27,8 @@ TabDynMatieres::TabDynMatieres(const TabDynMatieres& tab_dyn_ref)
 {
     for (unsigned int i = 0; i < tab_dyn_ref.m_nb_elem; i++)
     {
-        m_tab[i] = tab_dyn_ref.m_tab[i];
+        Add(tab_dyn_ref.Get(i));
+//        m_tab[i] = tab_dyn_ref.m_tab[i];
     }
 }
 

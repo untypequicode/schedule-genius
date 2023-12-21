@@ -1,7 +1,9 @@
 #include "dict_dyn.h"
 
 DictDynIntUnsignedFloat::DictDynIntUnsignedFloat()
-    : DictDyn()
+    : DictDyn(),
+      m_tab_keys(),
+      m_tab_values()
 {
 
 }
@@ -47,6 +49,24 @@ void DictDynIntUnsignedFloat::SetSecurity(bool security)
     m_tab_values.SetSecurity(security);
 }
 
+unsigned int DictDynIntUnsignedFloat::GetNbElem() const
+{
+  if (m_tab_keys.GetNbElem() < m_tab_values.GetNbElem())
+    {
+        return m_tab_keys.GetNbElem();
+    }
+  return m_tab_values.GetNbElem();
+}
+
+unsigned int DictDynIntUnsignedFloat::GetNbElemMax() const
+{
+  if (m_tab_keys.GetNbElemMax() < m_tab_values.GetNbElemMax())
+    {
+    return m_tab_keys.GetNbElemMax();
+  }
+  return m_tab_values.GetNbElemMax();
+}
+
 void DictDynIntUnsignedFloat::Copy(DictDynIntUnsignedFloat &dict_dyn_ref){
     m_tab_keys.Copy(dict_dyn_ref.m_tab_keys);
     m_tab_values.Copy(dict_dyn_ref.m_tab_values);
@@ -59,7 +79,7 @@ void DictDynIntUnsignedFloat::Add(int unsigned key, float value)
 
 void DictDynIntUnsignedFloat::Add(int unsigned key, float value, bool add_with_multiple)
 {
-    for (int i = 0; i < m_tab_keys.GetNbElem(); i++){
+    for (int i = 0; i < GetNbElem(); i++){
         if(m_tab_keys.Get(i) == key){
             m_tab_values.Set(i, value);
             return;
@@ -67,13 +87,12 @@ void DictDynIntUnsignedFloat::Add(int unsigned key, float value, bool add_with_m
     }
     m_tab_keys.Add(key, add_with_multiple);
     m_tab_values.Add(value, add_with_multiple);
-    m_nb_elem++;
 
 }
 
 float DictDynIntUnsignedFloat::Get(int unsigned key) const
 {
-    for (int i = 0; i < m_tab_keys.GetNbElem(); i++){
+    for (int i = 0; i < GetNbElem(); i++){
         if(m_tab_keys.Get(i) == key){
             return m_tab_values.Get(i);
         }
@@ -93,7 +112,7 @@ TabDynFloat DictDynIntUnsignedFloat::GetTabValues() const
 
 void DictDynIntUnsignedFloat::Set(int unsigned key, float value)
 {
-    for (int i = 0; i < m_tab_keys.GetNbElem(); i++){
+    for (int i = 0; i < GetNbElem(); i++){
         if(m_tab_keys.Get(i) == key){
             m_tab_values.Set(i, value);
             return;
@@ -101,7 +120,7 @@ void DictDynIntUnsignedFloat::Set(int unsigned key, float value)
     }
 }
 
-bool DictDynIntUnsignedFloat::IfValue(int unsigned cle ,std::string condition, float value)
+bool DictDynIntUnsignedFloat::IfValue(int unsigned cle, std::string condition, float value)
 {
     if(condition == "=" or condition == "==" or condition == "is")
         return (Get(cle) == value);
@@ -176,7 +195,7 @@ bool DictDynIntUnsignedFloat::TestIfKey(unsigned int index, std::string conditio
 DictDynIntUnsignedFloat DictDynIntUnsignedFloat::FiltreValue(std::string condition, float value)
 {
     DictDynIntUnsignedFloat dict_dyn_result;
-    for (unsigned int i = 0; i < m_nb_elem; i++){
+    for (unsigned int i = 0; i < GetNbElem(); i++){
         if(TestIfValue(i, condition, value)){
             dict_dyn_result.Add(m_tab_keys.Get(i), m_tab_values.Get(i));
         }
@@ -189,7 +208,7 @@ DictDynIntUnsignedFloat DictDynIntUnsignedFloat::FiltreValue(TabDynString condit
     DictDynIntUnsignedFloat dict_dyn_result;
     bool test;
     unsigned int index = 0;
-    for (unsigned int i = 0; i < m_nb_elem; i++) {
+    for (unsigned int i = 0; i < GetNbElem(); i++) {
         test = TestIfValue(i, condition.Get(0), value.Get(0));
         while (index < OrAnd.GetNbElem())
         {
@@ -231,7 +250,7 @@ DictDynIntUnsignedFloat DictDynIntUnsignedFloat::FiltreKey(TabDynString conditio
     DictDynIntUnsignedFloat dict_dyn_result;
     bool test;
     unsigned int index = 0;
-    for (unsigned int i = 0; i < m_nb_elem; i++)
+    for (unsigned int i = 0; i < GetNbElem(); i++)
     {
         test = TestIfKey(i, condition.Get(0), value.Get(0));
         while (index < OrAnd.GetNbElem())
@@ -274,7 +293,7 @@ DictDynIntUnsignedFloat DictDynIntUnsignedFloat::FiltreAndValue(TabDynString con
 {
     DictDynIntUnsignedFloat dict_dyn_result;
     bool test = true;
-    for(unsigned int i = 0; i < m_nb_elem; i++)
+    for(unsigned int i = 0; i < GetNbElem(); i++)
     {
         for(unsigned int j = 0; j < condition.GetNbElem(); j++){
             if(!TestIfValue(i, condition.Get(j), value.Get(j)))
@@ -294,7 +313,7 @@ DictDynIntUnsignedFloat DictDynIntUnsignedFloat::FiltreOrValue(TabDynString cond
 {
     DictDynIntUnsignedFloat dict_dyn_result;
     bool test = false;
-    for(unsigned int i = 0; i < m_nb_elem; i++)
+    for(unsigned int i = 0; i < GetNbElem(); i++)
     {
         for(unsigned int j = 0; j < condition.GetNbElem(); j++){
             if(TestIfValue(i, condition.Get(j), value.Get(j)))
@@ -313,7 +332,7 @@ DictDynIntUnsignedFloat DictDynIntUnsignedFloat::FiltreOrValue(TabDynString cond
 DictDynIntUnsignedFloat DictDynIntUnsignedFloat::FiltreKey(std::string condition, int unsigned value)
 {
     DictDynIntUnsignedFloat dict_dyn_result;
-    for (unsigned int i = 0; i < m_nb_elem; i++){
+    for (unsigned int i = 0; i < GetNbElem(); i++){
         if(TestIfKey(i, condition, value)){
             dict_dyn_result.Add(m_tab_keys.Get(i), m_tab_values.Get(i));
         }
@@ -325,7 +344,7 @@ DictDynIntUnsignedFloat DictDynIntUnsignedFloat::FiltreAndKey(TabDynString condi
 {
     DictDynIntUnsignedFloat dict_dyn_result;
     bool test = true;
-    for (unsigned int i = 0; i < m_nb_elem; i++)
+    for (unsigned int i = 0; i < GetNbElem(); i++)
     {
         for (unsigned int j = 0; j < condition.GetNbElem(); j++)
         {
@@ -345,7 +364,7 @@ DictDynIntUnsignedFloat DictDynIntUnsignedFloat::FiltreOrKey(TabDynString condit
 {
     DictDynIntUnsignedFloat dict_dyn_result;
     bool test = false;
-    for (unsigned int i = 0; i < m_nb_elem; i++)
+    for (unsigned int i = 0; i < GetNbElem(); i++)
     {
         for (unsigned int j = 0; j < condition.GetNbElem(); j++)
         {
@@ -382,10 +401,9 @@ DictDynIntUnsignedFloat fusion(DictDynIntUnsignedFloat dict_dyn_ref, DictDynIntU
 
 float DictDynIntUnsignedFloat::Pop(int unsigned key)
 {
-    for (int i = 0; i < m_tab_keys.GetNbElem(); i++){
+    for (int i = 0; i < GetNbElem(); i++){
         if(m_tab_keys.Get(i) == key){
             m_tab_keys.Pop(i);
-            m_nb_elem--;
             return m_tab_values.Pop(i);
         }
     }
@@ -395,13 +413,12 @@ float DictDynIntUnsignedFloat::Pop(int unsigned key)
 void DictDynIntUnsignedFloat::Remove(float value, int num)
 {
     int count = 0;
-    for (int i = 0; i < m_tab_values.GetNbElem(); i++){
+    for (int i = 0; i < GetNbElem(); i++){
         if(m_tab_values.Get(i) == value){
             count++;
             if(count == num){
                 m_tab_keys.Pop(i);
                 m_tab_values.Pop(i);
-                m_nb_elem--;
                 return;
             }
         }
@@ -410,12 +427,11 @@ void DictDynIntUnsignedFloat::Remove(float value, int num)
 
 void DictDynIntUnsignedFloat::Remove(float value)
 {
-    for (int i = 0; i < m_tab_values.GetNbElem(); i++){
+    for (int i = 0; i < GetNbElem(); i++){
         if(m_tab_values.Get(i) == value){
             m_tab_keys.Pop(i);
             m_tab_values.Pop(i);
             i--;
-            m_nb_elem--;
         }
     }
 }
@@ -423,21 +439,19 @@ void DictDynIntUnsignedFloat::Remove(float value)
 void DictDynIntUnsignedFloat::Remove(float value, bool is_first)
 {
     if(is_first){
-        for (int i = 0; i < m_tab_values.GetNbElem(); i++){
+        for (int i = 0; i < GetNbElem(); i++){
             if(m_tab_values.Get(i) == value){
                 m_tab_keys.Pop(i);
                 m_tab_values.Pop(i);
-                m_nb_elem--;
                 return;
             }
         }
     }
     else{
-        for (int i = m_tab_values.GetNbElem() - 1; i >= 0 ; i--){
+        for (int i = GetNbElem() - 1; i >= 0 ; i--){
             if(m_tab_values.Get(i) == value){
                 m_tab_keys.Pop(i);
                 m_tab_values.Pop(i);
-                m_nb_elem--;
                 return;
             }
         }
