@@ -14,12 +14,10 @@ public:
 
     unsigned int GetNbElem() const;
     unsigned int GetNbElemMax() const;
+    void SetParam(bool add_with_multiple, unsigned int number_addition);
     void Clear();
     void Clear(bool save_tab_memory);
-
-protected:
-    unsigned int m_nb_elem;
-    unsigned int m_nb_elem_max;
+    void SetSecurity(bool security);
 };
 
 /* SPLIT */
