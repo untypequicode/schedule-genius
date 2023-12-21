@@ -3,6 +3,8 @@
 
 #include "../tab_dyn/tab_dyn.h"
 
+#include "../outil/comparaison.h"
+
 class DictDyn
 {
 public:

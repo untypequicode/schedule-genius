@@ -2,6 +2,9 @@
 #define DEF_ELEVE
 
 #include "../dict_dyn/dict_dyn.h"
+
+#include "../outil/comparaison.h"
+
 class Eleve
 {
 public:
