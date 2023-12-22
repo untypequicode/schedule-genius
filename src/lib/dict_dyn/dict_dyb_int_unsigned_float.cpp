@@ -213,6 +213,7 @@ DictDynIntUnsignedFloat DictDynIntUnsignedFloat::FiltreValue(TabDynString condit
     bool test;
     unsigned int index = 0;
     for (unsigned int i = 0; i < GetNbElem(); i++) {
+//      test = comparaison(m_tab_keys.Get(i), condition.Get(0), value.Get(0));
         test = TestIfValue(i, condition.Get(0), value.Get(0));
         while (index < OrAnd.GetNbElem())
         {

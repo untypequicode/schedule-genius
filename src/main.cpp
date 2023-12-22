@@ -75,6 +75,7 @@ int main()
 
     DictDynCharDouble dict_filtre = dict.FiltreValue(condition, value, OrAnd);
 
+
     unsigned int i = 0;
     unsigned int nb_parenthèse = condition.GetNbElem() - 1;
     std::cout << "filtre : ";
