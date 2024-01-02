@@ -17,38 +17,39 @@ int main()
     //// Micky
     //
 
-//    CsvGenerateur exemple;
-    //exemple.creerCsv(true);
+    CsvGenerateur exemple;
+    exemple.creerCsv(true);
+    std::cout << "end creercsv" << std::endl << std::endl;
 
 
     //// Vincent
 
-//    Fichier fichier("eleve.csv");
-//    Database database;
-//    std::cout << "start ecraserdata" << std::endl;
-//    database.EcraserData(fichier);
-//    std::cout << "end ecraserdata" << std::endl;
-//    TabDynString test = database.GetEleveData(0);
-//    std::cout << "end getelevedata" << std::endl << std::endl;
-//
-//    std::cout << "sortie de getelevedata : TabDynString de format : ";
-//    std::cout << "[";
-//    for (unsigned int i = 0; i < test.GetNbElem(); i++) {
-//        std::cout << test.Get(i) << ",";
-//        if (i != test.GetNbElem() -1)
-//            std::cout << " ";
-//    }
-//    std::cout << "]" << std::endl;
-//
-//    std::cout << "start geteleve" << std::endl;
-//    Eleve test2 = database.GetEleve(1);
-//    std::cout << "end geteleve" << std::endl << std::endl;
-//    std::cout << "sortie de geteleve : TabDynString de format : ";
-//    std::cout << "[" << test2.GetId() << ", " << test2.GetPrenom() << ", " << test2.GetNom() << ", " << test2.GetNiveauScolaire() << "]" << std::endl;
+    Fichier fichier("eleve.csv");
+    Database database;
+    std::cout << "start ecraserdata" << std::endl;
+    database.EcraserData(fichier);
+    std::cout << "end ecraserdata" << std::endl;
+    TabDynString test = database.GetEleveData(0);
+    std::cout << "end getelevedata" << std::endl << std::endl;
+
+    std::cout << "sortie de getelevedata : TabDynString de format : ";
+    std::cout << "[";
+    for (unsigned int i = 0; i < test.GetNbElem(); i++) {
+        std::cout << test.Get(i) << ",";
+        if (i != test.GetNbElem() -1)
+            std::cout << " ";
+    }
+    std::cout << "]" << std::endl;
+
+    std::cout << "start geteleve" << std::endl;
+    Eleve test2 = database.GetEleve(1);
+    std::cout << "end geteleve" << std::endl << std::endl;
+    std::cout << "sortie de geteleve : TabDynString de format : ";
+    std::cout << "[" << test2.GetId() << ", " << test2.GetPrenom() << ", " << test2.GetNom() << ", " << test2.GetNiveauScolaire() << "]" << std::endl;
 //    //// Ethan
     //
 
-    DictDynCharDouble dict;
+    /*DictDynCharDouble dict;
     dict.Add('a', 0.0);
     dict.Add('b', 1.1);
     dict.Add('c', 2.2);
@@ -91,6 +92,7 @@ int main()
     std::cout << std::endl;
     for(unsigned int i = 0; i < dict_filtre.GetNbElem(); i++)
         std::cout << dict_filtre.GetTabKeys().Get(i) << " : " << dict_filtre.GetTabValues().Get(i) << std::endl;
-    std::cout << "end test" << std::endl;
+    std::cout << "end test" << std::endl;*/
+
     return 0;
 }

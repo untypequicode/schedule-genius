@@ -101,7 +101,7 @@ unsigned int Database::GetNbEleve() const
 void Database::EcraserData(Fichier source)
 {
     m_eleve.Clear();
-    TabDynEleve retour(10);
+    TabDynEleve retour(1000);
     std::ifstream myfile;
     TabDynString data;
     data.Add("");
@@ -127,7 +127,7 @@ void Database::EcraserData(Fichier source)
             matieres.Add("");
             for(char carac : ligne)
             {
-                if (indice < 4)
+                if (indice < 6)
                 {
                     if (carac == ';')
                     {
@@ -151,11 +151,11 @@ void Database::EcraserData(Fichier source)
                     }
                 }
             }
-            // TODO : inserer les donnée des eleves quand les Eleve seront implémentable
-            Eleve eleve(convertToInt(data.Get(0)), convertToInt(data.Get(1)), convertToInt(data.Get(2)), data.Get(3), data.Get(4), matieres, TabDynString(0));
+//            // TODO : inserer les donnée des eleves quand les Eleve seront implémentable
+            Eleve eleve(convertToInt(data.Get(0)), convertToInt(data.Get(3)), convertToInt(data.Get(3)), (data.Get(2)), data.Get(1), TabDynIntUnsigned(0), TabDynIntUnsigned(0));
             //eleve.SetSecurity(false);
             retour.Add(eleve);
-            std::cout << eleve.GetId() << " " << eleve.GetNom() << eleve.GetPrenom() << eleve.GetNiveauScolaire() << std::endl;
+            std::cout << "eleve d'ID " << eleve.GetId() << " : " << eleve.GetNom() << eleve.GetPrenom() << " de niveau " << eleve.GetNiveauScolaire() << " en " << eleve.GetAnnee() << "eme année"<< std::endl;
             data.Clear();
             std::cout << "Matieres facultatives : " << std::endl;
             for (unsigned int i = 0; i < matieres.GetNbElem(); i++)
@@ -170,7 +170,7 @@ void Database::EcraserData(Fichier source)
             std::cout << "test : " << (ligne != lignetest) << std::endl << std::endl;
 
         }
-        // TODO : recoder a boucle en fonction de la taille du fichier
+        // TODO : recoder la boucle en fonction de la taille du fichier
     }
 }
 
