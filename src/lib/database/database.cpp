@@ -111,9 +111,9 @@ void Database::EcraserData(Fichier source)
     myfile.open(source.GetNom());
     unsigned int last = 0;
 
-    if (/*source.GetNbLigne() <= 0*/ true) // TODO : changer le if pour qu'il soit fonctionnel quand les Eleve seront implémentable
+    if (source.GetNbLigne() <= 0)
     {
-        std::cout << "debut de la " << last << "eme ligne" << std::endl;
+        std::cout << "lancement de l'extraction par defaut" << std::endl;
         std::ifstream myfiletest;
         myfiletest.open(source.GetNom());
         std::string lignetest;
@@ -123,6 +123,7 @@ void Database::EcraserData(Fichier source)
 
         while(ligne != lignetest)
         {
+            std::cout << "debut de la " << last << "eme ligne" << std::endl;
             std::getline(myfile, ligne);
             matieres.Add("");
             for(char carac : ligne)
@@ -151,9 +152,7 @@ void Database::EcraserData(Fichier source)
                     }
                 }
             }
-//            // TODO : inserer les donnée des eleves quand les Eleve seront implémentable
             Eleve eleve(convertToInt(data.Get(0)), convertToInt(data.Get(3)), convertToInt(data.Get(3)), (data.Get(2)), data.Get(1), TabDynIntUnsigned(0), TabDynIntUnsigned(0));
-            //eleve.SetSecurity(false);
             retour.Add(eleve);
             std::cout << "eleve d'ID " << eleve.GetId() << " : " << eleve.GetNom() << eleve.GetPrenom() << " de niveau " << eleve.GetNiveauScolaire() << " en " << eleve.GetAnnee() << "eme année"<< std::endl;
             data.Clear();
@@ -170,7 +169,57 @@ void Database::EcraserData(Fichier source)
             std::cout << "test : " << (ligne != lignetest) << std::endl << std::endl;
 
         }
-        // TODO : recoder la boucle en fonction de la taille du fichier
+        std::cout << "fin de l'extraction par defaut" << std::endl;
+    }
+    else
+    {
+        std::cout << "lancement de l'extraction optimisee" << std::endl;
+        std::getline(myfile, ligne);
+        for(unsigned int i = 0; i < source.GetNbLigne(); i++)
+        {
+            std::cout << "debut de la " <<i << "eme ligne" << std::endl;
+            matieres.Add("");
+            std::getline(myfile, ligne);
+            for(char carac : ligne)
+            {
+                if (indice < 6)
+                {
+                    if (carac == ';')
+                    {
+                        data.Add("");
+                        indice++;
+                    }
+                    else
+                    {
+                        data.Add(data.Pop(indice) + carac);
+                    }
+                }
+                else
+                {
+                    if (carac == ';')
+                    {
+                        matieres.Add("");
+                    }
+                    else
+                    {
+                        matieres.Add(matieres.Pop() + carac);
+                    }
+                }
+            }
+            Eleve eleve(convertToInt(data.Get(0)), convertToInt(data.Get(3)), convertToInt(data.Get(3)), (data.Get(2)), data.Get(1), TabDynIntUnsigned(0), TabDynIntUnsigned(0));
+            retour.Add(eleve);
+            std::cout << "eleve d'ID " << eleve.GetId() << " : " << eleve.GetNom() << eleve.GetPrenom() << " de niveau " << eleve.GetNiveauScolaire() << " en " << eleve.GetAnnee() << "eme année"<< std::endl;
+            data.Clear();
+            std::cout << "Matieres facultatives : " << std::endl;
+            for (unsigned int i = 0; i < matieres.GetNbElem(); i++)
+            {
+                std::cout << matieres.Get(i) << std::endl;
+            }
+            matieres.Clear();
+            indice = 0;
+            std::cout << "fin de la " << i << "eme ligne" << std::endl;
+        }
+        std::cout << "fin de l'extraction optimisee" << std::endl;
     }
 }
 

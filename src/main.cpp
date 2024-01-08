@@ -24,7 +24,7 @@ int main()
 
     //// Vincent
 
-    Fichier fichier("eleve.csv");
+    Fichier fichier("eleve.csv", 200);
     Database database;
     std::cout << "start ecraserdata" << std::endl;
     database.EcraserData(fichier);
