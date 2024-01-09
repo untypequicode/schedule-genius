@@ -85,8 +85,7 @@ public:
 protected:
     TabDynChar m_tab_keys;
     TabDynDouble m_tab_values;
-
-    bool TestIfValue(unsigned int index, std::string condition, double value);
+  
     bool TestIfKey(unsigned int index, std::string condition, char value);
 };
 

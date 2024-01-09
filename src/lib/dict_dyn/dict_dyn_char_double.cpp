@@ -139,25 +139,6 @@ bool DictDynCharDouble::IfValue(char key, std::string condition, double value_id
     return false;
 }
 
-bool DictDynCharDouble::TestIfValue(unsigned int index, std::string condition, double value_id)
-{
-    if(condition == "==" or condition == "=" or condition == "is")
-      return (m_tab_values.Get(index) == value_id);
-    else if(condition == "!=" or condition == "is not")
-      return (m_tab_values.Get(index) != value_id);
-    else if(condition == "<")
-      return(m_tab_values.Get(index) < value_id);
-    else if(condition == "<=")
-      return(m_tab_values.Get(index) <= value_id);
-    else if(condition == ">")
-      return(m_tab_values.Get(index) > value_id);
-    else if(condition == ">=")
-      return(m_tab_values.Get(index) >= value_id);
-    else
-      std::cerr << "Error: condition not found" << std::endl;
-    return false;
-}
-
 bool DictDynCharDouble::IfKey(char key, std::string condition, char value)
 {
     if(condition == "=" or condition == "==" or condition == "is")
