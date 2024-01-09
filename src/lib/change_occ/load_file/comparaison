@@ -1,6 +1,6 @@
-int
-char
-std::string
-double
-int unsigned
-float
+int,int
+char,char
+std::string,std::string
+double,double
+int unsigned,int unsigned
+float,float

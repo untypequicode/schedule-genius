@@ -200,7 +200,7 @@ DictDynCharDouble DictDynCharDouble::FiltreValue(std::string condition, double v
 {
     DictDynCharDouble dict_dyn_result;
     for (unsigned int i = 0; i < GetNbElem(); i++){
-        if(TestIfValue(i, condition, value)){
+      if(comparaison(m_tab_values.Get(i), condition, value)){
             dict_dyn_result.Add(m_tab_keys.Get(i), m_tab_values.Get(i));
         }
     }
@@ -214,18 +214,18 @@ DictDynCharDouble DictDynCharDouble::FiltreValue(TabDynString condition, TabDynD
     unsigned int index = 0;
     for (unsigned int i = 0; i < GetNbElem(); i++) {
 //      test = comparaison(m_tab_keys.Get(i), condition.Get(0), value.Get(0));
-        test = TestIfValue(i, condition.Get(0), value.Get(0));
+        test = comparaison(m_tab_values.Get(i), condition.Get(0), value.Get(0));
         while (index < OrAnd.GetNbElem())
         {
             if (OrAnd.Get(index) == "or" and !test) {
                 index++;
-                test = TestIfValue(i, condition.Get(index), value.Get(index));
+                test = comparaison(m_tab_values.Get(i), condition.Get(index), value.Get(index));
             }
 
             else if (OrAnd.Get(index) == "and" and test)
             {
                 index++;
-                test = TestIfValue(i, condition.Get(index), value.Get(index));
+                test = comparaison(m_tab_values.Get(i), condition.Get(index), value.Get(index));
             }
 
             else if (OrAnd.Get(index) == "or" or OrAnd.Get(index) == "and")
@@ -301,7 +301,7 @@ DictDynCharDouble DictDynCharDouble::FiltreAndValue(TabDynString condition, TabD
     for(unsigned int i = 0; i < GetNbElem(); i++)
     {
         for(unsigned int j = 0; j < condition.GetNbElem(); j++){
-            if(!TestIfValue(i, condition.Get(j), value.Get(j)))
+            if(!comparaison(m_tab_values.Get(i), condition.Get(j), value.Get(j)))
             {
                 test = false;
                 break;
@@ -321,7 +321,7 @@ DictDynCharDouble DictDynCharDouble::FiltreOrValue(TabDynString condition, TabDy
     for(unsigned int i = 0; i < GetNbElem(); i++)
     {
         for(unsigned int j = 0; j < condition.GetNbElem(); j++){
-            if(TestIfValue(i, condition.Get(j), value.Get(j)))
+            if(comparaison(m_tab_values.Get(i), condition.Get(j), value.Get(j)))
             {
                 test = true;
                 break;
