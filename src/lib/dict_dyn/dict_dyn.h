@@ -57,19 +57,19 @@ public:
 
     DictDynCharDouble FiltreValue(std::string condition, double value);
     // renvoie un dictionnaire filtré selon une condition sur la valeur
-    DictDynCharDouble FiltreValue(TabDynString condition, TabDynDouble value, TabDynString OrAnd);
+    DictDynCharDouble FiltreValue(const TabDynString& condition, const TabDynDouble& value, const TabDynString& OrAnd);
     // renvoie un dictionnaire filtré selon plusieurs conditions sur la valeur
-    DictDynCharDouble FiltreAndValue(TabDynString condition, TabDynDouble value);
+    DictDynCharDouble FiltreAndValue(const TabDynString& condition, const TabDynDouble& value);
     // renvoie un dictionnaire filtré dont les valeur respecte toutes les conditions
-    DictDynCharDouble FiltreOrValue(TabDynString condition, TabDynDouble value);
+    DictDynCharDouble FiltreOrValue(const TabDynString& condition, const TabDynDouble& value);
     // renvoie un dictionnaire filtré dont les valeur respecte au moins une des conditions
     DictDynCharDouble FiltreKey(std::string condition, char value);
     // renvoie un dictionnaire filtré selon une condition sur la clé
-    DictDynCharDouble FiltreKey(TabDynString condition, TabDynChar value, TabDynString OrAnd);
+    DictDynCharDouble FiltreKey(const TabDynString& condition, const TabDynChar& value, const TabDynString& OrAnd);
     // renvoie un dictionnaire filtré selon plusieurs conditions sur la clé
-    DictDynCharDouble FiltreAndKey(TabDynString condition, TabDynChar value);
+    DictDynCharDouble FiltreAndKey(const TabDynString& condition, const TabDynChar& value);
     // renvoie un dictionnaire filtré dont les clés respecte toutes les conditions
-    DictDynCharDouble FiltreOrKey(TabDynString condition, TabDynChar value);
+    DictDynCharDouble FiltreOrKey(const TabDynString& condition, const TabDynChar& value);
     // renvoie un dictionnaire filtré dont les clés respecte au moins une des conditions
 
     double Pop(char key);
@@ -87,7 +87,7 @@ protected:
     TabDynDouble m_tab_values;
 };
 
-DictDynCharDouble fusion(DictDynCharDouble dict_dyn_ref, DictDynCharDouble dict_dyn_ref2);
+DictDynCharDouble fusion(DictDynCharDouble& dict_dyn_ref, DictDynCharDouble& dict_dyn_ref2);
 
 /* SPLIT */
 

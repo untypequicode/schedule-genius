@@ -73,7 +73,14 @@ int main()
     OrAnd.Add("and");
     OrAnd.Add("or");
 
+
+    for (unsigned int i = 0; i < condition.GetNbElem(); i++)
+        std::cout << "condition : '" << condition.Get(i) << "'" << std::endl;
+
+    std::cout << "test" << std::endl;
+
     DictDynCharDouble dict_filtre = dict.FiltreValue(condition, value, OrAnd);
+//    DictDynCharDouble dict_filtre = DictDynCharDouble();
 
 
     unsigned int i = 0;

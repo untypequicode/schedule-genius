@@ -168,7 +168,8 @@ DictDynCharInt DictDynCharInt::FiltreValue(TabDynString condition, TabDynInt val
 
             else
             {
-                std::cerr << "Error : comparator forbidden, only 'and' and 'or' are allowed" << std::endl;
+                std::cerr << "Error : comparator forbidden : '"<< OrAnd.Get(index) << "' , only 'and' and 'or' are allowed" << std::endl;
+                std::cerr << "index :" << index;
                 return DictDynCharInt();
             }
         }
