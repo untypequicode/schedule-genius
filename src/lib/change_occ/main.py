@@ -5,6 +5,7 @@ from change_occ import ChangeOcc
 from change_header import ChangeHeader
 from change_header_double import ChangeHeaderDouble
 
+
 def main():
     """
     Fonction principale du programme.
@@ -79,7 +80,8 @@ def main():
                                 replace_origin.append(b.pop(0))
                             b.pop(0)
                             replace_new = b
-                        a.Change(cd.GetPath(), load_return[2][0], int(load_return[2][1]), load_return[2][2], int(load_return[2][3]), replace_origin, replace_new)
+                        a.Change(cd.GetPath(), load_return[2][0], int(load_return[2][1]), load_return[2][2],
+                                 int(load_return[2][3]), replace_origin, replace_new)
 
         # Si l'utilisateur entre une commande inconnue, imprime une alerte
         else:
@@ -92,6 +94,7 @@ def main():
     print("Fin du programme.")
 
     return 0
+
 
 # Point d'entrée de Python pour exécuter le script principal
 if __name__ == '__main__':

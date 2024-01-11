@@ -1,4 +1,4 @@
 cmake --build build
-cd build
+cd build/
 ./Schedule_Genius
 cd ../

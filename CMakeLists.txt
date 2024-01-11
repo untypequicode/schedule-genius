@@ -31,6 +31,9 @@ add_executable(Schedule_Genius src/main.cpp
             ### Database
                 src/lib/database/database.h
 
+            ### Comparaison
+                src/lib/outil/comparaison.h
+
     # Sources
         ## Lib
             src/lib/generateur_csv.cpp
@@ -71,4 +74,7 @@ add_executable(Schedule_Genius src/main.cpp
 
             ## Generation
                 src/lib/generation_groupes.cpp
+
+            ### Comparaison
+                src/lib/outil/comparaison.cpp
 )

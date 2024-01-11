@@ -39,7 +39,7 @@ def GetFile(file_path: str, index: int) -> tuple:
             if content[i] == [] or content[i][0] == "#":
                 content.pop(i)
             else:
-                content[i] = content[i].split(",")
+                content[i] = content[i].split("###")
         file_origin = {content[index][0]: content[index][1:]}
         file_new = {}
         for i in range(len(content)):

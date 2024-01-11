@@ -2,6 +2,9 @@
 #define DEF_ELEVE
 
 #include "../dict_dyn/dict_dyn.h"
+
+#include "../outil/comparaison.h"
+
 class Eleve
 {
 public:
@@ -85,13 +88,17 @@ public:
     //crée un dictionnaire vide avec une taille et des paramètres
     DictDynIntUnsignedEleve(const DictDynIntUnsignedEleve& dict_dyn_ref);
     //crée un dictionnaire à partir d'un autre dictionnaire
-
     ~DictDynIntUnsignedEleve();
 
     void SetParam(bool add_with_multiple, unsigned int number_addition);
     //change les paramètres du dictionnaire
     void SetSecurity(bool security);
     //change le paramètre de sécurité du dictionnaire (pour destruction) attention aux faille de sécurité
+
+    unsigned int GetNbElem() const;
+    unsigned int GetNbElemMax() const;
+    void Clear();
+    void Clear(bool save_tab_memory);
 
     void Copy(DictDynIntUnsignedEleve& dict_dyn_ref);
     //copie un dictionnaire dans un autre
@@ -108,7 +115,7 @@ public:
     void Set(int unsigned key, Eleve value);
     //change la valeur associée à la clé
 
-/*    DictDynIntUnsignedEleve FiltreValue(std::string condition, Eleve value);
+    DictDynIntUnsignedEleve FiltreValue(std::string condition, Eleve value);
     // renvoie un dictionnaire filtré selon une condition sur la valeur
     DictDynIntUnsignedEleve FiltreValue(TabDynString condition, TabDynEleve value, TabDynString OrAnd);
     // renvoie un dictionnaire filtré selon plusieurs conditions sur la valeur
@@ -124,23 +131,22 @@ public:
     // renvoie un dictionnaire filtré dont les clés respecte toutes les conditions
     DictDynIntUnsignedEleve FiltreOrKey(TabDynString condition, TabDynIntUnsigned value);
     // renvoie un dictionnaire filtré dont les clés respecte au moins une des conditions
-*/
+
     Eleve Pop(int unsigned key);
     void Remove(Eleve value, int num);
     void Remove(Eleve value);
     void Remove(Eleve value, bool is_first);
 
-    bool IfKey(int unsigned cle, std::string condition, int unsigned value);
+    bool IfKey(int unsigned key, std::string condition, int unsigned value);
     // renvoie si la clé respecte la condition
-    bool IfValue(int unsigned cle, std::string condition, Eleve value);
+    bool IfValue(int unsigned key, std::string condition, Eleve value);
     // renvoie si la valeur respecte la condition
 
 protected:
     TabDynIntUnsigned m_tab_keys;
     TabDynEleve m_tab_values;
-  //  bool IfValue(unsigned int index, std::string condition, Eleve value);
-    //bool IfKey(unsigned int index, std::string condition, int unsigned value);
 };
+
 DictDynIntUnsignedEleve fusion(DictDynIntUnsignedEleve dict_dyn_ref, DictDynIntUnsignedEleve dict_dyn_ref2);
 
 /* SPLIT */

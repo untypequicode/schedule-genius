@@ -1,7 +1,7 @@
 #ifndef DEF_TABDYN
 #define DEF_TABDYN
 
-#include <string>
+#include <string.h>
 #include <iostream>
 
 /*

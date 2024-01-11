@@ -15,6 +15,13 @@ load key dict_class__.h2__ mnt dict_dyn_class
 cd ../../
 cd dict_dyn/
 load key dict_basic__.cpp__.h__ run dict_dyn.h 1 2
-#load key dict_class__.cpp__ run
+load key dict_class__.cpp__ run
 cd ../
-#load key dict_class__.h2__ run dict_dyn/dict_dyn.h 1 character/ 2 dict_dyn_ int_unsigned_ .cpp __   .h
+load key dict_class__.h2__ run dict_dyn/dict_dyn.h 1 character/ 2 dict_dyn_ int_unsigned_ .cpp __   .h
+cd change_occ/load_file/
+load key comp__.h__ mnt comparaison
+cd ../../
+cd outil/
+load key comp__.h__ run comparaison.h 1 2
+load key comp__.h__ run comparaison.cpp 1 2
+exit

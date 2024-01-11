@@ -1,7 +1,9 @@
 #include "../character/eleves.h"
 
 DictDynIntUnsignedEleve::DictDynIntUnsignedEleve()
-    : DictDyn()
+    : DictDyn(),
+      m_tab_keys(),
+      m_tab_values()
 {
 
 }
@@ -47,6 +49,24 @@ void DictDynIntUnsignedEleve::SetSecurity(bool security)
     m_tab_values.SetSecurity(security);
 }
 
+unsigned int DictDynIntUnsignedEleve::GetNbElem() const
+{
+  if (m_tab_keys.GetNbElem() < m_tab_values.GetNbElem())
+    {
+        return m_tab_keys.GetNbElem();
+    }
+  return m_tab_values.GetNbElem();
+}
+
+unsigned int DictDynIntUnsignedEleve::GetNbElemMax() const
+{
+  if (m_tab_keys.GetNbElemMax() < m_tab_values.GetNbElemMax())
+    {
+    return m_tab_keys.GetNbElemMax();
+  }
+  return m_tab_values.GetNbElemMax();
+}
+
 void DictDynIntUnsignedEleve::Copy(DictDynIntUnsignedEleve &dict_dyn_ref){
     m_tab_keys.Copy(dict_dyn_ref.m_tab_keys);
     m_tab_values.Copy(dict_dyn_ref.m_tab_values);
@@ -59,7 +79,7 @@ void DictDynIntUnsignedEleve::Add(int unsigned key, Eleve value)
 
 void DictDynIntUnsignedEleve::Add(int unsigned key, Eleve value, bool add_with_multiple)
 {
-    for (int i = 0; i < m_tab_keys.GetNbElem(); i++){
+    for (int i = 0; i < GetNbElem(); i++){
         if(m_tab_keys.Get(i) == key){
             m_tab_values.Set(i, value);
             return;
@@ -67,13 +87,12 @@ void DictDynIntUnsignedEleve::Add(int unsigned key, Eleve value, bool add_with_m
     }
     m_tab_keys.Add(key, add_with_multiple);
     m_tab_values.Add(value, add_with_multiple);
-    m_nb_elem++;
 
 }
 
 Eleve DictDynIntUnsignedEleve::Get(int unsigned key) const
 {
-    for (int i = 0; i < m_tab_keys.GetNbElem(); i++){
+    for (int i = 0; i < GetNbElem(); i++){
         if(m_tab_keys.Get(i) == key){
             return m_tab_values.Get(i);
         }
@@ -93,7 +112,7 @@ TabDynEleve DictDynIntUnsignedEleve::GetTabValues() const
 
 void DictDynIntUnsignedEleve::Set(int unsigned key, Eleve value)
 {
-    for (int i = 0; i < m_tab_keys.GetNbElem(); i++){
+    for (int i = 0; i < GetNbElem(); i++){
         if(m_tab_keys.Get(i) == key){
             m_tab_values.Set(i, value);
             return;
@@ -101,83 +120,21 @@ void DictDynIntUnsignedEleve::Set(int unsigned key, Eleve value)
     }
 }
 
-/*bool DictDynIntUnsignedEleve::IfValue(int unsigned cle ,std::string condition, Eleve value)
+bool DictDynIntUnsignedEleve::IfValue(int unsigned key, std::string condition, Eleve value_id)
 {
-    if(condition == "=" or condition == "==" or condition == "is")
-        return (Get(cle) == value);
-    else if(condition == "!=" or condition == "is not")
-        return (Get(cle) != value);
-    else if(condition == "<")
-        return(Get(cle) < value);
-    else if(condition == "<=")
-        return(Get(cle) <= value);
-    else if(condition == ">")
-        return(Get(cle) > value);
-    else if(condition == ">=")
-        return(Get(cle) >= value);
-    else
-        std::cerr << "Error: condition not found" << std::endl;
+    return comparaison(Get(key).GetId(), condition, value_id.GetId());
 }
 
-bool DictDynIntUnsignedEleve::IfValue(unsigned int index, std::string condition, Eleve value)
+bool DictDynIntUnsignedEleve::IfKey(int unsigned key, std::string condition, int unsigned value)
 {
-    if(condition == "==" or condition == "=" or condition == "is")
-        return (m_tab_values.Get(index) == value);
-    else if(condition == "!=" or condition == "is not")
-        return (m_tab_values.Get(index) != value);
-    else if(condition == "<")
-        return(m_tab_values.Get(index) < value);
-    else if(condition == "<=")
-        return(m_tab_values.Get(index) <= value);
-    else if(condition == ">")
-        return(m_tab_values.Get(index) > value);
-    else if(condition == ">=")
-        return(m_tab_values.Get(index) >= value);
-    else
-        std::cerr << "Error: condition not found" << std::endl;
-}
-
-bool DictDynIntUnsignedEleve::IfKey(int unsigned cle, std::string condition, int unsigned value)
-{
-    if(condition == "=" or condition == "==" or condition == "is")
-        return (cle == value);
-    else if(condition == "!=" or condition == "is not")
-        return (cle != value);
-    else if(condition == "<")
-        return(cle < value);
-    else if(condition == "<=")
-        return(cle <= value);
-    else if(condition == ">")
-        return(cle > value);
-    else if(condition == ">=")
-        return(cle >= value);
-    else
-        std::cerr << "Error: condition not found" << std::endl;
-}
-
-bool DictDynIntUnsignedEleve::IfKey(unsigned int index, std::string condition, int unsigned value)
-{
-    if (condition == "=" or condition == "==" or condition == "is")
-        return (m_tab_keys.Get(index) == value);
-    else if (condition == "!=" or condition == "is not")
-        return (m_tab_keys.Get(index) != value);
-    else if (condition == "<")
-        return (m_tab_keys.Get(index) < value);
-    else if (condition == "<=")
-        return (m_tab_keys.Get(index) <= value);
-    else if (condition == ">")
-        return (m_tab_keys.Get(index) > value);
-    else if (condition == ">=")
-        return (m_tab_keys.Get(index) >= value);
-    else
-        std::cerr << "Error: condition not found" << std::endl;
+    return comparaison(key, condition, value);
 }
 
 DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreValue(std::string condition, Eleve value)
 {
     DictDynIntUnsignedEleve dict_dyn_result;
-    for (unsigned int i = 0; i < m_nb_elem; i++){
-        if(IfValue(i, condition, value)){
+    for (unsigned int i = 0; i < GetNbElem(); i++){
+      if(comparaison(m_tab_values.Get(i).GetId(), condition, value.GetId())){
             dict_dyn_result.Add(m_tab_keys.Get(i), m_tab_values.Get(i));
         }
     }
@@ -189,19 +146,19 @@ DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreValue(TabDynString condit
     DictDynIntUnsignedEleve dict_dyn_result;
     bool test;
     unsigned int index = 0;
-    for (unsigned int i = 0; i < m_nb_elem; i++) {
-        test = IfValue(i, condition.Get(0), value.Get(0));
+    for (unsigned int i = 0; i < GetNbElem(); i++) {
+        test = comparaison(m_tab_values.Get(i).GetId(), condition.Get(0), value.Get(0).GetId());
         while (index < OrAnd.GetNbElem())
         {
             if (OrAnd.Get(index) == "or" and !test) {
                 index++;
-                test = IfValue(i, condition.Get(index), value.Get(index));
+                test = comparaison(m_tab_values.Get(i).GetId(), condition.Get(index), value.Get(index).GetId());
             }
 
             else if (OrAnd.Get(index) == "and" and test)
             {
                 index++;
-                test = IfValue(i, condition.Get(index), value.Get(index));
+                test = comparaison(m_tab_values.Get(i).GetId(), condition.Get(index), value.Get(index).GetId());
             }
 
             else if (OrAnd.Get(index) == "or" or OrAnd.Get(index) == "and")
@@ -212,8 +169,7 @@ DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreValue(TabDynString condit
             else
             {
                 std::cerr << "Error : comparator forbidden, only 'and' and 'or' are allowed" << std::endl;
-                DictDynIntUnsignedEleve a = DictDynIntUnsignedEleve();
-                return a;
+                return DictDynIntUnsignedEleve();
             }
         }
         index = 0;
@@ -231,21 +187,21 @@ DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreKey(TabDynString conditio
     DictDynIntUnsignedEleve dict_dyn_result;
     bool test;
     unsigned int index = 0;
-    for (unsigned int i = 0; i < m_nb_elem; i++)
+    for (unsigned int i = 0; i < GetNbElem(); i++)
     {
-        test = IfKey(i, condition.Get(0), value.Get(0));
+        test = comparaison(m_tab_keys.Get(i), condition.Get(0), value.Get(0));
         while (index < OrAnd.GetNbElem())
         {
             if (OrAnd.Get(index) == "or" and !test)
             {
                 index++;
-                test = IfKey(i, condition.Get(index), value.Get(index));
+                test = comparaison(m_tab_keys.Get(i), condition.Get(index), value.Get(index));
             }
 
             else if (OrAnd.Get(index) == "and" and test)
             {
                 index++;
-                test = IfKey(m_tab_keys.Get(i), condition.Get(index), value.Get(index));
+                test = comparaison(m_tab_keys.Get(i), condition.Get(index), value.Get(index));
             }
 
             else if (OrAnd.Get(index) == "or" or OrAnd.Get(index) == "and")
@@ -256,8 +212,7 @@ DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreKey(TabDynString conditio
             else
             {
                 std::cerr << "Error : comparator forbidden, only 'and' and 'or' are allowed" << std::endl;
-                DictDynIntUnsignedEleve a = DictDynIntUnsignedEleve();
-                return a;
+                return DictDynIntUnsignedEleve();
             }
         }
         index = 0;
@@ -274,10 +229,10 @@ DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreAndValue(TabDynString con
 {
     DictDynIntUnsignedEleve dict_dyn_result;
     bool test = true;
-    for(unsigned int i = 0; i < m_nb_elem; i++)
+    for(unsigned int i = 0; i < GetNbElem(); i++)
     {
         for(unsigned int j = 0; j < condition.GetNbElem(); j++){
-            if(!IfValue(i, condition.Get(j), value.Get(j)))
+            if(!comparaison(m_tab_values.Get(i).GetId(), condition.Get(j), value.Get(j).GetId()))
             {
                 test = false;
                 break;
@@ -294,10 +249,10 @@ DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreOrValue(TabDynString cond
 {
     DictDynIntUnsignedEleve dict_dyn_result;
     bool test = false;
-    for(unsigned int i = 0; i < m_nb_elem; i++)
+    for(unsigned int i = 0; i < GetNbElem(); i++)
     {
         for(unsigned int j = 0; j < condition.GetNbElem(); j++){
-            if(IfValue(i, condition.Get(j), value.Get(j)))
+            if(comparaison(m_tab_values.Get(i).GetId(), condition.Get(j), value.Get(j).GetId()))
             {
                 test = true;
                 break;
@@ -313,8 +268,8 @@ DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreOrValue(TabDynString cond
 DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreKey(std::string condition, int unsigned value)
 {
     DictDynIntUnsignedEleve dict_dyn_result;
-    for (unsigned int i = 0; i < m_nb_elem; i++){
-        if(IfKey(i, condition, value)){
+    for (unsigned int i = 0; i < GetNbElem(); i++){
+        if(comparaison(m_tab_keys.Get(i), condition, value)){
             dict_dyn_result.Add(m_tab_keys.Get(i), m_tab_values.Get(i));
         }
     }
@@ -325,11 +280,11 @@ DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreAndKey(TabDynString condi
 {
     DictDynIntUnsignedEleve dict_dyn_result;
     bool test = true;
-    for (unsigned int i = 0; i < m_nb_elem; i++)
+    for (unsigned int i = 0; i < GetNbElem(); i++)
     {
         for (unsigned int j = 0; j < condition.GetNbElem(); j++)
         {
-            if(!IfKey(i, condition.Get(j), value.Get(j))){
+            if(!comparaison(m_tab_keys.Get(i), condition.Get(j), value.Get(j))){
                 test = false;
                 break;
             }
@@ -345,11 +300,11 @@ DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreOrKey(TabDynString condit
 {
     DictDynIntUnsignedEleve dict_dyn_result;
     bool test = false;
-    for (unsigned int i = 0; i < m_nb_elem; i++)
+    for (unsigned int i = 0; i < GetNbElem(); i++)
     {
         for (unsigned int j = 0; j < condition.GetNbElem(); j++)
         {
-            if(IfKey(i, condition.Get(j), value.Get(j))){
+            if(comparaison(m_tab_keys.Get(i), condition.Get(j), value.Get(j))){
                 test = true;
                 break;
             }
@@ -375,17 +330,15 @@ DictDynIntUnsignedEleve fusion(DictDynIntUnsignedEleve dict_dyn_ref, DictDynIntU
     {
         key = dict_dyn_ref.GetTabKeys().Get(i);
         dict_dyn_result.Add(key, dict_dyn_ref.Get(key));
-
     }
     return dict_dyn_result;
 }
-*/
+
 Eleve DictDynIntUnsignedEleve::Pop(int unsigned key)
 {
-    for (int i = 0; i < m_tab_keys.GetNbElem(); i++){
+    for (int i = 0; i < GetNbElem(); i++){
         if(m_tab_keys.Get(i) == key){
             m_tab_keys.Pop(i);
-            m_nb_elem--;
             return m_tab_values.Pop(i);
         }
     }
@@ -395,13 +348,12 @@ Eleve DictDynIntUnsignedEleve::Pop(int unsigned key)
 void DictDynIntUnsignedEleve::Remove(Eleve value, int num)
 {
     int count = 0;
-    for (int i = 0; i < m_tab_values.GetNbElem(); i++){
+    for (int i = 0; i < GetNbElem(); i++){
         if(m_tab_values.Get(i).GetId() == value.GetId()){
             count++;
             if(count == num){
                 m_tab_keys.Pop(i);
                 m_tab_values.Pop(i);
-                m_nb_elem--;
                 return;
             }
         }
@@ -410,12 +362,11 @@ void DictDynIntUnsignedEleve::Remove(Eleve value, int num)
 
 void DictDynIntUnsignedEleve::Remove(Eleve value)
 {
-    for (int i = 0; i < m_tab_values.GetNbElem(); i++){
+    for (int i = 0; i < GetNbElem(); i++){
         if(m_tab_values.Get(i).GetId() == value.GetId()){
             m_tab_keys.Pop(i);
             m_tab_values.Pop(i);
             i--;
-            m_nb_elem--;
         }
     }
 }
@@ -423,21 +374,19 @@ void DictDynIntUnsignedEleve::Remove(Eleve value)
 void DictDynIntUnsignedEleve::Remove(Eleve value, bool is_first)
 {
     if(is_first){
-        for (int i = 0; i < m_tab_values.GetNbElem(); i++){
+        for (int i = 0; i < GetNbElem(); i++){
             if(m_tab_values.Get(i).GetId() == value.GetId()){
                 m_tab_keys.Pop(i);
                 m_tab_values.Pop(i);
-                m_nb_elem--;
                 return;
             }
         }
     }
     else{
-        for (int i = m_tab_values.GetNbElem() - 1; i >= 0 ; i--){
+        for (int i = GetNbElem() - 1; i >= 0 ; i--){
             if(m_tab_values.Get(i).GetId() == value.GetId()){
                 m_tab_keys.Pop(i);
                 m_tab_values.Pop(i);
-                m_nb_elem--;
                 return;
             }
         }
