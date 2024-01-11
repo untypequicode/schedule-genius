@@ -122,40 +122,12 @@ void DictDynCharDouble::Set(char key, double value)
 
 bool DictDynCharDouble::IfValue(char key, std::string condition, double value_id)
 {
-    if(condition == "=" or condition == "==" or condition == "is")
-      return (Get(key) == value_id);
-    else if(condition == "!=" or condition == "is not")
-      return (Get(key) != value_id);
-    else if(condition == "<")
-      return (Get(key) < value_id);
-    else if(condition == "<=")
-      return (Get(key) <= value_id);
-    else if(condition == ">")
-      return (Get(key) > value_id);
-    else if(condition == ">=")
-      return (Get(key) >= value_id);
-    else
-        std::cerr << "Error: condition not found" << std::endl;
-    return false;
+    return comparaison(Get(key), condition, value_id);
 }
 
 bool DictDynCharDouble::IfKey(char key, std::string condition, char value)
 {
-    if(condition == "=" or condition == "==" or condition == "is")
-        return (key == value);
-    else if(condition == "!=" or condition == "is not")
-        return (key != value);
-    else if(condition == "<")
-        return(key < value);
-    else if(condition == "<=")
-        return(key <= value);
-    else if(condition == ">")
-        return(key > value);
-    else if(condition == ">=")
-        return(key >= value);
-    else
-      std::cerr << "Error: condition not found" << std::endl;
-    return false;
+    return comparaison(key, condition, value);
 }
 
 DictDynCharDouble DictDynCharDouble::FiltreValue(std::string condition, double value)
@@ -175,7 +147,6 @@ DictDynCharDouble DictDynCharDouble::FiltreValue(TabDynString condition, TabDynD
     bool test;
     unsigned int index = 0;
     for (unsigned int i = 0; i < GetNbElem(); i++) {
-//      test = comparaison(m_tab_keys.Get(i), condition.Get(0), value.Get(0));
         test = comparaison(m_tab_values.Get(i), condition.Get(0), value.Get(0));
         while (index < OrAnd.GetNbElem())
         {
@@ -198,8 +169,7 @@ DictDynCharDouble DictDynCharDouble::FiltreValue(TabDynString condition, TabDynD
             else
             {
                 std::cerr << "Error : comparator forbidden, only 'and' and 'or' are allowed" << std::endl;
-                DictDynCharDouble a = DictDynCharDouble();
-                return a;
+                return DictDynCharDouble();
             }
         }
         index = 0;
@@ -242,8 +212,7 @@ DictDynCharDouble DictDynCharDouble::FiltreKey(TabDynString condition, TabDynCha
             else
             {
                 std::cerr << "Error : comparator forbidden, only 'and' and 'or' are allowed" << std::endl;
-                DictDynCharDouble a = DictDynCharDouble();
-                return a;
+                return DictDynCharDouble();
             }
         }
         index = 0;
@@ -361,7 +330,6 @@ DictDynCharDouble fusion(DictDynCharDouble dict_dyn_ref, DictDynCharDouble dict_
     {
         key = dict_dyn_ref.GetTabKeys().Get(i);
         dict_dyn_result.Add(key, dict_dyn_ref.Get(key));
-
     }
     return dict_dyn_result;
 }

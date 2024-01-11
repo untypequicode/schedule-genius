@@ -122,40 +122,12 @@ void DictDynIntUnsignedFloat::Set(int unsigned key, float value)
 
 bool DictDynIntUnsignedFloat::IfValue(int unsigned key, std::string condition, float value_id)
 {
-    if(condition == "=" or condition == "==" or condition == "is")
-      return (Get(key) == value_id);
-    else if(condition == "!=" or condition == "is not")
-      return (Get(key) != value_id);
-    else if(condition == "<")
-      return (Get(key) < value_id);
-    else if(condition == "<=")
-      return (Get(key) <= value_id);
-    else if(condition == ">")
-      return (Get(key) > value_id);
-    else if(condition == ">=")
-      return (Get(key) >= value_id);
-    else
-        std::cerr << "Error: condition not found" << std::endl;
-    return false;
+    return comparaison(Get(key), condition, value_id);
 }
 
 bool DictDynIntUnsignedFloat::IfKey(int unsigned key, std::string condition, int unsigned value)
 {
-    if(condition == "=" or condition == "==" or condition == "is")
-        return (key == value);
-    else if(condition == "!=" or condition == "is not")
-        return (key != value);
-    else if(condition == "<")
-        return(key < value);
-    else if(condition == "<=")
-        return(key <= value);
-    else if(condition == ">")
-        return(key > value);
-    else if(condition == ">=")
-        return(key >= value);
-    else
-      std::cerr << "Error: condition not found" << std::endl;
-    return false;
+    return comparaison(key, condition, value);
 }
 
 DictDynIntUnsignedFloat DictDynIntUnsignedFloat::FiltreValue(std::string condition, float value)
@@ -175,7 +147,6 @@ DictDynIntUnsignedFloat DictDynIntUnsignedFloat::FiltreValue(TabDynString condit
     bool test;
     unsigned int index = 0;
     for (unsigned int i = 0; i < GetNbElem(); i++) {
-//      test = comparaison(m_tab_keys.Get(i), condition.Get(0), value.Get(0));
         test = comparaison(m_tab_values.Get(i), condition.Get(0), value.Get(0));
         while (index < OrAnd.GetNbElem())
         {
@@ -198,8 +169,7 @@ DictDynIntUnsignedFloat DictDynIntUnsignedFloat::FiltreValue(TabDynString condit
             else
             {
                 std::cerr << "Error : comparator forbidden, only 'and' and 'or' are allowed" << std::endl;
-                DictDynIntUnsignedFloat a = DictDynIntUnsignedFloat();
-                return a;
+                return DictDynIntUnsignedFloat();
             }
         }
         index = 0;
@@ -242,8 +212,7 @@ DictDynIntUnsignedFloat DictDynIntUnsignedFloat::FiltreKey(TabDynString conditio
             else
             {
                 std::cerr << "Error : comparator forbidden, only 'and' and 'or' are allowed" << std::endl;
-                DictDynIntUnsignedFloat a = DictDynIntUnsignedFloat();
-                return a;
+                return DictDynIntUnsignedFloat();
             }
         }
         index = 0;
@@ -361,7 +330,6 @@ DictDynIntUnsignedFloat fusion(DictDynIntUnsignedFloat dict_dyn_ref, DictDynIntU
     {
         key = dict_dyn_ref.GetTabKeys().Get(i);
         dict_dyn_result.Add(key, dict_dyn_ref.Get(key));
-
     }
     return dict_dyn_result;
 }

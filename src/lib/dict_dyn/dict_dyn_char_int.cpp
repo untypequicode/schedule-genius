@@ -122,40 +122,12 @@ void DictDynCharInt::Set(char key, int value)
 
 bool DictDynCharInt::IfValue(char key, std::string condition, int value_id)
 {
-    if(condition == "=" or condition == "==" or condition == "is")
-      return (Get(key) == value_id);
-    else if(condition == "!=" or condition == "is not")
-      return (Get(key) != value_id);
-    else if(condition == "<")
-      return (Get(key) < value_id);
-    else if(condition == "<=")
-      return (Get(key) <= value_id);
-    else if(condition == ">")
-      return (Get(key) > value_id);
-    else if(condition == ">=")
-      return (Get(key) >= value_id);
-    else
-        std::cerr << "Error: condition not found" << std::endl;
-    return false;
+    return comparaison(Get(key), condition, value_id);
 }
 
 bool DictDynCharInt::IfKey(char key, std::string condition, char value)
 {
-    if(condition == "=" or condition == "==" or condition == "is")
-        return (key == value);
-    else if(condition == "!=" or condition == "is not")
-        return (key != value);
-    else if(condition == "<")
-        return(key < value);
-    else if(condition == "<=")
-        return(key <= value);
-    else if(condition == ">")
-        return(key > value);
-    else if(condition == ">=")
-        return(key >= value);
-    else
-      std::cerr << "Error: condition not found" << std::endl;
-    return false;
+    return comparaison(key, condition, value);
 }
 
 DictDynCharInt DictDynCharInt::FiltreValue(std::string condition, int value)
@@ -175,7 +147,6 @@ DictDynCharInt DictDynCharInt::FiltreValue(TabDynString condition, TabDynInt val
     bool test;
     unsigned int index = 0;
     for (unsigned int i = 0; i < GetNbElem(); i++) {
-//      test = comparaison(m_tab_keys.Get(i), condition.Get(0), value.Get(0));
         test = comparaison(m_tab_values.Get(i), condition.Get(0), value.Get(0));
         while (index < OrAnd.GetNbElem())
         {
@@ -198,8 +169,7 @@ DictDynCharInt DictDynCharInt::FiltreValue(TabDynString condition, TabDynInt val
             else
             {
                 std::cerr << "Error : comparator forbidden, only 'and' and 'or' are allowed" << std::endl;
-                DictDynCharInt a = DictDynCharInt();
-                return a;
+                return DictDynCharInt();
             }
         }
         index = 0;
@@ -242,8 +212,7 @@ DictDynCharInt DictDynCharInt::FiltreKey(TabDynString condition, TabDynChar valu
             else
             {
                 std::cerr << "Error : comparator forbidden, only 'and' and 'or' are allowed" << std::endl;
-                DictDynCharInt a = DictDynCharInt();
-                return a;
+                return DictDynCharInt();
             }
         }
         index = 0;
@@ -361,7 +330,6 @@ DictDynCharInt fusion(DictDynCharInt dict_dyn_ref, DictDynCharInt dict_dyn_ref2)
     {
         key = dict_dyn_ref.GetTabKeys().Get(i);
         dict_dyn_result.Add(key, dict_dyn_ref.Get(key));
-
     }
     return dict_dyn_result;
 }
