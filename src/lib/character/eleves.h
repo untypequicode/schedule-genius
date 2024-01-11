@@ -145,9 +145,6 @@ public:
 protected:
     TabDynIntUnsigned m_tab_keys;
     TabDynEleve m_tab_values;
-
-    bool TestIfValue(unsigned int index, std::string condition, Eleve value);
-    bool TestIfKey(unsigned int index, std::string condition, int unsigned value);
 };
 
 DictDynIntUnsignedEleve fusion(DictDynIntUnsignedEleve dict_dyn_ref, DictDynIntUnsignedEleve dict_dyn_ref2);

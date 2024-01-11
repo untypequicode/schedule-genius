@@ -139,25 +139,6 @@ bool DictDynIntUnsignedString::IfValue(int unsigned key, std::string condition, 
     return false;
 }
 
-bool DictDynIntUnsignedString::TestIfValue(unsigned int index, std::string condition, std::string value_id)
-{
-    if(condition == "==" or condition == "=" or condition == "is")
-      return (m_tab_values.Get(index) == value_id);
-    else if(condition == "!=" or condition == "is not")
-      return (m_tab_values.Get(index) != value_id);
-    else if(condition == "<")
-      return(m_tab_values.Get(index) < value_id);
-    else if(condition == "<=")
-      return(m_tab_values.Get(index) <= value_id);
-    else if(condition == ">")
-      return(m_tab_values.Get(index) > value_id);
-    else if(condition == ">=")
-      return(m_tab_values.Get(index) >= value_id);
-    else
-      std::cerr << "Error: condition not found" << std::endl;
-    return false;
-}
-
 bool DictDynIntUnsignedString::IfKey(int unsigned key, std::string condition, int unsigned value)
 {
     if(condition == "=" or condition == "==" or condition == "is")
@@ -177,30 +158,11 @@ bool DictDynIntUnsignedString::IfKey(int unsigned key, std::string condition, in
     return false;
 }
 
-bool DictDynIntUnsignedString::TestIfKey(unsigned int index, std::string condition, int unsigned value)
-{
-    if (condition == "=" or condition == "==" or condition == "is")
-        return (m_tab_keys.Get(index) == value);
-    else if (condition == "!=" or condition == "is not")
-        return (m_tab_keys.Get(index) != value);
-    else if (condition == "<")
-        return (m_tab_keys.Get(index) < value);
-    else if (condition == "<=")
-        return (m_tab_keys.Get(index) <= value);
-    else if (condition == ">")
-        return (m_tab_keys.Get(index) > value);
-    else if (condition == ">=")
-        return (m_tab_keys.Get(index) >= value);
-    else
-      std::cerr << "Error: condition not found" << std::endl;
-    return false;
-}
-
 DictDynIntUnsignedString DictDynIntUnsignedString::FiltreValue(std::string condition, std::string value)
 {
     DictDynIntUnsignedString dict_dyn_result;
     for (unsigned int i = 0; i < GetNbElem(); i++){
-        if(TestIfValue(i, condition, value)){
+      if(comparaison(m_tab_values.Get(i), condition, value)){
             dict_dyn_result.Add(m_tab_keys.Get(i), m_tab_values.Get(i));
         }
     }
@@ -214,18 +176,18 @@ DictDynIntUnsignedString DictDynIntUnsignedString::FiltreValue(TabDynString cond
     unsigned int index = 0;
     for (unsigned int i = 0; i < GetNbElem(); i++) {
 //      test = comparaison(m_tab_keys.Get(i), condition.Get(0), value.Get(0));
-        test = TestIfValue(i, condition.Get(0), value.Get(0));
+        test = comparaison(m_tab_values.Get(i), condition.Get(0), value.Get(0));
         while (index < OrAnd.GetNbElem())
         {
             if (OrAnd.Get(index) == "or" and !test) {
                 index++;
-                test = TestIfValue(i, condition.Get(index), value.Get(index));
+                test = comparaison(m_tab_values.Get(i), condition.Get(index), value.Get(index));
             }
 
             else if (OrAnd.Get(index) == "and" and test)
             {
                 index++;
-                test = TestIfValue(i, condition.Get(index), value.Get(index));
+                test = comparaison(m_tab_values.Get(i), condition.Get(index), value.Get(index));
             }
 
             else if (OrAnd.Get(index) == "or" or OrAnd.Get(index) == "and")
@@ -257,19 +219,19 @@ DictDynIntUnsignedString DictDynIntUnsignedString::FiltreKey(TabDynString condit
     unsigned int index = 0;
     for (unsigned int i = 0; i < GetNbElem(); i++)
     {
-        test = TestIfKey(i, condition.Get(0), value.Get(0));
+        test = comparaison(m_tab_keys.Get(i), condition.Get(0), value.Get(0));
         while (index < OrAnd.GetNbElem())
         {
             if (OrAnd.Get(index) == "or" and !test)
             {
                 index++;
-                test = TestIfKey(i, condition.Get(index), value.Get(index));
+                test = comparaison(m_tab_keys.Get(i), condition.Get(index), value.Get(index));
             }
 
             else if (OrAnd.Get(index) == "and" and test)
             {
                 index++;
-                test = TestIfKey(m_tab_keys.Get(i), condition.Get(index), value.Get(index));
+                test = comparaison(m_tab_keys.Get(i), condition.Get(index), value.Get(index));
             }
 
             else if (OrAnd.Get(index) == "or" or OrAnd.Get(index) == "and")
@@ -301,7 +263,7 @@ DictDynIntUnsignedString DictDynIntUnsignedString::FiltreAndValue(TabDynString c
     for(unsigned int i = 0; i < GetNbElem(); i++)
     {
         for(unsigned int j = 0; j < condition.GetNbElem(); j++){
-            if(!TestIfValue(i, condition.Get(j), value.Get(j)))
+            if(!comparaison(m_tab_values.Get(i), condition.Get(j), value.Get(j)))
             {
                 test = false;
                 break;
@@ -321,7 +283,7 @@ DictDynIntUnsignedString DictDynIntUnsignedString::FiltreOrValue(TabDynString co
     for(unsigned int i = 0; i < GetNbElem(); i++)
     {
         for(unsigned int j = 0; j < condition.GetNbElem(); j++){
-            if(TestIfValue(i, condition.Get(j), value.Get(j)))
+            if(comparaison(m_tab_values.Get(i), condition.Get(j), value.Get(j)))
             {
                 test = true;
                 break;
@@ -338,7 +300,7 @@ DictDynIntUnsignedString DictDynIntUnsignedString::FiltreKey(std::string conditi
 {
     DictDynIntUnsignedString dict_dyn_result;
     for (unsigned int i = 0; i < GetNbElem(); i++){
-        if(TestIfKey(i, condition, value)){
+        if(comparaison(m_tab_keys.Get(i), condition, value)){
             dict_dyn_result.Add(m_tab_keys.Get(i), m_tab_values.Get(i));
         }
     }
@@ -353,7 +315,7 @@ DictDynIntUnsignedString DictDynIntUnsignedString::FiltreAndKey(TabDynString con
     {
         for (unsigned int j = 0; j < condition.GetNbElem(); j++)
         {
-            if(!TestIfKey(i, condition.Get(j), value.Get(j))){
+            if(!comparaison(m_tab_keys.Get(i), condition.Get(j), value.Get(j))){
                 test = false;
                 break;
             }
@@ -373,7 +335,7 @@ DictDynIntUnsignedString DictDynIntUnsignedString::FiltreOrKey(TabDynString cond
     {
         for (unsigned int j = 0; j < condition.GetNbElem(); j++)
         {
-            if(TestIfKey(i, condition.Get(j), value.Get(j))){
+            if(comparaison(m_tab_keys.Get(i), condition.Get(j), value.Get(j))){
                 test = true;
                 break;
             }

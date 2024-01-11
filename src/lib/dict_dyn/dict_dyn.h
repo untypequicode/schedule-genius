@@ -159,9 +159,6 @@ public:
 protected:
     TabDynChar m_tab_keys;
     TabDynInt m_tab_values;
-
-    bool TestIfValue(unsigned int index, std::string condition, int value);
-    bool TestIfKey(unsigned int index, std::string condition, char value);
 };
 
 DictDynCharInt fusion(DictDynCharInt dict_dyn_ref, DictDynCharInt dict_dyn_ref2);
@@ -236,9 +233,6 @@ public:
 protected:
     TabDynIntUnsigned m_tab_keys;
     TabDynString m_tab_values;
-
-    bool TestIfValue(unsigned int index, std::string condition, std::string value);
-    bool TestIfKey(unsigned int index, std::string condition, int unsigned value);
 };
 
 DictDynIntUnsignedString fusion(DictDynIntUnsignedString dict_dyn_ref, DictDynIntUnsignedString dict_dyn_ref2);
@@ -313,9 +307,6 @@ public:
 protected:
     TabDynIntUnsigned m_tab_keys;
     TabDynFloat m_tab_values;
-
-    bool TestIfValue(unsigned int index, std::string condition, float value);
-    bool TestIfKey(unsigned int index, std::string condition, int unsigned value);
 };
 
 DictDynIntUnsignedFloat fusion(DictDynIntUnsignedFloat dict_dyn_ref, DictDynIntUnsignedFloat dict_dyn_ref2);
