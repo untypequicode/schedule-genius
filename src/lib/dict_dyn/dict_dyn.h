@@ -85,8 +85,6 @@ public:
 protected:
     TabDynChar m_tab_keys;
     TabDynDouble m_tab_values;
-  
-    bool TestIfKey(unsigned int index, std::string condition, char value);
 };
 
 DictDynCharDouble fusion(DictDynCharDouble dict_dyn_ref, DictDynCharDouble dict_dyn_ref2);

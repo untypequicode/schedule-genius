@@ -158,25 +158,6 @@ bool DictDynCharDouble::IfKey(char key, std::string condition, char value)
     return false;
 }
 
-bool DictDynCharDouble::TestIfKey(unsigned int index, std::string condition, char value)
-{
-    if (condition == "=" or condition == "==" or condition == "is")
-        return (m_tab_keys.Get(index) == value);
-    else if (condition == "!=" or condition == "is not")
-        return (m_tab_keys.Get(index) != value);
-    else if (condition == "<")
-        return (m_tab_keys.Get(index) < value);
-    else if (condition == "<=")
-        return (m_tab_keys.Get(index) <= value);
-    else if (condition == ">")
-        return (m_tab_keys.Get(index) > value);
-    else if (condition == ">=")
-        return (m_tab_keys.Get(index) >= value);
-    else
-      std::cerr << "Error: condition not found" << std::endl;
-    return false;
-}
-
 DictDynCharDouble DictDynCharDouble::FiltreValue(std::string condition, double value)
 {
     DictDynCharDouble dict_dyn_result;
@@ -238,19 +219,19 @@ DictDynCharDouble DictDynCharDouble::FiltreKey(TabDynString condition, TabDynCha
     unsigned int index = 0;
     for (unsigned int i = 0; i < GetNbElem(); i++)
     {
-        test = TestIfKey(i, condition.Get(0), value.Get(0));
+        test = comparaison(m_tab_keys.Get(i), condition.Get(0), value.Get(0));
         while (index < OrAnd.GetNbElem())
         {
             if (OrAnd.Get(index) == "or" and !test)
             {
                 index++;
-                test = TestIfKey(i, condition.Get(index), value.Get(index));
+                test = comparaison(m_tab_keys.Get(i), condition.Get(index), value.Get(index));
             }
 
             else if (OrAnd.Get(index) == "and" and test)
             {
                 index++;
-                test = TestIfKey(m_tab_keys.Get(i), condition.Get(index), value.Get(index));
+                test = comparaison(m_tab_keys.Get(i), condition.Get(index), value.Get(index));
             }
 
             else if (OrAnd.Get(index) == "or" or OrAnd.Get(index) == "and")
@@ -319,7 +300,7 @@ DictDynCharDouble DictDynCharDouble::FiltreKey(std::string condition, char value
 {
     DictDynCharDouble dict_dyn_result;
     for (unsigned int i = 0; i < GetNbElem(); i++){
-        if(TestIfKey(i, condition, value)){
+        if(comparaison(m_tab_keys.Get(i), condition, value)){
             dict_dyn_result.Add(m_tab_keys.Get(i), m_tab_values.Get(i));
         }
     }
@@ -334,7 +315,7 @@ DictDynCharDouble DictDynCharDouble::FiltreAndKey(TabDynString condition, TabDyn
     {
         for (unsigned int j = 0; j < condition.GetNbElem(); j++)
         {
-            if(!TestIfKey(i, condition.Get(j), value.Get(j))){
+            if(!comparaison(m_tab_keys.Get(i), condition.Get(j), value.Get(j))){
                 test = false;
                 break;
             }
@@ -354,7 +335,7 @@ DictDynCharDouble DictDynCharDouble::FiltreOrKey(TabDynString condition, TabDynC
     {
         for (unsigned int j = 0; j < condition.GetNbElem(); j++)
         {
-            if(TestIfKey(i, condition.Get(j), value.Get(j))){
+            if(comparaison(m_tab_keys.Get(i), condition.Get(j), value.Get(j))){
                 test = true;
                 break;
             }
