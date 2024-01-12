@@ -108,28 +108,28 @@ public:
     //ajoute un couple key : value au dictionnaire avec des paramètres
     Eleve Get(int unsigned key) const;
     //renvoie la valeur associée à la clé
-    TabDynIntUnsigned GetTabKeys() const;
+    TabDynIntUnsigned& GetTabKeys();
     //renvoie le tableau des clés
-    TabDynEleve GetTabValues() const;
+    TabDynEleve& GetTabValues();
     //renvoie le tableau des valeurs
     void Set(int unsigned key, Eleve value);
     //change la valeur associée à la clé
 
     DictDynIntUnsignedEleve FiltreValue(std::string condition, Eleve value);
     // renvoie un dictionnaire filtré selon une condition sur la valeur
-    DictDynIntUnsignedEleve FiltreValue(TabDynString condition, TabDynEleve value, TabDynString OrAnd);
+    DictDynIntUnsignedEleve FiltreValue(const TabDynString& condition, const TabDynEleve& value, const TabDynString& OrAnd);
     // renvoie un dictionnaire filtré selon plusieurs conditions sur la valeur
-    DictDynIntUnsignedEleve FiltreAndValue(TabDynString condition, TabDynEleve value);
+    DictDynIntUnsignedEleve FiltreAndValue(const TabDynString& condition, const TabDynEleve& value);
     // renvoie un dictionnaire filtré dont les valeur respecte toutes les conditions
-    DictDynIntUnsignedEleve FiltreOrValue(TabDynString condition, TabDynEleve value);
+    DictDynIntUnsignedEleve FiltreOrValue(const TabDynString& condition, const TabDynEleve& value);
     // renvoie un dictionnaire filtré dont les valeur respecte au moins une des conditions
     DictDynIntUnsignedEleve FiltreKey(std::string condition, int unsigned value);
     // renvoie un dictionnaire filtré selon une condition sur la clé
-    DictDynIntUnsignedEleve FiltreKey(TabDynString condition, TabDynIntUnsigned value, TabDynString OrAnd);
+    DictDynIntUnsignedEleve FiltreKey(const TabDynString& condition, const TabDynIntUnsigned& value, const TabDynString& OrAnd);
     // renvoie un dictionnaire filtré selon plusieurs conditions sur la clé
-    DictDynIntUnsignedEleve FiltreAndKey(TabDynString condition, TabDynIntUnsigned value);
+    DictDynIntUnsignedEleve FiltreAndKey(const TabDynString& condition, const TabDynIntUnsigned& value);
     // renvoie un dictionnaire filtré dont les clés respecte toutes les conditions
-    DictDynIntUnsignedEleve FiltreOrKey(TabDynString condition, TabDynIntUnsigned value);
+    DictDynIntUnsignedEleve FiltreOrKey(const TabDynString& condition, const TabDynIntUnsigned& value);
     // renvoie un dictionnaire filtré dont les clés respecte au moins une des conditions
 
     Eleve Pop(int unsigned key);
@@ -147,7 +147,7 @@ protected:
     TabDynEleve m_tab_values;
 };
 
-DictDynIntUnsignedEleve fusion(DictDynIntUnsignedEleve dict_dyn_ref, DictDynIntUnsignedEleve dict_dyn_ref2);
+DictDynIntUnsignedEleve fusion(DictDynIntUnsignedEleve& dict_dyn_ref, DictDynIntUnsignedEleve& dict_dyn_ref2);
 
 /* SPLIT */
 

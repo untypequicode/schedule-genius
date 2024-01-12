@@ -48,9 +48,9 @@ public:
     //ajoute un couple key : value au dictionnaire avec des paramètres
     double Get(char key) const;
     //renvoie la valeur associée à la clé
-    TabDynChar GetTabKeys() const;
+    TabDynChar& GetTabKeys();
     //renvoie le tableau des clés
-    TabDynDouble GetTabValues() const;
+    TabDynDouble& GetTabValues();
     //renvoie le tableau des valeurs
     void Set(char key, double value);
     //change la valeur associée à la clé
@@ -122,28 +122,28 @@ public:
     //ajoute un couple key : value au dictionnaire avec des paramètres
     int Get(char key) const;
     //renvoie la valeur associée à la clé
-    TabDynChar GetTabKeys() const;
+    TabDynChar& GetTabKeys();
     //renvoie le tableau des clés
-    TabDynInt GetTabValues() const;
+    TabDynInt& GetTabValues();
     //renvoie le tableau des valeurs
     void Set(char key, int value);
     //change la valeur associée à la clé
 
     DictDynCharInt FiltreValue(std::string condition, int value);
     // renvoie un dictionnaire filtré selon une condition sur la valeur
-    DictDynCharInt FiltreValue(TabDynString condition, TabDynInt value, TabDynString OrAnd);
+    DictDynCharInt FiltreValue(const TabDynString& condition, const TabDynInt& value, const TabDynString& OrAnd);
     // renvoie un dictionnaire filtré selon plusieurs conditions sur la valeur
-    DictDynCharInt FiltreAndValue(TabDynString condition, TabDynInt value);
+    DictDynCharInt FiltreAndValue(const TabDynString& condition, const TabDynInt& value);
     // renvoie un dictionnaire filtré dont les valeur respecte toutes les conditions
-    DictDynCharInt FiltreOrValue(TabDynString condition, TabDynInt value);
+    DictDynCharInt FiltreOrValue(const TabDynString& condition, const TabDynInt& value);
     // renvoie un dictionnaire filtré dont les valeur respecte au moins une des conditions
     DictDynCharInt FiltreKey(std::string condition, char value);
     // renvoie un dictionnaire filtré selon une condition sur la clé
-    DictDynCharInt FiltreKey(TabDynString condition, TabDynChar value, TabDynString OrAnd);
+    DictDynCharInt FiltreKey(const TabDynString& condition, const TabDynChar& value, const TabDynString& OrAnd);
     // renvoie un dictionnaire filtré selon plusieurs conditions sur la clé
-    DictDynCharInt FiltreAndKey(TabDynString condition, TabDynChar value);
+    DictDynCharInt FiltreAndKey(const TabDynString& condition, const TabDynChar& value);
     // renvoie un dictionnaire filtré dont les clés respecte toutes les conditions
-    DictDynCharInt FiltreOrKey(TabDynString condition, TabDynChar value);
+    DictDynCharInt FiltreOrKey(const TabDynString& condition, const TabDynChar& value);
     // renvoie un dictionnaire filtré dont les clés respecte au moins une des conditions
 
     int Pop(char key);
@@ -161,7 +161,7 @@ protected:
     TabDynInt m_tab_values;
 };
 
-DictDynCharInt fusion(DictDynCharInt dict_dyn_ref, DictDynCharInt dict_dyn_ref2);
+DictDynCharInt fusion(DictDynCharInt& dict_dyn_ref, DictDynCharInt& dict_dyn_ref2);
 
 
 
@@ -196,28 +196,28 @@ public:
     //ajoute un couple key : value au dictionnaire avec des paramètres
     std::string Get(int unsigned key) const;
     //renvoie la valeur associée à la clé
-    TabDynIntUnsigned GetTabKeys() const;
+    TabDynIntUnsigned& GetTabKeys();
     //renvoie le tableau des clés
-    TabDynString GetTabValues() const;
+    TabDynString& GetTabValues();
     //renvoie le tableau des valeurs
     void Set(int unsigned key, std::string value);
     //change la valeur associée à la clé
 
     DictDynIntUnsignedString FiltreValue(std::string condition, std::string value);
     // renvoie un dictionnaire filtré selon une condition sur la valeur
-    DictDynIntUnsignedString FiltreValue(TabDynString condition, TabDynString value, TabDynString OrAnd);
+    DictDynIntUnsignedString FiltreValue(const TabDynString& condition, const TabDynString& value, const TabDynString& OrAnd);
     // renvoie un dictionnaire filtré selon plusieurs conditions sur la valeur
-    DictDynIntUnsignedString FiltreAndValue(TabDynString condition, TabDynString value);
+    DictDynIntUnsignedString FiltreAndValue(const TabDynString& condition, const TabDynString& value);
     // renvoie un dictionnaire filtré dont les valeur respecte toutes les conditions
-    DictDynIntUnsignedString FiltreOrValue(TabDynString condition, TabDynString value);
+    DictDynIntUnsignedString FiltreOrValue(const TabDynString& condition, const TabDynString& value);
     // renvoie un dictionnaire filtré dont les valeur respecte au moins une des conditions
     DictDynIntUnsignedString FiltreKey(std::string condition, int unsigned value);
     // renvoie un dictionnaire filtré selon une condition sur la clé
-    DictDynIntUnsignedString FiltreKey(TabDynString condition, TabDynIntUnsigned value, TabDynString OrAnd);
+    DictDynIntUnsignedString FiltreKey(const TabDynString& condition, const TabDynIntUnsigned& value, const TabDynString& OrAnd);
     // renvoie un dictionnaire filtré selon plusieurs conditions sur la clé
-    DictDynIntUnsignedString FiltreAndKey(TabDynString condition, TabDynIntUnsigned value);
+    DictDynIntUnsignedString FiltreAndKey(const TabDynString& condition, const TabDynIntUnsigned& value);
     // renvoie un dictionnaire filtré dont les clés respecte toutes les conditions
-    DictDynIntUnsignedString FiltreOrKey(TabDynString condition, TabDynIntUnsigned value);
+    DictDynIntUnsignedString FiltreOrKey(const TabDynString& condition, const TabDynIntUnsigned& value);
     // renvoie un dictionnaire filtré dont les clés respecte au moins une des conditions
 
     std::string Pop(int unsigned key);
@@ -235,7 +235,7 @@ protected:
     TabDynString m_tab_values;
 };
 
-DictDynIntUnsignedString fusion(DictDynIntUnsignedString dict_dyn_ref, DictDynIntUnsignedString dict_dyn_ref2);
+DictDynIntUnsignedString fusion(DictDynIntUnsignedString& dict_dyn_ref, DictDynIntUnsignedString& dict_dyn_ref2);
 
 
 
@@ -270,28 +270,28 @@ public:
     //ajoute un couple key : value au dictionnaire avec des paramètres
     float Get(int unsigned key) const;
     //renvoie la valeur associée à la clé
-    TabDynIntUnsigned GetTabKeys() const;
+    TabDynIntUnsigned& GetTabKeys();
     //renvoie le tableau des clés
-    TabDynFloat GetTabValues() const;
+    TabDynFloat& GetTabValues();
     //renvoie le tableau des valeurs
     void Set(int unsigned key, float value);
     //change la valeur associée à la clé
 
     DictDynIntUnsignedFloat FiltreValue(std::string condition, float value);
     // renvoie un dictionnaire filtré selon une condition sur la valeur
-    DictDynIntUnsignedFloat FiltreValue(TabDynString condition, TabDynFloat value, TabDynString OrAnd);
+    DictDynIntUnsignedFloat FiltreValue(const TabDynString& condition, const TabDynFloat& value, const TabDynString& OrAnd);
     // renvoie un dictionnaire filtré selon plusieurs conditions sur la valeur
-    DictDynIntUnsignedFloat FiltreAndValue(TabDynString condition, TabDynFloat value);
+    DictDynIntUnsignedFloat FiltreAndValue(const TabDynString& condition, const TabDynFloat& value);
     // renvoie un dictionnaire filtré dont les valeur respecte toutes les conditions
-    DictDynIntUnsignedFloat FiltreOrValue(TabDynString condition, TabDynFloat value);
+    DictDynIntUnsignedFloat FiltreOrValue(const TabDynString& condition, const TabDynFloat& value);
     // renvoie un dictionnaire filtré dont les valeur respecte au moins une des conditions
     DictDynIntUnsignedFloat FiltreKey(std::string condition, int unsigned value);
     // renvoie un dictionnaire filtré selon une condition sur la clé
-    DictDynIntUnsignedFloat FiltreKey(TabDynString condition, TabDynIntUnsigned value, TabDynString OrAnd);
+    DictDynIntUnsignedFloat FiltreKey(const TabDynString& condition, const TabDynIntUnsigned& value, const TabDynString& OrAnd);
     // renvoie un dictionnaire filtré selon plusieurs conditions sur la clé
-    DictDynIntUnsignedFloat FiltreAndKey(TabDynString condition, TabDynIntUnsigned value);
+    DictDynIntUnsignedFloat FiltreAndKey(const TabDynString& condition, const TabDynIntUnsigned& value);
     // renvoie un dictionnaire filtré dont les clés respecte toutes les conditions
-    DictDynIntUnsignedFloat FiltreOrKey(TabDynString condition, TabDynIntUnsigned value);
+    DictDynIntUnsignedFloat FiltreOrKey(const TabDynString& condition, const TabDynIntUnsigned& value);
     // renvoie un dictionnaire filtré dont les clés respecte au moins une des conditions
 
     float Pop(int unsigned key);
@@ -309,7 +309,7 @@ protected:
     TabDynFloat m_tab_values;
 };
 
-DictDynIntUnsignedFloat fusion(DictDynIntUnsignedFloat dict_dyn_ref, DictDynIntUnsignedFloat dict_dyn_ref2);
+DictDynIntUnsignedFloat fusion(DictDynIntUnsignedFloat& dict_dyn_ref, DictDynIntUnsignedFloat& dict_dyn_ref2);
 
 /* SPLIT */
 

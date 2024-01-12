@@ -100,12 +100,12 @@ double DictDynCharDouble::Get(char key) const
     return '\0';
 }
 
-TabDynChar DictDynCharDouble::GetTabKeys() const
+TabDynChar& DictDynCharDouble::GetTabKeys()
 {
     return m_tab_keys;
 }
 
-TabDynDouble DictDynCharDouble::GetTabValues() const
+TabDynDouble& DictDynCharDouble::GetTabValues()
 {
     return m_tab_values;
 }

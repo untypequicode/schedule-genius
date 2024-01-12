@@ -100,12 +100,12 @@ float DictDynIntUnsignedFloat::Get(int unsigned key) const
     return '\0';
 }
 
-TabDynIntUnsigned DictDynIntUnsignedFloat::GetTabKeys() const
+TabDynIntUnsigned& DictDynIntUnsignedFloat::GetTabKeys()
 {
     return m_tab_keys;
 }
 
-TabDynFloat DictDynIntUnsignedFloat::GetTabValues() const
+TabDynFloat& DictDynIntUnsignedFloat::GetTabValues()
 {
     return m_tab_values;
 }
@@ -141,12 +141,16 @@ DictDynIntUnsignedFloat DictDynIntUnsignedFloat::FiltreValue(std::string conditi
     return dict_dyn_result;
 }
 
-DictDynIntUnsignedFloat DictDynIntUnsignedFloat::FiltreValue(TabDynString condition, TabDynFloat value, TabDynString OrAnd)
+DictDynIntUnsignedFloat DictDynIntUnsignedFloat::FiltreValue(const TabDynString& condition, const TabDynFloat& value, const TabDynString& OrAnd)
 {
+    for (unsigned int i = 0; i < condition.GetNbElem(); i++)
+        std::cout << "condition : '" << condition.Get(i) << "'" << std::endl;
+
     DictDynIntUnsignedFloat dict_dyn_result;
     bool test;
-    unsigned int index = 0;
+    unsigned int index;
     for (unsigned int i = 0; i < GetNbElem(); i++) {
+        index = 0;
         test = comparaison(m_tab_values.Get(i), condition.Get(0), value.Get(0));
         while (index < OrAnd.GetNbElem())
         {
@@ -173,7 +177,6 @@ DictDynIntUnsignedFloat DictDynIntUnsignedFloat::FiltreValue(TabDynString condit
                 return DictDynIntUnsignedFloat();
             }
         }
-        index = 0;
         if(test)
         {
             dict_dyn_result.Add(m_tab_keys.Get(i), m_tab_values.Get(i));
@@ -183,7 +186,7 @@ DictDynIntUnsignedFloat DictDynIntUnsignedFloat::FiltreValue(TabDynString condit
     return dict_dyn_result;
 }
 
-DictDynIntUnsignedFloat DictDynIntUnsignedFloat::FiltreKey(TabDynString condition, TabDynIntUnsigned value, TabDynString OrAnd)
+DictDynIntUnsignedFloat DictDynIntUnsignedFloat::FiltreKey(const TabDynString& condition, const TabDynIntUnsigned& value, const TabDynString& OrAnd)
 {
     DictDynIntUnsignedFloat dict_dyn_result;
     bool test;
@@ -226,7 +229,7 @@ DictDynIntUnsignedFloat DictDynIntUnsignedFloat::FiltreKey(TabDynString conditio
     return dict_dyn_result;
 }
 
-DictDynIntUnsignedFloat DictDynIntUnsignedFloat::FiltreAndValue(TabDynString condition, TabDynFloat value)
+DictDynIntUnsignedFloat DictDynIntUnsignedFloat::FiltreAndValue(const TabDynString& condition, const TabDynFloat& value)
 {
     DictDynIntUnsignedFloat dict_dyn_result;
     bool test = true;
@@ -246,7 +249,7 @@ DictDynIntUnsignedFloat DictDynIntUnsignedFloat::FiltreAndValue(TabDynString con
     return dict_dyn_result;
 }
 
-DictDynIntUnsignedFloat DictDynIntUnsignedFloat::FiltreOrValue(TabDynString condition, TabDynFloat value)
+DictDynIntUnsignedFloat DictDynIntUnsignedFloat::FiltreOrValue(const TabDynString& condition, const TabDynFloat& value)
 {
     DictDynIntUnsignedFloat dict_dyn_result;
     bool test = false;
@@ -277,7 +280,7 @@ DictDynIntUnsignedFloat DictDynIntUnsignedFloat::FiltreKey(std::string condition
     return dict_dyn_result;
 }
 
-DictDynIntUnsignedFloat DictDynIntUnsignedFloat::FiltreAndKey(TabDynString condition, TabDynIntUnsigned value)
+DictDynIntUnsignedFloat DictDynIntUnsignedFloat::FiltreAndKey(const TabDynString& condition, const TabDynIntUnsigned& value)
 {
     DictDynIntUnsignedFloat dict_dyn_result;
     bool test = true;
@@ -297,7 +300,7 @@ DictDynIntUnsignedFloat DictDynIntUnsignedFloat::FiltreAndKey(TabDynString condi
     return dict_dyn_result;
 }
 
-DictDynIntUnsignedFloat DictDynIntUnsignedFloat::FiltreOrKey(TabDynString condition, TabDynIntUnsigned value)
+DictDynIntUnsignedFloat DictDynIntUnsignedFloat::FiltreOrKey(const TabDynString& condition, const TabDynIntUnsigned& value)
 {
     DictDynIntUnsignedFloat dict_dyn_result;
     bool test = false;
@@ -317,7 +320,7 @@ DictDynIntUnsignedFloat DictDynIntUnsignedFloat::FiltreOrKey(TabDynString condit
     return dict_dyn_result;
 }
 
-DictDynIntUnsignedFloat fusion(DictDynIntUnsignedFloat dict_dyn_ref, DictDynIntUnsignedFloat dict_dyn_ref2)
+DictDynIntUnsignedFloat fusion(DictDynIntUnsignedFloat& dict_dyn_ref, DictDynIntUnsignedFloat& dict_dyn_ref2)
 {
     int unsigned key;
     DictDynIntUnsignedFloat dict_dyn_result;

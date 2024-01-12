@@ -100,12 +100,12 @@ Eleve DictDynIntUnsignedEleve::Get(int unsigned key) const
     return Eleve();
 }
 
-TabDynIntUnsigned DictDynIntUnsignedEleve::GetTabKeys() const
+TabDynIntUnsigned& DictDynIntUnsignedEleve::GetTabKeys()
 {
     return m_tab_keys;
 }
 
-TabDynEleve DictDynIntUnsignedEleve::GetTabValues() const
+TabDynEleve& DictDynIntUnsignedEleve::GetTabValues()
 {
     return m_tab_values;
 }
@@ -141,12 +141,16 @@ DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreValue(std::string conditi
     return dict_dyn_result;
 }
 
-DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreValue(TabDynString condition, TabDynEleve value, TabDynString OrAnd)
+DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreValue(const TabDynString& condition, const TabDynEleve& value, const TabDynString& OrAnd)
 {
+    for (unsigned int i = 0; i < condition.GetNbElem(); i++)
+        std::cout << "condition : '" << condition.Get(i) << "'" << std::endl;
+
     DictDynIntUnsignedEleve dict_dyn_result;
     bool test;
-    unsigned int index = 0;
+    unsigned int index;
     for (unsigned int i = 0; i < GetNbElem(); i++) {
+        index = 0;
         test = comparaison(m_tab_values.Get(i).GetId(), condition.Get(0), value.Get(0).GetId());
         while (index < OrAnd.GetNbElem())
         {
@@ -173,7 +177,6 @@ DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreValue(TabDynString condit
                 return DictDynIntUnsignedEleve();
             }
         }
-        index = 0;
         if(test)
         {
             dict_dyn_result.Add(m_tab_keys.Get(i), m_tab_values.Get(i));
@@ -183,7 +186,7 @@ DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreValue(TabDynString condit
     return dict_dyn_result;
 }
 
-DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreKey(TabDynString condition, TabDynIntUnsigned value, TabDynString OrAnd)
+DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreKey(const TabDynString& condition, const TabDynIntUnsigned& value, const TabDynString& OrAnd)
 {
     DictDynIntUnsignedEleve dict_dyn_result;
     bool test;
@@ -226,7 +229,7 @@ DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreKey(TabDynString conditio
     return dict_dyn_result;
 }
 
-DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreAndValue(TabDynString condition, TabDynEleve value)
+DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreAndValue(const TabDynString& condition, const TabDynEleve& value)
 {
     DictDynIntUnsignedEleve dict_dyn_result;
     bool test = true;
@@ -246,7 +249,7 @@ DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreAndValue(TabDynString con
     return dict_dyn_result;
 }
 
-DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreOrValue(TabDynString condition, TabDynEleve value)
+DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreOrValue(const TabDynString& condition, const TabDynEleve& value)
 {
     DictDynIntUnsignedEleve dict_dyn_result;
     bool test = false;
@@ -277,7 +280,7 @@ DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreKey(std::string condition
     return dict_dyn_result;
 }
 
-DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreAndKey(TabDynString condition, TabDynIntUnsigned value)
+DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreAndKey(const TabDynString& condition, const TabDynIntUnsigned& value)
 {
     DictDynIntUnsignedEleve dict_dyn_result;
     bool test = true;
@@ -297,7 +300,7 @@ DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreAndKey(TabDynString condi
     return dict_dyn_result;
 }
 
-DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreOrKey(TabDynString condition, TabDynIntUnsigned value)
+DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreOrKey(const TabDynString& condition, const TabDynIntUnsigned& value)
 {
     DictDynIntUnsignedEleve dict_dyn_result;
     bool test = false;
@@ -317,7 +320,7 @@ DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreOrKey(TabDynString condit
     return dict_dyn_result;
 }
 
-DictDynIntUnsignedEleve fusion(DictDynIntUnsignedEleve dict_dyn_ref, DictDynIntUnsignedEleve dict_dyn_ref2)
+DictDynIntUnsignedEleve fusion(DictDynIntUnsignedEleve& dict_dyn_ref, DictDynIntUnsignedEleve& dict_dyn_ref2)
 {
     int unsigned key;
     DictDynIntUnsignedEleve dict_dyn_result;
