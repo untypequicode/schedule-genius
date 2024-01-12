@@ -50,9 +50,7 @@ int main()
 
     DictDynCharDouble dict;
     dict.Add('a', 0.0);
-    std::cout << dict.GetTabKeys().Get(0) << " : " << dict.GetTabValues().Get(0) << "\n" << std::endl;
     dict.Add('b', 1.1);
-    std::cout << dict.GetTabKeys().Get(1) << " : " << dict.GetTabValues().Get(1) << "\n" << std::endl;
     dict.Add('c', 2.2);
     dict.Add('d', 3.3);
     dict.Add('e', 4.4);
@@ -81,7 +79,8 @@ int main()
 
     std::cout << "test" << std::endl;
 
-    DictDynCharDouble dict_filtre = dict.FiltreValue(condition, value, OrAnd);
+    DictDynCharDouble dict_filtre;
+    dict_filtre = dict.FiltreValue(condition, value, OrAnd, dict_filtre);
 //    DictDynCharDouble dict_filtre = DictDynCharDouble();
 
 

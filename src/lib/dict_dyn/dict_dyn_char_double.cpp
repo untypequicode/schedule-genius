@@ -67,6 +67,16 @@ unsigned int DictDynCharDouble::GetNbElemMax() const
   return m_tab_values.GetNbElemMax();
 }
 
+void DictDynCharDouble::Clear() {
+    m_tab_keys.Clear();
+    m_tab_values.Clear();
+}
+
+void DictDynCharDouble::Clear(bool save_tab_memory) {
+    m_tab_keys.Clear(save_tab_memory);
+    m_tab_values.Clear(save_tab_memory);
+}
+
 void DictDynCharDouble::Copy(DictDynCharDouble &dict_dyn_ref){
     m_tab_keys.Copy(dict_dyn_ref.m_tab_keys);
     m_tab_values.Copy(dict_dyn_ref.m_tab_values);
@@ -130,9 +140,8 @@ bool DictDynCharDouble::IfKey(char key, std::string condition, char value)
     return comparaison(key, condition, value);
 }
 
-DictDynCharDouble DictDynCharDouble::FiltreValue(std::string condition, double value)
+DictDynCharDouble& DictDynCharDouble::FiltreValue(std::string condition, double value, DictDynCharDouble& dict_dyn_result)
 {
-    DictDynCharDouble dict_dyn_result;
     for (unsigned int i = 0; i < GetNbElem(); i++){
       if(comparaison(m_tab_values.Get(i), condition, value)){
             dict_dyn_result.Add(m_tab_keys.Get(i), m_tab_values.Get(i));
@@ -141,12 +150,11 @@ DictDynCharDouble DictDynCharDouble::FiltreValue(std::string condition, double v
     return dict_dyn_result;
 }
 
-DictDynCharDouble DictDynCharDouble::FiltreValue(const TabDynString& condition, const TabDynDouble& value, const TabDynString& OrAnd)
+DictDynCharDouble& DictDynCharDouble::FiltreValue(const TabDynString& condition, const TabDynDouble& value, const TabDynString& OrAnd, DictDynCharDouble& dict_dyn_result)
 {
     for (unsigned int i = 0; i < condition.GetNbElem(); i++)
         std::cout << "condition : '" << condition.Get(i) << "'" << std::endl;
 
-    DictDynCharDouble dict_dyn_result;
     bool test;
     unsigned int index;
     for (unsigned int i = 0; i < GetNbElem(); i++) {
@@ -174,7 +182,8 @@ DictDynCharDouble DictDynCharDouble::FiltreValue(const TabDynString& condition, 
             {
                 std::cerr << "Error : comparator forbidden : '"<< OrAnd.Get(index) << "' , only 'and' and 'or' are allowed" << std::endl;
                 std::cerr << "index :" << index;
-                return DictDynCharDouble();
+                dict_dyn_result.Clear();
+                return dict_dyn_result;
             }
         }
         if(test)
@@ -186,9 +195,8 @@ DictDynCharDouble DictDynCharDouble::FiltreValue(const TabDynString& condition, 
     return dict_dyn_result;
 }
 
-DictDynCharDouble DictDynCharDouble::FiltreKey(const TabDynString& condition, const TabDynChar& value, const TabDynString& OrAnd)
+DictDynCharDouble& DictDynCharDouble::FiltreKey(const TabDynString& condition, const TabDynChar& value, const TabDynString& OrAnd, DictDynCharDouble& dict_dyn_result)
 {
-    DictDynCharDouble dict_dyn_result;
     bool test;
     unsigned int index = 0;
     for (unsigned int i = 0; i < GetNbElem(); i++)
@@ -216,7 +224,8 @@ DictDynCharDouble DictDynCharDouble::FiltreKey(const TabDynString& condition, co
             else
             {
                 std::cerr << "Error : comparator forbidden, only 'and' and 'or' are allowed" << std::endl;
-                return DictDynCharDouble();
+                dict_dyn_result.Clear();
+                return dict_dyn_result;
             }
         }
         index = 0;
@@ -229,9 +238,8 @@ DictDynCharDouble DictDynCharDouble::FiltreKey(const TabDynString& condition, co
     return dict_dyn_result;
 }
 
-DictDynCharDouble DictDynCharDouble::FiltreAndValue(const TabDynString& condition, const TabDynDouble& value)
+DictDynCharDouble& DictDynCharDouble::FiltreAndValue(const TabDynString& condition, const TabDynDouble& value, DictDynCharDouble& dict_dyn_result)
 {
-    DictDynCharDouble dict_dyn_result;
     bool test = true;
     for(unsigned int i = 0; i < GetNbElem(); i++)
     {
@@ -249,9 +257,8 @@ DictDynCharDouble DictDynCharDouble::FiltreAndValue(const TabDynString& conditio
     return dict_dyn_result;
 }
 
-DictDynCharDouble DictDynCharDouble::FiltreOrValue(const TabDynString& condition, const TabDynDouble& value)
+DictDynCharDouble& DictDynCharDouble::FiltreOrValue(const TabDynString& condition, const TabDynDouble& value, DictDynCharDouble& dict_dyn_result)
 {
-    DictDynCharDouble dict_dyn_result;
     bool test = false;
     for(unsigned int i = 0; i < GetNbElem(); i++)
     {
@@ -269,9 +276,8 @@ DictDynCharDouble DictDynCharDouble::FiltreOrValue(const TabDynString& condition
     return dict_dyn_result;
 }
 
-DictDynCharDouble DictDynCharDouble::FiltreKey(std::string condition, char value)
+DictDynCharDouble& DictDynCharDouble::FiltreKey(std::string condition, char value, DictDynCharDouble& dict_dyn_result)
 {
-    DictDynCharDouble dict_dyn_result;
     for (unsigned int i = 0; i < GetNbElem(); i++){
         if(comparaison(m_tab_keys.Get(i), condition, value)){
             dict_dyn_result.Add(m_tab_keys.Get(i), m_tab_values.Get(i));
@@ -280,9 +286,8 @@ DictDynCharDouble DictDynCharDouble::FiltreKey(std::string condition, char value
     return dict_dyn_result;
 }
 
-DictDynCharDouble DictDynCharDouble::FiltreAndKey(const TabDynString& condition, const TabDynChar& value)
+DictDynCharDouble& DictDynCharDouble::FiltreAndKey(const TabDynString& condition, const TabDynChar& value, DictDynCharDouble& dict_dyn_result)
 {
-    DictDynCharDouble dict_dyn_result;
     bool test = true;
     for (unsigned int i = 0; i < GetNbElem(); i++)
     {
@@ -300,9 +305,8 @@ DictDynCharDouble DictDynCharDouble::FiltreAndKey(const TabDynString& condition,
     return dict_dyn_result;
 }
 
-DictDynCharDouble DictDynCharDouble::FiltreOrKey(const TabDynString& condition, const TabDynChar& value)
+DictDynCharDouble& DictDynCharDouble::FiltreOrKey(const TabDynString& condition, const TabDynChar& value, DictDynCharDouble& dict_dyn_result)
 {
-    DictDynCharDouble dict_dyn_result;
     bool test = false;
     for (unsigned int i = 0; i < GetNbElem(); i++)
     {
@@ -320,10 +324,9 @@ DictDynCharDouble DictDynCharDouble::FiltreOrKey(const TabDynString& condition, 
     return dict_dyn_result;
 }
 
-DictDynCharDouble fusion(DictDynCharDouble& dict_dyn_ref, DictDynCharDouble& dict_dyn_ref2)
+DictDynCharDouble& fusion(DictDynCharDouble& dict_dyn_ref, DictDynCharDouble& dict_dyn_ref2, DictDynCharDouble& dict_dyn_result)
 {
     char key;
-    DictDynCharDouble dict_dyn_result;
     
     for (unsigned int i = 0; i < dict_dyn_ref2.GetNbElem(); i++) {
         key = dict_dyn_ref2.GetTabKeys().Get(i);

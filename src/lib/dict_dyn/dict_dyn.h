@@ -55,21 +55,21 @@ public:
     void Set(char key, double value);
     //change la valeur associée à la clé
 
-    DictDynCharDouble FiltreValue(std::string condition, double value);
+    DictDynCharDouble& FiltreValue(std::string condition, double value, DictDynCharDouble& dict_dyn_result);
     // renvoie un dictionnaire filtré selon une condition sur la valeur
-    DictDynCharDouble FiltreValue(const TabDynString& condition, const TabDynDouble& value, const TabDynString& OrAnd);
+    DictDynCharDouble& FiltreValue(const TabDynString& condition, const TabDynDouble& value, const TabDynString& OrAnd, DictDynCharDouble& dict_dyn_result);
     // renvoie un dictionnaire filtré selon plusieurs conditions sur la valeur
-    DictDynCharDouble FiltreAndValue(const TabDynString& condition, const TabDynDouble& value);
+    DictDynCharDouble& FiltreAndValue(const TabDynString& condition, const TabDynDouble& value, DictDynCharDouble& dict_dyn_result);
     // renvoie un dictionnaire filtré dont les valeur respecte toutes les conditions
-    DictDynCharDouble FiltreOrValue(const TabDynString& condition, const TabDynDouble& value);
+    DictDynCharDouble& FiltreOrValue(const TabDynString& condition, const TabDynDouble& value, DictDynCharDouble& dict_dyn_result);
     // renvoie un dictionnaire filtré dont les valeur respecte au moins une des conditions
-    DictDynCharDouble FiltreKey(std::string condition, char value);
+    DictDynCharDouble& FiltreKey(std::string condition, char value, DictDynCharDouble& dict_dyn_result);
     // renvoie un dictionnaire filtré selon une condition sur la clé
-    DictDynCharDouble FiltreKey(const TabDynString& condition, const TabDynChar& value, const TabDynString& OrAnd);
+    DictDynCharDouble& FiltreKey(const TabDynString& condition, const TabDynChar& value, const TabDynString& OrAnd, DictDynCharDouble& dict_dyn_result);
     // renvoie un dictionnaire filtré selon plusieurs conditions sur la clé
-    DictDynCharDouble FiltreAndKey(const TabDynString& condition, const TabDynChar& value);
+    DictDynCharDouble& FiltreAndKey(const TabDynString& condition, const TabDynChar& value, DictDynCharDouble& dict_dyn_result);
     // renvoie un dictionnaire filtré dont les clés respecte toutes les conditions
-    DictDynCharDouble FiltreOrKey(const TabDynString& condition, const TabDynChar& value);
+    DictDynCharDouble& FiltreOrKey(const TabDynString& condition, const TabDynChar& value, DictDynCharDouble& dict_dyn_result);
     // renvoie un dictionnaire filtré dont les clés respecte au moins une des conditions
 
     double Pop(char key);
@@ -87,7 +87,7 @@ protected:
     TabDynDouble m_tab_values;
 };
 
-DictDynCharDouble fusion(DictDynCharDouble& dict_dyn_ref, DictDynCharDouble& dict_dyn_ref2);
+DictDynCharDouble& fusion(DictDynCharDouble& dict_dyn_ref, DictDynCharDouble& dict_dyn_ref2, DictDynCharDouble& dict_dyn_result);
 
 /* SPLIT */
 
