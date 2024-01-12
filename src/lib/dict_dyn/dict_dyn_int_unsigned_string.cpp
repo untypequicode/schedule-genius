@@ -327,18 +327,30 @@ DictDynIntUnsignedString& DictDynIntUnsignedString::FiltreOrKey(const TabDynStri
 DictDynIntUnsignedString& fusion(DictDynIntUnsignedString& dict_dyn_ref, DictDynIntUnsignedString& dict_dyn_ref2, DictDynIntUnsignedString& dict_dyn_result)
 {
     int unsigned key;
-    
-    for (unsigned int i = 0; i < dict_dyn_ref2.GetNbElem(); i++) {
-        key = dict_dyn_ref2.GetTabKeys().Get(i);
-        dict_dyn_result.Add(key, dict_dyn_ref2.Get(key));
-        dict_dyn_ref.Pop(key);
+
+    if (dict_dyn_ref.GetNbElem() < dict_dyn_ref2.GetNbElem())
+    {
+        fusionSort(dict_dyn_ref, dict_dyn_ref2, dict_dyn_result);
     }
+    else {
+        fusionSort(dict_dyn_ref2, dict_dyn_ref, dict_dyn_result);
+    }
+    return dict_dyn_result;
+}
+
+DictDynIntUnsignedString& fusionSort(DictDynIntUnsignedString& dict_dyn_ref, DictDynIntUnsignedString& dict_dyn_ref2, DictDynIntUnsignedString& dict_dyn_result)
+{
+    int unsigned key;
+    for (unsigned int i = 0; i < dict_dyn_ref2.GetNbElem(); i++) {
+            key = dict_dyn_ref2.GetTabKeys().Get(i);
+            dict_dyn_result.Add(key, dict_dyn_ref2.Get(key));
+            dict_dyn_ref.Pop(key);
+        }
     for(unsigned int i = 0; i < dict_dyn_ref.GetNbElem(); i++)
     {
         key = dict_dyn_ref.GetTabKeys().Get(i);
         dict_dyn_result.Add(key, dict_dyn_ref.Get(key));
     }
-    return dict_dyn_result;
 }
 
 std::string DictDynIntUnsignedString::Pop(int unsigned key)

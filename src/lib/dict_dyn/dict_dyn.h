@@ -88,6 +88,7 @@ protected:
 };
 
 DictDynCharDouble& fusion(DictDynCharDouble& dict_dyn_ref, DictDynCharDouble& dict_dyn_ref2, DictDynCharDouble& dict_dyn_result);
+DictDynCharDouble& fusionSort(DictDynCharDouble& dict_dyn_ref, DictDynCharDouble& dict_dyn_ref2, DictDynCharDouble& dict_dyn_result);
 
 /* SPLIT */
 
@@ -162,6 +163,7 @@ protected:
 };
 
 DictDynCharInt& fusion(DictDynCharInt& dict_dyn_ref, DictDynCharInt& dict_dyn_ref2, DictDynCharInt& dict_dyn_result);
+DictDynCharInt& fusionSort(DictDynCharInt& dict_dyn_ref, DictDynCharInt& dict_dyn_ref2, DictDynCharInt& dict_dyn_result);
 
 
 
@@ -236,6 +238,7 @@ protected:
 };
 
 DictDynIntUnsignedString& fusion(DictDynIntUnsignedString& dict_dyn_ref, DictDynIntUnsignedString& dict_dyn_ref2, DictDynIntUnsignedString& dict_dyn_result);
+DictDynIntUnsignedString& fusionSort(DictDynIntUnsignedString& dict_dyn_ref, DictDynIntUnsignedString& dict_dyn_ref2, DictDynIntUnsignedString& dict_dyn_result);
 
 
 
@@ -310,6 +313,7 @@ protected:
 };
 
 DictDynIntUnsignedFloat& fusion(DictDynIntUnsignedFloat& dict_dyn_ref, DictDynIntUnsignedFloat& dict_dyn_ref2, DictDynIntUnsignedFloat& dict_dyn_result);
+DictDynIntUnsignedFloat& fusionSort(DictDynIntUnsignedFloat& dict_dyn_ref, DictDynIntUnsignedFloat& dict_dyn_ref2, DictDynIntUnsignedFloat& dict_dyn_result);
 
 /* SPLIT */
 

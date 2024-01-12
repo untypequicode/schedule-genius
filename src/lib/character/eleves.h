@@ -148,6 +148,7 @@ protected:
 };
 
 DictDynIntUnsignedEleve& fusion(DictDynIntUnsignedEleve& dict_dyn_ref, DictDynIntUnsignedEleve& dict_dyn_ref2, DictDynIntUnsignedEleve& dict_dyn_result);
+DictDynIntUnsignedEleve& fusionSort(DictDynIntUnsignedEleve& dict_dyn_ref, DictDynIntUnsignedEleve& dict_dyn_ref2, DictDynIntUnsignedEleve& dict_dyn_result);
 
 /* SPLIT */
 

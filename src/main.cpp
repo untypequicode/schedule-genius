@@ -95,5 +95,15 @@ int main()
     for(unsigned int i = 0; i < dict_filtre.GetNbElem(); i++)
         std::cout << dict_filtre.GetTabKeys().Get(i) << " : " << dict_filtre.GetTabValues().Get(i) << std::endl;
     std::cout << "end test" << std::endl;
+    
+    dict.Clear();
+    dict.Add('a', 6.6);
+    DictDynCharDouble dict_fusion;
+    dict_fusion = fusion(dict, dict_filtre, dict_fusion);
+    std::cout << std::endl;
+    for(unsigned int i = 0; i < dict_fusion.GetNbElem(); i++)
+        std::cout << dict_fusion.GetTabKeys().Get(i) << " : " << dict_fusion.GetTabValues().Get(i) << std::endl;
+    std::cout << "end test" << std::endl;
+
     return 0;
 }
