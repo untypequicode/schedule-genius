@@ -67,6 +67,16 @@ unsigned int DictDynIntUnsignedEleve::GetNbElemMax() const
   return m_tab_values.GetNbElemMax();
 }
 
+void DictDynIntUnsignedEleve::Clear() {
+    m_tab_keys.Clear();
+    m_tab_values.Clear();
+}
+
+void DictDynIntUnsignedEleve::Clear(bool save_tab_memory) {
+    m_tab_keys.Clear(save_tab_memory);
+    m_tab_values.Clear(save_tab_memory);
+}
+
 void DictDynIntUnsignedEleve::Copy(DictDynIntUnsignedEleve &dict_dyn_ref){
     m_tab_keys.Copy(dict_dyn_ref.m_tab_keys);
     m_tab_values.Copy(dict_dyn_ref.m_tab_values);
@@ -130,9 +140,8 @@ bool DictDynIntUnsignedEleve::IfKey(int unsigned key, std::string condition, int
     return comparaison(key, condition, value);
 }
 
-DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreValue(std::string condition, Eleve value)
+DictDynIntUnsignedEleve& DictDynIntUnsignedEleve::FiltreValue(std::string condition, Eleve value, DictDynIntUnsignedEleve& dict_dyn_result)
 {
-    DictDynIntUnsignedEleve dict_dyn_result;
     for (unsigned int i = 0; i < GetNbElem(); i++){
       if(comparaison(m_tab_values.Get(i).GetId(), condition, value.GetId())){
             dict_dyn_result.Add(m_tab_keys.Get(i), m_tab_values.Get(i));
@@ -141,12 +150,11 @@ DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreValue(std::string conditi
     return dict_dyn_result;
 }
 
-DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreValue(const TabDynString& condition, const TabDynEleve& value, const TabDynString& OrAnd)
+DictDynIntUnsignedEleve& DictDynIntUnsignedEleve::FiltreValue(const TabDynString& condition, const TabDynEleve& value, const TabDynString& OrAnd, DictDynIntUnsignedEleve& dict_dyn_result)
 {
     for (unsigned int i = 0; i < condition.GetNbElem(); i++)
         std::cout << "condition : '" << condition.Get(i) << "'" << std::endl;
 
-    DictDynIntUnsignedEleve dict_dyn_result;
     bool test;
     unsigned int index;
     for (unsigned int i = 0; i < GetNbElem(); i++) {
@@ -174,7 +182,8 @@ DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreValue(const TabDynString&
             {
                 std::cerr << "Error : comparator forbidden : '"<< OrAnd.Get(index) << "' , only 'and' and 'or' are allowed" << std::endl;
                 std::cerr << "index :" << index;
-                return DictDynIntUnsignedEleve();
+                dict_dyn_result.Clear();
+                return dict_dyn_result;
             }
         }
         if(test)
@@ -186,9 +195,8 @@ DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreValue(const TabDynString&
     return dict_dyn_result;
 }
 
-DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreKey(const TabDynString& condition, const TabDynIntUnsigned& value, const TabDynString& OrAnd)
+DictDynIntUnsignedEleve& DictDynIntUnsignedEleve::FiltreKey(const TabDynString& condition, const TabDynIntUnsigned& value, const TabDynString& OrAnd, DictDynIntUnsignedEleve& dict_dyn_result)
 {
-    DictDynIntUnsignedEleve dict_dyn_result;
     bool test;
     unsigned int index = 0;
     for (unsigned int i = 0; i < GetNbElem(); i++)
@@ -216,7 +224,8 @@ DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreKey(const TabDynString& c
             else
             {
                 std::cerr << "Error : comparator forbidden, only 'and' and 'or' are allowed" << std::endl;
-                return DictDynIntUnsignedEleve();
+                dict_dyn_result.Clear();
+                return dict_dyn_result;
             }
         }
         index = 0;
@@ -229,9 +238,8 @@ DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreKey(const TabDynString& c
     return dict_dyn_result;
 }
 
-DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreAndValue(const TabDynString& condition, const TabDynEleve& value)
+DictDynIntUnsignedEleve& DictDynIntUnsignedEleve::FiltreAndValue(const TabDynString& condition, const TabDynEleve& value, DictDynIntUnsignedEleve& dict_dyn_result)
 {
-    DictDynIntUnsignedEleve dict_dyn_result;
     bool test = true;
     for(unsigned int i = 0; i < GetNbElem(); i++)
     {
@@ -249,9 +257,8 @@ DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreAndValue(const TabDynStri
     return dict_dyn_result;
 }
 
-DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreOrValue(const TabDynString& condition, const TabDynEleve& value)
+DictDynIntUnsignedEleve& DictDynIntUnsignedEleve::FiltreOrValue(const TabDynString& condition, const TabDynEleve& value, DictDynIntUnsignedEleve& dict_dyn_result)
 {
-    DictDynIntUnsignedEleve dict_dyn_result;
     bool test = false;
     for(unsigned int i = 0; i < GetNbElem(); i++)
     {
@@ -269,9 +276,8 @@ DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreOrValue(const TabDynStrin
     return dict_dyn_result;
 }
 
-DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreKey(std::string condition, int unsigned value)
+DictDynIntUnsignedEleve& DictDynIntUnsignedEleve::FiltreKey(std::string condition, int unsigned value, DictDynIntUnsignedEleve& dict_dyn_result)
 {
-    DictDynIntUnsignedEleve dict_dyn_result;
     for (unsigned int i = 0; i < GetNbElem(); i++){
         if(comparaison(m_tab_keys.Get(i), condition, value)){
             dict_dyn_result.Add(m_tab_keys.Get(i), m_tab_values.Get(i));
@@ -280,9 +286,8 @@ DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreKey(std::string condition
     return dict_dyn_result;
 }
 
-DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreAndKey(const TabDynString& condition, const TabDynIntUnsigned& value)
+DictDynIntUnsignedEleve& DictDynIntUnsignedEleve::FiltreAndKey(const TabDynString& condition, const TabDynIntUnsigned& value, DictDynIntUnsignedEleve& dict_dyn_result)
 {
-    DictDynIntUnsignedEleve dict_dyn_result;
     bool test = true;
     for (unsigned int i = 0; i < GetNbElem(); i++)
     {
@@ -300,9 +305,8 @@ DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreAndKey(const TabDynString
     return dict_dyn_result;
 }
 
-DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreOrKey(const TabDynString& condition, const TabDynIntUnsigned& value)
+DictDynIntUnsignedEleve& DictDynIntUnsignedEleve::FiltreOrKey(const TabDynString& condition, const TabDynIntUnsigned& value, DictDynIntUnsignedEleve& dict_dyn_result)
 {
-    DictDynIntUnsignedEleve dict_dyn_result;
     bool test = false;
     for (unsigned int i = 0; i < GetNbElem(); i++)
     {
@@ -320,10 +324,9 @@ DictDynIntUnsignedEleve DictDynIntUnsignedEleve::FiltreOrKey(const TabDynString&
     return dict_dyn_result;
 }
 
-DictDynIntUnsignedEleve fusion(DictDynIntUnsignedEleve& dict_dyn_ref, DictDynIntUnsignedEleve& dict_dyn_ref2)
+DictDynIntUnsignedEleve& fusion(DictDynIntUnsignedEleve& dict_dyn_ref, DictDynIntUnsignedEleve& dict_dyn_ref2, DictDynIntUnsignedEleve& dict_dyn_result)
 {
     int unsigned key;
-    DictDynIntUnsignedEleve dict_dyn_result;
     
     for (unsigned int i = 0; i < dict_dyn_ref2.GetNbElem(); i++) {
         key = dict_dyn_ref2.GetTabKeys().Get(i);
